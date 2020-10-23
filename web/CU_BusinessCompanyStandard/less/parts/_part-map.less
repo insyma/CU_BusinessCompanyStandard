@@ -1,0 +1,104 @@
+﻿@cache-version: `( new Date() ).getTime()` ;
+// Imports
+@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../components/_transitions.less';
+@import (reference) '../components/_forms.less';
+
+   
+//div#inhalt div.part-map {
+//}
+
+/************************************************************************************
+Map
+************************************************************************************/
+#map_canvas,
+.conMap,
+.con-map-canvas {
+    width: 100%;
+    &:after {
+        content: "";
+        display: block;
+        padding-bottom: 57.5%;
+    }
+}
+.part-map-holder {
+    .flex-display;
+    .flex-flow(row wrap);
+    .con-address {
+        .flex(0 0 100 - @FormInputWidth);
+        max-width: 100 - @FormInputWidth;
+        &-contact-options {
+            margin-bottom: 0;
+        }
+        .list {
+            margin-bottom: @margin-part / 2;
+        }
+
+    }
+    .con-map {
+        .flex(0 0 @FormInputWidth);
+        max-width: @FormInputWidth;
+    }
+    @media screen and (max-width: @mq-size-980) {
+        .con-address,
+        .con-map {
+            .flex(0 0 100%);
+            max-width: 100%;
+        }
+    }
+}
+.con-map {
+	&-canvas {
+		background-color: @lightgrey;
+		opacity: 1;
+		position: relative;
+		.transform;
+		&:hover {
+			opacity: .8;
+		}
+	}
+
+	&-cover {
+		background-color: @transparent;
+		cursor: pointer;
+		height: 100%;
+		opacity: 0.3;
+		.pos-absolute;
+		.transform;
+		width: 100%;
+		z-index: 1;
+	}
+}
+.part-map .con-address {
+    margin-bottom: 40px;
+}
+
+.part-directions-panel {
+    img {
+        max-width: none;
+    }
+//    table {
+//    }
+
+}
+//  FULL PAGE DISPLAY / shadow for full size display + Font Icon
+//#map_canvas {
+//    left: 0;
+//    position: fixed !important;
+//    top: 0;
+//.icongmapmarker {
+//    font-size: 0;
+//    height: auto;
+//    opacity: 1 !important;
+//    overflow: inherit !important;
+//    width: auto;
+//}
+//div.con-map-canvas {
+//    min-height: 400px;
+//    width: 100%;
+//}
+//div.gm-style > div:first-child > div {
+//    box-shadow: inset 0 5px 10px -5px rgba(51,51,51,.5) , inset 0 -5px 10px -5px  rgba(176,176,176,.5);
+//}

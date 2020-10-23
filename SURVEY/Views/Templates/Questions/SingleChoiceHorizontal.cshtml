@@ -1,0 +1,70 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="2">
+        <span>
+            @Model.QuestionName
+        </span>
+    </div>
+    <div style="display: block;" class="answer horizontally">
+        <p class="describe">@Model.Comment</p>
+        <ul class="tablerow">
+
+            @{
+                List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+
+                foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                {
+                    <li class="tablecell" answerid="@answer.Id">
+                        <dl>
+                            <dt>@answer.AnswerName</dt>
+                            <dd>
+                                <div class="radio">
+
+                                    @if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Radio)
+                                    {
+                                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                        {
+                                            <span class="checked"><input name="question_@Model.Id" type="radio" checked /></span>
+                                        }
+                                        else
+                                        {
+                                            <span><input name="question_@Model.Id" type="radio" /></span>
+                                        }
+                                    }
+
+                                    @if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.RadioEndSurvey)
+                                    {
+                                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                        {
+                                            <span class="checked"><input name="question_@Model.Id" type="radio" data-end-survey="1" checked /></span>
+                                        }
+                                        else
+                                        {
+                                            <span><input name="question_@Model.Id" type="radio" data-end-survey="1" /></span>
+                                        }
+                                    }
+
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                }
+            }
+
+        </ul>
+    </div>
+</div>

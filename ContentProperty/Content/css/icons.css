@@ -1,0 +1,905 @@
+/************************************************************************************
+CSS - Icons
+Created: 	2014
+Creator:	SCHM
+*************************************************************************************/
+
+@font-face {
+	font-family: 'cu4-icons';
+	src:url('fonts/cu4-icons.eot');
+	src:url('fonts/cu4-icons.eot?#iefix') format('embedded-opentype'),
+		url('fonts/cu4-icons.woff') format('woff'),
+		url('fonts/cu4-icons.ttf') format('truetype'),
+		url('fonts/cu4-icons.svg#cu4-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/************************************************************************************
+GLOBAL
+*************************************************************************************/
+@font-face {
+	font-family: 'cu4-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+/* positioning */
+.iconbefore:before,
+.iconbefore:after {
+	margin-right: .5em;
+}
+.iconafter:before,
+.iconafter:after {
+	margin-left: .5em;
+}
+
+/************************************************************************************
+BASIC ICON SETTINGS
+*************************************************************************************/
+/************************************************************************************
+BASIC ICON SETTINGS
+*************************************************************************************/
+/* Alle Elemente */
+[class^="icon"]:before,
+[class*=" icon"]:before,
+[class^="icon"]:after,
+[class*=" icon"]:after,
+#logout > a:before,
+/* ul li:before, */
+table.TabBar a:before,
+.CUContainerBody div h2:before,
+img.ui-datepicker-trigger:before,
+table#ordersList th > span:before,
+#orders_exportExcelIcon span:before,
+div.checker span:before,
+.actionsbar > div > span:before,
+.CUPagelayout .radio span:before,
+.CUPageOptions ol.CUPagevisibity div.radio span:before,
+.pagetitle div.button:after,
+.TabBar a:before,
+div.selector:after,
+h2:before,
+div.popup div.button > span:before,
+.CUConBar ol select option:before,
+.checkbox > input[type="checkbox"]:checked + label::before
+{
+	display: inline-block;
+	font-family: 'cu4-icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/* LI-Dots 
+/*ul li:before */
+.CUConBar ol select option:before
+{
+	content: "\e61f";
+	font-family: 'cu4-icons';
+	text-decoration: none;
+}
+
+*/
+/* Link Filetypes */
+/* PDF */
+a.pdf:before
+{ content: "\e000" !important; }
+/* Excel */
+a.xls:before,
+a.xlsx:before
+{ content: "\e001" !important; }
+/* Archives*/
+a.zip:before,
+a.rar:before,
+a.sit:before
+{ content: "\e005" !important; }
+/* MS Word */
+a.doc:before,
+a.docx:before
+{ content: "\e006" !important; }
+/* MS Powerpoint */
+a.ppt:before,
+a.pptx:before,
+a.pps:before
+{ content: "\e008" !important; }
+/* Images */
+a.jpg:before,
+a.jpeg:before,
+a.gif:before,
+a.png:before,
+a.tif:before,
+a.tiff:before,
+a.psd:before
+{ content: "\f03e" !important; }
+/* MS Word */
+a.mov:before,
+a.avi:before,
+a.m4v:before,
+a.mp4:before
+{ content: "\f001" !important; }
+
+/* Basic Icons - more icons >> fonts/original/demo.html */
+.icon.behance:before 		{ content: "\e63e";	}
+.icon.facebook:before 		{ content: "\e003";	}
+.icon.flickr:before 		{ content: "\e633";	}
+.icon.github:before 		{ content: "\e637";	}
+.icon.googleplus:before 	{ content: "\e01a"; }
+.icon.instagram:before 		{ content: "\e632";	}
+.icon.lastfm:before 		{ content: "\e63b";	}
+.icon.linkedin:before 		{ content: "\e613"; }
+.icon.myspace:before 		{ content: "\e631";	}
+.icon.picasa:before 		{ content: "\e635";	}
+.icon.pinterest:before 		{ content: "\e63d";	}
+.icon.soundcloud:before 	{ content: "\e639";	}
+.icon.tumblr:before 		{ content: "\e62d"; }
+.icon.twitter:before 		{ content: "\e017";	}
+.icon.xing:before 			{ content: "\e62b"; }
+.icon.vimeo:before 			{ content: "\e014"; }
+.icon.youtube:before 		{ content: "\e60d"; }
+.icon.else:before 			{ content: "\e62f";	}
+
+/* Overlay  */
+#insymaOverlayHolder span.close:before {
+	content: "\f00d";
+}
+#insymaOverlayHolder span.resize:before {
+	content: "\f065";
+}
+#insymaOverlayHolder span.size:before {
+	content: "\f066";
+}
+#insymaOverlayHolder span.play:before {
+	content: "\f04b";
+}
+#insymaOverlayHolder span.stop:before {
+	content: "\f04d";
+}
+#insymaOverlayHolder span.next:before {
+	content: "\f04e";
+}
+#insymaOverlayHolder span.prev:before {
+	content: "\f04a";
+}
+
+
+/************************************************************************************
+	BASIC ICONS
+
+	.iconbefore:before,
+	.iconbefore:after {
+		margin-right: .5em;
+	}
+	.iconafter:before,
+	.iconafter:after {
+		margin-left: .5em;
+	}
+*************************************************************************************/
+/* TEMP SETTINGS GLOBAL */
+.inputimage {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	width: 30px;
+	z-index: 10;
+}
+.inputimage.space {
+	display: none !important;
+} 
+.PartS .inputimage {
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 30px;
+	z-index: 10;
+}
+.inputimage input {
+	height: 30px;
+	left: 0;
+	margin: 0; 
+	padding: 0 !important;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+	position: absolute;
+	width: 30px;
+	z-index: 11;
+}
+.lupe:before {
+	content: "\f002";
+}
+
+div.popup div.button > span:before {
+	content: "\f002";
+	font-size: 20px;
+	margin-right: .5em;
+}
+	#uniform-btnSavePageProperies > span,
+	#uniform-btnSavePageProperies > span:before {
+		color: #82bb25;
+	}
+
+	#uniform-btnSavePageProperies > span:before {
+		content: "\f0c7";
+	}
+	#uniform-btnDeletePage > span:before {
+		content: "\e668";
+	}
+	#uniform-btnCacelCopyNewsletter > span:before,
+	#uniform-btnCancelDeleteNewsletter > span:before,
+	#uniform-btnCacelPreviewNewsletter > span:before,
+	#uniform-btnCancelDeleteVoting > span:before,
+	#uniform-btnCanelPageProperties > span:before {
+		content: "\e606";
+	}
+	#uniform-btnMakeCopyNewsletter > span:before {
+		content: "\e65f";
+	}
+	#uniform-btnConfirmDeleteNewsletter > span:before {
+		content: "\f05d";
+		font-size: 24px;
+	}
+
+	#uniform-btnPreviewNewsletter > span:before {
+		content: "\f00f";
+	}
+	#uniform-btnTextPreviewNewsletter > span:before {
+		content: "\f0f6";
+	}
+
+	div.popup div.button > span:hover,
+	div.popup div.button > span:hover:before {
+		color: #161616 !important;
+	}
+
+.TypeBar div:before {
+	font-size: 30px;
+}
+.TypeBar div:hover:before {
+	color: #82bb25;
+}
+.b_Fabrik:before,
+.b_contacts:before {
+	color: #0072c6;
+}
+
+.a_Fabrik:before,
+.b_Fabrik:before {
+	content: "\f0c0";
+}
+.a_contacts:before,
+.b_contacts:before {
+	content: "\f007";
+}
+
+.CUContainerBody div h2:before {
+	content: "\f044";
+}
+.pagetitle:before,
+div.popup h2:before
+{
+	content: "\f15b";
+}
+.activetab a:before {
+	content: "\f15b";
+}
+.TabBar .activetab a:before {
+	content: "\e617";
+}
+.TabBar a:before {
+	content: "\e614";
+}
+.CUContainerBody .TabBar a:before {
+	content: "\f12e";
+}
+.pagetitle div.button:after {
+	content: "\e632";
+    color: #82bb25;
+    float: right;
+    height: 36px !important;
+    line-height: 36px !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 36px;
+}
+.pagetitle:hover div.button:after,
+.pagetitle div.button:hover:after {
+	color: #FFF;
+}
+
+div.selector:after  {
+    color: #555;
+    content: "\f0dd";
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    z-index: 0;
+}
+div.selector.hover:after  {
+    top: -5px;
+}
+.CUConBar div.selector:after {
+	color: #FFF;
+}
+/*
+div.selector.focus:after  {
+	color: #0072C6;
+}
+*/
+/* page layout type */
+.CUPagelayout .radio span:before {
+	background: #949494;
+	color: #535353;
+	font-size: 50px;
+	height: 50px;
+	line-height: 1;
+	position: absolute;
+	width: 35px;
+}
+.CUPagelayout .radio span.checked:before {
+	background: #82bb25;
+	color: #535353;
+}
+.CUPagelayout .radio span:hover:before {
+	background: #161616;
+}
+
+.CUPagelayout li.CUPagelayout1 .radio span:before {
+	content: "\e677";
+}
+.CUPagelayout li.CUPagelayout2 .radio span:before {
+	content: "\e675";
+}
+.CUPagelayout li.CUPagelayout3 .radio span:before {
+	content: "\e676";
+}
+
+/* page visibility type */
+.CUPageOptions ol.CUPagevisibity div.radio span:before {
+	font-size: 24px;
+}
+.CUPageOptions ol.CUPagevisibity div.radio span:hover:before {
+	color: #161616;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity1 div.radio span:before {
+	content: "\f058";
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity2 div.radio span:before {
+	content: "\f057";
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity3 div.radio span:before {
+	content: "\e606";
+	font-size: 22px;
+}
+
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity1 div.radio span.checked:before {
+	color: #82BB25;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity2 div.radio span.checked:before {
+	color: #FF3A00;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity3 div.radio span.checked:before {
+	color: #FF3A00;
+}
+
+.pacmaaaaan:after {
+	content: "\e621";
+}
+/* calendar */
+img.ui-datepicker-trigger:before {
+	content: "\f073";
+}
+table#ordersList th > span:before {
+	content: "\f0dd";
+	color: #FFF;
+	cursor: pointer;
+}
+#orders_exportExcelIcon span:before {
+	content: "\e001";
+}
+
+.iconlogoff:before {
+	color: #FF3A00;
+	content: "\f011";
+	font-size: 20px;
+}
+.iconhelp:before {
+	color: #82bb25;
+	content: "\f128";
+	font-size: 24px;
+}
+.iconuser,
+.iconuser:before {
+	color: #FFF;
+}
+a:hover > .iconuser,
+a:hover > .iconuser:before {
+	color: #F0F0F0;
+}
+.iconuser:before {
+	content: "\f007";
+}
+.iconprofile:after {
+	content: "\e632";
+}
+.class_toplevel > a:before,
+.drag_c2.droppable_c2:before
+{
+	color: #FFF; 
+	display: inline-block;
+	font-family: 'cu4-icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+.class_toplevel > a:hover:before
+{
+	color: #0072C6; 
+    background: #FFF;
+}
+
+/* TEST */
+.class_toplevel > a:before
+{    background: #82bb25;
+    border: 1px solid;
+    display: block;
+    float: left;
+    font-size: 20px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 0.5em;
+    position: relative;
+    text-align: center;
+    top: -7px;
+    width: 36px;
+    z-index: 5;
+}
+
+
+
+
+/* TEMP NAVIGATION WEB */
+.toplevel_c1:before {
+	content: "\e656";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION SETTINGS */
+.toplevel_c15:before {
+	content: "\e632";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION NEWSLETTER */
+.toplevel_c21:before {
+	content: "\f004";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION CONTACT ADMINISTRATION */
+.toplevel_c31:before {
+	content: "\f0c0";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION WUNSCHPREIS */
+.toplevel_c70:before {
+	content: "\e62e";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION SURVEY */
+.toplevel_c82:before {
+	content: "\e66f";
+	margin-right: .5em;
+}
+
+
+/* TEMP NAV GLOBAL */
+div#menubox a:before {
+	font-size: 18px;
+	margin-right: .5em;
+}
+
+
+/* TEMP NAV SETTINGS */
+.iconCUsettings:before {
+	content: "\e632";
+}
+
+/* TEMP NAV FOLDER */
+.class2:before {
+	content: "\f07b";
+}
+
+/* TEMP NAV NEWSLETTER OUTBOX */
+.iconCUnewsletterOutbox:before {
+	content: "\e670";
+}
+/* TEMP NAV NEWSLETTER OUTBOX */
+.iconCUnewsletterOutbox:before {
+	content: "\e670";
+}
+.iconCUnewsletter:before {
+	content: "\f0e0";
+}
+/* TEMP NAVIGATION PAGES */
+.class3-0-0:before,
+.class3-1-0:before,
+.class3-0:before,
+.class3-1:before,
+.class3-2:before,
+.class3-3:before
+{
+	content: "\f15b";
+	font-size: 18px;
+}
+
+.class3-4:before,
+.class3-5:before,
+.class3-6:before
+{
+	content: "\f016";
+	font-size: 18px;
+}
+/* OK PAGE */
+.class3-0-0:before,
+.class3-3:before {
+	color: #82BB25;
+}
+/* MODIFIED PAGE */
+.class3-1:before {
+	color: #FF9C00;
+}
+/* NEW PAGE */
+#menubox > ul > li > a.droppable_c3.icon.class3-0:before,
+.class3-0:before
+{
+	content: "\f016";
+	font-size: 18px;
+	margin-right: .5em;
+}
+
+/* FOLDER */
+.class2:before,
+.class3-9-0:before
+{
+	color: #555;
+	content: "\f07b";
+	font-size: 18px;
+}
+
+/* NEWSLETTER PAGE */
+.class22:before {
+	content: "\f0e0";
+	font-size: 18px;
+}
+/* ARCHIVE  */
+.class24:before {
+	content: "\e670";
+	font-size: 18px;
+}
+/* STATS  */
+.class61:before, 
+.class62:before {
+	content: "\e673";
+	font-size: 18px;
+}
+/* NEWSLETTER  */
+.class23-0:before {
+	color: #ffd200;
+	content: "\f0e0";
+	font-size: 18px;
+}
+
+
+/* INPAGE LINK MOVIE and IMAGE */
+.mediaupload:before {
+	content: "\f055";
+	font-size: 36px;
+	margin: 0;
+}
+
+.mediaupload.class9:before {
+	content: "\f1c8";
+	font-size: 36px;
+}
+.previewimg.deleteimage {
+	display: block;
+	float: left;
+	position: relative;
+}
+.previewimg.deleteimage:before {
+	content: "\e60a";
+	font-size: 36px;
+    height: 40px;
+    left: 0;
+    line-height: 40px;
+    margin: -20px 0 0 !important;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    z-index: 1;
+}
+
+
+/* HIDE IMAGES */
+.deleteimage > img,
+div#menubox > ul > li > img,
+.drag_c2.droppable_c2 > img,
+.class_toplevel > a > img
+{
+	display: none;
+}
+
+.previewimg.deleteimage > img
+{
+	display: block;
+	height: auto !important; 
+/*    min-width: 300px; */
+    width: auto !important;
+}
+
+
+
+/************************************************************************************
+	UNIFORM BUTTONS
+************************************************************************************/
+.actionsbar > div > span:before {
+	margin-right: .5em;
+}
+
+div#uniform-btnPublish > span:before {
+	content: "\e621";
+	font-size: 20px;
+}
+
+div#uniform-btnPreview > span:before {
+	content: "\f00f";
+	font-size: 20px;
+}
+div#uniform-btnCategories > span:before {
+	content: "\f044";
+	font-size: 20px;
+}
+/*
+div#uniform-btnPageProperties > span:before {
+	content: "\e632";
+	font-size: 20px;
+}
+*/
+div#uniform-btnAddSubPage > span:before {
+	content: "\f055";
+	font-size: 20px;
+}
+div#uniform-btnAddPartControl > span:before {
+	content: "\f12e";
+	font-size: 20px;
+}
+div#uniform-btnShowHistory > span:before {
+	content: "\f1da";
+	font-size: 20px;
+}
+
+/************************************************************************************
+	UNIFORMS
+************************************************************************************/
+div.checker span:before 
+{   
+	content: "\e004";
+	font-size: 20px;
+    left: auto;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: auto;
+    width: 27px !important;
+}
+
+.icon-pdf:before{
+    content: "\e000";
+}
+.icon-word:before{
+    content: "\e006";
+}
+.icon-link:before{
+    content: "\f0c1";
+}
+.icon-config:after{
+    content: "\e632";
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.icon-part:before {
+	content: "\f12e";
+}
+.icon-add:before {
+	content: "\f055";
+}
+.icon-list:after {
+    content: "\e00a";
+}
+
+.icon-down:before {
+    content: "\f0d7";
+}
+.icon-up:before {
+    content: "\f0d8";
+}
+
+/******************************************
+        navigationView
+*******************************************/
+.iconfolder:before {
+    color: #555;
+    content: "";
+    font-size: 18px;
+    margin-right: 0.5em;
+}
+div#menubox a:before {
+    left: 0;
+    position: absolute;
+    top: auto;
+    width: 20px;
+}
+.active, .active:before {
+	color: #0072C6 !important;
+}
+
+
+.f-toggle:after {
+	color: #999;
+	content: "\e61d";
+}
+.f-toggle.active:after {
+	content: "\e61e";
+}
+div.selector:after  {
+    color: #555;
+    content: "\f0dd";
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    z-index: 0;
+}
+div.selector.hover:after  {
+    top: -5px;
+}
+.CUConBar div.selector:after {
+	color: #FFF;
+}
+/* page layout type */
+.CUPagelayout .radio span:before {
+	background: #949494;
+	color: #535353;
+	font-size: 50px;
+	height: 50px;
+	line-height: 1;
+	position: absolute;
+	width: 35px;
+}
+.CUPagelayout .radio span.checked:before {
+	background: #82bb25;
+	color: #535353;
+}
+.CUPagelayout .radio span:hover:before {
+	background: #161616;
+}
+
+.CUPagelayout li.CUPagelayout1 .radio span:before {
+	content: "\e677";
+}
+.CUPagelayout li.CUPagelayout2 .radio span:before {
+	content: "\e675";
+}
+.CUPagelayout li.CUPagelayout3 .radio span:before {
+	content: "\e676";
+}
+
+/* page visibility type */
+.CUPageOptions ol.CUPagevisibity div.radio span:before {
+	font-size: 24px;
+}
+.CUPageOptions ol.CUPagevisibity div.radio span:hover:before {
+	color: #161616;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity1 div.radio span:before {
+	content: "\f058";
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity2 div.radio span:before {
+	content: "\f057";
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity3 div.radio span:before {
+	content: "\e606";
+	font-size: 22px;
+}
+
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity1 div.radio span.checked:before {
+	color: #82BB25;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity2 div.radio span.checked:before {
+	color: #FF3A00;
+}
+.CUPageOptions ol.CUPagevisibity li.CUPagevisibity3 div.radio span.checked:before {
+	color: #FF3A00;
+}
+
+.pacmaaaaan:after {
+	content: "\e621";
+}
+.icon-version:before {
+    content: "\f1da";
+}
+.icon-preview:before {
+    content: "\f00f";
+}
+.icon-publish:before {
+    content: "\f00f";
+}
+
+.icon-save:before {
+    content: "\f0c7";
+    margin-right: 5px;
+}
+
+.icon-refresh:before {
+    content: "\f021";
+    margin-right: 5px;
+} 
+
+.icon-cancel:before {
+    content: "\e606";
+    margin-right: 5px;
+}
+.icon-option:before {
+    content: "\e632";
+}
+.icon-version-status:before {
+    content: "\e678";
+    font-size: 1.5em;
+    margin-right: 0.5em;
+    vertical-align: bottom;
+}
+.icon-datepicker:before {
+    content: "\f073";
+}
+/*.icon-up:before {
+    content: "\f107";
+}*/
+span.span-check:before 
+{   
+	content: "\e004";
+
+}
+span.span-check 
+{
+    padding: 5px;
+}
+.show-more-btn {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px 15px;
+}
+.show-more-btn:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+.icon-import::before {
+    content: "\f019";
+}
+.icon-timepicker:before {
+    content: "\e629";
+}

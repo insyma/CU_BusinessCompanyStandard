@@ -1,0 +1,25 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+@{
+    Layout = null;
+}
+
+<div class="pagination" ng-show="pages.length > 1">
+    <ul>
+        <li style="color: #808080; font-size: 12px; line-height: 26px;">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Page"))</li>
+        <li ng-class="{disabled: currentPage == 0}">
+            <a href ng-click=firstPage()>&lt;&lt;</a>
+        </li>
+        <li ng-class="{disabled: currentPage == 0}">
+            <a href ng-click=prevPage()>&lt;</a>
+        </li>
+        <li ng-repeat="n in pages" ng-class="{active: n == currentPage}" ng-click="setPage(n)" >
+            <a href ng-bind="n + 1"></a>
+        </li>
+        <li ng-class="{disabled: currentPage == pages.length - 1}">
+            <a href ng-click=nextPage()>&gt;</a>
+        </li>
+        <li ng-class="{disabled: currentPage == pages.length - 1}">
+            <a href ng-click=lastPage() >&gt;&gt;</a>
+        </li>
+    </ul>
+</div>

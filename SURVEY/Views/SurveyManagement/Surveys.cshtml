@@ -1,0 +1,1003 @@
+﻿@{
+    ViewBag.Title = "Surveys";
+}
+
+@using Insyma.SurveyManagement.UI.UIHelper
+
+<link href="~/content/css/SurveysManagement.css" rel="stylesheet" />
+<link href="~/content/css/bootstrap-popover.css" rel="stylesheet" />
+
+<script src="~/js/Lib/modernizr.dragNdrop.js"></script>
+
+<script src="~/js/Lib/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="~/js/Lib/jquery.iframe-transport.js" type="text/javascript"></script>
+<script src="~/js/Lib/jquery.fileupload.js" type="text/javascript"></script>
+
+<script src="~/js/Lib/angular.min-1.2.6.js"></script>
+<script src="~/js/Lib/jquery.uniform.min.js"></script>
+
+@*<script src="~/js/Lib/bootstrap-popover.min.js"></script>*@
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+    [draggable=true] {
+        -khtml-user-drag: element;
+        -webkit-user-drag: element;
+    }
+</style>
+
+<script>
+    $("select, input, a.button, button").uniform();
+
+
+    $(document).off("click", ".expList h2"); //don't need jquery event handler
+
+    $(document).ready(function () {
+
+        var surveyDetail = $("#surveyDetail");
+        $(".cu-command").css("visibility", "visible");
+        $(document).on("mouseenter", ".cu-title", function () {
+            $(this).find(".cu-command").css("visibility", "visible");
+        });
+
+        $(document).on("mouseleave", ".cu-title", function () {
+            $(this).find(".cu-command").css("visibility", "hidden");
+        });
+
+        if (Modernizr.draganddrop) {
+
+            var scrollAmount = $(window).height() / 100;
+            var shouldScrollAmount = $(window).height() / 10;
+            var moveUp = $(".moveup");
+            var moveDown = $(".movedown");
+            var draggedElement;
+
+            $(surveyDetail).on("dragstart", ".questionNode", function (evt) {
+                var question = angular.element(evt.target).scope().Question;
+
+                $(evt.target).find(".cu-command").css("visibility", "hidden");
+
+                evt.originalEvent.dataTransfer.setData("questionid", question.Id);
+
+                evt.originalEvent.dataTransfer.effectAllowed = "move";
+
+                evt.stopPropagation();
+            });
+
+            $(surveyDetail).on("dragstart", ".structureNode", function (evt) {
+                var structure = angular.element(evt.target).scope().Structure;
+
+                $(evt.target).find(".cu-command").css("visibility", "hidden");
+
+                evt.originalEvent.dataTransfer.setData("structureid", structure.Id);
+
+                evt.originalEvent.dataTransfer.effectAllowed = "move";
+
+                evt.stopPropagation();
+            });
+
+            $(surveyDetail).on("dragstart", ".answerNode", function (evt) {
+                var scope = angular.element(evt.target).scope();
+
+                $(evt.target).find(".cu-command").css("visibility", "hidden");
+
+                evt.originalEvent.dataTransfer.setData("questionid", scope.Question.Id);
+
+                evt.originalEvent.dataTransfer.setData("answerid", scope.Answer.Id);
+
+                evt.originalEvent.dataTransfer.effectAllowed = "move";
+
+                evt.stopPropagation();
+            });
+
+            $(surveyDetail).on("dragstart", ".structureNode,.questionNode,.answerNode", function (event) {
+                draggedElement = this;
+                $(this).addClass("border-select");
+                event.stopPropagation();
+            });
+
+            $(surveyDetail).on("drag", ".questionNode", function (evt) {
+
+                //This function does not work on FF
+                var clientY = evt.originalEvent.clientY;
+
+                if (clientY > 0) {
+                    if (clientY <= shouldScrollAmount) {
+                        $(document).scrollTop($(document).scrollTop() - scrollAmount);
+                    }
+                    else if (clientY >= $(window).height() - shouldScrollAmount) {
+                        $(document).scrollTop($(document).scrollTop() + scrollAmount);
+                    }
+                }
+
+            });
+
+            $(surveyDetail).on("dragend", ".questionNode,.structureNode,.answerNode", function () {
+                $(this).removeClass("border-select");
+                draggedElement = null;
+                moveUp.hide();
+                moveDown.hide();
+            });
+
+            $(surveyDetail).on("dragover", ".questionNode,.structureNode,.answerNode", function (event) {
+                var offset = $(this).offset();
+                $(".movedown").css("left", event.originalEvent.pageX - (offset.left + 60));
+                $(".moveup").css("left", event.originalEvent.pageX - (offset.left + 60));
+                //Check if dragging over itself
+                var $draggedElement = $(draggedElement);
+                var $this = $(this);
+
+                if (draggedElement != this &&
+                    (($draggedElement.hasClass("questionNode") && $this.hasClass("questionNode")) ||
+                    ($draggedElement.hasClass("structureNode") && $this.hasClass("structureNode")) ||
+                    ($draggedElement.hasClass("answerNode") && $this.hasClass("answerNode"))) &&
+                    !$.contains(draggedElement, this) && !$.contains(this, draggedElement)) {
+
+                    moveUp.show();
+                    moveDown.show();
+
+                    moveUp.insertBefore(this);
+                    moveDown.insertAfter(this);
+                }
+
+                event.stopPropagation();
+            });
+            $(surveyDetail).on("dragover", ".moveup", function (event) {
+                moveDown.removeClass("border-top-background");
+                moveUp.addClass("border-bottom-background");
+                return false;
+            });
+            $(surveyDetail).on("dragleave", ".moveup", function (event) {
+                moveUp.removeClass("border-bottom-background");
+            });
+            $(surveyDetail).on("dragover", ".movedown", function (event) {
+                moveUp.removeClass("border-bottom-background");
+                moveDown.addClass("border-top-background");
+                return false;
+            });
+            $(surveyDetail).on("dragleave", ".movedown", function (event) {
+                moveDown.removeClass("border-top-background");
+            });
+            $(surveyDetail).on("drop", ".movedown,.moveup", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                moveUp.hide();
+                moveDown.hide();
+
+                var currentScope = angular.element(event.target).scope();
+                var isDown = $(this).hasClass("movedown");
+                var types = Array.prototype.slice.call(event.originalEvent.dataTransfer.types);
+
+                if ($(this).parent().hasClass("structureContainer")) {
+                    var currentStructure = currentScope.Structure;
+
+                    if (types && types.indexOf("structureid") >= 0) {
+                        var draggedStructureId = event.originalEvent.dataTransfer.getData("structureid");
+
+                        var newPostition = currentStructure.Position;
+
+                        currentScope.$apply(function () {
+                            currentScope.reorderStructure(draggedStructureId, newPostition, isDown);
+                        });
+                    }
+                }
+                else if ($(this).parent().hasClass("questionContainer")) {
+                    var currentQuestion = currentScope.Question;
+                    var newPosition = currentQuestion.Position;
+                    var draggedQuestionId;
+
+                    if (types && types.indexOf("questionid") >= 0) {
+                        draggedQuestionId = event.originalEvent.dataTransfer.getData("questionid");
+                    }
+
+                    if (currentScope.parent.hasOwnProperty("Structure")) {//parent is structure
+
+                        if (draggedQuestionId) {
+                            currentScope.$apply(function () {
+                                currentScope.reorderQuestionToStructure(draggedQuestionId, newPosition, isDown, currentScope.parent.Structure.Id);
+                            });
+                        }
+                    }
+                    else {//parent is question.
+
+                        if (draggedQuestionId) {
+                            currentScope.$apply(function () {
+                                currentScope.reorderQuestionToParentQuestion(draggedQuestionId, newPosition, isDown, currentScope.parent.Question.Id);
+                            });
+                        }
+
+                    }
+                }
+                else if ($(this).parent().hasClass("answerContainer")) {
+                    var currentAnswer = currentScope.Answer;
+                    var newPosition = currentAnswer.Position;
+                    var currentQuestionId = event.originalEvent.dataTransfer.getData("questionid");
+                    var answerId = event.originalEvent.dataTransfer.getData("answerid");
+
+                    currentScope.$apply(function () {
+                        currentScope.reorderAnswer(answerId, currentQuestionId, newPosition, isDown, currentScope.Question);
+                    });
+                }
+            });
+
+            //$(surveyDetail).on("dragleave", ".structureContainer,.questionContainer,.answerContainer", function (event) {
+            //    if ($(draggedElement).parent().hasClass("structureContainer") && $(this).hasClass("structureContainer")) {
+            //        moveUp.hide();
+            //        moveDown.hide();
+            //    }
+            //});
+
+            $(surveyDetail).on("dragover", ".structureNode,.questionNode", function (event) {
+                var types = Array.prototype.slice.call(event.originalEvent.dataTransfer.types);
+
+                var $draggedElement = $(draggedElement);
+                if ($draggedElement.hasClass("structureNode") || $draggedElement.hasClass("questionNode")) {
+                    if (types.indexOf("structureid") < 0 && draggedElement != this && !$.contains(draggedElement, this)) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        $(this).addClass("border-shadow");
+                        event.originalEvent.dataTransfer.dropEffect = "move";
+                    }
+                }
+                else {//drag an answer
+                    if ($(this).hasClass("questionNode")) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        $(this).addClass("border-shadow");
+                        event.originalEvent.dataTransfer.dropEffect = "move";
+                    }
+                }
+            });
+
+            $(surveyDetail).on("dragleave", ".structureNode,.questionNode", function (event) {
+                $(this).removeClass("border-shadow");
+                event.preventDefault();
+                event.stopPropagation();
+            });
+
+            $(surveyDetail).on("drop", ".structureNode", function (evt) {
+                $(this).removeClass("border-shadow");
+                evt.preventDefault();
+                evt.stopPropagation();
+
+                var scope = angular.element(evt.target).scope();
+                var questionId = evt.originalEvent.dataTransfer.getData("questionid");
+                var structure = scope.Structure;
+
+                scope.$apply(function () {
+                    scope.moveQuestionToStructure(questionId, structure);
+                });
+            });
+
+            $(surveyDetail).on("drop", ".questionNode", function (evt) {
+                $(this).removeClass("border-shadow");
+                evt.preventDefault();
+                evt.stopPropagation();
+
+                var scope = angular.element(evt.target).scope();
+                var questionId = evt.originalEvent.dataTransfer.getData("questionid");
+                var answerId = evt.originalEvent.dataTransfer.getData("answerid");
+                var Question = scope.Question;
+
+                if (answerId) {
+                    scope.$apply(function () {
+                        scope.moveAnswerToQuestion(answerId, questionId, Question);
+                    });
+                }
+                else {
+                    scope.$apply(function () {
+                        scope.moveQuestionToQuestion(questionId, Question);
+                    });
+                }
+            });
+        }
+
+    });
+</script>
+
+@section DirectivesScript
+{
+    <script src="~/js/App/Directives/paginatorDirective.js"></script>
+    <script src="~/js/App/Controllers/SurveysController.js"></script>
+}
+
+<div id="surveyMain" ng-controller="SurveysController">
+    <div class=" eight columns" ng-show="selectedSurvey == null">
+        <br>
+        <h2 class="cu-standardheader survey-name cu-textXLarge cu-soften" style="display: inline">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Survey"))</h2>
+        <span ng-click="addSurvey()" class="icon iconbefore iconadd CUbutton">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddSurvey"))</span>
+        <div style="margin-top: 20px;">
+            <table class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="cu-color-background-table-header">
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle SurveyName">
+                            <a class="cu-headerTableLink">
+                                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_Survey"))
+                                <span class="icon tablesort"></span>
+                            </a>
+                        </th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle CreatedDate">
+                            <a class="cu-headerTableLink">
+                                @Html.Raw(LabelHelper.GetProgramString("LblGeneral_DateCreated"))
+                                <span class="icon tablesort"></span>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tr class="cu-cell" ng-repeat="survey in Surveys" ng-click="selectSurvey(survey)">
+                    <td class="cu-cellstyle cu-cell-text min-width-name"><span>{{survey.SurveyName}}</span></td>
+                    <td class="cu-cellstyle cu-cell-text min-width-date"><span>{{survey.CreatedDate  | date:'dd.MM.yyyy'}}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="surveyDetail" class="eight columns border-survey survey-level" ng-show="selectedSurvey != null">
+        <div class="survey-title">
+            <div class="cu-left cu-title">
+                <h2 class="cu-standardheader survey-name cu-textXLarge cu-soften icon-file2" style="display: inline">
+                    &nbsp;&nbsp;{{selectedSurvey.SurveyName}}
+                </h2>
+                <div class="cu-command" style="visibility: hidden; display: inline">
+                    <span ng-click="editSurvey(selectedSurvey)" class="icon-pencil"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+                    <span ng-click="deleteSurvey()" class="icon-remove2"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove")) </span>
+                    <span ng-click="addSurveyStructure(selectedSurvey)" class="icon-plus2">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Structure"))&nbsp;&nbsp;</span>
+                    <span ng-click="configureSurveySetting(selectedSurvey)" class="icon-plus2">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Settings"))&nbsp;&nbsp;</span>
+                    <span ng-click="publishSurvey(selectedSurvey)" class="icon-publish">&nbsp;@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Publish")) </span>
+                </div>
+            </div>
+
+            <div class="cu-right"><span class="cu-standardheader back-to cu-textXLarge cu-soften hand-pointer" ng-click="backtoList()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_BackTo"))</span></div>
+        </div>
+        <div class="eight columns cu-clear margin-structure structureContainer page-level" ng-class="{'hide-border':!Structure.isExpanded,'show-border':Structure.isExpanded}"
+             ng-repeat="Structure in selectedSurvey.Structures">
+            <div class="structureNode" draggable="true">
+                <div class="page-title cu-title">
+                    <h2 class="cu-standardheader structure-name text-survey cu-soften icon-file"
+                        ng-class="{'expanded':!Structure.isExpanded,'collapsed':Structure.isExpanded}"
+                        ng-click="expandStructure(Structure)">
+                        &nbsp;&nbsp;{{Structure.StructureName}}
+                    </h2>
+                    <div class="cu-command" style="visibility: hidden;">
+                        <span ng-click="editSurveyStructure(Structure)" class="icon-pencil">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+                        <span ng-click="deleteSurveyStructure(Structure)" class="icon-remove2">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove"))  </span>
+                        <span ng-click="addStructureQuestion(Structure)" class="icon-plus2"> @Html.Raw(LabelHelper.GetProgramString("LblSurveys_Question")) </span>
+                        <span ng-click="editSurveyStructureDependencies(Structure)" class="icon-wrench"> @Html.Raw(LabelHelper.GetProgramString("LblSurveys_EditDependencies")) </span>
+                    </div>
+                </div>
+                <div class="question-level" ng-expand is-expanded="Structure.isExpanded">
+                    <div class="treeNode questionContainer" ng-repeat="Question in Structure.Questions"
+                         ng-class="{'hide-border-questions':!Question.isExpanded,'show-border-questions':Question.isExpanded}">
+                        <div ng-include src="'questionNode.html'" draggable="true" class="questionNode" onload="parent = $parent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="moveup icon-arrow-up" style="display: none"></div>
+<div class="movedown icon-arrow-down" style="display: none"></div>
+
+<script id="surveySettingsPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Settings"))</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form">
+            <div ng-repeat="SurveySetting in SurveySettings">
+                <dl>
+                    <dt class="padding-top">{{SurveySetting.Name}}</dt>
+                    <dd><input type="text" ng-model="SurveySetting.Value" /></dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn icon iconbefore CUbutton iconclose" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button type="button" class="btn btn-primary icon iconbefore CUbutton icosave" ng-click="saveSurveySettings()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>
+
+<script id="questionContactFieldPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>Contact Field Information</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form">
+            <dl>
+                <dt class="padding-top">Contact Field Name:</dt>
+                <dd><input type="text" ng-model="contactField.ContactFieldName" name="ContactFieldName" /></dd>
+            </dl>
+            <dl>
+                <dt class="padding-top">Validation Message:</dt>
+                <dd><input type="text" ng-model="contactField.ValidationMessage" name="ValidationMessage" /></dd>
+            </dl>
+            <dl>
+                <dt class="padding-top">Is Mandatory:</dt>
+                <dd><input type="checkbox" ng-model="contactField.IsMandatory" name="IsMandatory" /></dd>
+            </dl>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button type="button" class="btn" ng-click="saveQuestionContactField(contactField,question)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>
+
+<script id="answerContactFieldPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>Contact Field Information</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form">
+            <dl>
+                <dt class="padding-top">Contact Field Name:</dt>
+                <dd><input type="text" ng-model="contactField.ContactFieldName" name="ContactFieldName" /></dd>
+            </dl>
+            <dl>
+                <dt class="padding-top">Contact Field Type:</dt>
+                <dd>
+                    <select ng-model="contactField.FieldType" name="ContactFieldType">
+                        <option value="1">Text</option>
+                        <option value="2">Email</option>
+                        <option value="3">Telephone</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt class="padding-top">Validation Message:</dt>
+                <dd><input type="text" ng-model="contactField.ValidationMessage" name="ValidationMessage" /></dd>
+            </dl>
+            <dl>
+                <dt class="padding-top">Is Mandatory:</dt>
+                <dd><input type="checkbox" ng-model="contactField.IsMandatory" name="IsMandatory" /></dd>
+            </dl>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button type="button" class="btn" ng-click="saveAnswerContactField(contactField,question,answer)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>
+
+<script id="dependenciesPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_DependenciesConfiguration"))</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-include="'dependencyGroupNode.html'" onload="dependencyGroup=rootDependencyGroup"></li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+    </div>
+</script>
+
+<script id="dependencyGroupNode.html" type="text/ng-template">
+    <form name="form" novalidate class="cu-title">
+        <div>
+            <div class="container_error_one" ng-if="editingDependencyGroup.Id == dependencyGroup.Id">
+                <div>
+                    <select required name="GroupType" ng-model="editingDependencyGroup.GroupTypeId" ng-options="GroupType.Id as GroupType.GroupTypeName for GroupType in GroupTypes"></select>
+                    <p class="p_error" ng-show="form.GroupType.$dirty && form.GroupType.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_GroupTypeRequired"))</p>
+                </div>
+            </div>
+            <div ng-if="editingDependencyGroup.Id != dependencyGroup.Id">
+                {{ (GroupTypes | filter:{Id:dependencyGroup.GroupTypeId}:true)[0].GroupTypeName}}
+            </div>
+            <div class="cu-command" style="visibility: hidden;">
+                <span ng-show="editingDependencyGroup.Id != dependencyGroup.Id">
+                    <span class="icon-pencil" ng-click="editSurveyDependencyGroup(dependencyGroup)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+                    <span class="icon-plus2" ng-click="addSurveyDependencyGroup(dependencyGroup)"> @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddDependencyGroup"))</span>
+                    <span class="icon-add-to-list" ng-click="addSurveyDependency(dependencyGroup)"> @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddDependency")) </span>
+                    <span class="icon-remove2" ng-click="deleteSurveyDependencyGroup(dependencyGroup,parent)"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove")) </span>
+                </span>
+
+                <span ng-show="editingDependencyGroup.Id == dependencyGroup.Id">
+                    <span class="icon-loop" ng-click="form.GroupType.$dirty = true; updateSurveyDependencyGroup()"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Update")) </span>
+                    <span class="icon-close" ng-click="cancelEditSurveyDependencyGroup()"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Cancel")) </span>
+                </span>
+            </div>
+        </div>
+
+    </form>
+    <ul>
+        <li ng-repeat="child in dependencyGroup.Children"
+            ng-include="child.DependencyType == DEPENDENCY_TYPE.DEPENDENCY_GROUP ? 'dependencyGroupNode.html' : 'dependencyNode.html'"
+            onload="dependencyGroup=child; dependency=child; parent = $parent.dependencyGroup;">
+        </li>
+    </ul>
+</script>
+
+<script id="dependencyNode.html" type="text/ng-template">
+    <form name="form" class="cu-title">
+        <div class="container_error" ng-show="editingDependency.Id == dependency.Id">
+            <div>
+                <select required name="question" ng-change="editingDependency.SurveyAnswerId = null" ng-model="editingDependency.SurveyQuestionId" ng-options="Question.Id as Question.QuestionName for Question in Questions"></select>
+                <p class="p_error" ng-show="form.question.$dirty && form.question.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_QuestionRequired"))</p>
+            </div>
+            <div>
+                <select required name="answer" ng-model="editingDependency.SurveyAnswerId"
+                        ng-options="Answer.Id as Answer.AnswerName for Answer in (Questions | filter:{Id:editingDependency.SurveyQuestionId || ''}:true)[0].Answers || []"></select>
+                <p class="p_error" ng-show="form.answer.$dirty && form.answer.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_AnswerRequired"))</p>
+            </div>
+        </div>
+        <div ng-show="editingDependency.Id != dependency.Id">
+            <div ng-repeat="Question in Questions | filter:{Id:dependency.SurveyQuestionId}:true">
+                <span class="icon-question2"> {{ Question.QuestionName }} </span>
+                <span class="icon-light-bulb"> {{ (Question.Answers | filter:{Id:dependency.SurveyAnswerId}:true)[0].AnswerName }}</span>
+            </div>
+        </div>
+
+        <div class="cu-command" style="visibility: hidden;">
+            <span ng-show="editingDependency.Id != dependency.Id">
+                <span class="icon-pencil" ng-click="editSurveyDependency(dependency)"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+                <span class="icon-remove2" ng-click="deleteSurveyDependency(dependency,parent)"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove")) </span>
+            </span>
+            <span ng-show="editingDependency.Id == dependency.Id">
+                <span class="icon-loop" ng-click="form.question.$dirty = true; form.answer.$dirty = true; updateSurveyDependency()"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Update")) </span>
+                <span class="icon-close" ng-click="cancelEditSurveyDependency()"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Cancel")) </span>
+            </span>
+        </div>
+    </form>
+</script>
+
+<script id="answerNode.html" type="text/ng-template">
+    <div class="cu-title">
+        <h2 class="cu-standardheader answer-name text-survey cu-soften icon-light-bulb">
+            {{Answer.AnswerName}}
+        </h2>
+        <div class="cu-command" style="visibility:hidden;">
+            <span ng-click="openAnswerPopup(Answer)" class="icon-pencil"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+            <span ng-click="removeAnswerFromQuestion(Question, Answer)" class="icon-remove2">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove")) </span>
+            <span ng-if="Question.QuestionTypeId == QUESTION_TYPE.FORM"
+                  ng-click="editSurveyQuestionAnswerContactMapping(Question,Answer)" class="icon-tools">
+                LblSurveys_EditContactFieldMapping
+            </span>
+        </div>
+    </div>
+</script>
+
+<script id="questionNode.html" type="text/ng-template">
+    <div class="cu-title">
+        <h2 class="cu-standardheader question-name text-survey cu-soften icon-question2" ng-class="{'expanded':!Question.isExpanded,'collapsed':Question.isExpanded}"
+            ng-click="expandQuestion(Question)">
+            {{Question.QuestionName}}
+        </h2>
+        <div class="cu-command" style="visibility:hidden;">
+            <span ng-click="editSurveyQuestion(Question)" class="icon-pencil">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Edit")) </span>
+            <span ng-click="deleteQuestion(Question)" class="icon-remove2"> @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Remove")) </span>
+            <span ng-click="addSubQuestion(Question)" class="icon-plus2">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Question")) </span>
+            <span ng-click="addAnswerPopup(Question)" class="icon-add-to-list">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Answer")) </span>
+            <span ng-click="editSurveyQuestionDependencies(Question)" class="icon-tools"> @Html.Raw(LabelHelper.GetProgramString("LblSurveys_EditDependencies")) </span>
+            <span ng-if="parent.Question.QuestionTypeId == QUESTION_TYPE.FORM"
+                  ng-click="editSurveyQuestionContactMapping(Question)" class="icon-tools">
+                LblSurveys_EditQContactFieldMapping
+            </span>
+        </div>
+    </div>
+    <div ng-expand is-expanded="Question.isExpanded">
+        <div class="treeNode questionContainer" ng-repeat="Question in Question.Questions" ng-class="{'hide-border-questions':!Question.isExpanded,'show-border-questions':Question.isExpanded}">
+            <div ng-include src="'questionNode.html'" draggable="true" class="questionNode" onload="parent = $parent.$parent"></div>
+        </div>
+        <div class="treeNode answerContainer answer-level" ng-repeat="Answer in Question.Answers">
+            <div class="answerNode" draggable="true" ng-include="'answerNode.html'"></div>
+        </div>
+    </div>
+</script>
+
+<script id="confirmationDialog.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3> {{header || '@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_DeleteConfirm"))'}}</h3>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="confirm()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Yes"))</button>
+        <button class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_No"))</button>
+    </div>
+</script>
+
+<script id="surveyPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3 ng-show="survey.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_UpdateSurvey"))</h3>
+        <h3 ng-hide="survey.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddSurvey"))</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form">
+            <ul class="edit-survey-ul">
+                <li>
+                    <label>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ID")):</label>
+                    <label>{{survey.Id}}</label>
+                </li>
+                <li>
+                    <label for="surveyName" class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_SurveyName")):</label>
+                    <input type="text" ng-model="survey.SurveyName" id="surveyName" name="surveyName" required />
+                    <p ng-show="form.surveyName.$dirty && form.surveyName.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_SurveyNameRequired"))</p>
+                </li>
+                <p ng-show="form.surveyName.$dirty && form.surveyName.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_SurveyNameRequired"))</p>
+                <li>
+                    <label for="templatePath" class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_TemplatePath")):</label>
+                    <input type="text" ng-model="survey.TemplatePath" id="templatePath" name="templatePath" required />
+                    <p ng-show="form.templatePath.$dirty && form.templatePath.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_TemplatePathRequired"))</p>
+                </li>
+            </ul>
+
+            @*            <dl>
+                    <dt>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ID")):</dt>
+                    <dd>{{survey.Id}}</dd>
+                </dl>
+                <dl>
+                    <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_SurveyName")):</dt>
+                    <dd><input type="text" ng-model="survey.SurveyName" name="surveyName" required/></dd>
+                </dl>
+                <p ng-show="form.surveyName.$dirty && form.surveyName.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_SurveyNameRequired"))</p>
+                <dl>
+                    <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_TemplatePath")):</dt>
+                    <dd><input type="text" ng-model="survey.TemplatePath" name="templatePath" required/></dd>
+                </dl>
+                <p ng-show="form.templatePath.$dirty && form.templatePath.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_TemplatePathRequired"))</p>*@
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn icon iconbefore CUbutton iconclose" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button class="btn btn-primary icon iconbefore CUbutton icosave" ng-click="form.surveyName.$dirty = true;form.templatePath.$dirty = true;updateSurvey(survey,dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>
+
+<script id="surveyStructurePopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3 ng-show="structure.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_UpdateSurveyStructure"))</h3>
+        <h3 ng-hide="structure.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddSurveyStructure"))</h3>
+    </div>
+    <div class="modal-body haveWysiwyg">
+        <form novalidate name="form">
+            <dl><dt>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ID")): </dt><dd>{{structure.Id}}</dd></dl>
+            <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_StructureName")): </dt><dd><input type="text" ng-model="structure.StructureName" name="structureName" required /></dd></dl>
+
+            <p ng-show="form.structureName.$dirty && form.structureName.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_StructureNameRequired")).</p>
+
+            <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_TemplatePath")): </dt><dd><input type="text" ng-model="structure.TemplatePath" name="templatePath" required /></dd></dl>
+
+            <p ng-show="form.templatePath.$dirty && form.templatePath.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_TemplatePathRequired"))</p>
+
+            <dl>
+                <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_ImageFolderPath")): </dt>
+                <dd><input type="text" ng-model="structure.ImageFolderPath" name="imageFolderPath" required /></dd>
+            </dl>
+            <p ng-show="form.imageFolderPath.$dirty && form.imageFolderPath.$error.required">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_ImageFolderPathRequired"))</p>
+        </form>
+        <div ng-show="isstructuretext == true" class="structure-text">
+            <div ng-click="addNewTextToStructure(structure)" data-unique="1" data-placement="bottom" data-title="@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddText"))" bs-popover="'TextPopover.html'">
+                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddText"))
+            </div>
+            <table class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="cu-color-background-table-header">
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Name"))</th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle" colspan="2">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Value"))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="btn cu-cell" ng-repeat="Text in structure.Texts" ng-click="editStructureText(Text)"
+                        data-unique="1" data-placement="bottom" data-title="@Html.Raw(LabelHelper.GetProgramString("LblSurveys_UpdateText"))" bs-popover="'TextPopover.html'">
+                        <td class="cu-cellstyle cu-cell-text width-code">{{Text.Name}}</td>
+                        <td class="cu-cellstyle cu-cell-text width-name" ng-bind-html="Text.Value"></td>
+                        <td class="cu-cellstyle cu-cell-text width-icon">
+                            <span ng-click="$event.stopPropagation(); deleteText(Text,structure)" class="icon-close"> </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-show="isstructuretext == true" class="structure-text">
+            <div ng-click="addNewImageToStructure(structure)" data-unique="1" data-placement="bottom" data-title="@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddImage"))" bs-popover="'ImagePopover.html'">
+                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddImage"))
+            </div>
+            <table class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="cu-color-background-table-header">
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Name"))</th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Description"))</th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_FileName"))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="btn cu-cell" ng-repeat="Image in structure.Images" ng-click="editStructureImage(Image,structure)"
+                        data-unique="1" data-placement="bottom" data-title="@Html.Raw(LabelHelper.GetProgramString("LblSurveys_UpdateImage"))" bs-popover="'ImagePopover.html'">
+                        <td class="cu-cellstyle cu-cell-text width-code">{{Image.Name}}</td>
+                        <td class="cu-cellstyle cu-cell-text width-name">{{Image.Description}}</td>
+                        <td class="cu-cellstyle cu-cell-text width-name">{{Image.FileName}}</td>
+                        <td class="cu-cellstyle cu-cell-text width-icon">
+                            <span ng-click="$event.stopPropagation(); deleteImage(Image,structure)" class="icon-close"> </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <span><button class="btn btn-primary" ng-click="form.structureName.$dirty = true; form.templatePath.$dirty = true;  form.imageFolderPath.$dirty = true; updateSurveyStructure(structure,dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button></span>
+    </div>
+</script>
+
+<script id="answerPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswersList"))</h3>
+    </div>
+    <div class="modal-body">
+        <div style="margin-left:30px" ng-show="!selectedAnswer">
+            <div>
+                <a class="cu-filter cu-draggable cu-text13pt" ng-class="{'expanded':Filter.showFilter == false,'collapsed':Filter.showFilter == true}"
+                   ng-click="Filter.toggleFilter()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Filter"))</a>
+            </div>
+            <div ng-click="form.answerName.$dirty = false;form.answerType.$dirty = false; addAnswer()">
+                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddAnswer"))
+            </div>
+            <table class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="filter" ng-show="Filter.showFilter == true">
+                        <td colspan="2">
+                            <input type="text" ng-model="Filter.tmpquery.AnswerName" ng-keydown="startFiltering($event)" />
+                        </td>
+                        <td>
+                            <select class="cu-dropdown-width" ng-model="Filter.tmpquery.AnswerTypeID" ng-options="c.Id as c.AnswerTypeName for c in Filter.Dropdowns.AnswerTypes">
+                                <option value="">--@Html.Raw(LabelHelper.GetProgramString("LblGeneral_All"))--</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div ng-show="Filter.showFilter" class="filterButtons">
+                                <a ng-click="Filter.search()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ApplyFilter"))</a>
+                                <a ng-click="Filter.reset();">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ResetFilter"))</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="cu-color-background-table-header">
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">
+                            <a class="cu-headerTableLink" ng-click="Sort.Sort(2)">
+                                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerName"))
+                                <span class="icon tablesort" ng-show="Sort.tmp_sortColumn == 2"
+                                      ng-class="{'sortasc': Sort.tmp_isAscending == true,'sortdesc':  Sort.tmp_isAscending == false}"></span>
+                            </a>
+                        </th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle">
+                            <a class="cu-headerTableLink" ng-click="Sort.Sort(4)">
+                                @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Value"))
+                                <span class="icon tablesort" ng-show="Sort.tmp_sortColumn == 4"
+                                      ng-class="{'sortasc': Sort.tmp_isAscending == true,'sortdesc':  Sort.tmp_isAscending == false}"></span>
+                            </a>
+                        </th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle" ng-click="Sort.Sort(3)">
+                            <a class="cu-headerTableLink">
+                                @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerType"))
+                                <span class="icon tablesort" ng-show="Sort.tmp_sortColumn == 3"
+                                      ng-class="{'sortasc': Sort.tmp_isAscending == true,'sortdesc':  Sort.tmp_isAscending == false}"></span>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tr class="cu-cell" ng-repeat="answer in Answers" ng-click="editAnswer(answer)">
+                    <td class="cu-cellstyle cu-cell-text min-width-date">
+                        <span><input type="checkbox" ng-model="answer.selected" ng-click="$event.stopPropagation()" /></span>
+                    </td>
+                    <td class="cu-cellstyle cu-cell-text width-name">
+                        <span>{{answer.AnswerName}}</span>
+
+                    </td>
+                    <td class="cu-cellstyle cu-cell-text min-width-name">
+                        <span>{{answer.Value}}</span>
+                    </td>
+                    <td class="cu-cellstyle cu-cell-text min-width-name">
+                        <span>{{answer.AnswerTypeName}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div paginator pagesize="pageSize" totalrecord="totalRows" currentpage="currentPage" identifier="Answers" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div ng-show="selectedAnswer" style="margin-left:20px">
+            <span class="cu-standardheader back-to cu-textXLarge cu-soften hand-pointer" ng-click="backtoList()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_BackTo"))</span>
+            <div ng-include="'answerDetailForm.html'"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <span ng-hide="selectedAnswer">
+            <button class="btn btn-primary" ng-click="deleteAnswers()">@Html.Raw(LabelHelper.GetProgramString("BtnSurveys_DeleteSelectedAnswers"))</button>
+            <button class="btn btn-primary" ng-click="assignAnswers(this,dismiss,false)">@Html.Raw(LabelHelper.GetProgramString("BtnSurveys_AddAnswersToQuestion"))</button>
+            <button class="btn btn-primary" ng-click="assignAnswers(this,dismiss,true)">@Html.Raw(LabelHelper.GetProgramString("BtnSurveys_AddAnswersToQuestionAndClose"))</button>
+        </span>
+        <span ng-show="selectedAnswer">
+            <button class="btn btn-primary" ng-click="form.answerName.$dirty = true;form.answerType.$dirty = true; updateAnswer()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+        </span>
+    </div>
+</script>
+
+<script id="answerValuePopover.html" type="text/ng-template">
+    <div class="modal-body">
+        <form name="popoverForm">
+            <div>
+                <dl><dt class="padding-top">Answer value: </dt><dd><input type="text" ng-model="editingAnswerValue.AnswerValue" /></dd></dl>
+                <dl><dt class="padding-top">Answer text: </dt><dd><input type="text" ng-model="editingAnswerValue.AnswerText" /></dd></dl>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="form-actions">
+            <button class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+            <button class="btn" ng-click="updateAnswerValue(editingAnswerValue,dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+        </div>
+    </div>
+</script>
+
+@{
+    string imageUploadUrl = Url.RouteUrl("ActionApi", new { httproute = "", controller = "SurveyStructures", action = "UploadStructureImage" }).ToString() + "?languageId=" + ViewBag.LanguageId;
+}
+
+<script id="ImagePopover.html" type="text/ng-template">
+    <div class="modal-body">
+        <form method="post" name="imageForm" ng-submit="uploadStructureImage($event,editingImage,dismiss)" id="imageForm" novalidate enctype="multipart/form-data">
+            <div>
+                <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Name")): </dt><dd><input type="text" ng-model="editingImage.Name" name="ImageName" required /></dd></dl>
+                <p ng-show="imageForm.ImageName.$dirty && imageForm.ImageName.$error.required" class="require-message">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_NameRequired"))</p>
+                <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Description")): </dt><dd><input type="text" ng-model="editingImage.Description" /></dd></dl>
+                <dl>
+                    <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Image")): </dt>
+                    <dd><img ng-src="{{editingImage.Url}}" class="structure-image" alt="{{editingImage.Description}}" title="{{editingImage.Description}}" /></dd>
+                </dl>
+                <dl>
+                    <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_NewImage")): </dt>
+                    <dd>
+                        <input type="file" fileupload name="ImageFile" filetypes="/(\.|\/)(gif|jpe?g|png)$/i"
+                               data-url="@imageUploadUrl" />
+                    </dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <div class="form-actions">
+                    <button class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+                    <button type="submit" class="btn btn-primary" form="imageForm">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</script>
+
+<script id="TextPopover.html" type="text/ng-template">
+    <div class="modal-body">
+        <form name="popoverForm">
+            <div>
+                <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Name")): </dt><dd><input type="text" ng-model="editingText.Name" name="TextName" required /></dd></dl>
+                <p class="require-message" ng-show="popoverForm.TextName.$dirty && popoverForm.TextName.$error.required">@Html.Raw(LabelHelper.GetProgramString("MsgSurveys_NameRequired"))</p>
+                <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Value")): </dt><dd><div style="width:450px; height:150px; border:transparent" wysiwyg src="../../tool/product_wysiwyg10.aspx?w=420&h=150" ng-model="editingText.Value" id="textValue" /></dd></dl>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="form-actions">
+            <button class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+            <button class="btn" ng-click="popoverForm.TextName.$dirty = true; updateStructureText(editingText,dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+        </div>
+    </div>
+</script>
+
+<script id="surveyQuestionPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3 ng-show="question.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_UpdateSurveyQuestion"))</h3>
+        <h3 ng-hide="question.Id > 0">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddSurveyQuestion"))</h3>
+    </div>
+    <div class="modal-body">
+        <form novalidate name="form">
+            <dl><dt>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ID")): </dt><dd>{{question.Id}}</dd></dl>
+            <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_QuestionName")): </dt><dd><input type="text" ng-model="question.QuestionName" name="questionName" required /></dd></dl>
+            <p ng-show="form.questionName.$dirty && form.questionName.$error.required"> @Html.Raw(LabelHelper.GetProgramString("MsgSurveys_QuestionNameRequired")) </p>
+
+            <dl>
+                <dt>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_QuestionType")):</dt>
+                <dd>
+                    <select class="cu-dropdown-width" ng-model="question.QuestionTypeId"
+                            ng-options="c.QuestionTypeId as c.Name for c in QuestionTypes" name="questionType" required></select>
+                </dd>
+            </dl>
+
+            <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Comment")): </dt><dd><input type="text" ng-model="question.Comment" /></dd></dl>
+            <dl><dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_Header")): </dt><dd><input type="text" ng-model="question.Header" /></dd></dl>
+            <dl><dt>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_CalAnswerAverage")): </dt><dd><input type="checkbox" ng-model="question.CalculateAnswerAverage" /></dd></dl>
+            <dl><dt>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_IsContactInfo")): </dt><dd><input type="checkbox" ng-model="question.IsContactInfo" /></dd></dl>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button class="btn btn-primary" ng-click="form.questionName.$dirty = true; updateSurveyQuestion(question,dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>
+
+<script id="answerDetailForm.html" type="text/ng-template">
+    <form novalidate name="form">
+        <dl><dt>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ID")): </dt><dd>{{editingAnswer.Id}} </dd></dl>
+        <dl>
+            <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerName")):</dt>
+            <dd><input type="text" ng-model="editingAnswer.AnswerName" name="answerName" required /></dd>
+        </dl>
+        <p ng-show="form.answerName.$dirty && form.answerName.$error.required">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerNameRequired"))</p>
+        <dl>
+            <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Value")):</dt>
+            <dd><input type="text" ng-model="editingAnswer.Value" name="value" /></dd>
+        </dl>
+        <dl>
+            <dt class="padding-top">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerType")): </dt>
+            <dd>
+                <select class="cu-dropdown-width" ng-model="editingAnswer.AnswerTypeId"
+                        ng-options="c.Id as c.AnswerTypeName for c in Filter.Dropdowns.AnswerTypes" name="answerType" required></select>
+            </dd>
+        </dl>
+
+        <p ng-show="form.answerType.$dirty && form.answerType.$error.required">@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerTypeRequired"))</p>
+    </form>
+    <div ng-show="selectedAnswer.AnswerTypeId == ANSWER_TYPE.DROP_DOWN && selectedAnswer.Id > 0" ng-click="addAnswerValue(editingAnswer)" data-unique="1" data-placement="bottom"
+         data-title="@Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddAnswerValue"))" bs-popover="'answerValuePopover.html'">
+        @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AddAnswerValue"))
+    </div>
+    <table ng-show="selectedAnswer.AnswerTypeId == ANSWER_TYPE.DROP_DOWN && selectedAnswer.Id > 0">
+        <thead>
+            <tr class="cu-color-background-table-header">
+                <th class="cu-elementHeaderTableStyle cu-elementStyle">
+                    <a class="cu-headerTableLink">
+                        @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerValue"))
+                    </a>
+                </th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle">
+                    <a class="cu-headerTableLink">
+                        @Html.Raw(LabelHelper.GetProgramString("LblSurveys_AnswerText"))
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="btn cu-cell" ng-repeat="answerValue in editingAnswer.answerValues" ng-click="editAnswerValue(answerValue)"
+                data-unique="1" data-placement="bottom" data-title="Update answer value" bs-popover="'answerValuePopover.html'">
+                <td class="cu-cellstyle cu-cell-text width-code">
+                    <span>{{answerValue.AnswerValue}}</span>
+                </td>
+                <td class="cu-cellstyle cu-cell-text width-name">
+                    <span>{{answerValue.AnswerText}}</span>
+                </td>
+                <td class="cu-cellstyle cu-cell-text width-icon">
+                    <span ng-click="$event.stopPropagation(); deleteAnswerValue(answerValue,editingAnswer)" class="icon-close"> </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div paginator pagesize="editingAnswer.pageSize" totalrecord="editingAnswer.totalRows" currentpage="editingAnswer.currentPage" identifier="AnswerValues" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+
+<script id="answerDetailPopup.html" type="text/ng-template">
+    <div class="modal-header">
+        <h3>@Html.Raw(LabelHelper.GetProgramString("LblSurveys_EditAnswer"))</h3>
+    </div>
+    <div class="modal-body">
+        <div ng-include="'answerDetailForm.html'" />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" ng-click="dismiss()">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Close"))</button>
+        <button class="btn btn-primary" ng-click="updateAnswer(dismiss)">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_Save"))</button>
+    </div>
+</script>

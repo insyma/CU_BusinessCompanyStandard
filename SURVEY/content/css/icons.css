@@ -1,0 +1,627 @@
+/************************************************************************************
+CSS - Icons
+Created: 	2014
+Creator:	SCHM
+*************************************************************************************/
+
+@font-face {
+	font-family: 'cu4-icons';
+	src:url('fonts/cu4-icons.eot');
+	src:url('fonts/cu4-icons.eot?#iefix') format('embedded-opentype'),
+		url('fonts/cu4-icons.woff') format('woff'),
+		url('fonts/cu4-icons.ttf') format('truetype'),
+		url('fonts/cu4-icons.svg#cu4-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/************************************************************************************
+GLOBAL
+*************************************************************************************/
+@font-face {
+	font-family: 'cu4-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+/*	-webkit-font-smoothing: antialiased; */
+}
+/* positioning */
+.iconbefore:before,
+.iconbefore:after,
+.cu-command > span:before
+{
+	margin-right: .5em;
+}
+.iconafter:before,
+.iconafter:after {
+	margin-left: .5em;
+}
+
+/************************************************************************************
+BASIC ICON SETTINGS
+*************************************************************************************/
+/* Alle Elemente */
+[class^="icon"]:before,
+[class*=" icon"]:before,
+[class^="icon"]:after,
+[class*=" icon"]:after,
+#logout > a:before,
+/* ul li:before, */
+#button-filter:before,
+table.TabBar a:before,
+.cu-style-tab a:before,
+.cu-standardheader:before,
+.survey-header:before,
+table th span.arrow:before,
+.cu-command > span:before,
+div.checker span:before,
+.modal-footer button:before,
+.margin-structure > div > div .treeNode > * > * > .ng-scope h2:before,
+div.button:before,
+div.selector:after,
+.icon-bars:before,
+.ui-datepicker-header a:before,
+.cu-filter:before
+{
+	display: inline-block;
+	font-family: 'cu4-icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-indent: 0;
+}
+.margin-structure > div > div .treeNode > * > * > .ng-scope h2:before
+{
+	content: "\e61f";
+	margin-left: .5em;
+	font-family: 'cu4-icons';
+	text-decoration: none;
+}
+/* Link Filetypes */
+/* PDF */
+a.pdf:before
+{ content: "\e000" !important; }
+/* Excel */
+a.xls:before,
+a.xlsx:before
+{ content: "\e001" !important; }
+/* Archives*/
+a.zip:before,
+a.rar:before,
+a.sit:before
+{ content: "\e005" !important; }
+/* MS Word */
+a.doc:before,
+a.docx:before
+{ content: "\e006" !important; }
+/* MS Powerpoint */
+a.ppt:before,
+a.pptx:before,
+a.pps:before
+{ content: "\e008" !important; }
+/* Images */
+a.jpg:before,
+a.jpeg:before,
+a.gif:before,
+a.png:before,
+a.tif:before,
+a.tiff:before,
+a.psd:before
+{ content: "\f03e" !important; }
+/* MS Word */
+a.mov:before,
+a.avi:before,
+a.m4v:before,
+a.mp4:before
+{ content: "\f001" !important; }
+
+/* Basic Icons - more icons >> fonts/original/demo.html */
+.icon.behance:before 		{ content: "\e63e";	}
+.icon.facebook:before 		{ content: "\e003";	}
+.icon.flickr:before 		{ content: "\e633";	}
+.icon.github:before 		{ content: "\e637";	}
+.icon.googleplus:before 	{ content: "\e01a"; }
+.icon.instagram:before 		{ content: "\e632";	}
+.icon.lastfm:before 		{ content: "\e63b";	}
+.icon.linkedin:before 		{ content: "\e613"; }
+.icon.myspace:before 		{ content: "\e631";	}
+.icon.picasa:before 		{ content: "\e635";	}
+.icon.pinterest:before 		{ content: "\e63d";	}
+.icon.soundcloud:before 	{ content: "\e639";	}
+.icon.tumblr:before 		{ content: "\e62d"; }
+.icon.twitter:before 		{ content: "\e017";	}
+.icon.xing:before 			{ content: "\e62b"; }
+.icon.vimeo:before 			{ content: "\e014"; }
+.icon.youtube:before 		{ content: "\e60d"; }
+.icon.else:before 			{ content: "\e62f";	}
+
+/* Overlay  */
+#insymaOverlayHolder span.close:before {
+	content: "\f00d";
+}
+#insymaOverlayHolder span.resize:before {
+	content: "\f065";
+}
+#insymaOverlayHolder span.size:before {
+	content: "\f066";
+}
+#insymaOverlayHolder span.play:before {
+	content: "\f04b";
+}
+#insymaOverlayHolder span.stop:before {
+	content: "\f04d";
+}
+#insymaOverlayHolder span.next:before {
+	content: "\f04e";
+}
+#insymaOverlayHolder span.prev:before {
+	content: "\f04a";
+}
+
+
+/************************************************************************************
+	CU BUTTONS
+*************************************************************************************/
+div.button,
+div.button:before {
+	color: #82bb25;
+}
+div.button span {
+	color: inherit;
+	margin: 0 1em 0 0;
+}
+div.button:hover,
+div.button:hover:before,
+.CUbutton:hover,
+.CUbutton:hover:before {
+	color: #5e871b;
+}
+div.button:before,
+.CUbutton:before {
+	font-size: 20px;
+    margin-right: 0.5em;
+    margin-top: 3px;
+    position: relative;
+    top: 2px;
+}
+.CUbutton.iconadd:before {
+	content: "\e600";
+}
+/************************************************************************************
+	SURVEY ICONS
+*************************************************************************************/
+.cu-style-tab a:before {
+	content: "\e66f";
+	font-size: 20px;
+	margin-right: .5em;
+	position: relative;
+	top: 2px;
+}
+.sub-survey-results a:before {
+	content: "\e673";
+	font-size: 20px;
+	margin-right: .5em;
+	position: relative;
+	top: 2px;
+}
+
+h2.cu-standardheader.cu-textXLarge:before {
+	background: #535353;
+	color: #FFF;
+	content: "\f12e";
+	height: 36px;
+	left: 0;
+	line-height: 36px;
+	margin-right: .5em;
+	position: absolute;
+	text-align: center;;
+	top: 0;
+	width: 36px;
+}
+.cu-filter:before,
+#button-filter:before {
+	content: "\f0b0";
+	margin-right: .5em;
+}
+
+.hand-pointer:before {
+	content: "\e610" !important;
+	margin-right: .5em;
+}
+
+.collapsed:before {
+	content: "\e614";
+    cursor: pointer;
+    text-align: center;
+	width: 36px;
+}
+.expanded:before {
+	content: "\e617";
+    cursor: pointer;
+    text-align: center;
+    width: 36px;
+}
+
+.cu-command > span.icon-pencil:before {
+	content: "\f044";
+}
+.cu-command > span.icon-remove2:before {
+	content: "\f056";
+}
+.cu-command > span.icon-plus2:before {
+	content: "\f055";
+}
+.cu-command > span.icon-tools:before,
+.cu-command > span.icon-wrench:before {
+	content: "\e620";
+}
+.cu-command > span.icon-publish:before {
+	content: "\e621";
+}
+.cu-command > span.icon-add-to-list:before {
+	content: "\f055";
+}
+/************************************************************************************
+	CU BUTTON ICONS
+*************************************************************************************/
+
+button:before {
+	font-size: 24px;
+	margin-right: 10px;
+    position: relative;
+    top: 4px;
+}	
+.modal-footer button:before {
+	content: "\e606";
+    font-size: 28px;
+}
+.modal-footer button.btn-primary:before {
+	content: "\f05d";
+	font-size: 28px;
+	left: 2px;
+    top: 5px;
+}
+
+
+/* TEMP SETTINGS GLOBAL */
+
+/************************************************************************************
+	CU ICONS
+*************************************************************************************/
+
+table.TabBar a:before
+{
+	bottom: 0;
+	color: #82BB25;
+	content: "\f0dd";
+    font-size: 30px;
+    height: 0;
+	left: 50%;
+    margin-bottom: 10px;
+	margin-left: -10px;
+	overflow: hidden;
+	position: absolute;
+	text-align: center;
+	width: 20px;
+    z-index: -1;
+}
+table.TabBar a:hover:before,
+td.activetab a:before,
+td.activetab a:hover:before 
+{
+	bottom: 0;
+	content: "\f0dd";
+    font-size: 30px;
+    height: 25px;
+	left: 50%;
+    margin-bottom: -10px;
+	margin-left: -10px;
+	position: absolute;
+	text-align: center;
+	width: 20px;
+    z-index: 0;
+}
+table.TabBar a:hover:before {
+	color: #82BB25;
+}
+td.activetab a:before,
+td.activetab a:hover:before {
+	color: #0072C6;
+}
+
+#logout > a:before {
+	color: #FF3A00;
+	content: "\f011";
+	font-size: 20px;
+	visibility: visible;
+    width: 20px;
+}
+#logout > a {
+    font-size: 1px;
+    letter-spacing: -1px;
+	visibility: hidden;
+}
+.class_toplevel > a:before,
+.drag_c2.droppable_c2:before
+{
+	color: #FFF; 
+	display: inline-block;
+	font-family: 'cu4-icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+.class_toplevel > a:hover:before
+{
+	color: #0072C6; 
+    background: #FFF;
+}
+
+/* TEST */
+.class_toplevel > a:before
+{    background: #82bb25;
+    border: 1px solid;
+    display: block;
+    float: left;
+    font-size: 20px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 0.5em;
+    position: relative;
+    text-align: center;
+    top: -7px;
+    width: 36px;
+    z-index: 5;
+}
+
+/* TEMP NAVIGATION WEB */
+.toplevel_c1:before {
+	content: "\e656";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION SETTINGS */
+.toplevel_c15:before {
+	content: "\e632";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION NEWSLETTER */
+.toplevel_c21:before {
+	content: "\f004";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION CONTACT ADMINISTRATION */
+.toplevel_c31:before {
+	content: "\f0c0";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION WUNSCHPREIS */
+.toplevel_c70:before {
+	content: "\e62e";
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION SURVEY */
+.toplevel_c82:before {
+	content: "\e66f";
+	margin-right: .5em;
+}
+
+
+/* TEMP NAVIGATION FOLDER */
+
+.drag_c2.droppable_c2:before {
+	color: #555;
+	content: "\f07b";
+	font-size: 18px;
+	margin-right: .5em;
+}
+
+/* TEMP NAVIGATION PAGES */
+#menubox > ul > li > a.droppable_c3.icon:before,
+.class3-1:before,
+.class3-3:before
+{
+	content: "\f15b";
+	font-size: 18px;
+}
+/* OK PAGE */
+.class3-3:before {
+	color: #82BB25;
+}
+/* MODIFIED PAGE */
+.class3-1:before {
+	color: #FF9C00;
+}
+/* NEW PAGE */
+#menubox > ul > li > a.droppable_c3.icon.class3-0:before,
+.class3-0:before
+{
+	content: "\f016";
+	font-size: 18px;
+	margin-right: .5em;
+}
+
+/* FOLDER */
+.class2:before {
+	content: "\f07b";
+	font-size: 18px;
+}
+
+/* NEWSLETTER PAGE */
+.class22:before {
+	content: "\f0e0";
+	font-size: 18px;
+}
+/* ARCHIVE  */
+.class24:before {
+	content: "\e670";
+	font-size: 18px;
+}
+/* STATS  */
+.class61:before, 
+.class62:before {
+	content: "\e673";
+	font-size: 18px;
+}
+/* NEWSLETTER  */
+.class23-0:before {
+	color: #ffd200;
+	content: "\f0e0";
+	font-size: 18px;
+}
+
+/* HIDE IMAGES */
+.deleteimage > img,
+div#menubox > ul > li > img,
+.drag_c2.droppable_c2 > img,
+.class_toplevel > a > img
+{
+	display: none;
+}
+
+
+/* TEMP TABLE ICON ARROW */
+table th span.arrow:before {
+	color: #FFF;
+	content: "\f0d7";
+}
+table th span.arrow.icon-arrow-desc:before {
+	color: #FFF;
+	content: "\f0d8";
+}
+
+.icondateto:after,
+.icondatefrom:after {
+	color: #82bb25;
+	content: "\f073";
+	margin: 0 !important;
+    position: absolute;
+    right: 1em !important;
+    top: 2px;
+    z-index: 0;
+}
+
+/************************************************************************************
+	UNIFORMS
+************************************************************************************/
+div.selector {
+	position: relative;
+}
+div.selector:after {
+    color: #555;
+    content: "\f0dd";
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    z-index: 0;
+}
+div.checker span.checked:before 
+{   
+	content: "\e004";
+	font-size: 20px;
+    left: auto;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: auto;
+    width: 27px !important;
+}
+
+div.checker span.checked:before 
+{   
+    color: #555;
+	content: "\e004";
+	font-size: 20px;
+    left: auto;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: auto;
+    width: 27px !important;
+}
+
+div.selector:after {
+}
+.icon-bars:before 
+{   
+	color: #82bb25;
+	content: "\f080";
+	font-size: 20px;
+    left: auto;
+    line-height: 30px;
+    margin-left: 10px;
+    margin-top: -2px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    width: 27px !important;
+}
+#uniform-dateChartSurvey:before {   
+	content: "\f080";
+}
+#uniform-reportServeyResults:before {
+	content: "\e008";
+}
+#uniform-reportSurveyResultSummary:before {
+    content: "\e008";
+}
+#uniform-exportPDF:before {
+	content: "\e605";
+}
+#uniform-exportExcel:before {
+	content: "\e001";
+}
+#uniform-exportExcelMatrix:before {
+	content: "\e005";
+}
+#uniform-btnResetFilter:before {
+	content: "\f01e";
+}
+#uniform-btnApplyFilter:before {
+	content: "\f00d";
+}
+#uniform-btmessage:before {
+	content: "\e606";
+}
+#uniform-btmessage {
+    float: right;
+}
+.ui-datepicker-header a {
+	cursor: pointer;
+}
+.ui-datepicker-header a:before  {
+	content: "\e61f";
+    font-size: 24px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+}
+.ui-datepicker-header a.ui-datepicker-prev:before  {
+	content: "\e61c";
+}
+#ReportResults .button:before  {
+	content: "\f055";
+}
+#ReportResults:before  {
+	font-size: 20px;
+}
+
+.icon-reload:before {
+    content: "\e60a";
+    cursor: pointer;
+    font-size: 1.6em;
+    margin-right: 13px;
+}
+h2.cu-standardheader.cu-textXLarge {
+    margin-bottom: 10px;
+}

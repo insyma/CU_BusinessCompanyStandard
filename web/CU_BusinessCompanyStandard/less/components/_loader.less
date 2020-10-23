@@ -1,0 +1,126 @@
+﻿@import (reference) '../base/_mixins.less';
+
+//Windows style loading
+.submitLoader {
+    &-text {
+        display: inline-block;
+        margin-left: 5px;
+        font-size: 14px;
+        line-height: 12px;
+        vertical-align: middle;
+
+        br {
+            line-height: 1px;
+        }
+
+        a {
+            display: block;
+            font-size: 12px;
+
+            &.hide {
+                display: none;
+            }
+        }
+    }
+
+    &-loading {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        border-bottom: 1px dotted #ccc;
+        background-color: #efefef;
+        vertical-align: middle;
+        display: inline-block;
+        border-radius: 20px;
+
+        .wBall {
+            margin-top: 8px;
+            margin-left: 7px;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            -moz-transform: rotate(225deg);
+            -moz-animation: orbit 4.95s infinite;
+            -webkit-transform: rotate(225deg);
+            -webkit-animation: orbit 4.95s infinite;
+            -ms-transform: rotate(225deg);
+            -ms-animation: orbit 4.95s infinite;
+            -o-transform: rotate(225deg);
+            -o-animation: orbit 4.95s infinite;
+            transform: rotate(225deg);
+            animation: orbit 4.95s infinite;
+
+            .wInnerBall {
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                background: #009688;
+                left: 0;
+                top: 0;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+                -ms-border-radius: 6px;
+                -o-border-radius: 6px;
+                border-radius: 6px;
+            }
+
+            &.wBall_1 {
+                .delay(1.08s);
+            }
+
+            &.wBall_2 {
+                .delay(.22s);
+            }
+
+            &.wBall_3 {
+                .delay(.43s);
+            }
+
+            &.wBall_4 {
+                .delay(.65s);
+            }
+
+            &.wBall_5 {
+                .delay(.86s);
+            }
+        }
+    }
+}
+/* 
+.keyframes(orbit);.-frames(@-...){
+    0% {
+        opacity: 1;
+        z-index: 99;
+        @{-}transform: rotate(180deg);
+        @{-}animation-timing-function: ease-out;
+    }
+    7% {
+        opacity: 1;
+        @{-}transform: rotate(300deg);
+        @{-}animation-timing-function: linear;
+        @{-}origin: 0;
+    }
+    30% {
+        opacity: 1;
+        @{-}transform: rotate(410deg);
+        @{-}animation-timing-function: ease-in-out;
+        @{-}origin: 7%;
+    }
+    39% {
+        opacity: 1;
+        @{-}transform: rotate(645deg);
+        @{-}animation-timing-function: linear;
+        @{-}origin: 30%;
+    }
+    70% {
+        opacity: 1;
+        @{-}transform: rotate(770deg);
+        @{-}animation-timing-function: ease-out;
+        @{-}origin: 39%;
+    }
+    100%,76% {
+        opacity: 0;
+        @{-}transform: rotate(900deg);
+    }
+} */

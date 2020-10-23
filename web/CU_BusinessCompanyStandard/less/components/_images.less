@@ -1,0 +1,118 @@
+﻿@import (reference) "_shadows.less";
+@import (reference) "_transitions.less";
+@import (reference) "../layout/_media-queries.less";
+/* No Space Fix */
+figure,
+.flex-viewport {
+    position: relative;
+
+    a,
+    img {
+        display: block;
+    }
+}
+
+.flex-viewport {
+    overflow: hidden;
+}
+
+figure {
+    a {
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+    }
+}
+//  Masse, Abstaende und Positionen
+.imglist-position,
+.img-position {
+    //    float: right;
+    margin: 0 0 @margin-part / 2 0;
+    //    max-width: 360px;
+    //    width: 35%;
+    figure {
+        //        margin: 0 0 @margin-part / 2;
+    }
+}
+
+.img-posleft {
+    .imglist-position,
+    figure {
+        //        float: left;
+        //        margin: 0 5% @margin-part / 2 0;
+    }
+}
+
+figcaption {
+    clear: both;
+    padding: .5rem 0 1rem;
+}
+
+.imagelist {
+    &.vertical {
+        figure {
+            margin-bottom: @margin-part / 2;
+
+            figcaption {
+                padding-bottom: 0;
+            }
+        }
+    }
+}
+
+.bg-img,
+.bgimg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    .transform;
+
+    img {
+        visibility: hidden;
+    }
+
+    a&:hover {
+        .mdc-elevation--z4;
+    }
+    a,
+    &.imagelink {
+        .mdc-elevation--z2;
+
+        &:hover {
+            .mdc-elevation--z4;
+        }
+    }
+}
+
+.img-large {
+    margin-bottom: @margin-part / 2;
+
+    @media screen and (max-width: @mq-size-700) {
+        margin-bottom: 10px;
+    }
+
+    .bgimg {
+        .ratio;
+        .ratio-landscape;
+    }
+
+    figure {
+        margin: 0;
+    }
+}
+
+
+.thumbnails {
+    .active {
+        background-color: @primary;
+
+        .bgimg {
+            opacity: .15;
+        }
+    }
+}

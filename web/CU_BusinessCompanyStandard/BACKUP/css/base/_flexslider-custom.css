@@ -1,0 +1,82 @@
+.loading .flex-viewport {
+  max-height: 300px;
+}
+.carousel li {
+  margin-right: 10px;
+}
+.flex-direction-nav {
+  *height: 0;
+}
+.flex-direction-nav a {
+  height: 24px;
+  margin: -12px 0 0;
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  z-index: 10;
+}
+.flex-direction-nav a:before {
+  font-size: 24px;
+  line-height: 24px;
+}
+.flex-direction-nav .flex-next {
+  right: 20px;
+}
+.flex-direction-nav .flex-prev {
+  left: 20px;
+}
+.flex-direction-nav .flex-disabled {
+  opacity: .3!important;
+  filter: alpha(opacity=30);
+  cursor: default;
+}
+.flex-control-nav {
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+  text-align: center;
+  width: 100%;
+}
+.flex-control-nav li {
+  margin: 5px !important;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  padding: 0 !important;
+}
+.flex-control-nav li:before {
+  display: none;
+}
+.flex-control-paging li a {
+  width: 11px;
+  height: 11px;
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  text-indent: -9999px;
+  border-radius: 20px;
+}
+.flex-control-paging li a:hover {
+  background: #333;
+  background: rgba(0, 0, 0, 0.7);
+}
+.flex-control-paging li a.flex-active {
+  background: #000;
+  background: rgba(0, 0, 0, 0.9);
+}
+.flex-control-thumbs {
+  margin: 5px 0 0;
+}
+.flex-control-thumbs li {
+  width: 25%;
+  float: left;
+  margin: 0;
+}
+.flex-control-thumbs img {
+  width: 100%;
+  opacity: .7;
+}
+.flex-control-thumbs img:hover {
+  opacity: 1;
+}
+.flex-control-thumbs .flex-active {
+  opacity: 1;
+}

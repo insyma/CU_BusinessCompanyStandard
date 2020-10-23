@@ -1,0 +1,33 @@
+﻿@import (reference) '../base/_variables.less';
+@import (reference) '_shadows.less';
+.ui-datepicker {
+	z-index: @z2 !important;
+	.mdc-elevation--z12;
+}
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 1px solid #dddddd;
+	background: #f6f6f6;
+	font-weight: bold;
+	color: @primary;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid @primary; background:  @primary; font-weight: bold; color: #ffffff; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #dddddd; background: #ffffff; font-weight: bold; color: @primary; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid @primary; background: #ffffff; color: #222222; }
+
+/* Misc visuals
+----------------------------------*/
+.ui-datepicker .ui-datepicker-prev:before {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent; 
+    border-right:8px solid @primary; 
+}
+.ui-datepicker .ui-datepicker-next:before {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid @primary;
+}

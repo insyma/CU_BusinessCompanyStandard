@@ -1,0 +1,24 @@
+﻿@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+@*Copy from Question145Template.cshtml*@
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="22"><span>@Model.QuestionName</span> </div>
+
+    <div class="answer formcon form">
+        <p class="describe">
+            @Model.Comment
+        </p>
+
+        <ul>
+            <li fieldname="User" ismandatory="1" answerid="187">
+                <label for="cu34869">User ca.<em>*</em></label>
+                <input type="text" id="cu34869" name="User">
+                <div style="display: none" id="vldEmptyUser">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyUser">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            
+        </ul>
+    </div>
+</div>

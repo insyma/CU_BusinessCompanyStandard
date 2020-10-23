@@ -1,0 +1,80 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    //Only 1 depending question is allowed at the moment.
+    udsp_SURVEY_GetQuestionOnlineOnWhichCurrentQuestionOnlineDepends_Result dependingQuestion = SurveyOnlineRepository.GetQuestionOnlineOnWhichCurrentQuestionOnlineDepends(Model.Id, (int)@ViewBag.languageId).FirstOrDefault();
+    string dependingQuestionId = string.Empty;
+    string dependingAnswerId = string.Empty;
+
+    if (dependingQuestion != null)
+    {
+        dependingQuestionId = "dependingquestion=\"" + dependingQuestion.Id.ToString() + "\"";
+        dependingAnswerId = "dependingAnswer=\"" + dependingQuestion.AnswerId.ToString() + "\"";
+    }
+}
+
+<div class="questioncon" area="1,4" @Html.Raw(dependingQuestionId) @Html.Raw(dependingAnswerId) questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="4">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">@Model.Comment</p>
+
+        <div class="table">
+
+            <ul class="tablerow tablehead">
+                <li class="tablecell category">&nbsp;</li>
+                @{
+                    if (!string.IsNullOrEmpty(Model.Header))
+                    {
+                        string[] separators = new string[] { "#@#" };
+                        string[] headers = Model.Header.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string header in headers)
+                        {
+
+                            <li class="tablecell">@header </li>
+                        }
+                    }
+                }
+            </ul>
+
+            @{
+                List<udsp_SURVEY_QuestionOnline_Result> questions = SurveyOnlineRepository.GetQuestionOnlineByParent(Model.Id, (int)ViewBag.languageId);
+                foreach (udsp_SURVEY_QuestionOnline_Result question in questions)
+                {
+                             
+                <ul class="tablerow table_item" questionid="@question.Id">
+
+                    <li class="tablecell category">@question.QuestionName</li>
+
+                    @{
+                    List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(question.Id, (int)ViewBag.languageId);
+                    foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                    {
+                        <li class="tablecell" answerid="@answer.Id">
+                            <div class="radio">
+                                @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, question.Id, answer.Id))
+                                {
+                                    <span class="checked"><input name="@question.Id + @answer.Id" type="radio" checked /></span>
+                                }
+                                else
+                                {
+                                    <span><input name="@question.Id + @answer.Id" type="radio" /></span>
+                                }
+                            </div>
+                        </li>
+                    }
+                    }
+                </ul>
+                }
+            }
+        </div>
+    </div>
+</div>

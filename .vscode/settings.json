@@ -1,0 +1,29 @@
+/* {    
+    "less.compile": {
+        "enableJs": true,
+        "compress":  true,  // true => remove surplus whitespace
+        "sourceMap": true,  // true => generate source maps (.css.map files)
+        "out":       false, // false => DON'T output .css files (overridable per-file, see below)
+        "autoprefixer": "> 5%, last 2 Chrome versions, not ie 6-9"
+    }
+} */
+/* {    
+    "es6-css-minify.minifyOnSave": "yes",
+    "es6-css-minify.genCSSmap": false,
+    "es6-css-minify.genJSmap": false
+  } */
+ 
+
+  {    
+    "less.compile": {
+        "compress":  true,  // true => remove surplus whitespace
+        "javascriptEnabled": true,
+        "sourceMap": true,  // true => generate source maps (.css.map files)
+        "sourceMapFileInline": true,
+        "autoprefixer": "> 5%, last 2 Chrome versions, not ie 6-9",
+        "out":       false, // false => DON'T output .css files (overridable per-file, see below),
+
+
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": true
+}

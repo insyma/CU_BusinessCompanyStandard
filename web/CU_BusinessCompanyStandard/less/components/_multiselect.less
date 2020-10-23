@@ -1,0 +1,228 @@
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '_forms.less';
+@import (reference) '_shadows.less';
+/**
+ * @author zhixin wen <wenzhixin2010@gmail.com>
+ */
+
+.ms-parent {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    color: @text;
+}
+
+.ms-choice {
+    display: block;
+    width: 100%;
+    height: 26px;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 26px;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ms-choice.disabled {
+    background-color: @disabled;
+    background-image: none;
+    border: 1px solid @disabled;
+    cursor: default;
+    pointer-events: none;
+}
+
+.ms-choice > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-left: 8px;
+}
+
+
+> div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 25px;
+}
+
+.ms-drop {
+    background-color: @white;
+    width: 100%;
+    overflow: hidden;
+    display: none;
+    margin-top: -1px;
+    padding: 0;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 20px;
+    .mdc-elevation--z12;
+    min-height: @inputHeightSetting;
+}
+
+.ms-drop.bottom {
+    top: 100%;
+}
+
+.ms-drop.top {
+    bottom: 100%;
+}
+
+.ms-search {
+    display: inline-block;
+    margin: 0;
+    min-height: 45px;
+    padding: 4px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 10000;
+}
+
+.ms-search input {
+    width: 100%;
+    height: auto !important;
+    min-height: 24px;
+    padding: 0 20px 0 5px;
+    margin: 0;
+    outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+}
+
+.ms-search, .ms-search input {
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ms-drop ul {
+    overflow: auto !important;
+    margin: 0;
+    padding: @FormTextAlignMeasureVertical @FormTextAlignMeasureHorizontal;
+    min-height: @inputHeightSetting;
+
+    .con-form & {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+}
+
+.ms-drop ul > li {
+    list-style: none;
+    display: list-item;
+    margin: 0 !important;
+    position: static;
+}
+
+.ms-drop ul > li .disabled {
+    opacity: .35;
+    filter: Alpha(Opacity=35);
+}
+
+.ms-drop ul > li.multiple {
+    display: block;
+    float: left;
+}
+
+.ms-drop ul > li.group {
+    clear: both;
+}
+
+.ms-drop ul > li.multiple label {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ms-drop ul > li label {
+    font-weight: normal;
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    width: 100%;
+    height: @inputHeightSetting - 10;
+    padding: 5px 0;
+    .checker {
+        margin-right: 20px;
+    }
+}
+
+.ms-drop ul > li label.optgroup {
+    font-weight: bold;
+}
+
+.ms-drop input[type="checkbox"] {
+    vertical-align: middle;
+}
+
+.ms-drop .ms-no-results {
+    display: none;
+}
+
+
+/*# sourceMappingURL=multi-select.dev.css.map */
+
+#finder-themes {
+    display: none !important;
+}
+.uniform-multiselect {
+}
+
+.ms-choice {
+    background-color: @white !important;
+    border: @FormValueBorderWidth solid @trenner;
+    border-radius: @inputHeightSetting / 2;
+    padding: @FormTextAlignMeasureVertical @FormTextAlignMeasureHorizontal;
+    position: relative;
+    height: @inputHeightSetting;
+
+    &:after {
+        .hasicon;
+        background: none;
+        content: "\e20b";
+        color: @text;
+        right: 0;
+        top: 0;
+        height: @inputHeightSetting;
+        line-height: @inputHeightSetting;
+        width: @inputHeightSetting;
+        text-align: center;
+        position: absolute;
+    }
+
+    &:hover {
+        background-color: @white !important;
+        top: 0 !important;
+        .mdc-elevation--z0 !important;
+    }
+}
+
+.ms-parent {
+    width: auto;
+}

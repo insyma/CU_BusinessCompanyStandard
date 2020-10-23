@@ -1,0 +1,52 @@
+﻿@using Insyma.SurveyManagement.DAL
+@using Insyma.SurveyManagement.DAL.Repositories
+@using Insyma.SurveyManagement.UI.Helper
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_StructureOnline_Result
+
+@{
+    Layout = null;
+}
+
+@{
+    //SurveyStructureImages images = SurveyOnlineRepository.LoadStructureImageOnline(Model.Id, (int)ViewBag.languageId);
+
+    SurveyStructureTexts texts = SurveyOnlineRepository.LoadStructureTextOnline(Model.Id,(int)ViewBag.languageId);
+   
+   
+    @*<img src="@UtilityHelper.GetImageRelativePath(ViewBag.imageFolder,Model.OriginalStructureId,ViewBag.languageId,images["coupon"].FileName,ViewBag.fileFolder)"/>*@
+}
+
+<div style="display: none;" class="page" id="pageThankyou" data-dependencies="null">
+    <div class="startseite_info">
+        <h2>@*Herzlichen Dank f&uuml;rs Ausf&uuml;llen!*@
+             @if (texts.Count > 0)
+                {
+                    @Html.Raw(texts[0].Name)
+                }
+        </h2>
+    </div>
+    <div class="white_div textcon">
+        <h3 class="green"><a></a></h3>
+        <div>
+            @if (texts.Count >0)
+            {
+                    @Html.Raw(texts[0].Value)
+            }
+            @*<p>
+                Ihre Meinung ist ein wichtiger Baustein f&uuml;r die stete Weiterentwicklung unseres
+ 			    Tropenhauses. Wir bedanken uns f&uuml;r Ihre konstruktive Kritik und hoffen, dass Sie
+  			    uns wieder einmal testen.
+            </p>
+            <p>
+                Gewinner der Mittagspackages f&uuml;r einen weiteren genussvollen Aufenthalt in unserem
+  			    Tropenhaus werden per Email benachrichtigt.
+            </p>*@
+            <div style="display: block;" class="wkButton backToStart" id="btnRestart">
+                <input value="Zum Start" type="button" class="active" />
+            </div>
+            <div style="display: block;" class="wkButton" id="btnClose">
+                <input value="Umfrage schliessen" type="button" class="active" />
+            </div>
+        </div>
+    </div>
+</div>

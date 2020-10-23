@@ -1,0 +1,44 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+}
+
+<div class="questioncon" area="1,4" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="2">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <ul class="vertical_list">
+
+            @{
+                List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+
+                foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                {
+                    <li answerid="@answer.Id">
+                        <dl>
+                            <dt>
+                                <div class="radio">
+                                    @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                    {
+                                        <span class="checked"><input name="question_@Model.Id" type="radio" checked /></span>
+                                    }
+                                    else
+                                    {
+                                        <span><input name="question_@Model.Id" type="radio" /></span>
+                                    }
+                                </div>
+                            </dt>
+                            <dd>@answer.AnswerName</dd>
+                        </dl>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

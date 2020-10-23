@@ -1,0 +1,36 @@
+/************************************************************************************
+CSS
+Created: 	2014
+Creator:	SCHM
+Editor:		SCHM
+
+/************************************************************************************
+COLOR SCHEME 
+*************************************************************************************/
+/* weiss */
+footer {
+    color: #FFF;
+}
+/* blau */
+
+/* schwarz */
+a:hover,
+a:hover:before,
+.href:hover,
+.href:hover:before,
+#insymaOverlayHolder .icon:hover:before
+{
+	color: #000;
+}
+
+/* Validierungsfarbe */
+form em,
+p.validationinfo,
+.InLineValidate
+{	
+	color: #B02B2C;
+}
+
+.green{
+    color: #82bb25;
+}

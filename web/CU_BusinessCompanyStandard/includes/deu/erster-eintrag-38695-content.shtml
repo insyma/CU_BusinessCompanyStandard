@@ -1,0 +1,22 @@
+
+
+    <a href="/CU_BusinessCompanyStandard/deu/erster-eintrag-38688.shtml" class="card-link" target="_self" title="Erster Eintrag"></a>
+    <div class="card-con">
+        <div class="card-header">
+            
+            <figure class="card-image bg-img" style="background-image: url(/CU_BusinessCompanyStandard/img/content/zzz-insyma-image-content-landscape-01400x0.jpg);">
+                <img src="" alt="Bild">
+            </figure>
+            
+        </div>
+        <div class="card-body">
+            
+            <h3 class="h3 item-title card-title">Erster Eintrag</h3>
+            
+            <div class="lead card-lead"><time class="ConTime" datetime="08.05.2019">08. 05 2019</time></div>
+            
+            <div class="liststyle card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</div>
+            
+        </div>
+    </div>
+

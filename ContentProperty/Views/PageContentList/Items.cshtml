@@ -1,0 +1,69 @@
+﻿@model Insyma.ContentProperty.Web.ViewModel.PageContentListItem
+
+@foreach (var i in Model.Items)
+{
+    <tr data-clear="" data-item-id="" data-item-url="" data-item-template-url="" class="edit-entry cu-cell edit-content-page @i.HighlightClass" data-obj-id="@i.ObjId" style="cursor: pointer;">
+        <td class="table-col-20px" data-content-key=""><span class="@i.HighlightClass @i.OrphanedClass">&nbsp;</span></td>
+        <td class="table-col-100px" data-content-key="PageStatus"><span class="" title="@Html.Raw(i.PageStatus)">@Html.Raw(i.PageStatus)</span></td>
+        <td class="table-col-100px" data-content-key="CoFi_DateContent"><span class="" title="@i.PublishDate.ToString("dd.MM.yyyy, HH:mm")  Uhr">@i.PublishDate.ToString("dd.MM.yyyy, HH:mm")  Uhr</span></td>
+        <td class="table-col-100px" data-content-key="CoFi_Author"><span class="" title="@Html.Raw(i.Authors)">@Html.Raw(i.Authors)</span></td>
+        <td class="table-col-150px" data-content-key="CoFi_ContentName"><span class="" title="@Html.Raw(i.ContentTitle)">@Html.Raw(i.ContentTitle)</span></td>
+        @*<td class="table-col-150px" data-content-key="PageName"><span class="" title="@Html.Raw(i.PageName)">@Html.Raw(i.PageName)</span></td>*@
+        <td class="table-col-100px" data-content-key="DateValid"><span class="" title="@Html.Raw(i.DateValidFromText) - @Html.Raw(i.DateValidToText)">@Html.Raw(i.DateValidFromText)<br />@Html.Raw(i.DateValidToText)</span></td>
+        @if (Model.FieldList.ContainsKey("CoFi_Date_AppointmentFrom") || Model.FieldList.ContainsKey("CoFi_Date_AppointmentTo"))
+        {
+            <td class="table-col-150px" data-content-key="DateAppointment"><span class="" title="@Html.Raw(i.DateAppointmentFromText) - @Html.Raw(i.DateAppointmentToText)">@Html.Raw(i.DateAppointmentFromText)<br />@Html.Raw(i.DateAppointmentToText)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentMeetingPlace"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentMeetingPlace"><span class="" title="@Html.Raw(i.MeetingPlaces)">@Html.Raw(i.MeetingPlaces)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentType"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentType"><span class="" title="@Html.Raw(i.Types)">@Html.Raw(i.Types)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentOrigin"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentOrigin"><span class="" title="@Html.Raw(i.Origins)">@Html.Raw(i.Origins)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentProject"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentProject"><span class="" title="@Html.Raw(i.Projects)">@Html.Raw(i.Projects)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentDossier"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentDossier"><span class="" title="@Html.Raw(i.Dossiers)">@Html.Raw(i.Dossiers)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentTheme"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentTheme"><span class="" title="@Html.Raw(i.Themes)">@Html.Raw(i.Themes)</span></td>
+        }
+        @if (Model.FieldList.ContainsKey("CoFi_ContentTag"))
+        {
+            <td class="table-col-150px" data-content-key="CoFi_ContentTag"><span class="" title="@Html.Raw(i.Tags)">@Html.Raw(i.Tags)</span></td>
+        }
+
+    </tr>
+}
+
+@*<ul class="cu-cell edit-content-page @i.HighlightClass" data-obj-id="@i.ObjId">
+    <li>
+        <div class="cell-left">
+            <span class="@i.HighlightClass @i.OrphanedClass">&nbsp;</span>
+        </div>
+        <div class="cell-right">
+            <span class="content-title">@Html.Raw(i.Title)</span><br />
+            <span class="content-title">@Html.Raw(i.PageStatus)</span><br />
+            <span class="content-date">@i.PublishDate.ToString("dd.MM.yyyy, HH:mm")  Uhr</span> | <span class="content-date">@i.Author</span><br />
+            <span class="big-desc">@i.ShortDesc</span><br />
+            <span class="small-desc">@i.Desc</span><br />                
+            <span class="small-desc">@i.PageName</span><br/>
+            <span class="small-desc">@i.Dossier</span><br />
+            <span class="small-desc">@i.Projects</span><br />
+            <span class="small-desc">@i.Tags</span><br />
+            <span class="small-desc">@i.Themes</span><br />
+            <span class="small-desc">@i.Types</span><br />
+            <span class="small-desc">@i.Origins</span><br />
+        </div>
+    </li>
+</ul>*@

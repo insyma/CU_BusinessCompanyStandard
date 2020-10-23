@@ -1,0 +1,16 @@
+﻿@model Insyma.ContentProperty.Web.Models.DetailModel
+
+@{    
+    var isChecked = (Model.BooleanValue) ? "checked=\"checked\"" : "";
+    var cssDisabled = Model.PropertyDetail.IsModify ? "" : "disabled-field";
+}
+
+<div class="checkbox">
+    <input class="@cssDisabled" id="@Model.PropertyDetail.Id" type="checkbox" @isChecked data-field-key="@Model.PropertyDetail.PropertyFieldKey" data-field-type="@Model.PropertyDetail.FieldTypeKey" data-add-new="@Model.PropertyDetail.IsAddNew" />
+    <label for="@Model.PropertyDetail.Id">@Model.PropertyDetail.FieldLabel</label>    
+</div>
+
+@if (Model.PropertyDetail.Mandatory)
+{
+    <span style="display: none" class="mandatory mandatory-checkbox">Required</span>
+}

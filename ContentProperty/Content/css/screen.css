@@ -1,0 +1,363 @@
+/************************************************************************************
+import
+*************************************************************************************/
+@import url("colors.css");
+@import url("insymagrid.css");
+
+/************************************************************************************
+CSS
+Created: 	2014
+Creator:	HRUA, SCHM
+Editor:		HRUA, SCHM
+/************************************************************************************
+fonts
+************************************************************************************/
+.foo {
+    font: Verdana, Geneva, sans-serif;
+}
+
+/************************************************************************************
+basic elements
+************************************************************************************/
+*, *:before, *:after {
+   	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+*:before, *:after {
+	font-weight: normal;
+}
+body {
+	background: AliceBlue;
+/*    overflow: hidden; */
+}
+
+body, input, textarea {
+	line-height: 1.5em;
+	font: .86em/150% Arial, Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p.lead, article.lead
+{
+	display: block;
+	line-height: 1.4em;
+	margin-bottom: .5em;
+}
+h1, .h1 {
+	font-size: 2em;
+}
+h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+/*	color > colors.css */
+}
+h2, .h2 {
+	font-size: 1.6em;
+}
+h3, .h3 {
+	font-size: 1.4em;
+}
+h4, .h4 {
+	font-size: 1.2em;
+}
+h5, .h5 {
+	font-size: 1.1em;
+}
+h6, .h6,
+h5.address
+{
+	font-size: 1em;
+}
+h5.address {
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+a,
+a:before,
+.href,
+.href:before,
+#insymaOverlayHolder .icon:before
+{
+/*	color > colors.css */
+	outline: 0;
+    text-decoration: none;
+}
+a:hover,
+a:hover:before,
+.href:hover,
+.href:hover:before,
+#insymaOverlayHolder .icon:hover:before
+{
+/*	color > colors.css */
+	text-decoration: none;
+}
+img, fieldset{
+	border: none;
+}
+p, p.lead, article.lead {
+	margin-bottom: 1em;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+strong,
+.strong
+{
+	font-weight: bold;
+}
+hr {
+	border: none 0;
+	border-top: 1px solid #666;
+    clear: none;
+	height: 1px;
+    margin: 1em 0;
+    overflow: hidden;
+    width: auto;
+}
+hr.clear {
+    border: none !important;
+	border-color: transparent !important;
+	clear: both;
+	filter: alpha(opacity=0);
+    height: 0;
+	margin: 0;
+	opacity: 0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	visibility: hidden;
+	width: 100%;
+}
+blockquote:before {
+	content: open-quote;
+}
+blockquote:after {
+	content: close-quote;
+}
+
+/************************************************************************************
+specific elements
+************************************************************************************/
+.hyphenate {
+  text-align: justify;
+}
+
+nav ul,
+#insymaOverlayContent ul
+{
+	list-style: none;
+}
+.clear
+{
+	clear: both;
+}
+.cleared,
+body p.cleared
+{
+	padding-bottom: 0;
+}
+h1:empty,
+div.inhalt > div:empty, 
+p:empty,
+form div:empty
+{
+	display: none;
+}
+label:empty {
+	height: 1px;
+}
+.ValidationSummary,
+.hide,
+.invisible,
+.insymaSpecialOverlay .insymaOverlayOnly,
+body .ui-datepicker
+{
+	display: none;
+}
+
+.part_movie .imagelink img,
+.insymaSpecialOverlay,
+.ui-datepicker-trigger,
+form input[type="button"], 
+form input[type="submit"], 
+button,
+.href,
+.href:before
+{
+	cursor: pointer;
+}
+#insymaOverlay .insymaOverlayOnly,
+.show
+{
+	display:block;
+}
+address {
+	font-style: normal;
+}
+.block 					{display: block;}
+.inline 				{display: inline;}
+.inlineblock 			{display: inline-block;}
+.table					{display: table;}
+.tablecell		 		{display: table-cell;}
+.floatleft 				{float: left;}
+.floatright 			{float: right;}
+.absolute	 			{position: absolute;}
+.relative 				{position: relative;}
+.fixed					{position: fixed;}
+
+.nomargin 				{margin: 0 !important;}
+.nopadding 				{padding: 0 !important;}
+
+/************************************************************************************
+css transitions
+************************************************************************************/
+a,
+a:before,
+.href,
+.href:before,
+.icon:before,
+.menu,
+.menu:after
+{
+	-moz-transition:  all .2s ease-in-out; /* FireFox */
+	-webkit-transition:  all .2s ease-in-out; /* Safari / Chrome */
+	-o-transition:  all .2s ease-in-out; /* Opera */
+	-ms-transition: all .2s ease-in-out; /* IE */
+	transition: all .2s ease-in-out; 
+}
+
+
+/* no trans*/
+.foo
+{
+	-moz-transition: none; /* FireFox */
+	-webkit-transition: none; /* Safari / Chrome */
+	-o-transition:  none; /* Opera */
+	-ms-transition: none; /* IE */
+	transition: none; 
+}
+
+/************************************************************************************
+container - header
+************************************************************************************/
+header{
+	background: #fff;
+	padding: 0;
+	position: relative;
+    width: 100%;
+}
+h4#header_h1Tag span, h4#header_h1Tag em, h4#h1Tag span, h4#h1Tag em {
+	display: none;
+}
+/* list elements */
+header #servicenavigation {
+    margin: 0 10px;
+    padding-left: 0;
+    max-width: 100%;
+}
+header #toolnavigation {
+}
+
+ul.socialmedia li a,
+header ul.navigation {
+	float: left;
+}
+ul.socialmedia li,
+header ul.navigation li {
+	display: inline;
+	float: left;
+	margin-right: .5em;
+}
+h4#header_h1Tag, h4#h1Tag {
+	float: left;
+	padding: 0;
+}
+h4#header_h1Tag img, h4#h1Tag img {
+    max-width: 180px; /* Definition je nach Logo / Groesse 1/4 von Gesamtgroesse fuer mobile optimierung  */
+}
+
+/* Suche */
+li.suche form input {
+	margin: 0;
+}
+/* Sprache */
+li.language {
+}
+li.language .active * {
+    font-weight: bold;
+}
+
+/* Headerbilder */
+.headerbild {
+    background: none;
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    max-height: 200px;
+    max-width: 960px;
+    overflow: hidden;
+}
+
+/************************************************************************************
+	Container - Aufbau Seite
+************************************************************************************/
+/* Wrapper & Centering Elements */
+div.wrapper{
+	clear: both;
+/*	min-height: 400px; */
+	padding: 0;
+	position: relative;
+    width: 100%;
+}
+.holder {
+	margin: 0 auto;
+	max-width: 960px;
+    position: relative;
+}
+
+/* Hauptnavigation */
+nav.hauptnavi {
+	padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+/* Inhalt */
+section {
+    padding: 0 2.5%;
+    position: relative;
+    width: 80%;
+    display: table-cell;
+}
+
+/* Seitenleiste */
+aside {
+    position: relative;
+    width: 20%;
+    display: table-cell;
+}
+
+/* Breadcrumbs */
+ul#breadcrumbs {
+	margin-bottom: 2em;
+    width: 100%;
+}
+ul#breadcrumbs li {
+	display: inline;
+}
+
+/************************************************************************************
+	Container - Footer
+************************************************************************************/
+footer {
+    background: MidnightBlue;
+	padding: 1em 0;
+}
+footer ul li {
+	display: inline;
+}
+
+
+
+.mobileOnly {
+    display: none;
+}

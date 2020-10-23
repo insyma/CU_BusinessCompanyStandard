@@ -1,0 +1,10 @@
+﻿[
+	{
+		"outputFile": "css/main.css",
+		"inputFile": "less/main.less",
+		"sourceMap": true,
+		"options": {
+			"relativeUrls": false
+		}
+	}
+]

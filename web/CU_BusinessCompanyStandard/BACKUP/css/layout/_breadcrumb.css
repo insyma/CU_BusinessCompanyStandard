@@ -1,0 +1,12 @@
+.PartBreadcrumbs li a {
+  padding: 0 0 0 20px;
+}
+.PartBreadcrumbs li a:before {
+  content: "\f015";
+  left: 0;
+  position: absolute;
+  top: auto;
+}
+.PartBreadcrumbs:nth-child(n+2) a:before {
+  content: "\e60e";
+}

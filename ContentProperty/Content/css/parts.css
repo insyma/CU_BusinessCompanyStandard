@@ -1,0 +1,753 @@
+/*----------------------------------------------------------------------
+CSS
+Created: 	2014
+Creator:	HRUA, SCHM
+Editor:		HRUA, SCHM
+----------------------------------------------------------------------*/
+
+/************************************************************************************
+	Style Parts global 
+************************************************************************************/
+
+div.inhalt > div
+{
+	margin-bottom: 2em;
+    position: relative;
+	width: 100%;
+}
+table p {
+	margin: 0;
+	padding: 0;
+}
+.flex-viewport p
+{
+	margin-bottom: 0;
+}
+dt {
+    clear: both;
+    float: left;
+    width: 10%;
+}
+dd {
+    overflow: hidden;
+}
+/************************************************************************************
+	Breiten  
+************************************************************************************/
+.width10 		{width: 10%;}
+.width20 		{width: 20%;}
+.width25 		{width: 25%;}
+.width30 		{width: 30%;}
+.width33 		{width: 33%;}
+.width50 		{width: 50%;}
+.width66 		{width: 66%;}
+.width70 		{width: 70%;}
+.width75 		{width: 75%;}
+.width100 		{width: 100%;}
+
+/************************************************************************************
+	Listen Grunddefinition
+************************************************************************************/
+
+ul,
+/* project styles */
+.foo
+{
+    list-style: none;
+}
+div.inhalt ul {
+    margin-bottom: 1em;
+	overflow: hidden;
+}
+.liststyle ul li,
+a.link,
+/* project styles */
+.foo
+{
+    margin: .3em 0;
+    padding: 0 0 0 1.5em;
+	position: relative;
+}
+#breadcrumbs li:nth-child(n+2) a,
+/* project styles */
+.foo
+{
+    margin: .3em 0;
+    padding: 0 0 0 1.5em;
+	position: relative;
+}
+.liststyle ul.linklist li,
+p.link a,
+a.abschlusslink,
+.ValidationSummary ul li,
+/* project styles */
+.foo
+{
+    margin: .3em 0;
+	overflow: hidden;
+    padding: 0 0 0 1.5em;
+	position: relative;
+}
+.liststyle ul.linklist li:before,
+.bilderliste_basic .ie7_anon,
+/* project styles */
+.foo
+{
+	display: none !important;
+}
+.liststyle ul li:before,
+.liststyle ul.linklist li a:before,
+a.abschlusslink:before,
+a.link:before,
+p.link a:before, 
+.abschlusslink:before, 
+.ValidationSummary ul li:before,
+/* project styles */
+.foo
+{
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+div.inhalt > div ol {
+	list-style: decimal outside;
+    margin-bottom: 1em;
+	overflow: hidden;
+	padding-left: 1.5em;
+}
+div.inhalt > div ol li {
+    margin: .3em 0 .3em 0.75em;
+	position: relative;
+}
+
+
+/************************************************************************************
+	Listen Breiten 
+************************************************************************************/
+
+/* No Space Fix */
+.imagelink > img,
+.imagewrap > img,
+.flex-viewport img
+{
+    display: block;
+}
+
+/* Masse, Abstaende und Positionen */
+figure.conimage,
+.imagelist.vertical
+{
+	max-width: 225px;
+    width: 35%;
+}
+figure.conimage,
+.imagelist.vertical 
+{
+	float: right;
+	margin: 0 0 1em 5%;
+}
+.left figure.conimage {
+	float: left;
+	margin: 0 5% 1em 0;
+}
+.imagelist.vertical li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Settings */
+figure.conimage {
+	display: inline-block;
+	height: auto;
+	overflow: hidden;
+}
+figure.conimage > * {
+	width: 100%;
+}
+figcaption {
+	clear: both;
+	padding: .5em 0;
+}
+
+/* Bilderliste horizontal */
+.imagelist.vertical li figure.conimage {
+    margin: 0 0 .5em;
+    width: 100%;
+}
+
+/* Bilderliste horizontal */
+.imagelist.horizontal li a {
+	float: left;
+	margin: 0 .5em .5em 0;
+	max-height: 80px;
+    max-width: none;
+    overflow: hidden;
+    width: 120px;       
+}
+.imagelist.horizontal li a img {
+    min-width: 180px; /* grösser als Imagewrap */
+    width: 100%;
+}
+
+/* Bilder mti 100% Breite */
+.imagelist.largeimage li a {
+    float: none;
+	height: auto;
+	overflow: auto;
+	width: 100%;
+}
+.imagelist.largeimag li a.imagelink  {
+	border: none !important;
+	display: inline-block;
+	float: none;
+	margin: 0;
+}
+
+/************************************************************************************
+	Listen ohne Styling 
+************************************************************************************/
+.noliststyle li:before {
+	display: none;
+}
+
+/************************************************************************************
+	Parts 
+************************************************************************************/
+
+/* Part Grundlagen */
+
+
+/* Part Link/Datei-Liste */
+.part_links ul ul a {
+	display: block;
+}
+
+/* Part Team */
+.part_team > ul > li {
+	margin-bottom: 2.5em;
+	width: 100%;
+}
+.part_team > ul > li:nth-child(2n+1) {
+	clear: both;
+}
+.part_team ul.rowentries > li > dl {
+    overflow: hidden;
+    width: 100%;
+}
+.part_team dt {
+	margin: 0 0 1em;
+	width: 100%;
+}
+.part_team dt a.imagelink {
+    margin: 0;
+	max-width: none;
+    width: 100%;
+}
+.part_team dd {
+	width: 100%;
+}
+
+.part_team ul ul ul {
+    margin-bottom: 0;
+}
+.part_team ul ul ul li a {
+    margin-bottom: .25em;
+}
+.rowentries {
+	text-align: left;
+}
+
+.rowentries > li {
+	display: inline-block;
+    margin: 0 0 2.5em 2em;
+	vertical-align: top;
+}
+.rowentries3 > li {
+    width: 31%;
+}
+.rowentries4 > li {
+    width: 22.5%;
+}
+.rowentries3 > li:nth-child(3n+1),
+.rowentries4 > li:nth-child(4n+1)
+{
+    margin-left: 0;
+}
+
+/* Tabelle  */
+.part_tabelle table {
+    background: #FFF;
+    border: 1px solid #CCC;
+}
+.part_tabelle table caption {
+    text-align: left;
+}
+.part_tabelle table thead {
+	width: 100%;
+}
+.part_tabelle table td,
+.part_tabelle table th
+{
+	border: 1px solid #CCC;
+    border-width: 1px 0;
+	padding: .3em 1.5em .3em .75em;
+	text-align: left;
+    vertical-align: top;
+}
+.part_tabelle table thead th,
+tr:nth-child(2n+2) td {
+    background: #EEE;
+}
+.part_tabelle table thead th {
+    border-bottom: 1px solid #777;
+}
+/* Movie  */
+.movie-holder,
+.movie-holder {
+    max-width: 100%;
+    position: relative;
+}
+.movie-holder:before,
+.movie-holder:after {
+	border-spacing: 0;
+    content: "";
+    display: table;
+}
+.movie-holder:before {
+    clear: both;
+}
+.playButton,
+.movie-holder video,
+.movie-holder object,
+.movie-holder iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;  
+}
+.splashscreen {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+}
+.playButton {
+    background: url("../img/layout/play.png") no-repeat scroll center center transparent;
+    background-size: 64px 64px;
+    cursor: pointer;
+}
+
+/* Bild Gross Liste */
+
+.bildSpan.flex-active-slide > p {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    left: 0;
+    margin-top: -70px;
+    padding: 10px;
+    position: relative;
+    right: 0;
+    z-index: 1099;
+}
+
+/* Sitemap */
+
+.shn1{
+	font-weight:bold;
+	margin-bottom:1em;
+	}
+	
+.shn2, .shn3{
+	font-weight:normal;
+	padding-left:1em;
+	}
+
+/* Suchergebnisse */
+div#cse-search-results iframe {
+	width:650px!important;
+}
+/* AddThis Box Overwrite */
+/*
+div#at20mc #at15s, div#at20mc #at16p {
+    border-radius: 0 !important;
+	background: black;
+}
+*/
+
+/************************************************************************************
+google map 
+************************************************************************************/
+#map_canvas {
+    height: 600px;
+    width: 100%;
+    left: 0;
+    position: fixed !important;
+    top: 0;
+}
+div.conMapCanvas {
+    min-height: 400px;
+    width: 100%;
+}
+.icongmapmarker {
+    font-size: 0;
+    height: auto;
+    opacity: 1 !important;
+    overflow: inherit !important;
+    width: auto;
+}
+/* shadow for full size display */
+
+div.gm-style > div:first-child > div {
+    box-shadow: inset 0 5px 10px -5px rgba(51,51,51,.5) , inset 0 -5px 10px -5px  rgba(176,176,176,.5);
+}
+
+/************************************************************************************
+Formulare
+************************************************************************************/
+
+/* Masse */
+form > ul > li > label
+{
+	padding-right: 5%;
+    min-width: 125px;
+    width: 30%;
+}
+.InLineValidate {
+   padding: 5px 0 0 30%;
+}
+form input[type="text"],
+form select,
+form textarea,
+form > p,
+#cse-search-box input[type="text"]
+{
+	width: 70% !important;
+}
+form .divCaptcha input[type="text"] {
+	width: 100% !important;
+}
+#cse-search-box input[type="submit"] {
+	width: 30% !important;
+}
+
+form > p {
+    clear: both;
+    float: right;
+}
+
+/* Farben und Border */
+form input[type="text"], 
+form textarea, 
+form select,
+form .imgCaptcha
+{
+	border: 1px solid transparent;
+	-webkit-appearance: none;
+}
+
+form > ul > li > label
+{
+}
+form input[type="text"], 
+form textarea, 
+form select
+{
+	background: #CCC;
+}
+/* Settings */
+
+form ul,
+form ol,
+form ol li,
+form .divCaptcha
+{
+    list-style: none !important;
+    margin: 0 !important;
+	overflow: hidden;
+   	padding: 0 !important;
+}
+form > ul > li {
+	clear: both;
+	float: left;
+	margin-bottom: .5em;
+	position: relative;
+	width: 100%;
+}
+
+form > ul > li > label {
+	float: left;
+	padding: 0;
+}
+li.suche form input,
+form input[type="text"], 
+form textarea, 
+form select
+{
+	float: left;
+	font-family: inherit;
+	font-size: 100%;
+	padding: 5px !important;
+}
+form input {
+	font-family: inherit;
+	font-size: 100%;
+}
+form option {
+	padding: 0 5px;
+}
+form ol.CheckBox.horizontal li,
+form ol.RadioButton.horizontal li
+{
+	float: left;
+    padding-right: 10px !important;
+}
+form ol.CheckBox.vertical > li,
+form ol.RadioButton.vertical > li
+{
+	border-spacing: 0;
+    display: table;
+	margin: 0.3em 0 !important;
+    table-layout: fixed;
+    width: 100%;
+}
+form ol.CheckBox.vertical > li > *,
+form ol.RadioButton.vertical > li > *
+{
+    display: table-cell;
+    margin: 0;
+    text-align: left;
+}
+.ie8 form ol.CheckBox.vertical > li > *,
+.ie8 form ol.RadioButton.vertical > li > *
+{
+    display: inline;
+}
+form ol.CheckBox.vertical > li > label,
+form ol.RadioButton.vertical > li > label {
+    float: none !important;
+	padding-left: 1.5em;
+	width: 100% !important;
+}
+form img.ui-datepicker-trigger {
+    bottom: 2px;
+    position: absolute;
+    right: 2px;
+    z-index: 0;
+}
+form .imgCaptcha {
+	background: url("../img/layout/bg-captcha.png");
+	padding: 5px 0 0 15px;
+}
+
+form input[type="checkbox"] {
+	background: transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+form input[type="radio"] {
+	background:transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+
+/* Validation */
+.InLineValidate {
+    clear: both;
+    float: left;
+}
+.ValidationSummary {
+	background: #CCC;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/************************************************************************************
+Shop
+************************************************************************************/
+div.products {
+    width: 100%;
+}
+div.products > ul > li {
+    width: 100%;
+}
+div.products ul li dl {
+    display: block;
+    border-bottom: 2px solid black;
+}
+div.products ul li dt {
+    width: 30%;
+    margin-right: 5%;
+}
+
+
+ul.shop-title,
+ul.shop-produkt-detail {
+	border-spacing: 0;
+    display: table;
+    width: 100%;
+}
+ul.shop-title li,
+ul.shop-produkt-detail li 
+{
+    display: table-cell;
+}
+ul.shop-produkt-detail li span.title {
+    background-color: #ccc;
+    color: #fff;
+    display: block;
+    font-size: 10px;
+    padding: 2px 4px;
+}
+
+li.menge {
+    width: 20%;
+}
+li.anzahl {
+    width: 15%;
+}
+li.preis {
+    width: 30%;
+}
+li.anzahl input {
+    width:50px;
+}
+li.action {
+    
+}
+
+
+/* Warenkorb */
+#warenkorb {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    margin: 2em 0;
+/*    overflow: hidden;*/
+}
+#wk_header {
+    padding: 10px;
+}
+#wk_body {
+    
+}
+#wk_footer {
+    padding: 10px;
+}
+#wk_emptybasket {
+    color: #666;
+    padding: 10px;
+}
+
+.wk_line {
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #ffffff;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.wk_line:hover {
+    background: #fff;
+}
+.wk_line.first { border-top: none; margin-top:0; }
+.wk_line.last { border-bottom: none; }
+
+.wk_name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+.wk_menge {
+    font-size: 12px;
+}
+.wk_bild {
+    display: none;
+    max-width: 60px;
+    position: absolute;
+    left: 0;
+}
+.wk_input {
+    margin-right: 10px;
+    width: 40px;
+}
+.wk_preis {
+    float: right;
+}
+.wk_delete {
+    background: red;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top:5px;
+    right: 5px;
+    width:16px;
+    height:16px;
+}
+.wrap_total {
+    border-top: 2px solid #000;
+    padding: 5px 0;
+}
+
+.wk_sub_total_label,
+.wk_kleinmengenzuschlag_label,
+.wk_versandkosten_label,
+.wk_total_label 
+{
+    font-weight: bold;
+}
+
+.wk_sub_total,
+.wk_versandkosten,
+.wk_kleinmengenzuschlag,
+.wk_total 
+{
+    float: right;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Bestellprozess */
+.warenkorb_checkout .wk_bild {
+    display: none;
+}
+
+.steps li {
+    background: black;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    padding:10px;
+    position: relative;
+}
+.steps li.active {
+    background: white;
+    color: black;
+    font-weight: bold;
+}
+
+.error_login, .error_login_data {
+    display: none;
+}
+#summary h4 {
+    border-bottom: 1px solid #000;
+}
+#summary label {
+    display: inline-block;
+    width: 150px;
+}
+.bubble_error {
+    background: none repeat scroll 0 0 #FF0000;
+    border-radius: 16px 16px 16px 16px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    left: 0;
+    padding: 2px 9px;
+    position: absolute;
+    top: 0;
+    display: none;
+}

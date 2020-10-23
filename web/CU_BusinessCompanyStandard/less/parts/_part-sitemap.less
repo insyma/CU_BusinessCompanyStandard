@@ -1,0 +1,83 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+.part-sitemap {
+	.linklist {
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			&.shn1 {
+				margin-bottom: 40px;
+			}
+
+			a {
+				color: @text;
+				display: inline-block;
+				font-weight: @fw-bold;
+				padding: 6px 0;
+
+				&:hover {
+					color: @primary;
+				}
+			}
+
+
+			.shn3 {
+				a {
+					font-weight: @fw-regular;
+				}
+
+			}
+
+			.icon {
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.shn1 {
+		> ul {
+			.columns(20px);
+
+			> li {
+				.col-(4, 20px);
+			}
+		}
+	}
+
+	@media screen and (max-width: @mq-size-980) {
+		.shn1 {
+			> ul {
+				.columns(20px);
+
+				> li {
+					.col-(2, 20px);
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: @mq-size-480) {
+		.shn1 {
+			> ul {
+				.columns(20px);
+
+				> li {
+					.col-(1, 20px);
+				}
+			}
+		}
+	}
+}
+
+@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../components/_containers.less";
+@import (reference) '../components/_transitions.less';

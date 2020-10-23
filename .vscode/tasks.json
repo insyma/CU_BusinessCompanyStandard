@@ -1,0 +1,66 @@
+/* // Less configuration
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Less Compile",
+            "type": "shell",
+            "command": "lessc --js web/CU_BusinessCompanyStandard/less/main.less web/CU_BusinessCompanyStandard/css/main.css",
+            "group": "build",
+            "problemMatcher": [
+                "$lessc"
+            ]
+        }
+    ]
+  } */
+
+
+  {
+    "version": "2.0.0",
+    "tasks": [
+ /*        {
+            "label": "Build.MyApp",
+            "group": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/MyApp/MyApp.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn": [
+                "Build.TypeScript",
+                "Minify.All",               
+            ]
+        },
+        {
+            "label": "Build.TypeScript",
+            "group": "build",
+            "type": "typescript",
+            "tsconfig": "MyApp/tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ]
+        }, */
+        {
+            "label": "Less Compile",
+            "type": "shell",
+            "command": "lessc --js web/CU_BusinessCompanyStandard/less/main.less web/CU_BusinessCompanyStandard/css/main.css",
+            "group": "build",
+            "problemMatcher": [
+                "$lessc"
+            ]
+        },
+        {           
+            "label": "Minify.All",
+            "group": "build",
+            "type": "shell",    
+            "windows": {
+                "command": "powershell .\\MyApp\\minifyWindows.ps1"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

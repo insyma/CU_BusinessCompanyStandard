@@ -1,0 +1,290 @@
+/************************************************************************************
+CSS - Icons
+Created: 	2015
+Creator:	SCHM
+*************************************************************************************/
+
+@font-face {
+	font-family: 'kunde-icons';
+	src:url('fonts/kunde-icons.eot');
+	src:url('fonts/kunde-icons.eot?#iefix') format('embedded-opentype'),
+		url('fonts/kunde-icons.woff') format('woff'),
+		url('fonts/kunde-icons.ttf') format('truetype'),
+		url('fonts/kunde-icons.svg#kunde-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/************************************************************************************
+GLOBAL
+*************************************************************************************/
+@font-face {
+	font-family: 'kunde-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+/* positioning */
+.iconbefore:before,
+.iconbefore:after {
+	float: left;
+	margin-right: .5em;
+}
+.iconafter:before,
+.iconafter:after {
+	float: right;
+	margin-left: .5em;
+}
+
+/* positioning if labeled */
+.con-socialmedia .icon:before {
+	float: left;
+}
+
+/************************************************************************************
+BASIC ICONS
+*************************************************************************************/
+/* Alle Elemente */
+a.movielink:after,
+.checker .checked:before,
+.selector span:after,
+[class^="icon"]:before,
+[class*=" icon"]:before,
+[class^="icon"]:after,
+[class*=" icon"]:after,
+.flex-direction-nav a:after,
+.flex-direction-nav a:before,
+/*specials*/
+[href^="tel"]:before,
+div.SwitchLanguage > .pls-selected-locale:after
+{
+	display: inline-block;
+	font-family: 'kunde-icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+}
+/* LI-Dots */
+.liststyle ul li:before,
+a.link:before,
+p.link a:before,
+.ValidationSummary ul li:before,
+/* project styles */
+.PartSitemap.liststyle ul.linklist li a:before
+{
+	content: "\e60e";
+	font-family: 'kunde-icons';
+	text-decoration: none;
+}
+.PartBreadcrumbs li a:before {
+	content: "\f015";
+	font-family: 'kunde-icons';
+	left: 0;
+	position: absolute;
+	text-decoration: none;
+	top: auto;
+}
+.PartBreadcrumbs li:nth-child(n+2) a:before
+{
+	content: "\e60e";
+}
+
+/* Link Icon */
+.liststyle ul.linklist li a:before,
+p.link a:before,
+a.link:before,
+/* project styles */
+.foo
+{
+	content: "\f07f";
+	font-family: 'kunde-icons';
+	text-decoration: none;
+}
+
+/* Link Download */
+.liststyle li.link.download a:before,
+/* project styles */
+.foo
+{   
+	content: "\f019";
+	font-family: 'kunde-icons';
+	text-decoration: none;
+}
+
+/* Link Filetypes */
+/* PDF */
+a.pdf:before
+{ content: "\e000" !important; }
+/* Excel */
+a.xls:before,
+a.xlsx:before
+{ content: "\e001" !important; }
+/* Archives*/
+a.zip:before,
+a.rar:before,
+a.sit:before
+{ content: "\e005" !important; }
+/* MS Word */
+a.doc:before,
+a.docx:before
+{ content: "\e006" !important; }
+/* MS Powerpoint */
+a.ppt:before,
+a.pptx:before,
+a.pps:before
+{ content: "\e008" !important; }
+/* Images */
+a.jpg:before,
+a.jpeg:before,
+a.gif:before,
+a.png:before,
+a.tif:before,
+a.tiff:before,
+a.psd:before
+{ content: "\f03e" !important; }
+/* MS Word */
+a.mov:before,
+a.avi:before,
+a.m4v:before,
+a.mp4:before
+{ content: "\f001" !important; }
+/* PacMan */
+a.pacman:before
+{ content: "\f2db" !important; }
+a.theghost:before
+{ content: "\f2da" !important; }
+
+/* Basics  */
+.print:before {
+	content: "\f02f";
+}
+.totop:before {
+	content: "\f0d8";
+}
+.iconsuche:after {
+	content: "\f002";
+	font-family: 'kunde-icons';
+}
+div.SwitchLanguage > .pls-selected-locale:after {
+	content: "\e20b";
+	float: right;
+	padding-left: 20px;
+}
+
+/* googleMap basic Icon */
+.icongmapmarker:before{
+	color: #4096ee;
+	content: "\e60c";
+	font-size: 30px;
+	opacity: 1;
+    position: relative;
+    text-shadow: 0 0 5px rgba(51, 51, 51, .5);
+    top: 5px;
+}
+/* Contact Icons */
+.PartTeam [href^="tel"]:before,
+.PartTeam .icon.iconphone:before,
+.contacticon.iconphone:before {
+	content: "\f095";
+}
+.PartTeam .icon.iconfax:before,
+.contacticon.iconfax:before {
+	content: "\e601";
+}
+.PartTeam .icon.iconmail:before,
+.contacticon.iconmail:before {
+	content: "\f003";
+}
+.PartTeam .icon.iconweblink:before,
+.contacticon.iconweblink:before
+{
+	content: "\e646";
+}
+
+/* flexslider  */
+.flex-direction-nav a.flex-prev:before {
+	content: "\e603";
+}
+.flex-direction-nav a.flex-next:before {
+	content: "\e606";
+}
+
+/* Social Icons global */
+.PartTeam .icon:before
+{
+    font-size: 14px;
+    line-height: 20px; /* wenn Border um Icon, muss bei der line-height dieser abgezogen werden */
+    vertical-align: top;
+}
+
+/* Basic Icons - more icons >> fonts/original/demo.html */
+.icon.facebook:before 		{ content: "\e003";	}
+.icon.googleplus:before 	{ content: "\e01a"; }
+.icon.instagram:before 		{ content: "\e632";	}
+.icon.linkedin:before 		{ content: "\e613"; }
+.icon.twitter:before 		{ content: "\e017";	}
+.icon.xing:before 			{ content: "\e62b"; }
+.icon.vimeo:before 			{ content: "\e014"; }
+.icon.youtube:before 		{ content: "\e60d"; }
+.icon.else:before 			{ content: "\e62f";	}
+
+/* Overlay  */
+#insymaOverlayHolder span.close:before {
+	content: "\e209";
+}
+#insymaOverlayHolder span.resize:before {
+	content: "\e211";
+}
+#insymaOverlayHolder span.size:before {
+	content: "\e1c3";
+}
+
+#insymaOverlayHolder span.play:before {
+	content: "\e027";
+}
+#insymaOverlayHolder span.stop:before {
+	content: "\e02a";
+}
+#insymaOverlayHolder span.next:before {
+	content: "\e028";
+}
+#insymaOverlayHolder span.prev:before {
+	content: "\e029";
+}
+
+/* Uniform  */
+.selector span:after {
+    content: "\f107";
+}
+.checker .checked:before {
+    content: "\f00c";
+    font-size: 18px;
+}
+
+/* Movie  */
+a.movielink::after {
+    content: "\e01e";
+    font-size: 24px;
+    margin-top: -12px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
+.PartMovie a.movielink::after {
+    font-size: 60px;
+}
+
+/*YoutubePlaylist*/
+
+.PartYoutubePlaylist .flex-direction-nav .flex-next:before {
+    content: "\e606";
+}
+.PartYoutubePlaylist .flex-direction-nav .flex-prev:before {
+    content: "\e603";  
+}

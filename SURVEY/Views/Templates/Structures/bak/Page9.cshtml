@@ -1,0 +1,31 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_StructureOnline_Result
+
+@{
+    Layout = null;
+}
+
+<div style="display: none;" class="page" id="pageYourDetail" data-dependencies="null">
+    <div class="startseite_info">
+        <h2>@Model.StructureName</h2>
+    </div>
+    <div class="white_div surveycon">
+        @{
+            List<udsp_SURVEY_QuestionOnline_Result> questions = SurveyOnlineRepository.GetRootQuestionOnlineByStructureOnline(@Model.Id, (int)@ViewBag.languageId);
+
+            questions.ForEach(question =>
+            {
+                if (!string.IsNullOrEmpty(question.TemplatePath))
+                {
+                    Html.RenderPartial(question.TemplatePath, question);
+                }
+            }); 
+        }
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" id="btnFinishSurvey" />
+        </div>
+    </div>
+</div>

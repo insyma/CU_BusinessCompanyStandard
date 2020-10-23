@@ -1,0 +1,29 @@
+﻿
+@using Insyma.ContentProperty.Domain.Code
+@model Insyma.ContentProperty.Web.Models.MenuValueModel
+@{
+    var cssInsideMenu = Model.InsideMenu ? "inside-menu" : "";        
+}
+
+<ul class="tagsinput @Model.CssClass @cssInsideMenu">
+    @if (Model.Values != null)
+    {
+        foreach (var val in Model.Values)
+        {
+            if (Model.PropertyFieldKey == FieldKey.CoFi_RightsUserGroupRoleBased || Model.PropertyFieldKey == FieldKey.CoFi_RightsUserContent)
+            {
+                if (!val.ContactLoginRole.HasValue || val.ContactLoginRole == Model.ContactLoginRole)
+                {
+                    var disabledCss = (!val.IsLock) ? "" : "disabled";
+                    <li class="suggestion-val pre-added @disabledCss" data-id="@val.CombineContentIds" data-rights="@val.AccessRights" data-detail-id="@Model.DetailId">@val.ContentValue</li>
+                }
+            }
+            else
+            {
+                var disabledCss = (!val.IsLock && Model.AllowRemove(val.Id)) ? "" : "disabled";
+                <!-- Existing list items will be pre-added to the tags -->
+                <li class="suggestion-val pre-added @disabledCss" data-id="@val.CombineContentIds" data-rights="@val.AccessRights" data-detail-id="@Model.DetailId">@val.ContentValue</li>
+            }
+        }
+    }
+</ul>

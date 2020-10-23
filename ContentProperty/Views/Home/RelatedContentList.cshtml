@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Insyma.ContentUpdate.Obj>
+
+@if (Model != null)
+{
+    <div class="part column">
+        @*<div class="part-action" style="display: none">
+            <span class="icon-cancel"></span>
+        </div>*@
+
+        <div class="part-header">
+            <a class="icon page-icon action-open">liste</a>
+        </div>
+
+        <div class="part-content" style="display: none;">
+            @foreach (Insyma.ContentUpdate.Obj obj in Model)
+            {
+                <a href="@string.Format("../tool/page.aspx?parent_id={0}&page_id={1}", obj.ParentId, obj.Id)" target="_parent">@obj.Caption</a><br/>
+            }
+        </div>
+    </div>
+}

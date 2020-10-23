@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<cmd.bin>~/PDFConvert_Libraries/</cmd.bin>
+	<!--<cmd.bin>C:\apps\pdf tools\</cmd.bin>-->
+
+	<cmd.pdf.info>"{bin}\pdfinfo.exe" "{path.pdf}{pdffile}"</cmd.pdf.info>
+
+	<cmd.conversion.splitjsonfile>"{bin}\pdf2json.exe" "{path.pdf}{pdffile}" -enc UTF-8 -compress -split 10 "{path.json}{pdffile}_%.js"</cmd.conversion.splitjsonfile>
+	<cmd.conversion.onebyone>"{bin}\pdf2swf.exe" "{path.pdf}{pdffile}" -o "{path.swf}{pdffile}_{page}.swf" -p {ipage} -f -T 9 -t -q -s storeallcharacters -s linknameurl</cmd.conversion.onebyone>
+	<cmd.conversion.png>"{bin}\mudraw.exe" -o "{path.png}{pdffile}_{page}.png" "{path.pdf}{pdffile}" {page}</cmd.conversion.png>
+	<cmd.conversion.thumbnail>"{bin}\mudraw.exe" -r 72 -w 100 -o "{path.png}{pdffile}_{page}_thumb.png" "{path.pdf}{pdffile}" {page}</cmd.conversion.thumbnail>
+	<!--<cmd.conversion.splitpdffile>"{bin}\pdftk.exe" "{path.pdf}{pdffile}" burst output "{path.pdf.dest}{pdffile}_%04d.pdf" compress</cmd.conversion.splitpdffile>-->
+	<cmd.conversion.splitpdffile>"{bin}pscmd.exe" "{path.pdf}{pdffile}" -P "{path.pdf.dest}" "{basename}.pdf_{part:0000}.pdf"</cmd.conversion.splitpdffile>
+
+	<licensekey>@3d520b8c7466d1d0a44$2dff4055c28f2f576b6</licensekey>
+</config>

@@ -1,0 +1,133 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+.shariff {
+    @ShariffIconSize: 50px;
+    @ShariffIconFontSize: 16px;
+    @ShariffTextPaddingLeft: 10px;
+    @ShariffVerticalMinWidth: 140px;
+    ////////////////////////////////////////////////////////////
+    // base
+    ////////////////////////////////////////////////////////////
+    //	ul {
+    //		.flex-display;
+    //	}
+    li {
+        height: @ShariffIconSize;
+
+        a {
+            height: @ShariffIconSize;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    span {
+        &.icon {
+            display: inline-block;
+            height: @ShariffIconSize;
+            line-height: @ShariffIconSize;
+            text-align: center;
+            width: @ShariffIconSize;
+
+            &:before {
+                font-size: @ShariffIconFontSize !important;
+                width: 100%;
+            }
+        }
+
+        &.share_text {
+            .font14;
+            text-transform: uppercase;
+            padding-left: @ShariffTextPaddingLeft !important;
+        }
+    }
+    ////////////////////////////////////////////////////////////
+    // module
+    ////////////////////////////////////////////////////////////
+    //theme
+    .theme-project .shariff-button a {
+        background-color: @primary;
+
+        &:hover {
+            background-color: fade(@primary, 80%);
+        }
+    }
+    // orientation
+    .orientation {
+        &-vertical {
+            li {
+
+                a {
+                    .flex-display;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        &-horizontal {
+            li {
+                margin: 0 10px 10px 0;
+
+                a {
+                    .flex-display;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+    // style
+    .button-style {
+        &-icon {
+            li {
+                width: @ShariffIconSize !important;
+            }
+
+            .share_text {
+                display: none !important;
+            }
+
+            &.orientation-vertical {
+                min-width: @ShariffIconSize !important;
+            }
+        }
+
+        &-standard {
+            &.orientation-vertical {
+                min-width: @ShariffVerticalMinWidth;
+            }
+        }
+    }
+    // info
+    .info {
+        border: none;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0xIDE1aC0ydi02aDJ2NnptMC04aC0yVjdoMnYyeiIvPgo8L3N2Zz4K);
+        background-repeat: no-repeat;
+        background-position: center;
+        height: @ShariffIconSize;
+        opacity: 1;
+        width: @ShariffIconSize !important;
+        .transform;
+
+        &:hover {
+            opacity: .8;
+        }
+
+        a {
+            background-color: rgba(0,0,0,0) !important;
+            margin: 0;
+            padding: 0;
+            height: @ShariffIconSize;
+            width: @ShariffIconSize;
+        }
+
+        .share_text {
+            display: none !important;
+        }
+    }
+}

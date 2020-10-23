@@ -1,0 +1,26 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+.part-team {
+	dl {
+		.flex-flow(row wrap);
+
+		dt,
+		dd {
+			.flex(0 0 100%);
+			min-width: 100%;
+			padding: 0 0 1rem;
+		}
+	}
+
+	.linklist {
+		margin-bottom: 0;
+	}
+
+	figure {
+		a {
+			.landscape;
+		}
+	}
+
+}

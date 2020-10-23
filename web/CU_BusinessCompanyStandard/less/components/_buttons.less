@@ -1,0 +1,83 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../base/_variables-theme.less';
+@import (reference) '../base/_mixins.less';
+@import (reference) '_shadows.less';
+@import (reference) '_transitions.less';
+@import (reference) '_forms.less';
+
+////////////////////////////////////////////////////////////////////////
+// BUTTONS
+////////////////////////////////////////////////////////////////////////
+
+button,
+.button {
+	* {
+		color: inherit;
+	}
+
+	&:hover {
+		background: fade(@primary, 75%);
+	}
+	//    -webkit-box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+	//   -moz-box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+	//    box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+	border: @FormValueBorderWidth solid transparent;
+	background: @primary;
+	border-radius: 4px;
+	color: @white;
+	cursor: pointer;
+	display: inline-flex;
+	.flex(0 1 auto);
+	.font18;
+	font-weight: @fw-bold;
+	line-height: 120% !important;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+//	text-transform: uppercase;
+	vertical-align: bottom;
+	width: auto;
+
+	&:hover {
+		//        -webkit-box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25);
+		//        -moz-box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25);
+		//        box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25);
+		color: @white;
+	}
+
+	* {
+		color: inherit;
+		.fontinherit;
+		line-height: 120% !important;
+	}
+
+	&.icon {
+		&:after,
+		&:before {
+			color: inherit;
+		}
+
+		&:hover {
+			&:after,
+			&:before {
+				color: inherit;
+			}
+		}
+	}
+}
+
+/*HINU DSGVO*/
+.cookieinfo-extended {
+    .button-primary {
+        margin-right: 50px;
+    }
+
+    .button-secondary {
+        background: @white;
+        color: @black;
+        border: 1px solid @primary;
+    }
+}

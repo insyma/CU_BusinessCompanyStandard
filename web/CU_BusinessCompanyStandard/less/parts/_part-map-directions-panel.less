@@ -1,0 +1,33 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+@import (reference) '../components/_transitions.less';
+@import (reference) '../components/_forms.less';
+
+/************************************************************************************
+Map
+************************************************************************************/
+.part-directions-panel {
+    margin: 0;
+    // padding: 20px;
+    img {
+        max-width: none;
+        &.adp-marker {
+            margin: 10px;
+        }
+    }
+    table {
+        border-collapse: unset;
+        &.adp-directions {
+            width: 100%;
+        }
+        &.adp-placemark {
+            * {
+                vertical-align: middle;
+            }
+        }
+        td {
+            font-weight: inherit;
+        }
+    }
+}

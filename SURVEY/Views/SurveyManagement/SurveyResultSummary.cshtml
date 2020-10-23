@@ -1,0 +1,73 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+<!-- Show the SurveySummary entry -->
+
+@*
+    public int SummaryId;
+    public int SurveyOnlineId;
+    public int SurveyId;
+    public int SurveyProgressStateId;
+    public string ProgressStateName;
+    public int LanguageId;
+    public int ContactId;
+    public System.DateTime? StartDate;
+    public System.DateTime? FinishDate;
+    public string FirstName;
+    public string LastName;
+    public string Salutation;
+    public string Company;
+    public string Address;
+    public string Postalcode;
+    public string City;
+    public string Phone;
+    public string Email;
+    public string Info;
+    public string Product;
+    public string Headquarter;
+    public string Website;
+    public string ContactPerson;
+*@
+
+    <table class="table" cellpadding="0" cellspacing="0" style="max-width:none;">
+        <thead>
+            <tr class="cu-color-background-table-header">
+                <th class="cu-elementHeaderTableStyle cu-elementStyle" style="min-width:0px;"><a>#</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Status</a></th>
+                @*<th class="cu-elementHeaderTableStyle cu-elementStyle"><a>FirstName</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>LastName</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Salutation</a></th>*@
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Firma</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Produkt </a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Hauptsitz der Unternehmung</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Strasse</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>PLZ</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Ort</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Internetadresse</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Ansprechpartner</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Email</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Telefonnummer</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>Info</a></th>
+                <th class="cu-elementHeaderTableStyle cu-elementStyle"><a>@Html.Raw(LabelHelper.GetProgramString("LblGeneral_DateCreated"))</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="cu-cell" ng-repeat="summary in reportSurveyResultSummary" ng-click="openResultSummary(summary.SummaryId)">
+                <td class="cu-cellstyle cu-cell-text">{{$index + 1}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.ProgressStateName}}</td>
+                @*<td class="cu-cellstyle cu-cell-text">{{summary.FirstName}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.LastName}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Salutation}}</td>*@
+                <td class="cu-cellstyle cu-cell-text">{{summary.Company}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Product}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Headquarter}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Address}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Postalcode}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.City}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Website}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.ContactPerson}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Email}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Phone}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.Info}}</td>
+                <td class="cu-cellstyle cu-cell-text">{{summary.StartDate  | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+            </tr>
+        </tbody>
+    </table>

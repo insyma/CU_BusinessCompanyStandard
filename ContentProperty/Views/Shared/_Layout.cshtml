@@ -1,0 +1,197 @@
+﻿@using System.Web.Optimization
+@using System.Web.UI.WebControls
+@using Insyma.ContentProperty.Domain.Setting
+@using Insyma.ContentProperty.Domain.Label
+<!DOCTYPE html>
+@{
+    var rootScript = @Url.Content("~/Scripts");
+    var rootContent = @Url.Content("~/Content");
+
+    var languageId = 0;
+    int.TryParse(Request.QueryString["languageId"], out languageId);
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>@ViewBag.Title </title>
+
+    @*    @Styles.Render("~/InsBundles/css")*@
+    @*    <link href="~/Content/css/styles.packed.css" rel="stylesheet"/> <!--manually packed all css-->*@
+
+    @if (SettingHelper.IsIntranetEnvironmentRunning())
+    {
+        <link href="~/Content/css/icons_intranet.css" rel="stylesheet" />
+        <link href="~/Content/css/main_intranet.css" rel="stylesheet" />
+    }
+    else
+    {
+        <link href="~/Content/css/icons.css" rel="stylesheet" />
+        <link href="~/Content/css/main.css" rel="stylesheet" />
+    }
+
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/screen.css" rel="stylesheet" />
+    <link href="~/Content/css/colors.css" rel="stylesheet" />
+    <link href="~/Content/css/parts.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/css/modal.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.tagit.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery-ui-custom.css" rel="stylesheet" />
+
+
+    @*<script type="text/javascript" src="@(rootScript + "/lib/lib.packed.js")"></script>         <!--manually packed all scripts-->*@
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery-1.10.2.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery-ui.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/ins-lib/insDatepicker.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/ins-lib/insAjax.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery.browser.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery.ba-postmessage.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/tag-it.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/modal.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery-ui-i18n.min.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/json2.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jstorage.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/lib/jquery.uniform.min.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/ins-lib/insUtility.js")"></script>
+    <script type="text/javascript" src="@(rootScript + "/project/mandatory.js")"></script>
+</head>
+<body>
+    <div class="content-properties-con">
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts", false)
+
+    <script type="text/javascript">
+        var app_url = '@Url.Content("~")';
+    </script>
+    <div class="modal fade" id="confirm-save-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@LabelHelper.GetUndaLabel(languageId, "Modal_AddNewValueTitle")</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@LabelHelper.GetUndaLabel(languageId, "Modal_AddNewValueQuestion") <label id="new-value-label"></label> ?</p>
+                    <p>
+                        <input id="is-publish" onclick="return false" type="checkbox" checked />
+                        <label for="is-publish">@LabelHelper.GetUndaLabel(languageId, "Modal_AddNewValuePublish")</label>
+                    </p>
+
+                </div>
+                <div class="modal-footer">
+                    <span id="save-change" class="icon-save">@LabelHelper.GetUndaLabel(languageId, "saveLabel")</span>
+                    <span id="close-button" class="icon-cancel" data-dismiss="modal">@LabelHelper.GetUndaLabel(languageId, "closeLabel")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="data-addnew-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@LabelHelper.GetUndaLabel(languageId, "ErrorLabel")</h4>
+                </div>
+                <div class="modal-body">
+                    @LabelHelper.GetUndaLabel(languageId, "Modal_AddNewValueFail")
+                </div>
+                <div class="modal-footer">
+                    <a class="btn" data-dismiss="modal" href="#">@LabelHelper.GetUndaLabel(languageId, "closeLabel")</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="data-saved" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">@LabelHelper.GetUndaLabel(languageId, "NotificationLabel")</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@LabelHelper.GetUndaLabel(languageId, "Modal_DataSaveSuccessfully")</p>
+
+                </div>
+                <div class="modal-footer">
+                    <span class="icon-cancel" data-dismiss="modal">@LabelHelper.GetUndaLabel(languageId, "closeLabel")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        // for related list page
+        $('.action-open').click(function () {
+            $('.part-content', $(this).parent().parent()).toggle();
+            ContentProperty.SetContentHeight();
+        });
+
+        $(document).ready(function () {
+            //$("input[type='radio'], select, button, a.uniformTest, .uniform").uniform();
+        });
+
+
+        var spinner = {
+            show: function (messageLoading) {
+                if (($("div.overlay-loading").length > 0) && ($("div.overlay-loading").is(":visible"))) {
+                    var modalNum = parseInt($("div.modal-loading").attr("modalNum"));
+                    $(".modal-loading").attr("modalNum", modalNum + 1);
+                    $(".message-loading").text(messageLoading || "");
+                } else {
+                    $("body").append("<div class=\"overlay-loading\"></div>" +
+                        "<div class=\"modal-loading \"    modalNum = '0' >" +
+                        "<span class=\"icon-spinner spinner spinner-steps green \"></span>" +
+                        "<p class=\"message-loading\">" + (messageLoading || "") + "</p>" +
+                        "</div>");
+                }
+            },
+            hide: function () {
+                if ($("div.overlay-loading").length > 0) {
+                    var modalNum = parseInt($("div.modal-loading").attr("modalNum"));
+                    if (modalNum > 0) {
+                        $("div.modal-loading").attr("modalNum", modalNum - 1);
+                    } else {
+                        $("div.overlay-loading").fadeOut(500).remove();
+                        $("div.modal-loading").fadeOut(500).remove();
+                    }
+                }
+
+
+            }
+        };
+
+        jQuery.extend({
+            ajaxLoading: function () {
+                $(document).bind("ajaxSend", function (event, request, settings) {
+                    if (typeof settings.messageLoading == 'undefined') {
+                        settings.messageLoading = '';
+                    }
+                    if (settings.displayLoading === true) {
+                        spinner.show(settings.messageLoading);
+                    }
+
+
+
+                }).bind("ajaxComplete", function (event, request, settings) {
+                    if (settings.displayLoading === true) {
+                        spinner.hide();
+                    }
+                });
+            }
+        });
+
+        $.ajaxLoading();
+    </script>
+</body>
+</html>

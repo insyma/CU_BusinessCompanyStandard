@@ -1,0 +1,22 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+
+////////////////////////////////////////////////////////////////////////
+// Headerbilder
+////////////////////////////////////////////////////////////////////////
+
+.part-headerbild {
+    background: none;
+    clear: both;
+    display: block;
+    margin: 0 auto;
+//	max-width: @ContentFixedWidth;
+    overflow: hidden;
+	li {
+	    height: 300px;
+	}
+	figure {
+		.pos-absolute;
+	}
+}

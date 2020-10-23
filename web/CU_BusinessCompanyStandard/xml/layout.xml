@@ -1,0 +1,298 @@
+<layout>
+	<default_mode>magazine</default_mode>
+	<general>
+		<blank_page_background>0xeaeaea</blank_page_background>		
+	</general>
+	<!--<searchresult>
+		<border_color>0xFF5200</border_color>
+		<border_width>5</border_width>
+		<border_alpha>0.5</border_alpha>
+		<width>200</width>
+		<height>300</height>
+		<bgcolor>0x007700</bgcolor>
+		<text_color>0xFFFFFF</text_color>
+		<font_family>Verdana</font_family>
+		<font_size>13</font_size>
+		<row_height>25</row_height>
+		<hover_color>0x000099</hover_color>
+		<down_color>0x006600</down_color>
+		<selected_color>0x660000</selected_color>
+		<close_icon>close-small.png</close_icon>
+	</searchresult>-->
+	<buttons>
+		<scrollbar>
+			<limiter>
+				<color>0xFF0000</color>
+				<border>0x000000</border>
+				<width>4</width>
+				<alpha>1</alpha>
+			</limiter>
+			<handler>
+				<color>0xFF0000</color>
+				<border>0x000000</border>
+				<width>16</width>
+				<alpha>0.75</alpha>
+			</handler>
+			
+		</scrollbar>
+		<paging>
+			<next_icon>next.png</next_icon>
+			<prev_icon>prev.png</prev_icon>
+			<close_icon>close.png</close_icon>
+		</paging>
+		<printing>
+			<border_alpha>0.7</border_alpha>
+			<width>0</width>
+			<height>0</height>
+			<bgcolor>0xFF0000</bgcolor>
+			<button_bgcolor>0x00FF00</button_bgcolor>
+			<textcolor>0x000000</textcolor>
+			<font_family>Verdana</font_family>
+			<font_size>12</font_size>
+		</printing>
+	</buttons>
+	<toolbar>
+		<bgcolor>0xFFFFFF</bgcolor>
+		<margin_top>10</margin_top>
+		<margin_bottom>5</margin_bottom>
+		<padding_left>12</padding_left>
+		<padding_top>5</padding_top>		
+		<width>330</width>
+		<height>42</height>
+		<icon_path>../img/pdfViewer_icons/</icon_path>
+		<items>
+			<item>
+				<command>prev</command>
+				<icon>prev.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>pagenum</command>
+				<type>textbox</type>
+				<width>20</width>
+				<height>20</height>
+				<icon>none</icon>
+				<border>0xFF5200</border>
+				<bgcolor>0xFFFFFF</bgcolor>
+			</item>
+			<item>
+				<command>totalpage</command>
+				<type>label</type>
+				<width>15</width>
+				<height>20</height>
+				<icon>none</icon>
+			</item>
+			<item>
+				<command>next</command>
+				<icon>next.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>zoom_in</command>
+				<icon>zoomin.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>zoom_out</command>
+				<icon>zoomout.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>zoom_actual</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>zoom_fit</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>keyword</command>
+				<type>textbox</type>
+				<width>0</width>
+				<height>0</height>
+				<icon></icon>
+				<border></border>
+				<bgcolor></bgcolor>
+			</item>
+			<item>
+				<command>prev_result</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>next_result</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>fullscreen</command>
+				<icon>fullscreen.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>view_magazine</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>view_presentation</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>view_index</command>
+				<icon>index.png</icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>32</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>print</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+			<item>
+				<command>help</command>
+				<icon></icon>
+				<type>button</type>		<!--Type: seperator, Button, TextBox-->
+				<width>0</width>		<!--in pixel-->
+			</item>
+		</items>
+	</toolbar>
+	<tooltip>
+		<bgcolor>0xFFFFFF</bgcolor>
+		<color>0x393939</color>
+	</tooltip>
+	<viewport>		
+		<stage_bgcolor>0xeaeaea</stage_bgcolor>
+		<bgcolor>0xFFFFFF</bgcolor>
+		<margin_t>5</margin_t>
+		<margin_b>5</margin_b>
+		<margin_lr>5</margin_lr>
+	</viewport>	
+	<thumbnail>	
+		<bgcolor>0xeaeaea</bgcolor>
+		<border_color>0xeaeaea</border_color>	
+		<border_width>1</border_width>	
+		<height>50</height>
+		<item_width>50</item_width>
+		<item_height>40</item_height>
+		<item_border_color>0xFFFFFF</item_border_color>
+		<item_border_width>2</item_border_width>
+		<index_item_width>200</index_item_width>
+		<index_item_height>170</index_item_height>
+		<item_highlight_color>0xff4500</item_highlight_color>
+		<mark_icon>none</mark_icon>
+		<margin_t>0</margin_t>
+		<margin_b>5</margin_b>
+		<margin_left_right>5</margin_left_right>
+	</thumbnail>
+	<popup>
+		<border_color>0xFFFFFF</border_color>
+		<border_width>2</border_width>
+		<bgcolor>0xFFFFFF</bgcolor>
+		<overlay_color>0xFFFFFF</overlay_color>
+		<overlay_opacity>0.5</overlay_opacity>
+		<help_font_family>Verdana</help_font_family>
+		<help_font_size>25</help_font_size>
+	</popup>
+	<languages>
+		<lang langcode="eng">
+			<next>Next page</next>
+			<prev>Previous page</prev>
+			<zoom_in>Zoom in</zoom_in>
+			<zoom_out>Zoom out</zoom_out>
+			<zoom_actual>Zoom actual</zoom_actual>
+			<zoom_fit>Fit on screen</zoom_fit>
+			<next_result>Next result</next_result>
+			<prev_result>Previous result</prev_result>
+			<fullscreen>Fullsceen</fullscreen>
+			<help>Show help message</help>
+			<view_magazine>Magazine view</view_magazine>
+			<view_presentation>Presentation view</view_presentation>
+			<view_index>Show index</view_index>
+			<print>Print current page</print>
+			<print_left>Print left page</print_left>
+			<print_right>Print right page</print_right>
+			<print_both>Print both pages</print_both>
+		</lang>
+		<lang langcode="deu">
+			<next>vorwärts</next>
+			<prev>vorige Seite</prev>
+			<zoom_in>Zoom in</zoom_in>
+			<zoom_out>Zoom out</zoom_out>
+			<zoom_actual>Zoom tatsächlichen</zoom_actual>
+			<zoom_fit>Fit am Bildschirm</zoom_fit>
+			<next_result>Nächste Folge </next_result>
+			<prev_result>Vorheriges Ergebnis</prev_result>
+			<fullscreen>Fullsceen</fullscreen>
+			<help>Show help message</help>
+			<view_magazine>Magazine view</view_magazine>
+			<view_presentation>Presentation view</view_presentation>
+			<view_index>Show index</view_index>
+			<print>Print current page</print>
+			<print_left>Print left page</print_left>
+			<print_right>Print right page</print_right>
+			<print_both>Print both pages</print_both>
+		</lang>
+		<lang langcode="fra">
+			<next>Page suivante</next>
+			<prev>Page précédente</prev>
+			<zoom_in>Zoom avant</zoom_in>
+			<zoom_out>Zoom arrière</zoom_out>
+			<zoom_actual>Zoom réelle</zoom_actual>
+			<zoom_fit>Monter à l'écran</zoom_fit>
+			<next_result>Résultat suivant</next_result>
+			<prev_result>Résultat précédent</prev_result>
+			<fullscreen>Fullsceen</fullscreen>
+			<help>Affiche l'aide</help>
+			<view_magazine>Voir le Magazine</view_magazine>
+			<view_presentation>Voir Présentation</view_presentation>
+			<view_index>Voir index</view_index>
+			<print>Imprimer la page courante</print>
+			<print_left>Imprimer la page à gauche</print_left>
+			<print_right>Imprimer page de droite</print_right>
+			<print_both>Imprimez des pages à la fois</print_both>
+		</lang>
+		<lang langcode="ita">
+			<next>Pagina successiva</next>
+			<prev>Pagina precedente</prev>
+			<zoom_in>Zoom in</zoom_in>
+			<zoom_out>Zoom indietro</zoom_out>
+			<zoom_actual>Zoom reale</zoom_actual>
+			<zoom_fit>Adatta allo schermo</zoom_fit>
+			<next_result>Risultato Avanti</next_result>
+			<prev_result>Risultato precedente</prev_result>
+			<fullscreen>Fullsceen</fullscreen>
+			<help>Mostra il messaggio d'aiuto</help>
+			<view_magazine>Magazine vista</view_magazine>
+			<view_presentation>Presentazione vista</view_presentation>
+			<view_index>Visualizza indice</view_index>
+			<print>Stampa la pagina corrente</print>
+			<print_left>Stampa la pagina di sinistra</print_left>
+			<print_right>Stampa la pagina a destra</print_right>
+			<print_both>Stampa entrambe le pagine</print_both>
+		</lang>
+	</languages>	
+	<lang language="english">
+		<helpContent>
+		<![CDATA[<p><img src="img/close.png" width="32" height="32" hspace="5" vspace="3" align="left"/>This is <font color="#FF0000">HTML text</font> in a <b>TextArea control</b>. Use the htmlText property of the <font color="#008800">TextArea control</font> to include basic HTML markup in your text. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus quis nisl vel tortor nonummy vulputate. Quisque sit amet eros sed purus euismod tempor. </p>
+<br><p><img src="img/next.png" width="32" height="32" hspace="5" vspace="3" align="left"/>Morbi tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Curabitur diam. Suspendisse at purus in ipsum volutpat viverra. Nulla pellentesque libero id libero. Proin pretium suscipit lectus. Donec in sapien vel nulla egestas semper. Mauris massa. In aliquet sem ac libero. In eget orci. Sed feugiat. Vestibulum vel felis in lectus imperdiet scelerisque. </p>
+<p>Vestibulum vestibulum neque at est. Etiam purus quam, laoreet quis, accumsan sed, porttitor ut, erat. Proin volutpat. <img src="img/presentation_view.png" width="32" height="32" hspace="2" vspace="2" align="absmiddle"/>In facilisis dolor gravida felis. Curabitur nisi lacus, euismod non, pharetra et, mollis a, tellus.  Donec lectus orci, viverra at, luctus ac, sodales id, quam. <a href="http://http://swissitbridge.ch" target="_blank"><i><u>Phasellus faucibus lacus ut est</u></i></a>. Curabitur id diam eu massa bibendum lobortis. Vivamus quis elit. Donec mi justo, dictum vitae, cursus sit amet, lacinia consectetuer, d ut, vulputate sed, molestie et, arcu.</p>
+<br>Nullam mi.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus quis nisl vel tortor nonummy vulputate. Quisque sit amet eros sed purus euismod tempor. Morbi tempor. <br><br>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Curabitur diam. Suspendisse at purus in ipsum <font size="13"><b>volutpat viverra</b></font>.		
+		]]></helpContent>
+	</lang>
+</layout>

@@ -1,0 +1,29 @@
+/* Settings */
+#insymagrid > .centergrid {
+	margin: 0 auto;
+}
+#insymagrid > .gridwidth {
+    width: 960px;
+}
+/* Basics */
+#insymagrid {
+	left: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+#insymagrid > ul {
+ 	display: table;
+    height: 100%;
+    table-layout: fixed;
+}
+#insymagrid li {
+	border-right: 1px solid rgba(255,0,0,.2);
+    display: table-cell;
+    height: 100%;
+}
+#insymagrid li:first-child {
+	border-left: 1px solid rgba(255,0,0,.2);
+}

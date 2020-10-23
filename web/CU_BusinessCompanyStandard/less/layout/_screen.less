@@ -1,0 +1,239 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+
+
+////////////////////////////////////////////////////////////////////////
+// CSS
+// Created:    2018
+// Creator:    MGUM, SCHM
+// Editor:     MGUM, SCHM
+////////////////////////////////////////////////////////////////////////
+@basefont: ~"@{rootfontsize}px";
+
+html {
+    // root size
+    font-size: @basefont;
+}
+body {
+    color: @subtext;
+    background-color: @background-body;
+    display: block;
+    font-size: @basefont;
+    line-height: 1.5;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#root {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+body, select, input, textarea {
+    font-family: @font-base;
+}
+// body * {
+//    font-size: initial;
+// }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .lead {
+	box-decoration-break: clone;
+	display: block;
+	font-weight: 600;
+	margin: @margin-element-top 0 @margin-element-bottom;
+
+	.part & {
+		color: @text;
+	}
+}
+.lead {
+	margin-top: @margin-element-bottom;
+}
+// FONT: sizes
+h1, .h1 {
+    @media screen and (min-width: @mq-size-700) {
+        .font44;
+    }
+
+    .font36;
+}
+
+h2, .h2 {
+    @media screen and (min-width: @mq-size-700) {
+        .font36;
+    }
+
+    .font28;
+}
+
+h3, .h3 {
+    @media screen and (min-width: @mq-size-700) {
+        .font28;
+    }
+
+    .font24;
+}
+
+h4, .h4 {
+    @media screen and (min-width: @mq-size-700) {
+        .font20;
+    }
+}
+
+h5, .h5 {
+    .font18;
+}
+
+h6, .h6 {
+    .fontbase;
+}
+
+.lead {
+    .fontbase;
+}
+
+.p {
+    .fontbase;
+}
+
+// HTML: def
+.href {
+    text-decoration: none;
+}
+a {
+    margin-bottom: -6px;
+    margin-top: -6px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+a,
+a:focus,
+.href {
+    .href;
+    color: @primary;
+}
+
+a:hover,
+.href:hover {
+    color: @black;
+}
+a:after,
+a:before,
+.href:after,
+.href:before,
+a:hover:after,
+a:hover:before,
+.href:hover:after,
+.href:hover:before {
+    color: inherit;
+}
+
+p {
+    margin-bottom: 20px;
+}
+// p, p.lead, div.lead, .part-team a, .linklist a {
+//    -webkit-hyphens: auto;
+//    -moz-hyphens: auto;
+//    -ms-hyphens: auto;
+//    hyphens: auto;
+//}
+strong,
+.strong
+{
+    font-weight: bold;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid @trenner;
+    clear: none;
+    height: 1px;
+    margin: 20px 0;
+    overflow: hidden;
+    width: auto;
+}
+hr.clear {
+    border: none !important;
+    border-color: transparent !important;
+    clear: both;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+}
+
+blockquote:before {
+    content: open-quote;
+}
+blockquote:after {
+    content: close-quote;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// specific elements
+////////////////////////////////////////////////////////////////////////
+a,
+a:before,
+.href,
+.href:before,
+#insymaOverlayHolder .icon:before,
+input:focus,
+textarea:focus, 
+select:focus,
+div.selector:focus,
+div.checker:focus,
+div.button:focus,
+div.radio:focus,
+div.uploader:focus,
+map area {
+  outline: 0 none;
+}
+.cleared,
+body p.cleared
+{
+    padding-bottom: 0;
+}
+h1:empty,
+div.inhalt > div:empty, 
+p:empty,
+form div:empty
+{
+    display: none;
+}
+label:empty {
+    height: 1px;
+}
+.ValidationSummary,
+.hide,
+.invisible,
+.insymaSpecialOverlay .insymaOverlayOnly,
+body .ui-datepicker
+{
+    display: none;
+}
+
+.insymaSpecialOverlay,
+.ui-datepicker-trigger,
+form input[type="button"], 
+form input[type="submit"], 
+button,
+.href,
+.href:before
+{
+    cursor: pointer;
+}
+div.ConNav,
+#insymaOverlay .insymaOverlayOnly,
+.show
+{
+    display: block;
+}
+
+
+// flex aditions 
+.flex-push {
+    flex: 1;
+}

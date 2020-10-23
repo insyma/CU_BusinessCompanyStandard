@@ -1,0 +1,25 @@
+﻿
+{
+	"Data":[ {"Id":0,"PageId":38688,"ConId":38539,"URL_Prev_Detail":"/CU_BusinessCompanyStandard/web/CU_BusinessCompanyStandard/pages/page_default_seitenleiste_cl.aspx?Page_id=38688&Lang=0&preview=true&WebId=2","URL_Live_Detail":"/CU_BusinessCompanyStandard/deu/erster-eintrag-38688.shtml","URL_Prev_Snippet":"/CU_BusinessCompanyStandard/web/CU_BusinessCompanyStandard/pages/page_onlyContent.aspx?Page_id=38695&Lang=0&preview=true&WebId=2","URL_Live_Snippet":"/CU_BusinessCompanyStandard/includes/deu/erster-eintrag-38695-content.shtml","Author":"","DateContent":"08.05.2019","DateValidFrom":"","DateValidTo":"","DateAppFrom":"","DateAppTo":"","Origin":"","Company":"","Tags":"","Themes":"","Types":"News","Title":"Erster Eintrag"},{"Id":1,"PageId":38731,"ConId":38539,"URL_Prev_Detail":"/CU_BusinessCompanyStandard/web/CU_BusinessCompanyStandard/pages/page_default_seitenleiste_cl.aspx?Page_id=38731&Lang=0&preview=true&WebId=2","URL_Live_Detail":"/CU_BusinessCompanyStandard/deu/zweiter-eintrag-38731.shtml","URL_Prev_Snippet":"/CU_BusinessCompanyStandard/web/CU_BusinessCompanyStandard/pages/page_onlyContent.aspx?Page_id=38738&Lang=0&preview=true&WebId=2","URL_Live_Snippet":"/CU_BusinessCompanyStandard/includes/deu/zweiter-eintrag-38738-content.shtml","Author":"","DateContent":"09.05.2019","DateValidFrom":"","DateValidTo":"","DateAppFrom":"","DateAppTo":"","Origin":"","Company":"","Tags":"","Themes":"","Types":"News","Title":"Zweiter Eintrag"}],
+    "Comments" : [{
+        "Id": "eindeutige ID intern / fortlaufend",
+        "PageId": "CU-ID der Detailseite",
+        "ConId": "CU-ID des Contentlist-Objektes",
+        "URL_Prev_Detail" : "URL Detailseite Preview",
+        "URL_Live_Detail" : "URL Detailseite Live",
+        "URL_Prev_Snippet" : "URL Snippet Overview Preview",
+        "URL_Live_Snippet" : "URL Snippet Overview Live",
+        "Author" : "Author",
+        "DateContent" : "Datum Inhalt",
+        "DateValidFrom" : "gültig ab",
+        "DateValidTo" : "gültig bis",
+        "DateAppFrom" : "Termin/Treffen ab",
+        "DateAppTo" : "Termin/Treffen bis",
+        "Origin" : "Herkunft",
+        "Company" : "Firma",
+        "Tags" : "Stichwörter",
+        "Themes" : "Themen",
+        "Types" : "Inhaltstyp",
+        "Title" : "Titel"
+    }]
+}

@@ -1,0 +1,151 @@
+﻿@using System
+@using System.Collections.Generic
+@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="4">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">@Model.Comment</p>
+
+        <div class="table">
+
+            <ul class="tablerow tablehead">
+                <li class="tablecell category">&nbsp;</li>
+                @{
+                    if (!string.IsNullOrEmpty(Model.Header))
+                    {
+
+                        string[] separators = new string[] { "#@#" };
+                        string[] headers = Model.Header.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string header in headers)
+                        {
+
+                            <li class="tablecell">@header </li>
+                        }
+                    }
+                }
+            </ul>
+
+            @{
+                List<udsp_SURVEY_QuestionOnline_Result> questions = SurveyOnlineRepository.GetQuestionOnlineByParent(@Model.Id, (int)@ViewBag.languageId);
+                foreach (udsp_SURVEY_QuestionOnline_Result question in questions)
+                {
+                    List<udsp_SURVEY_DependencyAndGroup_Result> questionDependencies = SurveyOnlineRepository.LoadQuestionDependencies(question.Id);
+
+                    DependencyItem questionRootGroup = DependencyItem.ConvertDependencies(questionDependencies, null, false).SingleOrDefault();
+
+                    <ul class="tablerow table_item" data-questionid="@question.Id" questionid="@question.OriginalQuestionId" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(questionRootGroup))'>
+
+                        <li questiontype="8" class="tablecell category">@question.QuestionName</li>
+
+                        @{
+                            List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(question.Id, (int)@ViewBag.languageId);
+
+                            string randomName = Guid.NewGuid().ToString();
+
+                            foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                            {
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Radio)
+                                {
+                                    <li class="tablecell" answerid="@answer.Id">
+                                        <div class="radio">
+                                            @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId,question.Id,answer.Id))
+                                            {
+                                                <span class="checked">
+                                                    <input name="@randomName" type="radio" checked />
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>
+                                                    <input name="@randomName" type="radio" />
+                                                </span>
+                                            }
+
+                                        </div>
+                                    </li>
+                                }
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.CheckBox)
+                                {
+                                    <div class="noinformation" answerid="@answer.Id">
+                                        <div class="checker">
+                                            <span>
+                                                <input value="1" type="checkbox" />
+                                            </span>
+                                        </div>
+                                        <span>@answer.AnswerName</span>
+                                    </div>
+                                }
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.MultiRowText)
+                                {
+                                    <div answerid="@answer.Id">
+                                        <textarea name="textarea" cols="50" rows="3" maxlength="500">@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,question.Id,answer.Id)</textarea>
+                                    </div>
+                                    <div class="counter">
+                                        <p><span>500</span> Zeichen verbleibend</p>
+                                    </div>
+                                }
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.MultiRowTextNoRequired)
+                                {
+                                    <div answerid="@answer.Id">
+                                        <textarea name="textarea" cols="50" rows="3" maxlength="500" norequired="1">@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,question.Id,answer.Id)</textarea>
+                                    </div>
+                                    <div class="counter">
+                                        <p><span>500</span> Zeichen verbleibend</p>
+                                    </div>
+                                }
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.RadioWithTextbox)
+                                {
+                                    <li answerid="@answer.Id" class="AndereRadio">
+                                        <dl>
+                                            <dt>
+                                                <div class="radio">
+                                                    <span>
+                                                        <input class="otherRadio" name="question_@Model.Id" type="radio" />
+                                                    </span>
+                                                </div>
+                                            </dt>
+                                            <dd>
+                                                <label for="@answer.AnswerName">@answer.AnswerName</label>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                }
+
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Text)
+                                {
+                                    <li answerid="@answer.Id" class="AndereRadioText">
+                                        <input type="text" class="otherRadioText" disabled="disabled" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,question.Id,answer.Id)" />
+                                    </li>
+                                }
+                                if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.TextNoRequired)
+                                {
+                                    <li answerid="@answer.Id" class="AndereRadioText">
+                                        <input type="text" class="otherRadioText" disabled="disabled" norequired="1" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,answer.Id)" />
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                }
+            }
+        </div>
+    </div>
+</div>

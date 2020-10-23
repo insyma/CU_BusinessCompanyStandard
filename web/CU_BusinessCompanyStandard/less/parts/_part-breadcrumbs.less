@@ -1,0 +1,41 @@
+@import (reference) "../base/_variables.less";
+@import (reference) "../components/_icons.less";
+
+.part-breadcrumbs {
+	.flex(1 0 100%);
+	margin-top: @margin-part;
+	ol {
+		margin-bottom: @margin-part / 2;
+		width: 100%;
+
+		li {
+			display: inline-block;
+			padding-right: calc(@icon-abstand / 2);
+			position: relative;
+			vertical-align: top;
+
+			a {
+				padding-left: @icon-abstand;
+				position: relative;
+				vertical-align: top;
+
+				&:before {
+					.hasicon;
+					content: "\e208";
+					left: 0;
+					line-height: normal;
+					position: absolute;
+					top: 1px;
+				}
+			}
+
+			&:first-child {
+				a {
+					&:before {
+						content: "\e88a" !important;
+					}
+				}
+			}
+		}
+	}
+}

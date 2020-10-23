@@ -1,0 +1,222 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../iconfont/style.less';
+@import (reference) "../layout/_media-queries.less";
+/************************************************************************************
+Settings
+************************************************************************************/
+ul, ol {
+//    list-style: none;
+    padding: 0;
+}
+
+.listpadding {
+    padding: 0 0 0 @icon-abstand;
+}
+
+/************************************************************************************
+Listen
+************************************************************************************/
+.list,
+.liststyle,
+.linklist,
+.ValidationSummary {
+	ol, ul, &ul {
+		counter-reset: ol-counter;
+		margin-bottom: @margin-element-bottom;
+	}
+
+	li {
+		display: block;
+		margin: @margin-element-bottom / 4 0;
+		overflow: hidden;
+		position: relative;
+		.listpadding;
+
+		.icon {
+			&:before {
+				content: "\f07f";
+				left: 1px;
+				position: absolute;
+			}
+		}
+	}
+
+	ol {
+		li {
+			&:before {
+				content: counter(ol-counter)".";
+				counter-increment: ol-counter;
+				font-family: inherit;
+				left: 0;
+				position: absolute;
+				top: auto;
+			}
+		}
+	}
+}
+
+.ValidationSummary {
+    li {
+        &:before {
+            left: 1px;
+            position: absolute;
+        }
+    }
+}
+
+.list {
+    li {
+        padding: 0;
+    }
+}
+
+.linklist {
+    li {
+        position: relative;
+    }
+}
+
+.linklist a:before,
+.liststyle li:before {
+    left: 1px;
+    position: absolute;
+    top: 0;
+    width: @icon-abstand;
+}
+
+.liststyle {
+    a {
+		display: inline;
+		padding-left: 0;
+		word-break: break-word;
+		&:before {
+            display: none;
+        }
+        &.button {
+			display: inline-block;
+			padding: 15px 35px;
+        }
+    }
+
+    li {
+        position: relative;
+
+        &:before {
+            content: "\e208";
+        }
+    }
+}
+
+
+/************************************************************************************
+Definitionlists
+************************************************************************************/
+dl {
+    .flex-display;
+    .flex-flow(row wrap);
+
+    @media screen and (max-width: @mq-size-480) {
+        dt, dd {
+            .flex(1 0 100);
+            max-width: ~"calc(100% -  @{icon-abstand})";
+            min-width: ~"calc(100% -  @{icon-abstand})";
+        }
+    }
+
+    dt {
+        .flex(0 0 15%);
+        // max-width: 100px;
+        min-width: 100px;
+        padding-right: @icon-abstand;
+
+        &.icon {
+            .flex(0 0 @icon-abstand);
+            max-width: @icon-abstand;
+            min-width: @icon-abstand;
+            padding: 0;
+
+            &:before {
+                padding-left: 1px;
+            }
+        }
+    }
+
+    dd {
+        .flex(1);
+    }
+}
+
+/************************************************************************************
+Icons
+************************************************************************************/
+.linklist {
+	li.link.download {
+		a {
+			&:before {
+				content: @icon-get_app;
+			}
+		}
+	}
+}
+/* PDF */
+a.pdf {
+	&:before {
+		content: @icon-file-pdf-o !important;
+	}
+}
+/* Excel */
+a.xls,
+a.xlsx {
+	&:before {
+		content: @icon-file-excel-o !important;
+	}
+}
+
+/* Archives*/
+a.zip,
+a.rar,
+a.sit {
+	&:before {
+		content: @icon-file-archive-o !important;
+	}
+}
+
+/* MS Word */
+a.doc,
+a.docx {
+	&:before {
+		content: @icon-file-word-o !important;
+	}
+}
+
+/* MS Powerpoint */
+a.ppt,
+a.pptx,
+a.pps {
+	&:before {
+		content: @icon-file-pdf-o !important;
+	}
+}
+
+/* Images */
+a.jpg,
+a.jpeg,
+a.gif,
+a.png,
+a.tif,
+a.tiff,
+a.psd {
+	&:before {
+		content: @icon-file-photo-o !important;
+	}
+}
+/* MS Word */
+a.mov,
+a.avi,
+a.m4v,
+a.mp4 {
+	&:before {
+		content: @icon-file-movie-o !important;
+	}
+}

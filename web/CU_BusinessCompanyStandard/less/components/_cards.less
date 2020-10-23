@@ -1,0 +1,131 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '_shadows.less';
+@import (reference) '_transitions.less';
+
+// counts
+    @cardgap: 20px;
+.item-count {
+
+    &-2 {
+        .card {
+            @media screen and (min-width: @mq-size-700) {
+                .col-(2, @cardgap);
+            }
+        }
+    }
+
+    &-3 {
+        .card {
+            @media screen and (min-width: @mq-size-700) {
+                .col-(3, @cardgap);
+            }
+        }
+    }
+
+    &-4 {
+        .card {
+            @media screen and (min-width: @mq-size-700) {
+                .col-(4, @cardgap);
+            }
+        }
+    }
+
+    &-5 {
+        .card {
+            @media screen and (min-width: @mq-size-700) {
+                .col-(5, @cardgap);
+            }
+        }
+    }
+}
+// containers
+.cards {
+    padding: .1px 0; // FIX, dass Konstrukt korrekt mit Container abschliesst - Alternative > border: 1px solid @transparent; border-width: 1px 0;
+    @media print {
+        overflow: hidden;
+    }
+
+    &-con {
+        .columns(@cardgap);
+    }
+}
+
+
+// card
+.card {
+    background-color: @lightgrey;
+    .col-(1, @cardgap);
+    .mdc-elevation--z2;
+    .mdc-elevation-transition;
+
+    @media print {
+        float: left !important;
+    }
+
+    &-linked {
+        &:hover {
+            .mdc-elevation--z4;
+            background-color: fade(@lightgrey, 90%);
+        }
+    }
+
+    &-con {
+        .flex-display;
+        .flex-flow(column);
+        height: 100%;
+    }
+    // base
+    //    &-header {
+    //    }
+    &-body {
+        margin-top: -1px;
+        padding: 20px;
+    }
+
+    &-footer {
+        margin-top: auto;
+        padding: 0 20px 20px;
+    }
+    // if CSS object fit
+    //    &-image {
+    //        .ratio;
+    //        .ratio-16-9;
+    //        img {
+    //            height: 100%;
+    //           object-fit: cover;
+    //            width: 100%;
+    //        }
+    //    }
+    &-image {
+        &.bg-img {
+            .ratio;
+            .ratio-16-9;
+        }
+    }
+    // items
+    &-link {
+        display: block !important;
+        .pos-absolute !important;
+        padding: 0 !important;
+        overflow: hidden;
+        text-indent: -9999px;
+        z-index: @z1;
+
+        &:before {
+            display: none !important;
+        }
+
+        &-footer {
+            &:after {
+                content: "";
+                .pos-absolute !important;
+            }
+        }
+    }
+
+    .card-title {
+        margin: 0 0 20px;
+    }
+}

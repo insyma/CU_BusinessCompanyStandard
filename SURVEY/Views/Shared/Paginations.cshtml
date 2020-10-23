@@ -1,0 +1,23 @@
+﻿@using System.Reflection.Emit
+@using Insyma.SurveyManagement.UI.UIHelper
+
+<div class="pagination" ng-show="pagedItems['@Model'].length > 1">
+    <ul>
+        <li style="color: #808080; font-size: 12px; line-height: 26px;">@LabelHelper.GetProgramString("LblGeneral_Page")</li>
+        <li ng-class="{disabled: currentPage == 0}">
+            <a href @string.Format(" ng-click=firstPage('{0}')", @Model) >&lt;&lt;</a>
+        </li>
+        <li ng-class="{disabled: currentPage == 0}">
+            <a href  @string.Format("ng-click=prevPage('{0}')",Model) >&lt;</a>
+        </li>
+        <li ng-repeat="n in range(pagedItems['@Model'].length)" ng-class="{active: n == currentPage['@Model']}" ng-click="setPage('@Model')" >
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+            <a href @string.Format("ng-click=nextPage('{0}')",Model) >&gt;</a>
+        </li>
+        <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+            <a href @string.Format("ng-click=lastPage('{0}')",Model) >&gt;&gt;</a>
+        </li>
+    </ul>
+</div>

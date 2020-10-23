@@ -1,0 +1,154 @@
+﻿@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="6"><span>@Model.QuestionName</span> </div>
+	
+    <div class="answer formcon form">
+        <p class="describe">
+            @Model.Comment
+        </p>
+		<input type="hidden" name="cat_hidden" id="cat_hidden" value="1" />
+        <ul>
+            <li fieldname="Ich bin" questionid="146">
+                <label>Ich bin <em>*</em></label>
+                <ol class="CheckBox vertical">
+                    <li answerid="71" class="CheckBox" style="margin-bottom: 10px;">
+                        <div class="checker">
+                            <span>
+                                <input type="checkbox" value="Privatperson" id="cu34867x1" name="SegmentAnswer1">
+                            </span>
+                        </div>
+                        <label for="cu34867x1">Privatperson</label>
+                    </li>
+                    <li answerid="71" class="CheckBox" style="margin-bottom: 10px;">
+                        <div class="checker">
+                            <span>
+                                <input type="checkbox" value="Firma" id="cu34867x2" name="SegmentAnswer2">
+                            </span>
+                        </div>
+                        <label for="cu34867x2">Firma</label>
+                    </li>
+                    <li answerid="71" class="CheckBox" style="margin-bottom: 10px;">
+                        <div class="checker">
+                            <span>
+                                <input type="checkbox" value="Verein" id="cu34867x3" name="SegmentAnswer3">
+                            </span>
+                        </div>
+                        <label for="cu34867x3">Verein</label>
+                    </li>
+                </ol>
+                <div style="display: none" id="vldSegment">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanSalutationID">Bitte wählen</span>
+                </div>
+            </li>
+
+            <li fieldname="Anrede" questionid="146">
+                <label>Anrede <em>*</em></label>
+                <ol class="RadioButton vertical">
+                    <li answerid="71">
+                        <div class="radio">
+                            <span>
+                                <input type="radio" value="1" id="cu34867" name="SalutationID">
+                            </span>
+                        </div>
+                        <label for="cu34867">Herr</label>
+                    </li>
+                    <li answerid="72">
+                        <div class="radio">
+                            <span>
+                                <input type="radio" value="2" id="cu34868" name="SalutationID">
+                            </span>
+                        </div>
+                        <label for="cu34868">Frau</label>
+                    </li>
+                </ol>
+                <div style="display: none" id="vldSalutationID">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanSalutationID"></span>
+                </div>
+            </li>
+            <li fieldname="Name" answerid="62">
+                <label for="cu34869">Name <em>*</em></label>
+                <input type="text" id="cu34869" name="SurName">
+                <div style="display: none" id="vldEmptySurName">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptySurName">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li fieldname="Vorname" answerid="63">
+                <label for="cu34871">Vorname <em>*</em></label>
+                <input type="text" id="cu34871" name="FirstName">
+                <div style="display: none" id="vldEmptyFirstName">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyFirstName">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <!--li class="optionalMandatory" fieldname="Adresse" ismandatory="1" answerid="65">
+        <label for="cu34873">Strasse <em>*</em></label>
+        <input type="text" id="cu34873" name="Address">
+        <div id="vldEmptyAddress" class="hidden">
+            <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+        </div>
+    </li>
+
+    <li class="optionalMandatory" fieldname="PLZ" ismandatory="1" answerid="66">
+        <label for="cu34875">PLZ <em>*</em></label>
+        <input type="text" id="cu34875" name="PLZ">
+        <div id="vldEmptyPLZ" class="hidden">
+            <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+        </div>
+    </li>
+    <li class="optionalMandatory" fieldname="Ort" ismandatory="1" answerid="67">
+        <label for="cu34877">Ort <em>*</em></label>
+        <input type="text" id="cu34877" name="City">
+        <div id="vldEmptyCity" class="hidden">
+            <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+        </div>
+    </li-->
+
+            <li fieldname="E-Mail" answerid="69">
+                <label for="cu34881">E-Mail <em>*</em></label>
+                <input type="text" id="cu34881" name="Email">
+                <div style="display: none" id="vldEmptyEmail">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyEmail"></span>
+                </div>
+                <div style="display: none" id="vldEmail"><span class="InLineValidateCaption" id="vldSpanEmail">Ung&uuml;ltiges Format.</span></div>
+            </li>
+            <li answerid="74">
+                <label for="chkReceiveByNewsletter">Ich möchte gerne weitere Informationen per elektronischen Newsletter erhalten.</label>
+                <div class="checker">
+                    <span>
+                        <input value="2" type="checkbox" id="chkReceiveByNewsletter" checked="checked" />
+                    </span>
+                </div>
+            </li>
+
+
+            <li answerid="70" style="padding-top: 10px;">
+                <label for="cu34883">M&ouml;chten Sie uns noch etwas mitteilen? </label>
+                <textarea id="cu34883" fieldname="info" style="width: auto; height: auto;" class="FormCustomLayout" cols="100" rows="5"
+                          name="Commentary"></textarea>
+            </li>
+
+            <li fieldname="Datenschutz">
+
+                <label>*</label>
+                <ol class="CheckBox vertical" style="max-width:65%;">
+                    <li answerid="71" class="CheckBox" style="margin-bottom: 10px;">
+                        <div class="checker">
+                            <span>
+                                <input value="1" type="checkbox" id="chkPrivacy" name="chkPrivacy" />
+                            </span>
+                        </div>
+                        <label for="chkPrivacy">Ich stimme zu, dass meine persönlichen Daten zur Weiterverarbeitung meiner Anfrage von Tropenhaus Wolhusen gespeichert werden. Die Daten sind nur zur Weiterverarbeitung Ihrer Anfrage notwendig. Ihre Daten werden nicht an Dritte weitergegeben oder für Werbezwecke verwendet. <a href="/deu/datenschutzerklaerung_122270.shtml" style="color:#F5A434;" target="_blank" title="Datenschutzerklärung">Datenschutzerklärung</a>.</label>
+                    </li>
+                </ol>
+                <div id="vldPrivacy" style="display: none" class="InLineValidate"><span id="vldSpanPrivacy" class="InLineValidateCaption">Bitte bestätigen!</span></div>
+            </li>
+
+        </ul>
+    </div>
+</div>

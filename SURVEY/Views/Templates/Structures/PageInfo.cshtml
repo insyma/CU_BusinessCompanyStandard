@@ -1,0 +1,54 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.Helper;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_StructureOnline_Result
+
+@{
+    Layout = null;
+}
+
+@{
+    Insyma.SurveyManagement.DAL.SurveyStructureImages images = SurveyOnlineRepository.LoadStructureImageOnline(Model.Id, (int)ViewBag.languageId);
+    SurveyStructureTexts texts = SurveyOnlineRepository.LoadStructureTextOnline(Model.Id, (int)ViewBag.languageId);
+
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadStructureDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+<div class="page default pageinfo" data-pageid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div class="startseite_info">
+        <h2>@Model.StructureName</h2>
+    </div>
+    <div class="white_div textcon">
+        @*<h3 class="green">
+            <a>
+                @if (texts.Count > 0)
+                {
+                    @Html.Raw(texts[0].Name);
+                }
+            </a>
+        </h3>*@
+        <div class="nopadding">
+            <span class="imagewrap right">
+                @if (images.Count > 0)
+                {
+                    <img src="@UtilityHelper.GetImageRelativePath(ViewBag.imageFolder,Model.OriginalStructureId,ViewBag.languageId,images[0].FileName,ViewBag.fileFolder)" />
+                }
+            </span>
+            @if (texts.Count > 0)
+            {
+                @Html.Raw(texts[0].Value)
+            }
+
+            <div style="display: block;" class="wkButton">
+                <span class="buttonPrev"><input value="Zurück" type="button" class="active" /></span>
+                <span class="buttonNext"><input value="Weiter" type="button" class="active"/></span>
+            </div>
+        </div>
+        
+    </div>
+</div>

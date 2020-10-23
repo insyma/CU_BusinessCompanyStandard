@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+html {
+	border:0;
+    margin:0;
+    padding:0;
+    outline:0;
+}
+body {
+    font-size: 14px;
+    font-family: "Syntax", Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0
+}
+.address {
+    font-size: 12px;
+    line-height: 14px;
+}
+.address_empfanger { line-height: 18px; }
+.titel {
+    font-size: 18px;
+    font-weight: bold;
+}
+.artikel_header {
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    vertical-align:bottom;
+}
+.artikel_footer { border-top: 1px solid black; }
+table tr td { vertical-align: top; }
+.left_col { width:115px; }
+.right_col { width:610px; }
+td.col3,
+td.col4,
+td.col5,
+td.col6
+{
+	text-align:right;
+}
+</style>
+</head>
+
+<body>
+<div>
+    <table border=0 cellpadding=0 cellspacing=0 style='border-collapse: collapse; table-layout:fixed;'>
+        <tr>
+            <td class="left_col">&nbsp;</td>
+            <td class="right_col"><table border=0 cellpadding=0 cellspacing=0 style='border-collapse: collapse; table-layout:fixed; width:100%;'>
+                    <tr height=17 style='height:12.75pt'>
+                        <td width="250" height=17 class="address_empfanger" style='height:12.75pt'>{{Order_DTO.BillingAddress.Salutation}}<br />
+                            {{Order_DTO.BillingAddress.FirstName}} {{Order_DTO.BillingAddress.LastName}}<br />
+                            {{Order_DTO.BillingAddress.Address1}}<br />
+                            {{Order_DTO.BillingAddress.PostalCode}} {{Order_DTO.BillingAddress.City}}</td>
+                        <td height="5" colspan=2>&nbsp;</td>
+                    </tr>
+                    <tr class=xl794953 height=15 style='height:11.25pt'>
+                        <td height=15 class=xl804953 style='height:30.25pt'></td>
+                        <td height="4" colspan=2 class=address>&nbsp;</td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt'>
+                        <td style='height:12.75pt;'></td>
+                        <td height="8" colspan=2 class=address><table border="0" cellpadding="0" cellspacing="0" width="100%" style='border-collapse: collapse;table-layout:fixed;'>
+                            <tr>
+                                <td class="address" colspan="2">SachbearbeiterIn:</td>
+                                <td colspan="2" class="address">Margrit von Allmen</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="address">E-Mail SachbearbeiterIn:</td>
+                                <td colspan="2" class="address">Margrit.vonallmen@tropenhaus-wolhusen.ch</td>
+                            </tr>
+                            <tr>
+                                <td class="address" colspan="2">Telefon SachbearbeiterIn:</td>
+                                <td colspan="2" class="address">041 925 77 99</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="address">Web-Rechnungs-Nr.:</td>
+                                <td colspan="2" class="address">{{Order.OrderNr}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="address">Rechnungsdatum:</td>
+                                <td colspan="2" class="address">{{Order.OrderDate}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="address">MwSt-Nr.:</td>
+                                <td colspan="2" class="address">CHE-103.066.450 MWST</td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                    <tr height=17 style='height:60.75pt'>
+                        <td height=17 style='height:60.75pt' colspan=3></td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt'>
+                        <td height=17 class=titel colspan=3 style='height:12.75pt'>Lieferschein</td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt'>
+                        <td height=17 style='height:12.75pt' colspan=3></td>
+                    </tr>
+                    <tr style='height:26.25pt' height=35>
+                        <td height=35 colspan="3" style='height:26.25pt'><table border=0 cellpadding=0 cellspacing=0 width="100%" style='border-collapse: collapse;table-layout:fixed;'>
+                                <tr>
+                                    <td width="80" class=artikel_header>Artikel-Nr.</td>
+                                    <td class=artikel_header>Bezeichnung</span></td>
+                                    <td width="60" align="right" class=artikel_header>Anzahl</td>
+                                    <td width=93 align="right" class=artikel_header>Einzelpreis <br>
+                                        inkl. MwSt</td>
+                                    <td width=90 align="right" class=artikel_header>Betrag                                         CHF</td>
+                                    <td width="70" align="right" class="artikel_header">MwSt %</td>
+                                </tr>
+                                <tr height=20>
+                                    <td height=20 colspan="6">&nbsp;</td>
+                                </tr>
+                                {{Order.SimpleProductRows}}
+                                {{Order_DTO.ShippingCostsRow}}
+                                {{Order_DTO.LowQuantitySurchargeRow}}
+                                <tr height=20>
+                                    <td height=20 colspan="6">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class=artikel_footer>&nbsp;</td>
+                                    <td class=artikel_footer colspan=3>Rechnungsbetrag inkl. MwSt</td>
+                                    <td align="right" class=artikel_footer>{{Order.TotalCostsFormatted}}</td>
+                                    <td align="right" class=artikel_footer>&nbsp;</td>
+                                </tr>
+                                {{Order.TaxPercentagesRows}}
+                        </table></td>
+                    </tr>
+                    <tr height=18 style='height:13.5pt'>
+                        <td height=18 style='height:13.5pt' colspan=3></td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt'>
+                        <td height=17 style='height:12.75pt' colspan=3>{{Order_DTO.Comment}}</td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt'>
+                        <td colspan=3></td>
+                    </tr>
+                    <tr height=17 style='height:12.75pt; page-break-inside:avoid; page-break-after:auto;'>
+                        <td colspan=3 style='height:12.75pt'>
+                       	
+                            <table border=0 cellpadding=0 cellspacing=0 width="100%" style='border-collapse: collapse; table-layout:fixed;'>
+                                <tr height=17 style='height:12.75pt'>
+                                    <td height=17 style='height:12.75pt'></td>
+                                    <td width="81" colspan="-2"></td>
+                                </tr>
+                                <tr height=17 style='height:12.75pt'>
+                                    <td height=17 colspan=2 style='height:12.75pt'>Wir danken für Ihre Bestellung und wünschen Ihnen exotisch-tropische Genüsse.</td>
+                                </tr>
+                                <tr height=17 style='height:12.75pt'>
+                                    <td height=17 style='height:12.75pt' colspan=2></td>
+                                </tr>
+                                <tr height=17 style='height:12.75pt'>
+                                    <td height=17 colspan=2 style='height:12.75pt'><span class="normalTD" style="height:12.75pt">Ihr Tropenhaus
+                            Wolhusen Team</span></td>
+                                </tr>
+                            </table>
+                          
+                        </td>
+                    </tr>
+                </table></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

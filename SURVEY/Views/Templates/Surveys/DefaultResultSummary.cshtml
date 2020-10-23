@@ -1,0 +1,129 @@
+﻿@using System.Collections.Generic;
+@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_SurveyOnline_Result
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="de"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="de"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 ie89" lang="de"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 ie89" lang="de"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="de">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta http-equiv="refresh" content="7200">
+
+    <title>BVK Umfrage</title>
+
+    <meta content="Home,BVK, Personalvorsorge des Kantons Zürich, Zürich," name="keywords">
+    <meta content="Home. Die BVK ist die Vorsorgeeinrichtung der Angestellten des Kantons Zürich sowie von über 500 angeschlossenen Unternehmen. Mit über 100´000 Versicherten und Rentnern ist die BVK eine der grössten Pensionskassen der Schweiz." name="description">
+
+    <meta name="geo.placename" content="Zürich, Schweiz" />
+    <meta name="geo.position" content="47.3686500;8.5391830" />
+    <meta name="geo.region" content="CH-Zürich" />
+    <meta name="ICBM" content="47.3686500, 8.5391830" />
+
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/screen.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/survey.css?v=1" type="text/css" media="all" />
+    <link rel="shortcut icon" href="https://www.bvk.ch/favicon.ico" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/uniform-insyma.css" media="screen" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/progressbar.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/modal.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.bvk.ch/Online-Befragung/css/jquery-ui.css" />
+    <script src="https://www.bvk.ch/Online-Befragung/js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://www.bvk.ch/Online-Befragung/js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="https://www.bvk.ch/Online-Befragung/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="https://www.bvk.ch/Online-Befragung/js/jquery.ui.datepicker.lang.js"></script>
+    <script src="https://www.bvk.ch/Online-Befragung/js/cursor.js"></script>
+    <script src="https://www.bvk.ch/Online-Befragung/js/autogrow.min.js"></script>
+    <script type="text/javascript" src="https://www.bvk.ch/Online-Befragung/js/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="https://www.bvk.ch/Online-Befragung/js/noty/layouts/topCenter.js"></script>
+    <script type="text/javascript" src="https://www.bvk.ch/Online-Befragung/js/noty/themes/default.js"></script>
+
+    <script type="text/javascript" src="../js/resultsummary.js"></script>
+
+    <!--[if lt IE 9]>
+         <script src="https://www.bvk.ch/Online-Befragung/js/css3-mediaqueries.js" type="text/javascript"></script>
+        <![endif]-->
+    @*<script type="text/javascript">
+            var serviceURL = "https://www.bvk.ch/Online-Befragung/SurveyProxy.ashx";
+            var SurveyOnlineId = @Model.Id;
+            var LanguageId = @ViewBag.languageId;
+        </script>
+
+        <script src="https://www.bvk.ch/Online-Befragung/js/survey.js?v=1" type="text/javascript"></script>
+        <script src="https://www.bvk.ch/Online-Befragung/js/project_scripts.js?v=1" type="text/javascript"></script>*@
+    <!--<![endif]-->
+</head>
+<body>
+    <form>
+        <div id="header">
+            <div class="holder">
+                <h3 class="logo">
+                    <a title="">
+                        <img src="https://www.bvk.ch/img/bvk-logo0x0.png" alt="" />
+                    </a>
+                </h3>
+
+                <div class="wkButton backToStart" id="btn_GoToStart">
+                    <input class="active" value="Umfrage neu beginnen" type="button" />
+                </div>
+                <div id="progressBarPlaceholder">
+                    <div id="progressBarContainer">
+                        <div id="progressBarContent">
+                            <div id="label_bar">
+                                <label>Fortschritt</label>
+                            </div>
+                            <div class="progress progress-striped active" id="bar_questions">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="47">
+                                </div>
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="progressBarPlaceholderScroll">
+            </div>
+        </div>
+        <div id="insymaWrap" class="styleThese">
+
+            @{
+                List<udsp_SURVEY_StructureOnline_Result> structures = SurveyOnlineRepository.GetStructureOnlineBySurveyOnline(@Model.Id, (int)ViewBag.languageId);
+                //loop though all pages
+                structures.ForEach(structure => Html.RenderPartial(structure.TemplatePath, structure));
+            }
+
+        </div>
+        <div id="footer"></div>
+    </form>
+
+    <div id="notificationDialog" class="modal fade" role="dialog" style="display: none">
+        <div class="modal-content" novalidate>
+            <h2 class="modal-header">Fragen nicht vollst&auml;ndig beantwortet</h2>
+            <hr style="width: 280px; float: left; color: #EEE;" />
+            <div class="modal-body">
+                <div>
+                    Bitte beantworten Sie alle Fragen bevor Sie weiter fahren. Folgende Frage ist aktuell zu beantworten:
+                </div>
+                <ul></ul>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="cu-ButtonHeightWidth active close" data-dismiss="modal" value="Schliessen" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

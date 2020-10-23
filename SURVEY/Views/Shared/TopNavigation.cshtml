@@ -1,0 +1,44 @@
+﻿@{
+    var customerActiveClass = "";
+
+
+    if (ViewBag.IsCustomer == true)
+    { customerActiveClass = "active"; }
+
+    var queryString = "";
+
+    foreach (var k in Request.QueryString.Keys)
+    {
+        if (k != null)
+        {
+            queryString += string.Format("{0}={1}&", k, Request.QueryString[k.ToString()]);
+        }
+    }
+
+    queryString = queryString.Trim("&".ToCharArray());
+}
+
+@if (ViewBag.IsCustomer == true)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@ViewBag.SubNav a").click(function () {
+                $(this).attr("href", $(this).attr("href") + "&" + Math.random());
+            });
+        });
+    </script>
+
+    <div class="row">
+        <ul class="cu-style-tab" id="@ViewBag.SubNav">
+            @if (ViewBag.TableName == "surveyresults")
+            {
+                <li class="sub-survey-results"><a href="@Url.Action("SurveyResults", "SurveyManagement")?@queryString">Survey Results</a></li>
+            }
+            else
+            {
+                <li class="sub-survey"><a href="@Url.Action("Surveys", "SurveyManagement")?@queryString">Surveys</a></li>
+            }
+
+        </ul>
+    </div>
+}

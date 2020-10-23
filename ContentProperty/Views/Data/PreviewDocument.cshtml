@@ -1,0 +1,172 @@
+﻿@using System.Security.AccessControl
+@model Insyma.ContentProperty.Domain.Dto.ResultList<Insyma.ContentProperty.Domain.Dto.PublishListDocumentDto>
+
+@foreach (var file in Model.Items)
+{
+    var contentProperty = Insyma.ContentProperty.Render.ContentUtility.CreateContentProperties(0, 0, file.ObjIdDocument, file.LanguageId);
+    var icon = string.Format("icon{0}", file.FileType);
+    var title = string.IsNullOrWhiteSpace(file.Legend) ? string.Format("{0} / {1} KB", file.FileType, file.FileSize) : string.Format("{0} / {1} KB", file.Legend, file.FileSize);
+    var fileName = string.IsNullOrWhiteSpace(file.Legend) ? file.FileName : file.Legend;
+    var fileDate = (file.FileDate.HasValue) ? file.FileDate.Value.ToString("dd.MM.yyyy") : string.Empty;
+    var filePath = Context.Server.UrlEncode(Insyma.Utility.CUSecurity.__Encrypt(string.Format("{0}{1}", file.FilePath, file.FileName), Insyma.Utility.CUSettings.__GetApplicationValue("HashKey")));
+
+    var tags = string.Empty;
+    var author = string.Empty;
+
+    if (contentProperty != null)
+    {
+        tags = (contentProperty.Tags != null && contentProperty.Tags.Any()) ? string.Join(", ", contentProperty.Tags) : string.Empty;
+        author = (contentProperty.Authors != null && contentProperty.Authors.Any()) ? contentProperty.Authors[0] : string.Empty;
+    }
+
+    <li id="file_@file.ObjIdDocument" class="table" data-type="File" data-obj-id="@file.ObjIdDocument">
+        <span class='ConInfo icon iconbefore icondoctype @icon'></span>
+        <a href="/GetFile.aspx?file=@filePath&objId=@file.ObjIdDocument" title="@Html.Raw(title)" class="ConLink" target="_blank">@Html.Raw(fileName)</a>
+        <span class="ConTextDepartment fs10 fwbold block">@Html.Raw(tags)</span>
+        <ul class="ConListEntryInfo fs10 fwbold">
+            <li><time datetime='@fileDate' class="ConTime">@fileDate</time></li>
+            <li>
+                <span class="ConEditor">@author</span>
+                <span class="ConEditor"></span>
+            </li>
+        </ul>
+        @if (contentProperty != null)
+        {
+            <div class='options'>
+                <span class="ConOption icon iconbefore iconoption"></span>
+                <!-- DROPDOWN MENU -->
+                <div class='ConOptionMenu hide'>
+                    <div class="inhalt column" id="column2w40">
+                        <div class="table ConBoxholder">
+                            @if (contentProperty.AuthorContacts != null && contentProperty.AuthorContacts.Any())
+                            {
+                                var contact = contentProperty.AuthorContacts.FirstOrDefault();
+                                <div class="box boxType00 boxAutor boxHighlight boxListStyle boxDL table-cell">
+                                    <div class="boxConPadded">
+                                        <h3>Autor</h3>
+                                    </div>
+                                    <div>
+                                        <ul class="ConListEntries">
+                                            <li class="h6">
+                                                <dl>
+                                                    <dt>
+                                                        <figure class="conimage width100">
+                                                            <img src='http://www.contentupdate.net/BVKadmin/web/bvk/img/cuimgpath/@contact.ImagePortraitName' />
+                                                        </figure>
+                                                    </dt>
+                                                    <dd>@Html.Raw(contact.Fullname)</dd>
+                                                </dl>
+                                            </li>
+                                            @if (!string.IsNullOrWhiteSpace(contact.Function))
+                                            {
+                                                <li class="fs12">
+                                                    <dl>
+                                                        <dt>Position</dt>
+                                                        <dd>@Html.Raw(contact.Function)&nbsp;</dd>
+                                                    </dl>
+                                                </li>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(contact.Phone))
+                                            {
+                                                <li class="fs12">
+                                                    <dl>
+                                                        <dt>Telefon</dt>
+                                                        <dd>contact.Phone&nbsp;</dd>
+                                                    </dl>
+                                                </li>
+                                            }
+                                            @if (!string.IsNullOrWhiteSpace(contact.Email))
+                                            {
+                                                <li class="fs12">
+                                                    <dl>
+                                                        <dt>E-Mail</dt>
+                                                        <dd>@contact.Email&nbsp;</dd>
+                                                    </dl>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="box boxType00 boxAutor boxHighlight boxListStyle boxDL table-cell">
+                                <div class="boxConPadded">
+                                    <h3>Eigenschaften</h3>
+                                </div>
+                                <div>
+                                    <ul class="ConListEntries">
+                                        @if (contentProperty.DateContent.HasValue)
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Datum</dt>
+                                                    <dd>@contentProperty.DateContent.Value.ToString("dd.MM.yyyy, HH:mm") Uhr</dd>
+                                                </dl>
+                                            </li>
+                                        }
+
+                                        @if (contentProperty.Themes != null && contentProperty.Themes.Any())
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Thema</dt>
+                                                    <dd>@string.Join(", ", contentProperty.Themes)</dd>
+                                                </dl>
+                                            </li>
+                                        }
+
+                                        @if (!string.IsNullOrWhiteSpace(tags))
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Tags</dt>
+                                                    <dd>@Html.Raw(tags)</dd>
+                                                </dl>
+                                            </li>
+                                        }
+
+                                        @if (!string.IsNullOrWhiteSpace(contentProperty.ContentStatus))
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Status</dt>
+                                                    <dd>@contentProperty.ContentStatus</dd>
+                                                </dl>
+                                            </li>
+                                        }
+
+                                        @if (!string.IsNullOrWhiteSpace(contentProperty.Classification))
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Klassifizierung</dt>
+                                                    <dd>@contentProperty.Classification</dd>
+                                                </dl>
+                                            </li>
+                                        }
+
+                                        @if (contentProperty.UserGroupAccess != null && contentProperty.UserGroupAccess.Any())
+                                        {
+                                            <li class="fs12">
+                                                <dl>
+                                                    <dt>Verfügbar für</dt>
+                                                    <dd>@string.Join(", ", contentProperty.UserGroupAccess)</dd>
+                                                </dl>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- DROPDOWN MENU -->
+            </div>
+        }
+    </li>        
+}
+
+@if (Model.IsShowMore)
+{
+    <li class="show-more-document-content"><a class="load-more" href="javascript:void(0);">WEITERE LADEN</a></li>
+}

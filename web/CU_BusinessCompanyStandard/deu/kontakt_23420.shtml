@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="de"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="de"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="de"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="de"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="de"> <!--<![endif]-->
+<head>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebSite",
+  "name" : "Business Company Standard",
+  "alternateName" : "Kontakt",
+  "url" : "http://test.contentupdate.net/CU_BusinessCompanyStandard/"
+}
+
+</script>
+<title>Kontakt </title>
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!--#include virtual="/CU_BusinessCompanyStandard/deu/geo_metadaten.html" -->
+<meta name="keywords" content='Kontakt,' />
+<meta name="description" content='Kontakt. '/>
+
+<meta name="google-site-verification" content="" />
+
+<meta name="format-detection" content="telephone=no">
+<!-- Via Checkbox aktivieren/deaktivieren HINU 
+<meta name="robots" content="noydir">
+<meta name="robots" content="noodp">
+-->
+
+<!--Social Sharing -->
+
+<meta name="twitter:title" content="Kontakt" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content='Business Company Standard' />
+
+<meta property="og:title" content="Kontakt" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content='Business Company Standard' />
+
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+
+<!--#include virtual="/CU_BusinessCompanyStandard/css/css.inc" -->
+<!--#include virtual="/CU_BusinessCompanyStandard/deu/js.inc" -->
+
+<script type="text/javascript">
+    var curent_page_id = "23420";
+    var page_path_ids = "23420";
+</script>
+<!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_googleanalytics0.html" -->
+</head>
+<body class="page page-default pid-23420" data-curr-page="23420">
+    <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_googleanalytics1.html" -->
+    <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_cookieinfo.html" -->
+    <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_dataprivacy.html" -->
+    <div id="root">
+        
+        <header class="con-header clearfix">
+            <div class="holder">
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_logo.html" -->
+                
+<nav class="Nav NavService clearfix">
+<!--#include file="1190_navigation.html" -->
+ </nav>
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_suche.html" -->
+                
+    <ul class="control con-sprache">
+        <li>
+            <span class="label">Sprache</span>
+            <div class="SwitchLanguage" data-grid-columns="1" data-anim-effect="fade" data-open-mode="click">
+                <ul style="display: none">
+                    <li id="sprache_LinkDeuOption" class="active option language-deu"><a id="sprache_LinkDeu" title="deu" data-lang-id="de">deutsch</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+
+
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/headerinformationen.inc" -->
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/socialmedia.inc" -->
+            </div>
+            <div class="holder">
+                
+<nav class="Nav NavMain clearfix">
+<!--#include file="25416_navigation.html" -->
+ </nav>
+            </div>
+			<div class="con-header-image">
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_headerbildcategory_34995.html" -->
+                
+			</div>
+        </header>
+        <div id="wrapper" class="con-wrapper clearfix">
+            <div class="holder">
+                
+<div class="part part-breadcrumbs">
+    <ol>
+        <li>
+            <a href="/CU_BusinessCompanyStandard/default.shtml" id="breadcrumb_HomeLink" class="icon iconbefore iconhome">
+                <span>Home</span>
+            </a>
+        </li>
+        <li>
+<a class='activePage icon iconbefore' href="/CU_BusinessCompanyStandard/deu/kontakt_23420.shtml">
+<span>Kontakt</span></a>
+</li>
+
+        
+    </ol>
+</div>
+
+
+            </div>
+            <div class="holder con-inhalt">
+                <main>
+                    <div id="inhalt" class="inhalt">
+	
+                        <div class='part part-h1'><h1>Kontakt</h1></div>
+		            
+
+<div class="part part-formular con-form clearfix">
+    <form action="https://www.contentupdate.net/CU_BusinessCompanyStandard/form/mailer.aspx?form_id=36608&lang=0&NLForm=101" method="post" id="form_Standardformular_36608" name="form_Standardformular_36608"><div id="Summaryform_Standardformular_36608" class="ValidationSummary"></div>
+    
+        <input type="hidden" name="Redirect" value='' />
+        <input type="hidden" name="save" value="true" />
+        <input type="hidden" name="nlStatus" value="newsletter" />
+        <input type="hidden" name="LanguageID" value="0" />
+        <input type="hidden" name="MailFormatID" value="1" />
+        <input type="hidden" name="Newsletter" value="1" />
+    
+        <input type="hidden" name="PostURL" value="http://www.contentupdate.net/Web/form/mailer.aspx?form_id=36608&lang=0" />
+        <input type="hidden" name="Source" value="Website Kontakt" />
+        <input type="hidden" name="PostEncoding" value="iso-8859-1" />
+    
+        
+                <div id="Message0" class="Message validation validation-message" style="display: none;">
+                    <span class="validation-message-text"><p>Danke User!</p></span>
+                </div>
+                <div class="validation validation-info">Bitte f&uuml;llen Sie alle mit * markierten Felder aus.</div>
+                <ul class="clearfix con-form-data">
+            
+                <li>
+                <label>Anrede </label>
+                <ol class="RadioButton vertical"><li><input name="SalutationID"  id="cu36647"  type="radio" value="Herr" /><label for="cu36647">Herr</label></li><li><input name="SalutationID"  id="cu36648"  type="radio" value="Frau" /><label for="cu36648">Frau</label></li></ol>
+                </li>
+            
+                <li>
+                <label for="cu36616">Name <em>*</em></label>
+                <input name="SurName" id="cu36616" type="text"  placeholder="" /><div id="vldEmptySurName" style="display:none"><span id="vldSpanEmptySurName" class="InLineValidateCaption"></span></div>
+                </li>
+            
+                <li>
+                <label for="cu36617">Vorname <em>*</em></label>
+                <input name="FirstName" id="cu36617" type="text"  placeholder="" /><div id="vldEmptyFirstName" style="display:none"><span id="vldSpanEmptyFirstName" class="InLineValidateCaption"></span></div>
+                </li>
+            
+                <li>
+                <label for="cu36618">Adresse </label>
+                <input name="Address" id="cu36618" type="text"  placeholder="" />
+                </li>
+            
+                <li>
+                <label for="cu36619">PLZ <em>*</em></label>
+                <input name="PLZ" id="cu36619" type="text"  placeholder="" /><div id="vldEmptyPLZ" style="display:none"><span id="vldSpanEmptyPLZ" class="InLineValidateCaption"></span></div><div id="vldPLZ" style="display:none"><span id="vldSpanPLZ" class="InLineValidateCaption"></span></div>
+                </li>
+            
+                <li>
+                <label for="cu36620">Ort </label>
+                <input name="City" id="cu36620" type="text"  placeholder="" />
+                </li>
+            
+                <li>
+                <label for="cu36621">Telefon </label>
+                <input name="Tel" id="cu36621" type="text"  placeholder="" />
+                </li>
+            
+                <li>
+                <label for="cu36622">E-Mail <em>*</em></label>
+                <input name="Email" id="cu36622" type="text"  placeholder="" /><div id="vldEmptyEmail" style="display:none"><span id="vldSpanEmptyEmail" class="InLineValidateCaption"></span></div><div id="vldEmail" style="display:none"><span id="vldSpanEmail" class="InLineValidateCaption"></span></div>
+                </li>
+            
+                <li>
+                <label for="cu36623">Kommentar </label>
+                <textarea name="Commentary" rows="5" class="FormCustomLayout"  style="width:auto; height:auto;" id="cu36623" placeholder="" ></textarea>
+                </li>
+            
+                <li>
+                <label for="cu36761">Captcha <em>*</em></label>
+                
+<div class="divCaptcha"><img urlVal="https://www.contentupdate.net/CU_BusinessCompanyStandard/form/captcha.aspx?mode=readonly" data-src="https://www.contentupdate.net/CU_BusinessCompanyStandard/form/captcha.aspx?19102020070628" class="imgCaptcha" alt="*" /><br />
+<input name="Captcha" value="question1" type="hidden" /><input name="question1"  id="cu36761" type="text"  />
+<input type="hidden" name="CaptchaErrorUrl" value="http://test.contentupdate.net/CU_BusinessCompanyStandard/deu/36611_error.shtml" /><input type="hidden" id="CaptchaUniqueKey" name="CaptchaUniqueKey" />
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+function generateCaptchaUniqueKey() {
+var $imgCaptcha = $(".imgCaptcha");
+if ($imgCaptcha.length > 0) {
+var curDate = new Date();
+var uk = "" + curDate.getFullYear() + curDate.getMonth() + curDate.getDate() + curDate.getHours() + curDate.getMinutes() + curDate.getSeconds() + curDate.getMilliseconds();
+
+var $CaptchaUniqueKey = $("#CaptchaUniqueKey");
+if ($CaptchaUniqueKey.length > 0)
+$CaptchaUniqueKey.val(uk);
+
+var urlVal = $.trim($imgCaptcha.attr("urlVal"));
+if (urlVal != null && urlVal.indexOf("&uk") < 0) {
+urlVal = urlVal + ((urlVal.indexOf("?") < 0) ? "?" : "") + "&uk=" + uk;
+$imgCaptcha.attr("urlVal", urlVal);
+}
+
+var src = $.trim($imgCaptcha.data("src"));
+if (src != null && src.indexOf("&uk") < 0) {
+src = src + ((src.indexOf("?") < 0) ? "?" : "") + "&uk=" + uk;
+$imgCaptcha.attr("data-src", src);
+}
+
+$imgCaptcha.attr("src", src);
+}
+}
+generateCaptchaUniqueKey();
+});
+</script>
+</div><div id="vldEmptyquestion1" style="display:none"><span id="vldSpanEmptyquestion1" class="InLineValidateCaption"></span></div>
+                </li>
+            
+                <li>
+                <label> </label>
+                <ol class="CheckBox vertical"><li><input name="question1Answer1"  id="cu37515" type="checkbox"  value="Answer37510" /><label for="cu37515">Ich stimme zu, dass meine pers&ouml;nlichen Daten zur Weiterverarbeitung meiner Anfrage gespeichert werden. Die Daten sind nur zur Weiterverarbeitung Ihrer Anfrage notwendig. Ihre Daten werden nicht an Dritte weitergegeben oder f&uuml;r Werbezwecke verwendet. Datenschutzerkl&auml;rung.</label></li></ol>
+                </li>
+            		    
+                </ul>
+                <span class="submitLoader hide">
+                    <span class="submitLoader-loading">
+                        <span class="wBall wBall_1"><span class="wInnerBall"></span></span>
+                        <span class="wBall wBall_2"><span class="wInnerBall"></span></span>
+                        <span class="wBall wBall_3"><span class="wInnerBall"></span></span>
+                        <span class="wBall wBall_4"><span class="wInnerBall"></span></span>
+                        <span class="wBall wBall_5"><span class="wInnerBall"></span></span>
+                    </span>
+                    <span class='submitLoader-text'>
+                        Formular wird versendet!
+                        <a class="submitLoader-enable">Abbrechen</a>
+                    </span>
+                </span>
+            
+    <p><input type="submit" name="submitbutton" value="Abschicken" /></p>
+<script type='text/javascript' >
+
+ (function () {
+var val = true;
+var form = document.getElementById('form_Standardformular_36608');
+form.onsubmit = function () { return formTest(); };
+var summary = '';
+function CheckValidateEmptySurName(){
+var SurName = form.SurName;
+var errMessageEmtSurName = jQuery(form).find('#vldEmptySurName')[0];
+if(SurName.value.replace(/^\s+|\s+$/g, '') == "")
+{
+jQuery(form).find('#vldSpanEmptySurName')[0].innerHTML = ' Bitte Namen angeben';
+errMessageEmtSurName.style.display = 'inline';
+errMessageEmtSurName.className='InLineValidate';
+val = false;
+SurName.className='Validate';
+}
+else
+{
+errMessageEmtSurName.style.display = 'none';
+SurName.className='';
+checkValidateStatus('SurName');}
+}
+function CheckValidateEmptyFirstName(){
+var FirstName = form.FirstName;
+var errMessageEmtFirstName = jQuery(form).find('#vldEmptyFirstName')[0];
+if(FirstName.value.replace(/^\s+|\s+$/g, '') == "")
+{
+jQuery(form).find('#vldSpanEmptyFirstName')[0].innerHTML = ' Bitte Vorname angeben';
+errMessageEmtFirstName.style.display = 'inline';
+errMessageEmtFirstName.className='InLineValidate';
+val = false;
+FirstName.className='Validate';
+}
+else
+{
+errMessageEmtFirstName.style.display = 'none';
+FirstName.className='';
+checkValidateStatus('FirstName');}
+}
+function CheckValidateEmptyPLZ(){
+var PLZ = form.PLZ;
+var errMessageEmtPLZ = jQuery(form).find('#vldEmptyPLZ')[0];
+if(PLZ.value.replace(/^\s+|\s+$/g, '') == "")
+{
+jQuery(form).find('#vldSpanEmptyPLZ')[0].innerHTML = ' Folgende Felder sind zwingend und oder richtig abzufuellen:';
+errMessageEmtPLZ.style.display = 'inline';
+errMessageEmtPLZ.className='InLineValidate';
+val = false;
+PLZ.className='Validate';
+}
+else
+{
+errMessageEmtPLZ.style.display = 'none';
+PLZ.className='';
+checkValidateStatus('PLZ');}
+}
+
+function CheckValidatePLZ(){
+var PLZ = form.PLZ;
+var errMessagePLZ = jQuery(form).find('#vldPLZ')[0];
+if(ValidateDigits(PLZ) == false)
+{
+jQuery(form).find('#vldSpanPLZ')[0].innerHTML = ' (Zahl: 0-9)';
+errMessagePLZ.style.display = 'inline';
+errMessagePLZ.className='InLineValidate';
+val = false;
+PLZ.className='Validate';
+}
+else
+{
+errMessagePLZ.style.display = 'none';
+checkValidateStatus('PLZ');}}
+function CheckValidateEmptyEmail(){
+var Email = form.Email;
+var errMessageEmtEmail = jQuery(form).find('#vldEmptyEmail')[0];
+if(Email.value.replace(/^\s+|\s+$/g, '') == "")
+{
+jQuery(form).find('#vldSpanEmptyEmail')[0].innerHTML = ' Bitte E-Mail angeben';
+errMessageEmtEmail.style.display = 'inline';
+errMessageEmtEmail.className='InLineValidate';
+val = false;
+Email.className='Validate';
+}
+else
+{
+errMessageEmtEmail.style.display = 'none';
+Email.className='';
+checkValidateStatus('Email');}
+}
+
+function CheckValidateEmail(){
+var Email = form.Email;
+var errMessageEmail = jQuery(form).find('#vldEmail')[0];
+if(ValidateEmail(Email) == false)
+{
+jQuery(form).find('#vldSpanEmail')[0].innerHTML = ' Bitte E-Mail angeben';
+errMessageEmail.style.display = 'inline';
+errMessageEmail.className='InLineValidate';
+val = false;
+Email.className='Validate';
+}
+else
+{
+errMessageEmail.style.display = 'none';
+checkValidateStatus('Email');}}
+function CheckValidateEmptyquestion1(){
+var question1 = form.question1;
+var errMessageEmtquestion1 = jQuery(form).find('#vldEmptyquestion1')[0];
+if(question1.value.replace(/^\s+|\s+$/g, '') == "")
+{
+jQuery(form).find('#vldSpanEmptyquestion1')[0].innerHTML = ' Folgende Felder sind zwingend und oder richtig abzufuellen:';
+errMessageEmtquestion1.style.display = 'inline';
+errMessageEmtquestion1.className='InLineValidate';
+val = false;
+question1.className='Validate';
+}
+else
+{
+errMessageEmtquestion1.style.display = 'none';
+question1.className='';
+checkValidateStatus('question1');}
+}
+function checkValidateStatus(fieldname) {
+    if( ( jQuery(form).find('#vldEmpty' + fieldname) == null ||  jQuery(form).find('#vldEmpty' + fieldname).css('display') != 'none') || 
+        ( jQuery(form).find('#vld' + fieldname) == null ||  jQuery(form).find('#vld' + fieldname).css('display') != 'none') ) {
+    } else {
+         jQuery(form).find('[name='+fieldname+']').removeClass('Validate');
+}}
+function CheckCaptcha(aSwitch){
+     if(aSwitch.replace(/^\s+|\s+$/g, '') != ''){
+         document.getElementById('Summaryform_Standardformular_36608').innerHTML = '<p>Folgende Felder sind zwingend und oder richtig abzufuellen:<//p><ul>';
+         document.getElementById('Summaryform_Standardformular_36608').innerHTML += '<li>Error: Captcha<//li><//ul>';
+         document.getElementById('Summaryform_Standardformular_36608').style.display = 'block';}}
+function userDataEncode(text) {
+      jQuery(form).find('input[type=text], textarea').each(function(){
+           jQuery(this).val( encodeData(jQuery(this).val()));
+       });
+   }
+   function encodeData(text) {
+       text = text.replace('<', '&lt;');
+       text = text.replace('>', '&gt;');
+       text = text.replace("'", '&apos;');
+       text = text.replace('"', '&quot;');
+       return text;
+   }
+jQuery(document).ready(function($){
+$('[name=SurName]').blur(function() {CheckValidateEmptySurName();});
+$('[name=FirstName]').blur(function() {CheckValidateEmptyFirstName();});
+$('[name=PLZ]').blur(function() {CheckValidateEmptyPLZ();});
+$('[name=PLZ]').blur(function() {CheckValidatePLZ();});
+$('[name=Email]').blur(function() {CheckValidateEmptyEmail();});
+$('[name=Email]').blur(function() {CheckValidateEmail();});
+$('[name=question1]').blur(function() {CheckValidateEmptyquestion1();});
+ });
+
+function formTest()
+{
+summary = '<p>Folgende Felder sind zwingend und oder richtig abzufuellen:<//p><ul>';
+
+CheckValidateEmptySurName();
+CheckValidateEmptyFirstName();
+CheckValidateEmptyPLZ();CheckValidatePLZ();
+
+CheckValidateEmptyEmail();CheckValidateEmail();
+
+CheckValidateEmptyquestion1();
+summary += '<//ul>';
+
+var tempVal = val;
+
+if(tempVal){
+
+userDataEncode();
+
+ tempVal = false ;
+
+form.submit(); 
+
+}
+
+val = true;
+
+return tempVal;
+
+}
+
+
+ })();
+jQuery( function()	{ // first
+    if (jQuery.isFunction(jQuery.fn.datepicker)) { //if 
+		    // Date picker
+		    jQuery('.TxtDatePicker').datepicker({
+			    inline: true,
+			    changeMonth: true,
+			    changeYear: true,
+			    dateFormat: "dd.mm.yy",
+			    showOn: 'button',
+			    firstDay: 1,	// monday
+			    buttonImage: '../img/calendar.gif',
+			    buttonImageOnly: true,
+dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+monthNamesShort: ['Jan', 'Feb', 'M&#228;rz', 'Apr', 'Mai', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dez']
+		    });	
+   } // end if
+}) // end-first;
+
+</script>
+
+</form>
+    <script type="text/javascript">
+        if (insymaUtil.getQuerystring("thanks") === '0'){
+            document.getElementById('Message0').style.display = 'block';
+            $("div.part-formular > form > ul").hide();
+            $("div.part-formular > form > p").hide();
+        }
+        var f = "#" + $(".formular > form").eq(0).attr("id");
+        $(f).submit(function(){
+            $("input.Validate").parent("li").addClass("notvalid");
+        });
+        
+        var lnk = '<a href="/CU_BusinessCompanyStandard/deu/datenschutzerklaerung-37469.shtml" title="Datenschutzerkl&auml;rung">Datenschutzerkl&auml;rung</a>';
+        var lnktxt = 'Datenschutzerkl&auml;rung';
+        
+        $("body").append("<div id='temp'></div>");
+        $("#temp").html(lnktxt);
+        lnktxt = $("#temp").text();
+        $("#temp").remove();
+        $("#form_Standardformular_36608 label").each(function(){
+
+            if($(this).html().indexOf(lnktxt) > -1)
+            {
+                var htm = $(this).html().replace(lnktxt,lnk);
+                $(this).html(htm);
+                return false;
+            }    
+        });
+        var formcook = "insymaFormValues_Web";
+        if($.cookie(formcook)){
+            var vals = $.cookie(formcook);
+            vals = vals.substring(0, vals.length-1);
+            var arr_vals = vals.split("¬");
+            for(var i = 0; i < arr_vals.length; i++)
+            {
+                var txt = arr_vals[i].split("~")[0];
+                switch(txt){
+                    case "text":
+                        $("#" + arr_vals[i].split("~")[1]).val(arr_vals[i].split("~")[2]);
+                        break;
+                    case "cb":
+                        $("#" + arr_vals[i].split("~")[1]).attr("checked", true);
+                        break;
+                    case "radio":
+                        $("#" + arr_vals[i].split("~")[1]).attr("checked", true);
+                        break;
+                    case "select":
+                        $("#" + arr_vals[i].split("~")[1]).find("option[value='" + arr_vals[i].split("~")[2] + "']").attr("selected", true);
+                        break;
+                }
+            }
+        };
+        $("input[name='submitbutton']").on("click", function(){
+           
+            var htm = "";
+            $("div.part-formular ul input[type='text']").each(function(){
+                    htm += "text~" + $(this).attr("id") + "~" + $(this).val() + "¬";
+            });
+            $("div.part-formular ul input[type='checkbox']").each(function(){
+                if($(this).prop("checked")==true)
+                    htm += "cb~" + $(this).attr("id") + "~" + $(this).val() + "¬";
+            });
+            $("div.part-formular ul input[type='radio']").each(function(){
+                if($(this).prop("checked")==true)
+                    htm += "radio~" + $(this).attr("id") + "~" + $(this).val() + "¬";
+            });
+            $("div.part-formular ul textarea").each(function(){
+               htm += "text~" + $(this).attr("id") + "~" + $(this).val() + "¬";
+            });
+            $("div.part-formular ul select").each(function(){
+               htm += "select~" + $(this).attr("id") + "~" + $(this).val() + "¬";
+            });
+            $.cookie(formcook, htm, { expires: 0 })
+           
+        });
+    </script>
+</div>
+
+<div class="part part-map" id="con_23738">
+        <div class="part-map-address">
+
+            <h3 class="h3 item-title">Standorte</h3>
+                    <div class="part-map-holder">
+
+                        <div class="con-address">
+                            <ul class="list">
+                                <li class="title strong">Insyma Headquarter</li><li class="strasse">Industriestrasse 47</li>
+                                <li><span class="plz">6300</span>&nbsp;<span class="ort">Zug</span></li>
+                                <li>
+                                    <ul class="con-address-contact-options">
+                                        <li>
+                                            <dl>
+                                                <dt class="icon contacticon iconphone"></dt>
+                                                <dd>000 000 00 00</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt class="icon contacticon iconfax"></dt>
+                                                <dd>000 000 00 00</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                	                        <dl>
+                                                <dt class="icon contacticon iconweb"></dt>
+						                        <dd></dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </li>
+				                
+                                    <li class="ItemRoute" style="display: none;"><span class="routenplan icon iconbefore iconroute href" onclick="insymaMapV3._showRoutePlanner('23738')">Routenplanung</span></li>
+                                
+                            </ul>
+		                </div>
+                        <div class="con-map">
+	                        <div id="map_canvas" class="con-map-canvas"  style="background-image:url(../img/layout/placeholder-map-0.png); background-position: center center; background-size:cover;"></div>
+	                            <script type="text/javascript">
+	                                var mapoptions = {
+	                                    data: "",
+	                                    icon: '/CU_BusinessCompanyStandard/img/page/poispotaktiv120x0.png',
+	                                    content: '<h5>Insyma Headquarter</h5>Industriestrasse 47<br />6300 Zug<br /><a href="" title="" target="_blank"></a>',
+	                                    lat: 47.255863,
+	                                    lng: 8.253133,
+	                                    route: "True",
+	                                    type: "ROADMAP",
+	                                    cscheme: "ultralight",
+	                                    controls: "True",
+	                                    StreetView: "ja"
+                                    }
+                                   
+	                                var $map , $cover;
+	                                $map = $('.con-map-canvas');
+	                                $cover = $('<div class="conMapCover con-map-cover"></div>');
+	                                $map.append($cover);
+	                                $cover.on('click', function () {
+                                        var content = $("body > .dataprivacy-info.map");
+                                        $.fancybox.open(content.clone());
+                                        $(".fancybox-content .btnCancel").on("click", function(){
+                                            $.fancybox.close();
+                                        });
+                                        $(".fancybox-content .btnAccept").on("click", function(){
+                                            insymaMapV3._initScriptAPI(mapoptions, false);
+                                            $("li.ItemRoute").show();
+                                            $cover.remove();
+                                            $.fancybox.close();
+                                        });
+                                    });
+	                            </script>
+                            </div>
+                        </div>
+                    </div>
+            	
+                
+                    <div class="route_form form formular con-form part clearfix" id="route_23738" style="display: none;">
+                    <hr />
+                        <ul class="list">
+                            <li>
+                                <label>Start</label>
+                                <input type="text" id="start" name="coord" value="" /></li>
+                            <li>
+                                <label>Ziel</label>
+                                <input type="text" id="end" name="coord" value="" /></li>
+                            <li>
+                                <label></label>
+                                <select id="mode">
+                                    <option value="TRANSIT">
+                                        mit den &Ouml;V
+                                    </option>
+                                    <option value="DRIVING">
+                                        mit Auto
+                                    </option>
+                                    <option value="WALKING">
+                                        zu Fuss
+                                    </option>
+                                    <option value="BICYCLING">
+                                        mit Velo
+                                    </option>
+                                </select></li>
+                            <li>
+                        </ul>
+                        <input type="button" name="button" value="Los!" onclick="insymaMapV3._calcRoute()" /></li>
+                    </div>
+
+                
+</div>
+<!--
+23739
+-->
+
+</div>
+                    
+                </main>
+                
+            </div>
+        </div>
+        <footer class="con-footer clearfix">
+            <div class="holder">
+                
+
+<nav class="Nav NavFooter clearfix">
+<!--#include file="19775_navigation.html" -->
+ </nav>
+                <!--#include virtual="/CU_BusinessCompanyStandard/deu/footerinformationen.inc" -->
+            </div>
+        </footer>
+    </div>
+    
+<script type="text/javascript">
+/* <![CDATA[ */
+	insymaScripts._setActiveUrl();
+/* ]]> */ 
+</script>
+
+    
+<!--Breadcrumb JSON-->
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+            {
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+        "@id": "http://test.contentupdate.net/CU_BusinessCompanyStandard/default.shtml",
+        "name": "Startseite"
+    }
+},
+{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+        "@id": "http://test.contentupdate.net/CU_BusinessCompanyStandard/deu/kontakt_23420.shtml",
+        "name": "Kontakt"
+    }
+}
+        ]
+	}
+</script>
+<!--News-JSON-->
+<!--#include virtual="/CU_BusinessCompanyStandard/deu/inc_structured_data.html" -->
+
+    <!-- Size indikators for JS -->
+    <span id="size-indikator-tablet" style="display:none;"></span>
+    <span id="size-indikator-mobile" style="display:none;"></span>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) "../base/_variables.less";
+@import (reference) "../components/_containers.less";
+
+//
+.cols {
+	padding: .01px 0; // FIX, dass Konstrukt korrekt mit Container abschliesst - Alternative > border: 1px solid @transparent; border-width: 1px 0;
+	@media print {
+		overflow: hidden;
+	}
+}
+
+.part {
+    width: 100%;
+    margin-bottom: @margin-part;
+    position: relative;
+    display: block;
+//	.clearfix;
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}

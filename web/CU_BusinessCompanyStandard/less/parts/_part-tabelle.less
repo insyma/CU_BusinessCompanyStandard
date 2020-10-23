@@ -1,0 +1,55 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+
+.part-tabelle {
+    .con-table {
+        overflow: auto;
+    }
+
+    caption {
+        text-align: left;
+    }
+
+    table {
+        background-color: @white;
+//        border: 1px solid @trenner;
+    }
+    thead,
+    tbody,
+    tfoot {
+        width: 100%;
+    }
+
+    tr {
+        td,
+        th {
+            border-width: 1px 0;
+            border: 1px solid @trenner;
+            border-width: 1px 0;
+            color: @text;
+            font-weight: 400;
+            padding: .5rem 2rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: tint(@primary, 75%);
+            color: @subtext;
+        }
+
+/*         &:nth-child(even) {
+            td {
+                background-color: fade(@lightgrey, 50%);
+            }
+        }
+ */        &:nth-child(odd) {
+            td {
+                background-color: @white;
+            }
+        }
+    }
+
+
+
+}

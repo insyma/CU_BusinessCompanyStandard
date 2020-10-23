@@ -1,0 +1,13 @@
+'*** Definition der Farben, Schriften und Layout-Bilder ueber den gesamten NL ***'		
+Farbe Links:		#fb2701
+Farbe Text:	 	#66676c
+Hintergund Body:	#efefef
+Hintegrund Inhalt:	#ffffff
+Schrift Header:		font-family: Georgia, Times New Roman, serif;
+Schrift Text:		font-family: Arial, Verdana, sans-serif;
+Icon Liste:		http://www.cu3.ch/cu_BCS/mail/img/layout/list-style.gif
+Icon Download/Link:	http://www.cu3.ch/cu_BCS/mail/img/layout/arrow-right.gif
+Icon "nach oben":	http://www.cu3.ch/cu_BCS/mail/img/layout/arrow-up.gif
+Icon "nach unten":  	http://www.cu3.ch/cu_BCS/mail/img/layout/arrow-down.gif
+Bild Linie:			
+Spacer Bild:		http://www.cu3.ch/cu_BCS/mail/img/layout/breaker.gif

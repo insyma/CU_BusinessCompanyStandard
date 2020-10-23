@@ -1,0 +1,121 @@
+ul.tagit {
+    margin: 0;
+    min-height: 30px;
+    overflow-x: hidden;
+    padding: 1px;
+}
+ul.tagit li {
+    display: block;
+    float: left;
+    margin: 2px 5px 2px 0;
+}
+ul.tagit li.tagit-choice {    
+    position: relative;
+    line-height: inherit;
+}
+
+li.tagit-choice.hasBefore {
+    background: #4969b6 none repeat scroll 0 0;
+    color: #fff;
+}
+.tree-view span.hasBefore {
+    background: #4969b6 none repeat scroll 0 0;
+    color: #fff;
+}
+input.tagit-hidden-field {
+    display: none;
+}
+ul.tagit li.tagit-choice-read-only { 
+    padding: .2em .5em .2em .5em; 
+} 
+
+ul.tagit li.tagit-choice-editable {
+    padding: 1px 16px 1px 3px;
+}
+
+ul.tagit li.tagit-choice a.tagit-label {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+li.hasBefore a.tagit-label {
+    color: #FFF;
+}
+
+ul.tagit li.tagit-choice .tagit-close {
+    cursor: pointer;
+    display: none;
+    line-height: 17px;
+    margin-top: -8px;
+    position: absolute;
+    right: 0.1em;
+    top: 50%;
+}
+ul.tagit li.tagit-choice:hover .tagit-close {
+    display: block;
+    color: #fff;
+
+}
+ul.tagit li.tagit-choice:hover {
+    background: #4969b6 none repeat scroll 0 0;
+    color: #fff;
+}
+/* used for some custom themes that don't need image icons */
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: none;
+}
+
+ul.tagit li.tagit-choice input {
+    display: block;
+    float: left;
+    margin: 2px 5px 2px 0;
+}
+ul.tagit input[type="text"] {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: inherit;
+    background-color: inherit;
+    outline: none;
+}
+.tagsinput .ui-state-default, .tagsinput .ui-widget-content .ui-state-default, .tagsinput .ui-widget-header .ui-state-default,
+.tagsinput-suggest  .ui-state-default, .tagsinput-suggest  .ui-widget-content .ui-state-default, .tagsinput-suggest  .ui-widget-header .ui-state-default  {
+    background: #eee none repeat scroll 0 0;
+    border: medium none;
+    color: #000;
+    font-weight: normal;
+    margin: 1px;
+}
+.tagsinput {
+    width: 100%;
+}
+.tagit-new {
+    width: 120px;
+}
+ul.tagit li.tagit-choice .tagit-close .text-icon1 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.tagit-label {
+    font-size: 13px;
+}
+.tagsinput-suggest .ui-state-default a, .tagsinput-suggest .ui-state-default a:link, .tagsinput-suggest .ui-state-default a:visited {
+    color: #000;
+    text-decoration: none;
+}
+ul.tagit li.tagit-choice:hover a {
+     color: #fff;
+}
+.tagit-choice.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}

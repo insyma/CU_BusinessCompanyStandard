@@ -1,0 +1,56 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+    udsp_SURVEY_QuestionContactFieldOnline contactField = SurveyOnlineRepository.LoadQuestionContactMapping(Model.Id, (int)ViewBag.languageId);
+}
+
+<li fieldname="@Model.QuestionName" data-questionid="@Model.Id" data-ismandatory="@contactField.IsMandatory.ToString().ToLower()">
+    <label>@Model.QuestionName
+        @{
+            if (contactField.IsMandatory)
+            {
+            <em>*</em>
+            }
+        }
+
+    </label>
+    <ol class="RadioButton vertical">
+
+        @{
+            List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+
+            foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+            {
+                string randomName = Guid.NewGuid().ToString();
+                <li answerid="@answer.Id">
+                    <div class="radio">
+                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                        {
+                            <span class="checked">
+                                <input type="radio" value="@answer.Value" id="@randomName" name="@contactField.ContactFieldName" checked>
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                                <input type="radio" value="@answer.Value" id="@randomName" name="@contactField.ContactFieldName">
+                            </span>
+                        }                        
+                    </div>
+                    <label for="@randomName">@answer.AnswerName</label>
+                </li>
+            }
+        }
+    </ol>
+    <div class="hidden">
+        <span class="InLineValidateCaption">
+            @contactField.ValidationMessage
+        </span>
+    </div>
+</li>

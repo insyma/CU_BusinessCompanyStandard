@@ -1,0 +1,103 @@
+﻿@*Copy from Question145Template.cshtml*@
+
+@using Insyma.SurveyManagement.UI.BLL
+@using Insyma.SurveyManagement.UI.DTO
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    SurveySummary surveySummary = new ServiceBaseSurvey().GetSurveySummaryById(surveyResultSummaryId).FirstOrDefault() ?? new SurveySummary();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" questiontype="21">
+    <div style="display: block;" class="question"><span>@Model.QuestionName</span> </div>
+
+    <div class="answer formcon form companyProductForm">
+        <p class="describe">
+            @Model.Comment
+        </p>
+        <input type="hidden" id="NotSaveNLContact" value="true" />
+        <ul>
+            <li fieldname="Firma" ismandatory="1" answerid="140">
+                <label for="cu34869">Firma <em>*</em></label>
+                <input type="text" id="cu34869" name="Company" maxlength="50" value="@surveySummary.Company">
+                <div style="display: none" id="vldEmptyCompanyName">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyCompanyName">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li fieldname="Produkt" ismandatory="1" answerid="141">
+                <label for="cu34871">Produkt <em>*</em></label>
+                <input type="text" id="cu34871" name="Product" maxlength="50" value="@surveySummary.Product">
+                <div style="display: none" id="vldEmptyCompanyProduct">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyCompanyProduct">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li fieldname="Hauptsitz der Unternehmung" answerid="142">
+                <label for="cu35047">Hauptsitz der Unternehmung </label>
+                <input type="text" id="cu35047" name="Headquarter" maxlength="100" value="@surveySummary.Headquarter">
+            </li>
+
+            <li class="optionalMandatory" fieldname="Strasse" ismandatory="1" answerid="143">
+                <label for="cu34873">Strasse <em>*</em></label>
+                <input type="text" id="cu34873" name="Address" maxlength="100" value="@surveySummary.Address">
+                <div id="vldEmptyCompanyAddress" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li class="optionalMandatory" fieldname="PLZ" ismandatory="1" answerid="144">
+                <label for="cu34875">PLZ <em>*</em></label>
+                <input type="text" id="cu34875" name="Postalcode" maxlength="10" value="@surveySummary.Postalcode">
+                <div id="vldEmptyCompanyPostalcode" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li class="optionalMandatory" fieldname="Ort" ismandatory="1" answerid="145">
+                <label for="cu34877">Ort <em>*</em></label>
+                <input type="text" id="cu34877" name="City" maxlength="50" value="@surveySummary.City">
+                <div id="vldEmptyCompanyCity" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li fieldname="Internetadresse" answerid="146">
+                <label for="cu34878">Internetadresse</label>
+                <input type="text" id="cu34878" name="Website">
+            </li>
+
+            <li class="optionalMandatory" fieldname="Ansprechpartner" ismandatory="1" answerid="147">
+                <label for="cu34897">Ansprechpartner <em>*</em></label>
+                <input type="text" id="cu34897" name="ContactPerson" maxlength="100" value="@surveySummary.ContactPerson">
+                <div id="vldEmptyCompanyContactPerson" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+
+            <li fieldname="E-Mail" ismandatory="1" answerid="148">
+                <label for="cu34881">E-Mail <em>*</em></label>
+                <input type="text" id="cu34881" name="Email" data-validate-email-format="1" maxlength="150" value="@surveySummary.Email">
+                <div style="display: none" id="vldEmptyCompanyEmail">
+                    <span class="InLineValidateCaption" id="vldSpanEmptyCompanyEmail"></span>
+                </div>
+                <div style="display: none" id="vldCompanyEmail"><span class="InLineValidateCaption" id="vldSpanCompanyEmaill">Ung&uuml;ltiges Format.</span></div>
+            </li>
+
+            <li fieldname="Telefonnummer" ismandatory="1" answerid="149">
+                <label for="cu34879">Telefonnummer <em>*</em></label>
+                <input type="text" id="cu34879" name="Phone" data-validate-phone-format="1" maxlength="30" value="@surveySummary.Phone">
+                <div style="display: none" id="vldEmptyCompanyPhone">
+                    <span class="InLineValidateCaption"
+                          id="vldSpanEmptyCompanyPhone"></span>
+                </div>
+                <div style="display: none" id="vldCompanyPhone"><span class="InLineValidateCaption" id="vldSpanCompanyPhone">Ung&uuml;ltiges Format.</span></div>
+            </li>
+        </ul>
+    </div>
+</div>

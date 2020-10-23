@@ -1,0 +1,22 @@
+/* No Space Fix */
+figure a,
+.flex-viewport a,
+figure img,
+.flex-viewport img {
+  display: block;
+}
+.imglist-position,
+figure.img-position {
+  float: right;
+  margin: 0 0 1em 5%;
+  max-width: 360px;
+  width: 35%;
+}
+.img-posleft figure {
+  float: left;
+  margin: 0 5% 1rem 0;
+}
+figcaption {
+  clear: both;
+  padding: .5rem 0;
+}

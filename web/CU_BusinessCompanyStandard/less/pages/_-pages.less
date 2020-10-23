@@ -1,0 +1,54 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../layout/_media-queries.less';
+
+
+////////////////////////////////////////////////////////////////////////
+// Container - Aufbau Seite
+////////////////////////////////////////////////////////////////////////
+
+// Breiten
+.holder {
+    max-width: @ContentFixedWidth;
+}
+
+
+// Wrapper & Centering Elements
+.con-wrapper {
+    background-color: @background-wrapper;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.holder {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+// Inhalt
+.con-inhalt {
+    @InhaltAsideWidth: @col6;
+
+    main,
+    aside {
+        max-width: 100%;
+        position: relative;
+    }
+
+    @media screen and (min-width: @mq-size-700) {
+        //        .flex-display;
+        //        .flex-flow(row wrap);
+        main {
+            //            .flex(1 1 0px);
+        }
+        // Seitenleiste
+        aside {
+            //            padding-left: 40px;
+            //            .flex(0 0 @InhaltAsideWidth);
+        }
+    }
+}

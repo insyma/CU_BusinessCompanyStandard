@@ -1,0 +1,32 @@
+﻿@using Microsoft.Ajax.Utilities
+@model Insyma.ContentProperty.Web.Models.DetailModel
+
+@{
+    var cssDisabled = Model.PropertyDetail.IsModify ? "" : "disabled-field";
+}
+
+<label>@Model.PropertyDetail.FieldLabel</label>    
+<select class="@cssDisabled" id="@Model.PropertyDetail.Id" data-field-key="@Model.PropertyDetail.PropertyFieldKey" data-field-type="@Model.PropertyDetail.FieldTypeKey" data-add-new="@Model.PropertyDetail.IsAddNew">
+    @if (Model.PropertyDetail.DataSource != null)
+    {
+        var detail = Model.PropertyDetail.DataSource.FirstOrDefault(p => p.Id == Model.IntValue);
+        var selectedId = (detail != null) ? detail.Id : 0;
+
+        if (selectedId == 0)
+        {
+            detail = Model.PropertyDetail.DataSource.FirstOrDefault(p => p.IsDefault);
+            selectedId = (detail != null) ? detail.Id : 0;
+        }
+
+        foreach (var data in Model.PropertyDetail.DataSource)
+        {
+            var selected = (selectedId > 0 && data.Id == selectedId) ? "selected='selected'" : "";
+            <option value="@data.Id" @selected>@data.ContentValue</option>
+        }
+    }
+</select>
+
+@if (Model.PropertyDetail.Mandatory)
+{
+    <span style="display: none" class="mandatory mandatory-dropdown">Required</span>
+}

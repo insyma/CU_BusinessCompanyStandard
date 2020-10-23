@@ -1,0 +1,41 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+.part-bilder-liste {
+    ul {
+        .columns(20px);
+
+        @media print {
+            display: block;
+            top: 0 !important;
+        }
+
+        > li {
+            .col-(4, 20px);
+            figure {
+                margin: 0;
+            }
+            @media print {
+                float: left !important;
+            }
+        }
+    }
+
+    @media screen and (max-width: @mq-size-700) {
+        ul {
+            .columns(10px);
+
+            > li {
+                .col-(2, 10px);
+            }
+        }
+    }
+
+    .bgimg {
+        cursor: pointer;
+        .ratio;
+        .ratio-landscape;
+    }
+
+}

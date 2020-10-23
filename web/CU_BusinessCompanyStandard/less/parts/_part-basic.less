@@ -1,0 +1,42 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+
+.part-basic {
+    @gap: @margin-part;
+    align-items: flex-start;
+    display: grid;
+    grid-column-gap: @gap;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "header" "image" "body";
+
+    @media screen and (min-width: @mq-size-700) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "header image" "body image";
+    }
+
+    &.img-posleft {
+        @media screen and (min-width: @mq-size-700) {
+            grid-template-columns: 1fr 2fr;
+            grid-template-areas: "image header" "image body";
+        }
+    }
+
+    .part-header {
+        grid-area: header;
+    }
+
+    .part-image {
+        grid-area: image;
+    }
+
+    .part-body {
+        grid-area: body;
+
+        @media screen and (min-width: @mq-size-700) {
+            margin-bottom: @margin-part;
+        }
+    }
+}

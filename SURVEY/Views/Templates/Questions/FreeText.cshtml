@@ -1,0 +1,100 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).FirstOrDefault();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="@Model.QuestionTypeId">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer">
+        <p class="describe">@Model.Comment</p>
+        @{
+            List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(@Model.Id, (int)@ViewBag.languageId);
+
+            udsp_SURVEY_AnswerOnline_Result checkBoxAnswer = answers.Where(x => x.AnswerTypeId == (int)udsp_SURVEY_Answer_Result.AnswerTypes.CheckBox).FirstOrDefault();
+
+            udsp_SURVEY_AnswerOnline_Result multirowAnswer = answers.Where(x => x.AnswerTypeId == (int)udsp_SURVEY_Answer_Result.AnswerTypes.MultiRowText).SingleOrDefault();
+
+            udsp_SURVEY_AnswerOnline_Result rowAnswer = answers.Where(x => x.AnswerTypeId == (int)udsp_SURVEY_Answer_Result.AnswerTypes.Text).FirstOrDefault();
+
+            udsp_SURVEY_AnswerOnline_Result radioWithTextboxAnswer = answers.Where(x => x.AnswerTypeId == (int)udsp_SURVEY_Answer_Result.AnswerTypes.RadioWithTextbox).FirstOrDefault();
+
+            udsp_SURVEY_AnswerOnline_Result textboxWithCaption = answers.Where(x => x.AnswerTypeId == (int)udsp_SURVEY_Answer_Result.AnswerTypes.TextboxWithCaption).FirstOrDefault();
+        }
+        @if (checkBoxAnswer != null)
+        {
+            <div class="noinformation" answerid="@checkBoxAnswer.Id">
+                <div class="checker">
+                    <span>
+                        <input value="1" type="checkbox" />
+                    </span>
+                </div>
+                <span>@checkBoxAnswer.AnswerName</span>
+            </div>
+        }
+        @if (multirowAnswer != null)
+        {
+
+            <div answerid="@multirowAnswer.Id">
+                <textarea name="textarea" cols="50" rows="3" maxlength="500">@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,multirowAnswer.Id)</textarea>
+            </div>
+            <div class="counter">
+                <p><span>500</span> Zeichen verbleibend</p>
+            </div>
+        }
+        @if (radioWithTextboxAnswer != null)
+        {
+            <ul>
+                <li answerid="@radioWithTextboxAnswer.Id" class="AndereRadio">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, radioWithTextboxAnswer.Id))
+                                {
+                                    <span class="checked">
+                                        <input class="otherRadio" name="question_@Model.Id" type="radio" checked />
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>
+                                        <input class="otherRadio" name="question_@Model.Id" type="radio" />
+                                    </span>
+                                }
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="@radioWithTextboxAnswer.AnswerName">@radioWithTextboxAnswer.AnswerName</label>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        }
+
+        @if (rowAnswer != null)
+        {
+            <ul>
+                <li answerid="@rowAnswer.Id" class="AndereRadioText">
+                    <input type="text" class="otherRadioText" disabled="disabled" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,rowAnswer.Id)" />
+                </li>
+            </ul>
+        }
+
+        @if (textboxWithCaption != null)
+        {
+            <div answerid="@textboxWithCaption.Id">
+                <label for="@textboxWithCaption.AnswerName">@textboxWithCaption.AnswerName</label> <input type="text" class="textboxWithCaption" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,textboxWithCaption.Id)"/>
+            </div>
+        }
+    </div>
+</div>

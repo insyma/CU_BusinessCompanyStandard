@@ -1,0 +1,145 @@
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../layout/_media-queries.less';
+@import (reference) '../components/_shadows.less';
+@import (reference) '../iconfont/style.less';
+
+// Settings 
+@flexcontrolsize: 40px;
+
+// Basics
+.loading {
+	.flex-viewport {
+		max-height: 300px;
+	}
+}
+
+// Carousel
+.carousel {
+	li {
+		margin-right: 10px
+	}
+}
+
+// Direction Navigation
+.flex-direction-nav {
+	a {
+		height: @flexcontrolsize;
+		margin: -(@flexcontrolsize / 2) 0 0;
+		position: absolute;
+		top: 50%;
+		width: @flexcontrolsize;
+		z-index: 10;
+
+		&:before {
+			font-size: @flexcontrolsize;
+			line-height: @flexcontrolsize;
+		}
+	}
+
+	.flex-next {
+		right: 20px;
+
+		&:before {
+			content: @icon-chevron_right !important;
+		}
+	}
+
+	.flex-prev {
+		left: 20px;
+
+		&:before {
+			content: @icon-chevron_left !important;
+		}
+	}
+
+	.flex-disabled {
+		opacity: .3 !important;
+		filter: alpha(opacity=30);
+		cursor: default;
+	}
+}
+
+
+
+// Control Navigation
+.flex-control-nav {
+	margin-bottom: 0 !important;
+	padding-left: 0 !important;
+	text-align: center;
+	width: 100%; 
+	li {
+		display: inline-block;
+		margin: 5px !important;
+		padding: 0 !important;
+		zoom: 1; 
+	}
+
+}
+
+// Control Paging
+// Control Paging
+.flex-control-paging {
+
+	li {
+		margin: 0 !important;
+
+		a {
+			width: @flexcontrolsize;
+			height: @flexcontrolsize;
+			background: @transparent;
+			text-indent: -9999px;
+			position: relative;
+			.flex-display;
+			align-items: center;
+			justify-content: center;
+			font-size: 0 !important;
+
+			&:before {
+				background-color: @white;
+				.border-radius(@flexcontrolsize);
+				content: "";
+				display: block;
+				width: @flexcontrolsize / 2;
+				height: @flexcontrolsize / 2;
+				.mdc-elevation--z4;
+			}
+
+			&:hover {
+				background: @transparent;
+
+				&:before {
+					background-color: @secondary-dark;
+				}
+			}
+
+			&.flex-active {
+				background: @transparent;
+
+				&:before {
+					background-color: @secondary;
+				}
+			}
+		}
+	}
+}
+
+// Control Thumbnails
+
+.flex-control-thumbs {
+	margin: 5px 0 0;
+	li {
+		float: left;
+		margin: 0;
+		width: 25%;
+	}
+	img {
+		width: 100%; opacity: .7;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	.flex-active {
+		opacity: 1;
+	}
+}

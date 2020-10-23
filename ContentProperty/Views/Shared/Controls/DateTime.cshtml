@@ -1,0 +1,43 @@
+﻿
+@model Insyma.ContentProperty.Web.Models.DetailModel
+
+@{
+    var date = "";
+    var time = "";
+        
+    if (Model.DateTimeValue.HasValue)
+    {
+        date = Model.DateTimeValue.Value.ToString("yyyy-MM-dd");
+        time = Model.DateTimeValue.Value.ToString("HH:mm");
+        if (time == "00:00")
+        {
+            time = "";            
+        }
+    }
+
+    var cssDisabled = Model.PropertyDetail.IsModify ? "" : "disabled-field";
+}
+<div data-field-key="@Model.PropertyDetail.PropertyFieldKey" data-field-type="@Model.PropertyDetail.FieldTypeKey" data-add-new="@Model.PropertyDetail.IsAddNew">
+    <div class="date-div">
+        <label class="date-label">@Model.PropertyDetail.FieldLabel</label>
+        <div class="datepicker-con">
+            <input class="date-input @cssDisabled" type="text" data-value="@date">
+            <span class="icon-datepicker @cssDisabled"></span>    
+        </div>
+        
+    </div>
+    @if (Model.PropertyDetail.DateAndTime)
+    {
+        <div class="time-div">
+            <label class="time-label">@Model.PropertyDetail.FieldLabel2 &nbsp;</label>
+            <div class="timepicker-con">
+                <input class="time-input @cssDisabled" type="text" value="@time">
+                <span class="icon-timepicker @cssDisabled"></span>    
+            </div>
+        </div>
+    }
+</div>
+@if (Model.PropertyDetail.Mandatory)
+{
+    <span style="display: none" class="mandatory mandatory-datetime">Required</span>
+}

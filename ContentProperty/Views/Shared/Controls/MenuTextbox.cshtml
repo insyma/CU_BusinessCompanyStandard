@@ -1,0 +1,222 @@
+﻿@using Insyma.ContentProperty.Domain.Code
+@using Insyma.ContentProperty.Web.Models
+@model Insyma.ContentProperty.Web.Models.DetailModel
+
+@{
+    var cssDisabled = Model.PropertyDetail.IsModify ? "" : "disabled-field";    
+}
+
+<div class="@cssDisabled" data-field-key="@Model.PropertyDetail.PropertyFieldKey" data-field-type="@Model.PropertyDetail.FieldTypeKey" data-add-new="@Model.PropertyDetail.IsAddNew" data-role-id="@(Model.PropertyDetail.ContactLoginRole.HasValue ? string.Format("{0}", (int)Model.PropertyDetail.ContactLoginRole) : "0")">
+    <label class="header-settings-label">@Model.PropertyDetail.FieldLabel</label>
+@{
+    
+    <div class="menu-con header-settings ">
+        <span class="menu-icon icon-caret-down icon-list-menu icon-ellipsis"></span>
+        <div role="menu" class="media-menu menu-content">
+            <ul>
+                <li>
+                    <label>@Model.PropertyDetail.FieldLabel</label>
+                    @Html.Partial("~/Views/Shared/Controls/MenuValue.cshtml", new MenuValueModel()
+                                                                                        {
+                                                                                            DetailId = Model.PropertyDetail.Id,
+                                                                                            PropertyFieldKey = Model.PropertyDetail.PropertyFieldKey,
+                                                                                            ContactLoginRole = Model.PropertyDetail.ContactLoginRole,
+                                                                                            Values = Model.PropertyDetail.Values,
+                                                                                            DetailDefaultValues = Model.PropertyDetail.DetailDefaultValues,
+                                                                                            InsideMenu = true
+                                                                                        })
+                </li>
+                @if (Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_ContentOrigin || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_Author ||
+                    Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_Publisher || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_Responsible ||
+                    Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserGroup || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserGroupRoleBased ||
+                    Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserGroup || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserContent ||
+                    Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_OptionalPerson || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_InvitedPerson)
+                {
+                    <li>
+                        <label>Search @Model.PropertyDetail.FieldLabel</label>
+                        <div class="menu-con-sub">
+                            <span class="menu-icon-sub icon-caret-down icon-list-menu icon-ellipsis"></span>
+                            <div class="media-menu-sub">
+                                <ul>
+                                    <li>
+                                        Search Value Definition
+                                    </li>
+                                    <li>
+                                        <input id="Contact-checkbox" type="checkbox">
+                                        <label>All (Contact and Groups)</label>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li>
+                                                <input id="Contact-checkbox" type="checkbox">
+                                                <label>Contact</label>
+                                            </li>
+                                            <li>
+                                                <input id="Contact-checkbox" type="checkbox">
+                                                <label>All Group</label>
+                                            </li>
+                                            <li>
+                                                <ul>
+                                                    @foreach (var group in Model.PropertyDetail.GroupTypeDataSource)
+                                                    {
+                                                        <li>
+                                                            <input id="Contact-checkbox" type="checkbox" value="@group.Id">
+                                                            <label>@group.GroupTypeName</label>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><input class="search-input-tag" type="text">
+                    </li>
+                    <li>
+                        <label>Found @Model.PropertyDetail.FieldLabel</label>
+                        <div class="group-by"><label>Group by</label><select class="disabled-field"><option>choose</option><option>choose</option></select></div>
+                    </li>
+                    <li>
+                        <div class="search-result include-contact">
+
+                            @if (Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_ContentOrigin)
+                            {
+                                if (Model.PropertyDetail.OriginDataSource != null && Model.PropertyDetail.OriginDataSource.Any())
+                                {
+                                    <div class="group-div origin-content">
+                                        <span class="icon-down iconbefore group-header">@Model.PropertyDetail.FieldLabel</span>
+                                        <ul class="list-view">
+                                            @foreach (var origin in Model.PropertyDetail.OriginDataSource)
+                                            {
+                                                var existedCss = Model.PropertyDetail.Values.Any(v => v.CombineContentIds.Equals(origin.Value)) ? "hasBefore tagit-choice" : "";
+                                                <li data-id="@origin.Value" class="@existedCss"><span>@origin.Label</span></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+
+                                if (Model.PropertyDetail.ContactLoginDataSource != null && Model.PropertyDetail.ContactLoginDataSource.Any())
+                                {
+                                    <div class="group-div contact">
+                                        <span class="icon-down iconbefore group-header">Contact Logins</span>
+                                        <ul class="list-view">
+                                            @foreach (var login in Model.PropertyDetail.ContactLoginDataSource)
+                                            {
+                                                var existedCss = Model.PropertyDetail.Values.Any(v => v.CombineContentIds.Equals(login.Value)) ? "hasBefore tagit-choice" : "";
+                                                <li data-id="@login.Value" class="@existedCss"><span>@login.Label</span></li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                            }
+
+                            @if (Model.PropertyDetail.PropertyFieldKey != FieldKey.CoFi_ContentOrigin && Model.PropertyDetail.ContactDataSource != null && Model.PropertyDetail.ContactDataSource.Any())
+                            {
+                                <div class="group-div contact">
+                                    <span class="icon-down iconbefore group-header">Contact</span>
+                                    <ul class="list-view">
+                                        @foreach (var contact in Model.PropertyDetail.ContactDataSource)
+                                        {
+                                            var existedCss = "";
+                                            if (Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserGroupRoleBased || Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserContent)
+                                            {
+                                                existedCss = Model.PropertyDetail.Values.Any(v => (!v.ContactLoginRole.HasValue || v.ContactLoginRole == Model.PropertyDetail.ContactLoginRole) && v.CombineContentIds.Equals(contact.Value)) ? "hasBefore tagit-choice" : "";
+                                            }
+                                            else
+                                            {
+                                                existedCss = Model.PropertyDetail.Values.Any(v => v.CombineContentIds.Equals(contact.Value)) ? "hasBefore tagit-choice" : "";
+                                            }
+
+                                            <li data-id="@contact.Value" class="@existedCss"><span>@contact.Label</span></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <label>Search @Model.PropertyDetail.FieldLabel</label>
+                        <div class="menu-con-sub">
+                            <span class="menu-icon-sub icon-caret-down icon-list-menu icon-ellipsis"></span>
+                            @*<div class="media-menu-sub">
+                            <ul>
+                                <li>
+                                    Search Value Definition
+                                </li>
+                                <li>
+                                    <input id="Contact-checkbox" type="checkbox" />
+                                    <label>Contact</label>
+                                </li>
+                            </ul>
+                        </div>*@
+                        </div><input class="search-input-tag" type="text">
+                    </li>
+                    <li>
+                        <label>Found @Model.PropertyDetail.FieldLabel</label>
+                        <div class="group-by"><label>Group by</label><select class="disabled-field"><option>choose</option><option>choose</option></select></div>
+                    </li>
+                    <li>
+                        <div class="search-result">
+                            <ul class="tagsinput-suggest "></ul>
+                        </div>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+
+    if (Model.PropertyDetail.PropertyFieldKey == FieldKey.CoFi_RightsUserGroup)
+    {
+        var fullControlRight = Model.PropertyDetail.RightDataSource.FirstOrDefault(r => r.Id == (int)Right.FullControl);
+        var remainRights = Model.PropertyDetail.RightDataSource.Where(r => r.Id != (int)Right.FullControl).ToList();
+
+        <div class="media-menu-sub content-rights" style="display: none">
+            <ul>
+                <li>
+                    Individually Right
+                </li>
+                @if (fullControlRight != null)
+                {
+                    <li>
+                        <input id="Contact-checkbox" type="checkbox" class="full-control-right" value="@fullControlRight.Id">
+                        <label>@fullControlRight.RightName</label>
+                    </li>
+                }
+                <li>
+                    <ul>
+                        @foreach (var right in remainRights)
+                        {
+                            <li>
+                                <input id="Contact-checkbox" type="checkbox" value="@right.Id">
+                                <label>@right.RightName</label>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    }    
+}
+    
+    @*Load values in main view*@
+    @Html.Partial("~/Views/Shared/Controls/MenuValue.cshtml", new MenuValueModel()
+                                      {
+                                          DetailId = Model.PropertyDetail.Id,
+                                          CssClass = "autocomplete-area",
+                                          PropertyFieldKey = Model.PropertyDetail.PropertyFieldKey,
+                                          ContactLoginRole = Model.PropertyDetail.ContactLoginRole,
+                                          Values = Model.PropertyDetail.Values,
+                                          DetailDefaultValues = Model.PropertyDetail.DetailDefaultValues,
+                                          InsideMenu = false
+                                      })
+    
+    @if (Model.PropertyDetail.Mandatory)
+    {
+        <span style="display: none" class="mandatory mandatory-menu-textbox">Required</span>
+    }
+</div>

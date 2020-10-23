@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<license version="1.1">
+  <Customer>
+    <name>advancedintellect-3986
+Beat Hofstetter   (Hofstetter, Beat)
+Haldenstrasse 1
+Baar, Zug	 6340
+CH Switzerland
++41 41 768 50 20
+num:1</name>
+  </Customer>
+  <products>
+    <Product>
+      <name>aspNetEmail</name>
+      <version>3</version>
+      <licensetype>server</licensetype>
+      <expires>-1</expires>
+    </Product>
+  </products>
+  <LicenseInformation>
+    <Version>1.1</Version>
+    <H1>0</H1>
+    <H2>ZrR6pHW12erLgtudgSr95Q==</H2>
+  </LicenseInformation>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>ns2KLhviyF5NHGDKleEexkwYiU0=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>AQiD1TargZBuJyrafrs4edMUuAOL7gSs+G9Ubn2sYLHz9Z9f/FEAq204dn17N4n3qyphcbA3vsROlcjU9VJYogVZykEm7GUZmhxv4Tentkvx5E9MmYSFkWsALE+afrWJY3FeV+B0ISdfHD5Q9aotK4iGs/PsZe99oFw9hvoQgJA=</SignatureValue>
+  </Signature>
+</license>

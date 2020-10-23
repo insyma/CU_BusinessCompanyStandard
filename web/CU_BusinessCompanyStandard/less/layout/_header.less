@@ -1,0 +1,148 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../components/_containers.less";
+@import (reference) '../components/_transitions.less';
+@import (reference) '../components/_icons.less';
+
+// header list elements
+header {
+	&.con-header {
+		background: @background-header;
+		padding: 0;
+		position: relative;
+		width: 100%;
+	}
+	.NavService {
+		margin: 0;
+		max-width: 100%;
+		padding-left: 0;
+	}
+}
+
+.control {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	li {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+}
+
+// Logo
+.con-logo {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 0;
+
+    a {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+        display: block;
+        max-width: 240px;
+    }
+
+    em, span {
+        display: none;
+    }
+}
+
+// Sprache
+.con-sprache {
+    > li {
+        display: table;
+
+        > span {
+            padding-right: 20px;
+        }
+
+        a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0;
+            padding: 6px 0;
+        }
+
+        > * {
+            display: table-cell;
+        }
+
+        div.SwitchLanguage {
+            // Sprache mit Menu
+            > div {
+                left: auto;
+                position: absolute;
+                top: auto;
+                z-index: 5;
+            }
+
+            li {
+                display: block;
+                float: none;
+                margin: 0;
+            }
+
+            li.active {
+                display: none;
+            }
+        }
+    }
+}
+
+// Suche
+.con-suche {
+    li {
+        width: 100%;
+    }
+	.con-form {
+		.flex-display;
+	}
+
+	input {
+		margin: 0;
+	}
+
+	.button {
+		.iconbefore;
+		.iconsuche;
+		white-space: nowrap;
+
+		&:before {
+			.hasicon;
+			//			float: none; // wenn nur Icon
+			float: left; // wenn Button Text hat
+			font-size: 20px;
+			position: relative;
+			//			top: 4px; // wenn nur Icon
+		}
+	}
+}
+// social
+.con-socialmedia {
+    .flex-display;
+
+    li {
+        display: inline-block;
+        margin: 0;
+        font-size: 0;
+    }
+
+    a {
+        display: inline-block;
+        .ratio;
+        .ratio-square;
+        margin: 0;
+        padding: 0;
+        width: 35px;
+
+        i {
+            .pos-center;
+        }
+    }
+}

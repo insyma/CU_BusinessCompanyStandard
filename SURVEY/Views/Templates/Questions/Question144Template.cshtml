@@ -1,0 +1,165 @@
+﻿@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="1"><span>@Model.QuestionName</span> </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">@Model.Comment</p>
+
+
+        <ul class="vertical_list">
+
+            <li answerid="48">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="1" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Mund zu Mund</dd>
+                </dl>
+            </li>
+
+            <li answerid="49">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="2" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Internet</dd>
+                </dl>
+            </li>
+
+            <li answerid="50">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="3" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Online-Werbung</dd>
+                </dl>
+            </li>
+
+            <li answerid="51">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="4" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Pressebericht</dd>
+                </dl>
+            </li>
+            <li answerid="52">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="5" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Coopzeitung</dd>
+                </dl>
+            </li>
+            <li answerid="53">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="6" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Plakat</dd>
+                </dl>
+            </li>
+            <li answerid="54">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="7" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Radio</dd>
+                </dl>
+            </li>
+            <li answerid="55">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="8" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Inserat</dd>
+                </dl>
+            </li>
+            <li answerid="56">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="9" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Fernsehen</dd>
+                </dl>
+            </li>
+            <li answerid="57">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="10" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Messe</dd>
+                </dl>
+            </li>
+            <li answerid="58">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="11" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Direkt-Mailing</dd>
+                </dl>
+            </li>
+            <li answerid="59">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="12" type="checkbox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Spezialevent Restaurant MAHOI</dd>
+                </dl>
+            </li>
+            <li answerid="60" id="AndereCheckbox">
+                <dl>
+                    <dt>
+                        <div class="checker">
+                            <span>
+                                <input value="13" type="checkbox" id="otherCheckBox" /></span>
+                        </div>
+                    </dt>
+                    <dd>Andere</dd>
+
+                </dl>
+            </li>
+            <li answerid="61" id="AndereTextbox">
+                <input type="text" id="otherTextBox" disabled="disabled" />
+            </li>
+
+        </ul>
+    </div>
+</div>

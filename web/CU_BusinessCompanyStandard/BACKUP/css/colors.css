@@ -1,0 +1,159 @@
+/************************************************************************************
+CSS
+Created: 	2014
+Creator:	SCHM
+Editor:		SCHM
+
+/************************************************************************************
+COLOR SCHEME FONTS
+*************************************************************************************/
+/* weiss */
+.PartTabelle table thead th,
+footer.con-footer,
+footer.con-footer a,
+footer.con-footer a:after,
+footer.con-footer a:before,
+input[type="button"], 
+input[type="submit"], 
+button,
+.button
+{
+    color: rgb(255,255,255);
+}
+/* schwarz */
+a:hover,
+a:hover:after,
+a:hover:before,
+.href:hover,
+.href:hover:after,
+.href:hover:before,
+#insymaOverlayHolder .icon:hover:before
+{
+    color: rgb(0,0,0);
+}
+
+/* Validierungsfarbe */
+.con-form em,
+p.validationinfo,
+.InLineValidate
+{	
+    color: rgb(255,87,34);
+}
+/* Primary */
+a,
+a:after,
+a:before,
+.href,
+.href:after,
+.href:before,
+#insymaOverlayHolder .icon:before,
+div.checker span.checked:before,
+footer.con-footer a:hover,
+footer.con-footer a:hover:after,
+footer.con-footer a:hover:before 
+{
+    color: rgb(0,150,136);
+}
+
+/************************************************************************************
+COLOR SCHEME BACKGROUNDS
+*************************************************************************************/
+/* Main Containers */
+header.con-header {
+	background: rgb(178,223,219);
+}
+.con-wrapper {
+    background: rgb(255,255,255);
+}
+body /* for footer background when HTML 100% */ {
+	background: rgb(51,51,51);
+}
+
+
+/* weiss */
+div.checker span,
+div.radio span,
+.PartTabelle table,
+div.selector span,
+div.selector span:after,
+.wrapInput:after,
+.iconsend:after,
+input[type="email"]:focus,
+input[type="text"]:focus, 
+input[type="password"]:focus,
+textarea:focus, 
+select:focus,
+div.selector.focus span
+{
+    background: rgb(255,255,255);
+}
+
+/* hellgrau */
+input[type="email"],
+input[type="text"], 
+input[type="password"],
+textarea, 
+select,
+input.uniform-input,
+select.uniform-multiselect,
+textarea.uniform,
+.PartTabelle tr:nth-child(2n+2) td,
+div.radio.hover span,
+div.selector span
+{
+	background: rgb(238,238,238);
+}
+.PartTabelle tr td
+{
+	background: rgba(238,238,238,.5);
+}
+
+/* dunkelgrau */
+.PartTabelle table thead th {
+	background: rgb(51,51,51);
+}
+
+/* Primary */
+input[type="button"], 
+input[type="submit"], 
+button,
+.button,
+div.radio span.checked {
+	background: rgb(0,150,136);
+}
+
+/* no color */
+
+div.selector span:after {
+	background: none;
+}
+
+/************************************************************************************
+COLOR SCHEME BORDERS
+*************************************************************************************/
+/* Primary */
+div.radio span.checked {
+	border-color: rgb(0,150,136);
+}
+input.uniform-input,
+select.uniform-multiselect,
+textarea.uniform,
+div.checker span,
+div.radio span,
+div.selector span,
+input[type="email"]:focus,
+input[type="text"], 
+input[type="password"],
+textarea, 
+select,
+.imgCaptcha
+{
+	border: 1px solid rgb(158,158,158);
+	-webkit-appearance: none;
+}
+.PartTabelle table,
+.PartTabelle table td,
+.PartTabelle table th
+{
+	border: 1px solid rgb(255,255,255);
+}

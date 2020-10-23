@@ -1,0 +1,96 @@
+/*KARTE*/
+
+div#inhalt div.PartMap {
+	float: left;
+	clear: none;
+	width: 150px;
+	margin: 0 2em 0 0;
+}
+
+div#inhalt div.PartMap ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+div.PartMap h2 {
+	margin: 0px 0px 5px 0px;
+	padding: 0;
+}
+div.PartMap a {
+	text-decoration: none;
+	}
+
+div#inhalt div.control {
+	width: 136px;
+	padding: 5px 0 5px 5px;
+	border: 1px dashed #ff5200;
+	border-width: 1px 0;
+	margin: 35px 0;
+}
+
+div.control hr#dashedline {
+	border : 0;
+	border-bottom : 1px dashed #ff5200;
+	height : 1px;
+	padding : 0;
+	margin : 5px 0 0 -5px;
+}
+
+div.control a#zoomPlus {
+	display: block;
+	background: url(../img/layout/zoomplus.gif) no-repeat 0px 0px;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 7px; 
+}
+
+div.control a#zoomMinus {
+	display: block;
+	background: url(../img/layout/zoomminus.gif) no-repeat 0px 0px;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 7px 0 0 5px; 
+}
+
+div.control label{
+	float : left;
+	width : 95px;
+	padding-top : 5px;
+}
+
+div#inhalt div#mapcontainer {
+	width: 450px;
+	height: 300px;
+	padding: 4px;
+	margin: 0 4px 0 0;
+	border: 1px solid #c6a45b;
+	float: right;
+	clear: none;
+}
+* html div#inhalt div#mapcontainer {
+	width: 450px;
+}
+
+div.PartMap ul.map-adresse {
+	list-style: none;
+	margin: 0px 0px 10px 0px;
+}
+
+div#mapcontainer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+* html div.map1552 {
+	background: url(http://map.search.ch/images/icons/21/p1.gif) no-repeat center;
+}/*
+img.ie-icon {
+	position: absolute;
+	z-index: 99;
+	top: 47%;
+	left: 47%;
+}*/

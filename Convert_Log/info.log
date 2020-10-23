@@ -1,0 +1,138 @@
+2020-07-16 16:30:08 NewConvert() is calling
+2020-07-16 16:30:08 Received post data: file_id=31769&pdfname=testdokument.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=0&creation=20151111105358
+2020-07-16 16:30:08 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-16 16:30:08 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-16 16:30:08 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-16 16:30:08 ------------------------------------------------------------- Start convert: testdokument.pdf
+2020-07-16 16:30:08 START JSON convert
+2020-07-16 16:30:08 END JSON CONVERT
+2020-07-16 16:30:08 Eslapsed: 00:00:00.6406290
+2020-07-16 16:30:08 START PNG convert
+2020-07-16 16:30:08 END PNG CONVERT
+2020-07-16 16:30:08 Eslapsed: 00:00:00.0156232
+2020-07-16 16:30:08 START SWF convert
+2020-07-16 16:30:09 END SWF convert
+2020-07-16 16:30:09 Eslapsed: 00:00:00.6406299
+2020-07-16 16:30:09 START PDF split
+2020-07-16 16:30:10 END PDF split
+2020-07-16 16:30:10 Eslapsed: 00:00:00.6406288
+2020-07-16 16:30:10 ------------------------------------------------------------- All conversion processes end.
+2020-07-16 16:30:10 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-16 16:30:10 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-16 16:30:10 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-16 16:30:10 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.
+2020-07-17 08:42:54 NewConvert() is calling
+2020-07-17 08:42:54 Received post data: file_id=39026&pdfname=testdokument.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=0&creation=20151111105358
+2020-07-17 08:42:54 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-17 08:42:54 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:42:54 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-17 08:42:54 ------------------------------------------------------------- Start convert: testdokument.pdf
+2020-07-17 08:42:54 START JSON convert
+2020-07-17 08:42:54 END JSON CONVERT
+2020-07-17 08:42:54 Eslapsed: 00:00:00.3906225
+2020-07-17 08:42:54 START PNG convert
+2020-07-17 08:42:54 END PNG CONVERT
+2020-07-17 08:42:54 Eslapsed: 00:00:00.0312517
+2020-07-17 08:42:54 START SWF convert
+2020-07-17 08:42:55 END SWF convert
+2020-07-17 08:42:55 Eslapsed: 00:00:00.4218729
+2020-07-17 08:42:55 START PDF split
+2020-07-17 08:42:55 END PDF split
+2020-07-17 08:42:55 Eslapsed: 00:00:00.2500003
+2020-07-17 08:42:55 ------------------------------------------------------------- All conversion processes end.
+2020-07-17 08:42:55 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-17 08:42:55 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:42:55 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-17 08:42:55 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.
+2020-07-17 08:48:05 NewConvert() is calling
+2020-07-17 08:48:05 Received post data: file_id=39028&pdfname=testdokument.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=0&creation=20151111105358
+2020-07-17 08:48:05 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-17 08:48:05 ------------------------------------------------------------- Start convert: testdokument.pdf
+2020-07-17 08:48:05 START JSON convert
+2020-07-17 08:48:05 END JSON CONVERT
+2020-07-17 08:48:05 Eslapsed: 00:00:00.0468750
+2020-07-17 08:48:05 START PNG convert
+2020-07-17 08:48:05 END PNG CONVERT
+2020-07-17 08:48:05 Eslapsed: 00:00:00.0156260
+2020-07-17 08:48:05 START SWF convert
+2020-07-17 08:48:05 END SWF convert
+2020-07-17 08:48:05 Eslapsed: 00:00:00.0468732
+2020-07-17 08:48:05 START PDF split
+2020-07-17 08:48:05 END PDF split
+2020-07-17 08:48:05 Eslapsed: 00:00:00.0312490
+2020-07-17 08:48:05 ------------------------------------------------------------- All conversion processes end.
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-17 08:48:05 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.
+2020-07-17 08:48:38 NewConvert() is calling
+2020-07-17 08:48:38 Received post data: file_id=39028&pdfname=CU_BusinessCompanyStandard_file_20180731-131320.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=0&creation=20180731011321
+2020-07-17 08:48:38 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-17 08:48:38 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:48:38 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-17 08:48:38 ------------------------------------------------------------- Start convert: CU_BusinessCompanyStandard_file_20180731-131320.pdf
+2020-07-17 08:48:38 START JSON convert
+2020-07-17 08:48:38 END JSON CONVERT
+2020-07-17 08:48:38 Eslapsed: 00:00:00.0468753
+2020-07-17 08:48:38 START PNG convert
+2020-07-17 08:48:38 END PNG CONVERT
+2020-07-17 08:48:38 Eslapsed: 00:00:00.0156337
+2020-07-17 08:48:38 START SWF convert
+2020-07-17 08:48:38 END SWF convert
+2020-07-17 08:48:38 Eslapsed: 00:00:00.0468644
+2020-07-17 08:48:38 START PDF split
+2020-07-17 08:48:39 END PDF split
+2020-07-17 08:48:39 Eslapsed: 00:00:00.0312490
+2020-07-17 08:48:39 ------------------------------------------------------------- All conversion processes end.
+2020-07-17 08:48:39 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-17 08:48:39 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:48:39 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-17 08:48:39 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.
+2020-07-17 08:59:20 NewConvert() is calling
+2020-07-17 08:59:20 Received post data: file_id=39031&pdfname=dummy.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=13264&creation=20200717085812
+2020-07-17 08:59:20 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-17 08:59:20 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:59:20 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-17 08:59:20 ------------------------------------------------------------- Start convert: dummy.pdf
+2020-07-17 08:59:20 START JSON convert
+2020-07-17 08:59:20 END JSON CONVERT
+2020-07-17 08:59:20 Eslapsed: 00:00:00.0468744
+2020-07-17 08:59:20 START PNG convert
+2020-07-17 08:59:21 END PNG CONVERT
+2020-07-17 08:59:21 Eslapsed: 00:00:00.4999998
+2020-07-17 08:59:21 START SWF convert
+2020-07-17 08:59:21 END SWF convert
+2020-07-17 08:59:21 Eslapsed: 00:00:00.0781258
+2020-07-17 08:59:21 START PDF split
+2020-07-17 08:59:21 END PDF split
+2020-07-17 08:59:21 Eslapsed: 00:00:00.0312502
+2020-07-17 08:59:21 ------------------------------------------------------------- All conversion processes end.
+2020-07-17 08:59:21 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-17 08:59:21 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 08:59:21 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-17 08:59:21 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.
+2020-07-17 10:38:27 NewConvert() is calling
+2020-07-17 10:38:27 Received post data: file_id=39031&pdfname=dummy-4-seiten.pdf&path.source=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&path.dest=E%3a%5cInternet%5ccuroot%5cMandanten-insyma%5cCU_BusinessCompanyStandard%5cweb%5cCU_BusinessCompanyStandard%5cfiles%5c&owner=CU_BusinessCompanyStandard&filestore=0&size=11083&creation=20200717103826
+2020-07-17 10:38:27 {'status': 'True', 'message': 'Convert task added to DB' }
+2020-07-17 10:38:27 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 10:38:27 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 1
+2020-07-17 10:38:27 ------------------------------------------------------------- Start convert: dummy-4-seiten.pdf
+2020-07-17 10:38:27 START JSON convert
+2020-07-17 10:38:28 END JSON CONVERT
+2020-07-17 10:38:28 Eslapsed: 00:00:00.0468836
+2020-07-17 10:38:28 START PNG convert
+2020-07-17 10:38:28 END PNG CONVERT
+2020-07-17 10:38:28 Eslapsed: 00:00:00.0937472
+2020-07-17 10:38:28 START SWF convert
+2020-07-17 10:38:28 END SWF convert
+2020-07-17 10:38:28 Eslapsed: 00:00:00.0937446
+2020-07-17 10:38:28 START PDF split
+2020-07-17 10:38:28 END PDF split
+2020-07-17 10:38:28 Eslapsed: 00:00:00.0312490
+2020-07-17 10:38:28 ------------------------------------------------------------- All conversion processes end.
+2020-07-17 10:38:28 >>>>>>>>>>>>>>>>>>>>>>>>> ALL TASKS COMPLETED.
+2020-07-17 10:38:28 >>>>>>>>>>>>>>>>>>>>>>>>> START BACKGROUND TASK
+2020-07-17 10:38:28 >>>>>>>>>>>>>>>>>>>>>>>>> Number of tasks loaded: 0
+2020-07-17 10:38:28 >>>>>>>>>>>>>>>>>>>>>>>>> NO PENDING TASKS.

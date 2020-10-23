@@ -1,0 +1,11 @@
+ErrorDocument 404 /deu/404.shtml
+
+AddOutputFilter INCLUDES inc
+
+Header set X-UA-Compatible "IE=Edge,chrome=1"
+
+<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</FilesMatch>

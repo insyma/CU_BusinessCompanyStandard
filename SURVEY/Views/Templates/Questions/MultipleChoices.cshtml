@@ -1,0 +1,112 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="@Model.QuestionTypeId">
+        <span>
+            @Model.QuestionName
+        </span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">
+            @Model.Comment
+        </p>
+        <ul class="vertical_list">
+            @{
+                List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+                //loop though all answers
+                foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                {
+                    if (answer.AnswerName == "Andere" || answer.AnswerName == "Anderes:")
+                    {
+                        <li answerid="@answer.Id" class="AndereCheckbox">
+                            <dl>
+                                <dt>
+                                    <div class="checker">
+                                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                        {
+                                            <span class="checked"><input type="checkbox" class="otherCheckBox" checked /></span>
+                                        }
+                                        else
+                                        {
+                                            <span><input type="checkbox" class="otherCheckBox" /></span>
+                                        }
+                                    </div>
+                                </dt>
+                                <dd>@answer.AnswerName</dd>
+                            </dl>
+                        </li>
+                    }
+                    else if (answer.AnswerName == "Andere Textbox")
+                    {
+                        <li answerid="@answer.Id" class="AndereTextbox">
+                            <input type="text" class="otherTextBox" disabled="disabled"  value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,answer.Id)"/>
+                        </li>
+                    }
+                    else
+                    {
+
+                        if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.CheckBox)
+                        {
+                            <li answerid="@answer.Id" class="AndereCheckbox">
+                                <dl>
+                                    <dt>
+                                        <div class="checker">
+                                            @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                            {
+                                                <span class="checked"><input type="checkbox" checked /></span>
+                                            }
+                                            else
+                                            {
+                                                <span><input type="checkbox"/></span>
+                                            }
+                                        </div>
+                                    </dt>
+                                    <dd>@answer.AnswerName</dd>
+                                </dl>
+                            </li>
+                        }
+
+                        if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.CheckboxWithTextbox)
+                        {
+                            <li answerid="@answer.Id" class="AndereCheckbox">
+                                <dl>
+                                    <dt>
+                                        <div class="checker">                                            
+                                            @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                            {
+                                                <span class="checked"><input type="checkbox" class="checkboxWithTextbox" checked /></span>
+                                            }
+                                            else
+                                            {
+                                                <span><input type="checkbox" class="checkboxWithTextbox" /></span>
+                                            }
+                                        </div>
+                                    </dt>
+                                    <dd>@answer.AnswerName</dd>
+                                </dl>
+                            </li>
+
+                            <li answerid="@answer.Id" class="AndereTextbox">
+                                <input type="text" class="textboxForCheckbox" disabled="disabled" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,answer.Id)" />
+                            </li>
+                        }
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>

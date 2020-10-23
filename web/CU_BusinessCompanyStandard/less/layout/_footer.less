@@ -1,0 +1,68 @@
+﻿@import (reference) '../base/_variables.less';
+@import (reference) '../base/_mixins.less';
+
+////////////////////////////////////////////////////////////////////////
+// Container - Footer
+////////////////////////////////////////////////////////////////////////
+footer.con-footer {
+	color: @subtextdark;
+	//	background-color: @background-footer; // HINTERGRUND ist auf Body
+	display: block;
+	padding: @margin-part 0;
+
+	a,
+	.item-title,
+	.value {
+		color: @white;
+	}
+
+	a:hover {
+		color: @subtextdark;
+	}
+
+	.con {
+		// Adresse
+		&-address-contact-options {
+			.clearfix;
+			display: table;
+			margin-top: 1rem;
+
+			li {
+				display: table-row;
+			}
+
+			span {
+				display: table-cell;
+				padding: 1px 0;
+
+				&.label {
+					padding-right: 20px;
+				}
+			}
+		}
+		// Links
+		&-footer-links {
+			.list {
+				&-level-1 {
+					> li {
+						display: inline-block;
+						margin-right: @margin-part;
+						vertical-align: top;
+					}
+				}
+
+				.item {
+					&-title {
+						color: @subtextdark;
+					}
+
+					&-link {
+						font-weight: @fw-regular;
+						margin: auto;
+						padding: 0 0 1px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,76 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+<div class="questioncon" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="@Model.QuestionTypeId"><span>@Model.QuestionName</span> </div>
+
+    <div class="answer formcon form">
+        <p class="describe">
+            @Model.Comment
+        </p>
+
+        <ul>
+            @{
+                List<udsp_SURVEY_QuestionOnline_Result> questions = SurveyOnlineRepository.GetQuestionOnlineByParent(Model.Id, (int)ViewBag.languageId);
+
+                questions.ForEach(question =>
+                {
+                    if (!string.IsNullOrEmpty(question.TemplatePath))
+                    {
+                        Html.RenderPartial(question.TemplatePath, question);
+                    }
+                }); 
+            }
+
+            @{
+                List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+
+                foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                {
+                    string randomName = Guid.NewGuid().ToString();
+                    udsp_SURVEY_QuestionAnswerContactFieldOnline contactField = SurveyOnlineRepository.LoadQuestionAnswerContactMapping(Model.Id, answer.Id, (int)ViewBag.languageId);
+                    
+                <li fieldname="@answer.AnswerName" answerid="@answer.Id" data-ismandatory="@contactField.IsMandatory.ToString().ToLower()" data-fieldtype="@contactField.FieldType">
+                    <label for="@randomName">
+                        @answer.AnswerName
+                        @{
+                    if (contactField.IsMandatory)
+                    {
+                            <em>*</em>
+                    }
+                        }
+                    </label>
+
+                    @{
+                        if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Text)
+                        {
+                            <input type="text" id="@randomName" name="@contactField.ContactFieldName">
+                        }
+                        if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.MultiRowText)
+                        {
+                            <textarea id="@randomName" style="width: auto; height: auto;" class="FormCustomLayout" cols="100" rows="5" name="@contactField.ContactFieldName"></textarea>
+                        }
+                        if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.CheckBox)
+                        {
+                            <div class="checker">
+                                <span>
+                                    <input type="checkbox" name="@contactField.ContactFieldName" value="1" />
+                                </span>
+                            </div>
+                        }
+                    }
+
+                    <div class="hidden">
+                        <span class="InLineValidateCaption">
+                            @contactField.ValidationMessage
+                        </span>
+                    </div>
+                </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

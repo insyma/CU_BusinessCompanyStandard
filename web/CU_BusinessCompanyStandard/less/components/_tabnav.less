@@ -1,0 +1,59 @@
+﻿@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) "../layout/_media-queries.less";
+
+
+.tabbing {
+	overflow-y: hidden;
+	overflow-x: auto;
+	padding-bottom: 1px;
+
+
+	ul {
+		.flex-display;
+		border-bottom: 1px solid @trenner;
+		position: relative;
+		top: 1px;
+
+
+		li {
+			border-bottom: 4px solid @transparent;
+			.font18;
+			margin: 0;
+			padding: 10px 20px 15px 20px;
+			.href;
+			color: @text;
+			position: relative;
+			top: 1px;
+			white-space: nowrap;
+			z-index: @z1;
+
+			&.active {
+				border-bottom-color: @primary;
+				color: @primary;
+			}
+
+			&:hover {
+				color: @primary;
+			}
+		}
+	}
+
+	&-sub {
+
+		ul {
+			border: none;
+
+			li {
+				border: none;
+			}
+		}
+	}
+}
+
+.part.tab {
+//	.border-radius-proj-bottom;
+	background-color: @white;
+	border: 1px solid @trenner;
+	padding: 40px;
+}

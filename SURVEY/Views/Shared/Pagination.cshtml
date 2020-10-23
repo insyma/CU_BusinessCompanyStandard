@@ -1,0 +1,21 @@
+﻿<div class="pagination" ng-show="totalPages > 1">
+    <ul>
+        <li ng-class="{disabled: currentPage == 1}">
+            <a href ng-click="firstPage()"><<</a>
+        </li>
+        <li ng-class="{disabled: currentPage == 1}">
+            <a href ng-click="prevPage()"><</a>
+        </li>
+        <li ng-repeat="n in range(totalPages)"
+            ng-class="{active: n == currentPage -1 }"
+            ng-click="setPage()">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == totalPages }">
+            <a href ng-click="nextPage()">></a>
+        </li>
+        <li ng-class="{disabled: currentPage == totalPages }">
+            <a href ng-click="lastPage()">>></a>
+        </li>
+    </ul>
+</div>

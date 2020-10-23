@@ -1,0 +1,15 @@
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <variable name="logDirectory" value="E:\Internet\curoot\Mandanten-insyma\CU_BusinessCompanyStandard\Convert_Log"/>
+  
+  <targets>
+		<target name="debug" xsi:type="File" fileName="${logDirectory}\debug.log"/>  
+		<target name="info" xsi:type="File"  fileName="${logDirectory}\info.log" layout="${date:format=yyyy-MM-dd HH\:mm\:ss} ${message}" />
+		<target name="error" xsi:type="File" fileName="${logDirectory}\error.log"/>
+	</targets>
+  
+	<rules>
+		<logger name="*" levels="Debug" writeTo="debug" />
+		<logger name="*" levels="Info" writeTo="info" />
+		<logger name="*" levels="Error" writeTo="error" />
+	</rules>
+</nlog>

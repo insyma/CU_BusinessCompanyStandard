@@ -1,0 +1,28 @@
+﻿@model IntranetBridge.Lib.PagedList<Insyma.ContentProperty.Domain.Data.DataPublishListPage>
+
+@{
+    var beginTag = string.IsNullOrEmpty(Model.ItemTag)? "": string.Format("<{0} [data-link]>", Model.ItemTag);
+    var endTag = string.IsNullOrEmpty(Model.ItemTag) ? "" : string.Format("</{0}>", Model.ItemTag);
+}
+
+<!--listdata @Model.ListId-->
+@foreach (var i in Model.Items)
+{
+    <!--@i.OverviewFilePath-->
+    if (i.OverviewFilePath.EndsWith(".cshtml"))
+    {
+        var cssClass = string.Format("{0} {1}", Model.CssClass, i.IsNew ? "highlight" : "");
+        @Html.Raw(beginTag.Replace("[data-link]", string.Format("data-link=\"{0}\" data-obj-id=\"{1}\" class=\"{2}\"", i.DetailFilePath, i.fk_UNDA_Data_Obj_id_Page, cssClass)))
+        @*<a id="@i.Title"></a>*@
+        @RenderPage(string.Format("~/{0}", i.OverviewFilePath))
+        @Html.Raw(endTag)
+    }
+}
+
+@if (Model.HasNext && Model.EnableLoadMore)
+{
+<li style="text-align: center" class="load-more-content">
+    <a href="javascript:void(0);"
+       class="load-more" data-id="@Model.ListId" data-lang-id="@Model.LangId" data-sort-by="@Model.SortBy" data-page-index="@(Model.CurrentPage+1)" data-page-size="@Model.PageSize" data-item-tag="@Model.ItemTag" data-css-class="@Model.CssClass">WEITERE LADEN</a>
+    </li>
+}

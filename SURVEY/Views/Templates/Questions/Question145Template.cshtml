@@ -1,0 +1,118 @@
+﻿@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="6"><span>@Model.QuestionName</span> </div>
+
+    <div class="answer formcon form">
+        <p class="describe">
+            @Model.Comment
+        </p>
+
+        <ul>
+            <li fieldname="Anrede" questionid="146">
+                <label>Anrede <em>*</em></label>
+                <ol class="RadioButton vertical">
+                    <li answerid="71">
+                        <div class="radio">
+                            <span>
+                                <input type="radio" value="1" id="cu34867" name="SalutationID"></span>
+                        </div>
+                        <label for="cu34867">Herr</label>
+                    </li>
+                    <li answerid="72">
+                        <div class="radio">
+                            <span>
+                                <input type="radio" value="2" id="cu34868" name="SalutationID"></span>
+                        </div>
+                        <label for="cu34868">Frau</label>
+                    </li>
+                </ol>
+                <div style="display: none" id="vldSalutationID">
+                    <span class="InLineValidateCaption"
+                        id="vldSpanSalutationID"></span>
+                </div>
+            </li>
+            <li fieldname="Name" answerid="62">
+                <label for="cu34869">Name <em>*</em></label>
+                <input type="text" id="cu34869" name="SurName">
+                <div style="display: none" id="vldEmptySurName">
+                    <span class="InLineValidateCaption"
+                        id="vldSpanEmptySurName">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li fieldname="Vorname" answerid="63">
+                <label for="cu34871">Vorname <em>*</em></label>
+                <input type="text" id="cu34871" name="FirstName">
+                <div style="display: none" id="vldEmptyFirstName">
+                    <span class="InLineValidateCaption"
+                        id="vldSpanEmptyFirstName">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li answerid="64">
+                <label for="cu35047">Firma </label>
+                <input type="text" id="cu35047" name="Company">
+            </li>
+            <li class="optionalMandatory" fieldname="Adresse" ismandatory="1" answerid="65">
+                <label for="cu34873">Strasse <em>*</em></label>
+                <input type="text" id="cu34873" name="Address">
+                <div id="vldEmptyAddress" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li answerid="83">
+                <label for="cu34879">Hausnummer</label>
+                <input type="text" name="AddressNumber">
+                <div style="display: none" id="Div1">
+                    <span class="InLineValidateCaption"
+                        id="Span1"></span>
+                </div>
+                <div style="display: none" id="Div2"><span class="InLineValidateCaption" id="Span2">Ung&uuml;ltiges Format.</span></div>
+            </li>
+            <li class="optionalMandatory" fieldname="PLZ" ismandatory="1" answerid="66">
+                <label for="cu34875">PLZ <em>*</em></label>
+                <input type="text" id="cu34875" name="PLZ">
+                <div id="vldEmptyPLZ" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li class="optionalMandatory" fieldname="Ort" ismandatory="1" answerid="67">
+                <label for="cu34877">Ort <em>*</em></label>
+                <input type="text" id="cu34877" name="City">
+                <div id="vldEmptyCity" class="hidden">
+                    <span class="InLineValidateCaption">Bitte f&uuml;llen Sie dieses Feld aus.</span>
+                </div>
+            </li>
+            <li answerid="68">
+                <label for="cu34879">Telefon</label>
+                <input type="text" id="cu34879" name="Tel">
+                <div style="display: none" id="vldEmptyTel">
+                    <span class="InLineValidateCaption"
+                        id="vldSpanEmptyTel"></span>
+                </div>
+                <div style="display: none" id="vldTel"><span class="InLineValidateCaption" id="vldSpanTel">Ung&uuml;ltiges Format.</span></div>
+            </li>
+            <li fieldname="E-Mail" answerid="69">
+                <label for="cu34881">E-Mail <em>*</em></label>
+                <input type="text" id="cu34881" name="Email">
+                <div style="display: none" id="vldEmptyEmail">
+                    <span class="InLineValidateCaption"
+                        id="vldSpanEmptyEmail"></span>
+                </div>
+                <div style="display: none" id="vldEmail"><span class="InLineValidateCaption" id="vldSpanEmail">Ung&uuml;ltiges Format.</span></div>
+            </li>
+            <li answerid="74">
+                <label for="chkReceiveByNewsletter">Ich möchte gerne weitere Informationen per elektronischem Newsletter erhalten.</label>
+                <div class="checker">
+                    <span>
+                        <input value="2" type="checkbox" id="chkReceiveByNewsletter" />
+                    </span>
+                </div>
+            </li>
+            <li answerid="70" style="padding-top: 10px;">
+                <label for="cu34883">M&ouml;chten Sie uns noch etwas mitteilen? </label>
+                <textarea id="cu34883" style="width: auto; height: auto;" class="FormCustomLayout" cols="100" rows="5"
+                    name="Commentary"></textarea>
+            </li>
+        </ul>
+    </div>
+</div>

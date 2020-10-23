@@ -1,0 +1,77 @@
+﻿/*
+Wide Skyscraper 160x600 40K GIF/JPG/Flash   1:3,75
+Rectangle   180x150 40K GIF/JPG/Flash   1,2
+Wide Skyscraper alternative 200x600 40K GIF/JPG/Flash   1:3
+Standard Skyscraper 120x600 40K GIF/JPG/Flash   1:5
+Universal Flash Layer   400x400 40K Flash   1
+Expandable Skyscraper   420 (160) x600  40K GIF/JPG/Flash   1:1,4 (1:3,75)
+Expandable Super Banner 728x300 (90)    40K GIF/JPG/Flash   2,4 (8,1)
+*/
+
+.ConAbsolute {
+    position: absolute;
+}
+.conAd {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+    iframe {
+        max-width: 100%;
+    }
+}
+.ads-header-text {
+    font-family: sans-serif;
+    font-size: 10px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 10px;
+    text-align: left !important;
+    text-transform: uppercase;
+}
+
+// Wide Skyscraper 160x600 40K GIF/JPG/Flash   1:3,75
+.addSkyScraper {
+    width: 160px;
+    height: 600px;
+}
+.ConSkyScraper {
+    margin-top: 20px;
+    right:  -160px;
+    top: 0;
+}
+
+// Medium Rectangle    300x250 40K GIF/JPG/Flash   1,2
+.addMediumRectangle {
+    width: 300px;
+    height: 250px;
+}
+.ConMediumRectangle {
+    margin-left: 20px;
+    margin-top: 23px;
+}
+
+.Part.WithMediumRectangle {
+    display: inline-block;
+    width: ~"calc(100% - 320px)";
+    p.PartLead {
+        padding: 0;
+    }
+}
+// Super Banner    728x90  40K GIF/JPG/Flash   8,1
+.addLeaderboard {
+    width: 728px;
+    height: 90px;
+}
+// .ConLeaderboard {}
+
+// Full Banner 468x60  40K GIF/JPG/Flash   7,8
+.addFullBanner {
+    max-width: 468px;
+    height: 60px;
+    width: 100%;
+}
+.ConFullBanner {
+    max-width: 468px;
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,102 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+
+<div class="questioncon" style="display: block" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="4">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer table_big">
+        <p class="describe describe_last">1=sehr gut, 2=gut, 3=gen&uuml;gend, 4=schlecht</p>
+
+        <div class="table_big">
+            <div class="header_table">
+                <ul class="tablerow">
+                    <li class="header_table_empty">&nbsp;</li>
+                    @{
+                        if (!string.IsNullOrEmpty(Model.Header))
+                        {
+
+                            string[] separators = new string[] { "#@#" };
+
+                            string[] headers = Model.Header.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                            foreach (string header in headers)
+                            {
+
+                        <li class="tablecell">@header </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+
+            @{
+                List<udsp_SURVEY_QuestionOnline_Result> questions = SurveyOnlineRepository.GetQuestionOnlineByParent(Model.Id, (int)ViewBag.languageId);
+                foreach (udsp_SURVEY_QuestionOnline_Result question in questions)
+                {
+                    List<udsp_SURVEY_DependencyAndGroup_Result> questionDependencies = SurveyOnlineRepository.LoadQuestionDependencies(question.Id);
+
+                    DependencyItem questionRootGroup = DependencyItem.ConvertDependencies(questionDependencies, null, false).SingleOrDefault();
+                    
+                <div class="sub_question" questionid="@question.OriginalQuestionId" data-questionid="@question.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(questionRootGroup))'>
+                    <h6>@question.QuestionName</h6>
+
+                    <div class="sub_table">
+                        @{
+                    List<udsp_SURVEY_QuestionOnline_Result> subQuestions = SurveyOnlineRepository.GetQuestionOnlineByParent(question.Id, (int)ViewBag.languageId);
+                    foreach (udsp_SURVEY_QuestionOnline_Result subQuestion in subQuestions)
+                    {
+                            <ul class="tablerow table_item" questionid="@subQuestion.OriginalQuestionId" data-questionid="@subQuestion.Id">
+                                <li class="tablecell category">@subQuestion.QuestionName</li>
+
+                                @{
+                        List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(subQuestion.Id, (int)ViewBag.languageId);
+
+                        string randomName = Guid.NewGuid().ToString(); 
+                        
+                        foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                        {
+                                    <li class="tablecell" answerid="@answer.Id">
+                                        <div class="radio">
+                                            @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, question.Id, answer.Id))
+                                            {
+                                                <span class="checked">
+                                                    <input name="@randomName" type="radio" checked />
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>
+                                                    <input name="@randomName" type="radio" />
+                                                </span>
+                                            }
+                                        </div>
+                                    </li>
+                        }
+                                }
+                            </ul>
+                    }
+                        }
+                    </div>
+                </div>
+                }
+            }
+
+        </div>
+
+    </div>
+</div>

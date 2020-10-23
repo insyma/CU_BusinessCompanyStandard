@@ -1,0 +1,824 @@
+/*----------------------------------------------------------------------
+CSS
+Created: 	2015
+Creator:	MGUM, SCHM
+Editor:		MGUM, SCHM
+----------------------------------------------------------------------*/
+
+/************************************************************************************
+	Style Parts global 
+************************************************************************************/
+
+div.inhalt .Part
+{
+    display: block;
+    margin-bottom: 3em;
+    position: relative;
+    width: 100%;
+}
+div.inhalt .Part > *:last-child {
+    margin-bottom: 0;
+}
+
+table p {
+	margin: 0;
+	padding: 0;
+}
+.flex-viewport p
+{
+	margin-bottom: 0;
+}
+dt {
+    clear: both;
+    float: left;
+    min-width: 100px;
+    width: 10%;
+}
+dd {
+    overflow: hidden;
+}
+
+/************************************************************************************
+	Breiten  
+************************************************************************************/
+.width10 		{width: 10%;}
+.width20 		{width: 20%;}
+.width25 		{width: 25%;}
+.width30 		{width: 30%;}
+.width33 		{width: 33%;}
+.width50 		{width: 50%;}
+.width66 		{width: 66%;}
+.width70 		{width: 70%;}
+.width75 		{width: 75%;}
+.width100 		{width: 100%;}
+
+/************************************************************************************
+	Listen Grunddefinition
+************************************************************************************/
+
+ul,
+/* project styles */
+.foo
+{
+    list-style: none;
+}
+div.inhalt ul {
+    margin-bottom: 1em;
+	overflow: hidden;
+}
+/* Listen ohne Icon */
+.list ul li {   
+    display: block;
+    margin: .3em 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+.PartNews li {
+    margin: .3em 0;
+}
+/* Listen mit Icon */
+
+.liststyle ul li,
+.liststyle ul.linklist li,
+.ValidationSummary ul li,
+/* project styles */
+.foo
+{   
+    display: block;
+    margin: .3em 0;
+	overflow: hidden;
+    padding: 0 0 0 30px;
+	position: relative;
+}
+
+/* Einzelelemente */
+.PartBreadcrumbs li a,
+a.link,
+p.link a,
+/* project styles */
+.PartTeam .icon,
+.PartTeam [href^="tel"],
+.foo
+{
+    display: inline-block;
+    margin: .3em 0;
+    padding: 0 0 0 30px;
+    position: relative;
+    vertical-align: top;
+}
+dt.icon {   
+    display: block;
+    margin: 0;
+    min-height: 1px;
+    min-width: inherit;
+    padding: 0 0 0 30px;
+    position: relative;
+    width: auto;
+}
+dt.icon > span {
+    display: block;
+    min-width: 100px;
+    padding-top: 0 30px 0 0;
+    width: 10%;
+}   
+
+.PartBreadcrumbs li a {
+    padding: 0 0 0 20px;
+}
+.PartBreadcrumbs li:before,
+.liststyle ul.linklist > li:before,
+div.inhalt > .con-form ol li:before,
+/* project styles */
+.foo
+{
+	display: none !important;
+}
+dt.icon:before,
+.liststyle ul li:before,
+.liststyle ul.linklist li a:before,
+a.abschlusslink:before,
+a.link:before,
+p.link a:before,
+.abschlusslink:before, 
+.ValidationSummary ul li:before,
+/* project styles */
+.PartTeam .icon:before,
+.PartTeam [href^="tel"]:before,
+.foo
+{
+    left: 1px;
+    position: absolute;
+    top: 0;
+    width: 30px;
+}
+
+div.inhalt > div ol {
+    list-style-type: none;
+    counter-reset: ol-counter;
+    margin-bottom: 1em;
+    overflow: hidden;
+    padding: 0;
+}
+div.inhalt > div ol li {
+    margin: .3em 0;
+    padding-left: 30px;
+    position: relative;
+}
+div.inhalt > div ol > li:before {
+    content: counter(ol-counter)".";
+    counter-increment: ol-counter;
+    left: 0;
+    position: absolute;
+    top: auto;
+}
+
+/************************************************************************************
+	Listen Breiten 
+************************************************************************************/
+
+/* No Space Fix */
+.movielink > img,
+.imagelink > img,
+.imagewrap > img,
+.flex-viewport img
+{
+    display: block;
+}
+
+/* Masse, Abstaende und Positionen */
+figure.conimage,
+.imagelist.vertical
+{
+    float: right;
+    margin: 0 0 1em 5%;
+	max-width: 225px;
+    width: 35%;
+}
+.left figure.conimage {
+	float: left;
+	margin: 0 5% 1em 0;
+}
+.imagelist.vertical li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Settings */
+figure.conimage {
+	display: inline-block;
+	height: auto;
+	overflow: hidden;
+}
+figure.conimage > * {
+	width: 100%;
+}
+figcaption {
+	clear: both;
+	padding: .5em 0;
+}
+
+/* Bilderliste horizontal */
+.imagelist.vertical li figure.conimage {
+    margin: 0 0 .5em;
+    width: 100%;
+}
+
+/* Bilderliste horizontal */
+.imagelist.horizontal li a {
+	float: left;
+	margin: 0 .5em .5em 0;
+	max-height: 80px;
+    max-width: none;
+    overflow: hidden;
+    width: 120px;       
+}
+.imagelist.horizontal li a img {
+    min-width: 180px; /* grösser als Imagewrap */
+    width: 100%;
+}
+
+/* Bilder mit 100% Breite */
+figure.conimage.width100 {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+}
+/************************************************************************************
+	Listen ohne Styling 
+************************************************************************************/
+.noliststyle li:before {
+	display: none;
+}
+
+/************************************************************************************
+	Parts 
+************************************************************************************/
+
+/* Part Grundlagen */
+
+
+/* Part Link/Datei-Liste */
+
+
+
+/*PartBilderliste: Part Bilderliste */
+.PartBilderliste a {
+    background-position: center center;
+    background-size: cover;
+}
+.PartBilderliste a img {
+    visibility: hidden;
+}
+
+/*PartMedienliste: Part Medienliste */
+.PartMedienliste a {
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+.PartMedienliste a img {
+    visibility: hidden;
+}
+
+/*PartTeam: Part Team */
+.PartTeam ul {
+    width: 100%;
+}
+.PartTeam > ul > li {
+	margin-bottom: 2.5em;
+	width: 100%;
+}
+.PartTeam > ul > li:nth-child(2n+1) {
+	clear: both;
+}
+.PartTeam ul.rowentries > li > dl {
+    overflow: hidden;
+    width: 100%;
+}
+.PartTeam dt {
+	margin: 0 0 1em;
+	width: 100%;
+}
+.PartTeam dt,
+.PartTeam dd {
+    clear: both;
+	width: 100%;
+}
+
+.PartTeam ul ul ul {
+    margin-bottom: 0;
+}
+.PartTeam ul ul ul li a {
+    margin-bottom: .25em;
+}
+.rowentries {
+    font-size: 0;
+	text-align: left;
+}
+.rowentries > li {
+	display: inline-block;
+    margin: 0 0 30px 15px;
+	vertical-align: top;
+}
+.rowentries3 > li {
+    width: calc(100% / 3 - 10px);
+}
+.rowentries4 > li {
+    width: calc(100% / 4 - 45px / 4);
+}
+.rowentries3 > li:nth-child(3n+1),
+.rowentries4 > li:nth-child(4n+1)
+{
+    margin-left: 0;
+}
+
+/* Tabelle  */
+.PartTabelle .con-table {
+    overflow: auto;
+}
+.PartTabelle table caption {
+    text-align: left;
+}
+.PartTabelle table thead {
+	width: 100%;
+}
+.PartTabelle table td,
+.PartTabelle table th
+{
+    border-width: 1px 0;
+	padding: .5em 2em;
+	text-align: left;
+    vertical-align: top;
+}
+/*PartMovie: Part Movie */
+.PartMovie {
+    position: relative;
+}
+
+/* Movie  */
+.movie-holder,
+.movie-holder {
+    max-width: 100%;
+    position: relative;
+}
+.movie-holder:before,
+.movie-holder:after {
+	border-spacing: 0;
+    content: "";
+    display: table;
+}
+.movie-holder:before {
+    clear: both;
+}
+.playButton,
+.movie-holder video,
+.movie-holder object,
+.movie-holder iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;  
+}
+.splashscreen {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+}
+.playButton {
+    background: url("../img/layout/play.png") no-repeat scroll center center transparent;
+    background-size: 64px 64px;
+    cursor: pointer;
+}
+
+/* Bild Gross Liste */
+
+.bildSpan.flex-active-slide > p {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    left: 0;
+    margin-top: -70px;
+    padding: 10px;
+    position: relative;
+    right: 0;
+    z-index: 1099;
+}
+
+/************************************************************************************
+flexslider
+************************************************************************************/
+.carousel li {margin-right: 5px}
+.loading .flex-viewport {max-height: 300px;}
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0;}
+.flex-direction-nav a {width: 24px; height: 24px; margin: -12px 0 0; position: absolute; top: 50%; z-index: 10;}
+.flex-direction-nav a:before {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.flex-direction-nav .flex-next {right: 20px; }
+.flex-direction-nav .flex-prev {left: 20px;}
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+
+/* Control Nav */
+.flex-control-nav {width: 100%; text-align: center; padding-left: 0 !important; margin-bottom: 0 !important;}
+.flex-control-nav li {margin: 5px !important; display: inline-block; zoom: 1; *display: inline; padding: 0 !important;}
+.flex-control-nav li:before {display: none;}
+
+.flex-control-paging li a {width: 11px; height: 11px; background: #666; background: rgba(0,0,0,0.5); text-indent: -9999px; border-radius: 20px;}
+.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9);}
+
+.flex-control-thumbs {margin: 5px 0 0;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; opacity: .7;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1;}
+
+/************************************************************************************
+google map 
+************************************************************************************/
+#map_canvas,
+.conMap,
+.con-map-canvas
+{
+    height: 600px;
+    width: 100%;
+}
+
+
+/*  FULL PAGE DISPLAY / shadow for full size display + Font Icon
+#map_canvas {
+    left: 0;
+    position: fixed !important;
+    top: 0;
+.icongmapmarker {
+    font-size: 0;
+    height: auto;
+    opacity: 1 !important;
+    overflow: inherit !important;
+    width: auto;
+}
+div.con-map-canvas {
+    min-height: 400px;
+    width: 100%;
+}
+div.gm-style > div:first-child > div {
+    box-shadow: inset 0 5px 10px -5px rgba(51,51,51,.5) , inset 0 -5px 10px -5px  rgba(176,176,176,.5);
+}
+*/
+/************************************************************************************
+Formulare
+************************************************************************************/
+input[type="email"],
+input[type="text"],
+input[type="password"],
+textarea, 
+select,
+.imgCaptcha,
+div.checker input,
+input[type="search"],
+input[type="search"]:active {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Masse */
+.con-form ul {
+    width: 100%;
+}
+.con-form ul > li > label
+{
+    float: left;
+	padding: 0 5% 0 0;
+    min-width: 125px;
+    width: 30%;
+}
+
+.con-form input[type="email"],
+.con-form input[type="text"],
+.con-form input[type="password"],
+.con-form select,
+.con-form textarea,
+.con-form p,
+div.selector
+{
+	width: 70% !important;
+}
+.con-form .divCaptcha input[type="text"] {
+	width: 100% !important;
+}
+#cse-search-box input[type="submit"] {
+	width: 30% !important;
+}
+.con-form p {
+    clear: both;
+    float: right;
+}
+div.selector span:after
+{
+    height: 34px;
+    line-height: 34px;
+    width: 34px;
+}
+div.selector,
+div.selector span,
+div.selector select {
+    height: 36px !important;
+    line-height: 36px !important;
+}
+
+/* Farben und Border */
+/* > colors.css */
+
+/* Settings */
+
+.con-form ul,
+.con-form ol,
+.con-form ol li,
+.con-form .divCaptcha
+{
+    list-style: none !important;
+    margin: 0 !important;
+	overflow: hidden;
+   	padding: 0 !important;
+}
+.con-form ul > li {
+	clear: both;
+	float: left;
+	margin-bottom: .5em;
+	position: relative;
+	width: 100%;
+}
+
+
+input[type="email"],
+input[type="text"],
+input[type="password"],
+textarea, 
+select
+{
+    border-radius: 0;
+	float: left;
+	font-family: inherit;
+	font-size: 100%;
+	padding: 5px !important;
+}
+.con-form input {
+	font-family: inherit;
+	font-size: 100%;
+}
+.con-form option {
+	padding: 0 5px;
+}
+.con-form ol.CheckBox.horizontal li,
+.con-form ol.RadioButton.horizontal li
+{
+    float: left;
+    padding-right: 10px !important;
+    width: auto !important;
+}
+.con-form ol.CheckBox.vertical > li,
+.con-form ol.RadioButton.vertical > li,
+.con-form ol.CheckBox.horizontal li,
+.con-form ol.RadioButton.horizontal li
+{
+    border-spacing: 0;
+    display: table;
+    margin: 0.3em 0 !important;
+    table-layout: fixed;
+    width: 100%;
+}
+.con-form ol.CheckBox.horizontal li > *,
+.con-form ol.RadioButton.horizontal li > *,
+.con-form ol.CheckBox.vertical > li > *,
+.con-form ol.RadioButton.vertical > li > *
+{
+    display: table-cell;
+    margin: 0;
+    text-align: left;
+    vertical-align: top;
+}
+.con-form ol.CheckBox.horizontal li > *,
+.con-form ol.RadioButton.horizontal li > *
+{
+    padding-right: 10px;
+}
+
+.ie8 .con-form ol.CheckBox.vertical > li > *,
+.ie8 .con-form ol.RadioButton.vertical > li > *
+{
+    display: inline;
+}
+.con-form ol.CheckBox.vertical > li > label,
+.con-form ol.RadioButton.vertical > li > label {
+    float: none !important;
+	padding-left: 10px;
+	width: 100% !important;
+}
+.con-form img.ui-datepicker-trigger {
+	float: right;
+    max-width: 21px;
+    position: relative;
+    right: 15px;
+    top: -26px;
+    z-index: 0;
+}
+.con-form .imgCaptcha {
+	background: url("../img/layout/bg-captcha.png");
+	padding: 5px 0 0 15px;
+    width: auto;
+}
+
+input[type="checkbox"] {
+	background: transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+input[type="radio"] {
+	background:transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+
+/* Buttons */
+input[type="button"], 
+input[type="submit"], 
+button,
+.button
+{
+	border: none;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+    -webkit-box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+    -moz-box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 -15px 10px -5px rgba(0, 0, 0, .25);
+	border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-block;
+	padding: 10px 30px;
+	text-decoration: none;
+    vertical-align: bottom;
+}
+input[type="button"]:hover, 
+input[type="submit"]:hover, 
+button:hover,
+.button:hover
+{
+    -webkit-box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25);
+    -moz-box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 20px 20px -10px rgba(0, 0, 0, .25); 
+}
+
+/* Custom Select */
+div.selector {
+    height: 36px;
+    line-height: 36px;
+}
+div.selector span {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 40px 0 5px;
+    width: 100% !important;
+}
+div.selector span:after,
+.wrapInput:after,
+.iconsend:after
+{
+    height: 34px;
+    line-height: 34px;
+    right: 1px;
+    top: 1px;
+    width: 34px;
+}
+div.selector select {
+    background: #FFF;
+    height: 36px;
+}
+
+/* Custom Radio */
+div.radio, div.radio span, div.radio input {
+    height: 22px;
+    width: 22px;
+}
+/* Custom Checkbox */
+div.checker, div.checker span, div.checker input {
+    height: 22px;
+    line-height: 22px;
+    width: 22px;
+}
+
+/* Custom Uploader */
+
+div.uploader {
+    height: 28px;
+}
+div.uploader span.action {
+    /*    height: 28px;
+    line-height: 28px;*/
+}
+div.uploader span.filename {
+/*    height: 24px; */
+    line-height: 24px;
+}
+
+
+/* Validation */
+form em {
+    font-style: normal;
+}
+.InLineValidate {
+    clear: both;
+    float: left;
+    padding: 5px 0 0 30%;
+}
+.ValidationSummary {
+	background: #CCC;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Youtube Playlist */
+.PartYoutubePlaylist li {
+    margin-right: 10px;
+}
+.PartYoutubePlaylist li p {
+    margin-bottom: 0;
+}
+.PartYoutubePlaylist .YT_img {
+    position: relative;
+}
+.PartYoutubePlaylist li .title {
+    font-weight: bold;
+    line-height: 14px;
+    margin-top: 5px;
+}
+.PartYoutubePlaylist .duration {
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    color: white;
+    padding: 2px 8px;
+    position: absolute;
+    right: 0;
+}
+
+.PartYoutubePlaylist .channelTitle, 
+.PartYoutubePlaylist .viewCount, 
+.PartYoutubePlaylist .timeSince {
+    color: #999;
+    font-size: 10px;
+    line-height: 12px;
+}
+.PartYoutubePlaylist .yt_player {
+    margin-bottom: 1em;
+}
+.PartYoutubePlaylist .yt_playlist {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 2em;
+}
+.PartYoutubePlaylist .loadMore {
+    background: #efefef none repeat scroll 0 0;
+    padding: 18px 0;
+    vertical-align: middle;
+    text-align: center;
+}
+.PartYoutubePlaylist .lastVideo {
+    position: relative;
+}
+.PartYoutubePlaylist .lastVideo a::after {
+    border-right: 2px dotted #666;
+    bottom: 0;
+    box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: -6px;
+    top: 0;
+    width: 3px;
+    z-index: 1000;
+}

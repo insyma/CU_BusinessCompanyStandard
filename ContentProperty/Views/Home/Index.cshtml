@@ -1,0 +1,96 @@
+﻿@using Insyma.ContentProperty.Domain.Setting
+@using Insyma.ContentProperty.Web.Models
+@model Insyma.ContentProperty.Web.Models.PropertyBasicModel
+
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@*@if (Model.HasRight)
+{*@
+    <div class="part column content-properties">
+        <div class="part-action" style="display: none">
+            <span class="icon-save"></span>
+            @if (Model.ObjClassId == (int)Insyma.ContentUpdate.CUClass.ContentPageList && Model.IsAllowCalendarImport && Model.IsSelectionDefinition == false)
+            {
+                <span class="icon-import" title="Import"></span>
+            }            
+            <span class="icon-cancel"></span>
+        </div>
+
+        <div class="part-header">
+            <a class="icon page-icon">@Model.PropertyBasic.PropertySettingName</a>
+        </div>
+
+        <div class="part-content" style="display: none">
+
+        </div>
+        <div>
+            <input type="hidden" id="hidObjId_ContentProp" value="@Model.ObjId" />
+            <input type="hidden" id="hidPropertyBasicId_ContentProp" value="@Model.PropertyBasic.Id" />
+            <input type="hidden" id="hidLanguageId_ContentProp" value="@Model.LanguageId" />
+            <input type="hidden" id="hidClientId_ContentProp" value="@Model.PropertyBasic.ClientId" />
+            <input type="hidden" id="hidObjWebId_ContentProp" value="@Model.PropertyBasic.ObjWebId" />
+            <input type="hidden" id="hidObjParentId_ContentProp" value="@Model.ObjParentId" />
+            <input type="hidden" id="hidIsSelectionDefinition_ContentProp" value="@Model.IsSelectionDefinition.ToString()" />
+            <input type="hidden" id="hidClassId_ContentProp" value="@Model.ObjClassId" />
+            <input type="hidden" id="hidIsIntranetEnvironment_ContentProp" value="@Model.IsIntranetEnvironment.ToString()" />
+            <input type="hidden" id="hidParentPageId_ContentProp" value="@(Model.ParentPageId.HasValue? Model.ParentPageId.Value: 0)" />
+            <input type="hidden" id="hidContactId_ContentProp" value="@Model.ContactId" />
+        </div>
+    </div>
+@*}
+else
+{
+    <div class="part column content-properties">
+        <p class="permission-error">You do not have sufficient permission to access data. Please contact your system administrator</p>
+    </div>
+}*@
+  
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/lib/jquery.fileupload.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/project/ContentPropertyField.js")"> </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/project/ContentProperty.js")"> </script>
+
+    @if (Model.ObjClassId == (int)Insyma.ContentUpdate.CUClass.Page && ViewBag.IsLoadContacts)
+    {
+        <script type="text/javascript" src="@Url.Content("~/Scripts/project/view-confirm-contact.js")"></script>
+    }        
+}
+
+@if (!SettingHelper.IsIntranetEnvironmentRunning())
+{
+    @Html.Action("RelatedContentList", new { id = Model.ObjId })
+
+
+    <!-- Panel View/Confirm Contacts -->
+    if (Model.ObjClassId == (int)Insyma.ContentUpdate.CUClass.Page && ViewBag.IsLoadContacts)
+    {
+        Html.RenderPartial("ViewConfirmContact", new ViewConfirmContactModel(){ObjId = Model.ObjId, UrlPath = Model.UrlPath});
+    }
+
+    if (Model.ObjClassId == (int)Insyma.ContentUpdate.CUClass.ContentPageList && Model.IsSelectionDefinition == false)
+    {
+        Html.RenderPartial("ImportContent", new ImportContentModel { 
+                                                                        ClientId = Model.PropertyBasic.ClientId,
+                                                                        ContentListId = Model.ObjId,
+                                                                        LanguageId = Model.LanguageId,
+                                                                        PropertyBasicId = Model.PropertyBasic.Id,
+                                                                        ObjWebId = Model.PropertyBasic.ObjWebId            ,
+                                                                        IsAllowDelete = Model.IsAllowShowDeleteCheckbox
+                                                                    });
+    }
+}
+
+<script language="javascript">
+    $(document).ready(function () {
+        var $import = $('.content-properties').find(".icon-import");
+        if ($import != null && $import.length > 0) {
+            $import.off("click").on("click", function () {
+                $("#spnImportDataMessage").html("");
+                $('#divImportContent').modal('show');
+            });
+        }        
+    });
+</script>

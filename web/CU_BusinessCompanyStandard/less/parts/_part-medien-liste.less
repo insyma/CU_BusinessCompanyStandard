@@ -1,0 +1,28 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+.part-medien-liste {
+	ul {
+		.columns(20px);
+
+		> li {
+			.col-(4, 20px);
+		}
+	}
+
+	@media screen and (max-width: @mq-size-700) {
+		ul {
+			.columns(10px);
+
+			> li {
+				.col-(1, 10px);
+			}
+		}
+	}
+
+	a {
+		.ratio;
+		.ratio-landscape;
+	}
+}

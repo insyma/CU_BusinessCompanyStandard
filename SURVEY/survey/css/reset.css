@@ -1,0 +1,66 @@
+/* =normalizing margin, padding */
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td, caption {
+	margin : 0;	
+	padding : 0;
+	background: transparent;
+	outline: 0;
+}
+/*=normalizing font-size for headers */
+h1, h2, h3, h4, h5, h6, caption, a, p, ul, li, th, td {
+	font-size : 100.01%;
+	font-weight : normal;
+	text-align : left;
+	vertical-align : baseline;
+	line-height : 1.4;
+	font-familiy : inherit;
+}
+/* =removing list-style from lists */
+ol, ul { 
+	list-style : none; 
+	list-style-position : inside; 
+}
+div, ul { 
+	width : 100%; 
+}
+table { 
+	border-collapse : collapse; 
+	border-spacing : 0; 
+}
+a img, :link img, :visited img, img, fieldset, iframe { 
+	border : 0; 
+	outline: 0;
+}
+blockquote, q {
+	quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after { 
+	content: '';
+	content: none;
+}
+input { 
+	vertical-align : middle; 
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+.clear:after { 
+	content : "."; 
+	display : block; 
+	height: 0; 
+	clear : both; 
+	visibility : hidden; 
+}
+/* =no need to hide from IE5 Mac as its filtered out anyway */
+.clear { 
+	display : inline-block; 
+	clear : both;
+	margin : 0 !important;
+}

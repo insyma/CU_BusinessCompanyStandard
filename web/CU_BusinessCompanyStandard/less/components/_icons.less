@@ -1,0 +1,420 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../iconfont/style.less';
+
+// CSS - Icons
+// Created:    2017
+// Creator:    SCHM
+@cache-version: `( new Date() ).getTime()`;
+
+
+// GLOBAL
+
+@font-face {
+    font-family: 'icons';
+    src: ~"url('fonts/icons.eot?version=@{cache-version}')";
+    src: ~"url('fonts/icons.eot?version=@{cache-version}?#iefix') format('embedded-opentype')",
+    //~"url('fonts/icons.woff2?79fzh7') format('woff2')",
+    ~"url('fonts/icons.ttf?version=@{cache-version}') format('truetype')", ~"url('fonts/icons.woff?version=@{cache-version}') format('woff')", ~"url('fonts/icons.svg#icons?version=@{cache-version}') format('svg')";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+// positioning
+.iconbefore {
+    display: inline-block;
+    vertical-align: inherit;
+
+    &:before,
+    &:after {
+        float: left;
+        text-align: left;
+        width: @icon-abstand;
+    }
+}
+
+.iconafter {
+    display: inline-block;
+    vertical-align: inherit;
+
+    &:before,
+    &:after {
+        float: right;
+        text-align: right;
+        width: @icon-abstand;
+    }
+}
+// positioning if labeled
+.con-socialmedia .icon:before {
+    float: left;
+}
+
+
+
+
+
+// Einzelelemente
+a.link,
+p.link a {
+    display: inline-block;
+    margin: .3em 0;
+    //.listpadding;
+    vertical-align: top;
+}
+
+// BASIC ICONS
+.hasicon,
+.linklist a:before,
+.liststyle li:before,
+a.movielink:before,
+a.movielink-inside:before,
+.checker span:before,
+.selector span:after,
+[class^="icon"]:before,
+[class*=" icon"]:before,
+[class^="icon"]:after,
+[class*=" icon"]:after,
+.flex-direction-nav a:after,
+.flex-direction-nav a:before,
+// specials
+[href^="tel"]:before,
+div.SwitchLanguage > .pls-selected-locale:after {
+    display: inline-block;
+    font-family: 'icons';
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+// LI-Dots
+.liststyle ul li,
+a.link,
+p.link a,
+.ValidationSummary ul li,
+// project styles
+.part-sitemap.liststyle ul.linklist li a {
+    &:before {
+        content: @icon-chevron_right;
+        font-family: 'icons';
+        text-decoration: none;
+    }
+}
+
+
+// Link Icon
+
+.liststyle ul.linklist li a,
+p.link a,
+a.link {
+    &:before {
+        content: @icon-link-external;
+        font-family: 'icons';
+        text-decoration: none;
+    }
+}
+
+// Basics
+.icon {
+    &-more {
+        .iconbefore;
+
+        &:before {
+            content: @icon-chevron_right !important;
+        }
+    }
+}
+
+.icon {
+    &-less {
+        .iconbefore;
+
+        &:before {
+            content: @icon-expand_less !important;
+        }
+    }
+}
+.icon-back,
+.iconReturnTo {
+    &:before {
+        content: @icon-chevron_left !important;
+    }
+}
+
+.print {
+    &:before {
+        content: @icon-print;
+    }
+}
+
+.totop {
+    &:before {
+        content: @icon-arrow_upward !important;
+    }
+}
+
+.iconsuche {
+    &:before {
+        content: @icon-search;
+        font-family: 'icons';
+    }
+}
+
+.iconroute {
+    padding-left: @icon-abstand;
+
+    &:before {
+        content: @icon-room;
+    }
+}
+
+div.SwitchLanguage > .pls-selected-locale:after {
+    content: @icon-expand_more;
+    float: right;
+    padding-left: 20px;
+}
+
+// googleMap basic Icon
+.icongmapmarker:before {
+    color: #4096ee;
+    content: @icon-room;
+    font-size: 2rem;
+    opacity: 1;
+    position: relative;
+    text-shadow: 0 0 5px rgba(51, 51, 51, .5);
+    top: 5px;
+}
+// Contact Icons
+//.part-team [href^="tel"],
+.iconphone {
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+        content: @icon-phone !important;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.iconmobile {
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+        content: @icon-phone_iphone !important;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.iconfax {
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+        //		content: "\e601" !important;
+        content: @icon-print !important;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.iconmail {
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+        content: @icon-markunread !important;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.iconweblink {
+    display: inline-block;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &:before {
+        content: @icon-link !important;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.liststyle {
+    .iconmobile,
+    .iconfax,
+    .iconmail,
+    .iconphone,
+    .iconweblink {
+        padding-left: 0;
+
+        &:before {
+            display: none
+        }
+    }
+}
+
+.linklist {
+    .iconmobile,
+    .iconfax,
+    .iconmail,
+    .iconphone,
+    .iconweblink {
+        padding-left: 0;
+        position: static;
+    }
+}
+
+// Social Icons global
+.part-team .icon:before {
+    vertical-align: top;
+}
+
+// Basic Icons - more icons >> fonts/original/demo.html
+@iconfacebook: @icon-uniE614;
+@icongoogleplus: @icon-google-plus;
+@iconinstagram: @icon-instagram;
+@iconlinkedin: @icon-uniE613;
+@icontwitter: @icon-uniE017;
+@iconxing: @icon-uniE62B;
+@iconvimeo: @icon-uniE014;
+@iconyoutube: @icon-uniE60D;
+@iconskype: @icon-uniE023;
+@iconsnapchat: @icon-snapchat-ghost;
+@icontumbler: @icon-uniE62D;
+
+
+.icon.facebook:before {
+    content: @iconfacebook !important;
+}
+
+.icon.googleplus:before {
+    content: @icongoogleplus !important;
+}
+
+.icon.instagram:before {
+    content: @iconinstagram !important;
+}
+
+.icon.linkedin:before {
+    content: @iconlinkedin !important;
+}
+
+.icon.twitter:before {
+    content: @icontwitter !important;
+}
+
+.icon.xing:before {
+    content: @iconxing !important;
+}
+
+.icon.vimeo:before {
+    content: @iconvimeo !important;
+}
+
+.icon.youtube:before {
+    content: @iconyoutube !important;
+}
+
+// Overlay
+#insymaDataprivacyHolder span.close:before,
+#insymaOverlayHolder span.close:before {
+    content: "\e209";
+}
+
+#insymaOverlayHolder span.resize:before {
+    content: "\e211";
+}
+
+#insymaOverlayHolder span.size:before {
+    content: "\e1c3";
+}
+
+#insymaOverlayHolder span.play:before {
+    content: "\e027";
+}
+
+#insymaOverlayHolder span.stop:before {
+    content: "\e02a";
+}
+
+#insymaOverlayHolder span.next:before {
+    content: "\e028";
+}
+
+#insymaOverlayHolder span.prev:before {
+    content: "\e029";
+}
+
+// Uniform
+.selector span:after {
+    content: "\e20b";
+}
+
+.checker span:before {
+    content: "\e5cb";
+    font-size: 18px;
+}
+
+// Movie
+a {
+    &.movielink {
+        color: @white;
+
+        &:hover {
+            color: fade(@white, 80%);
+        }
+
+        &-inside {
+            color: @white;
+
+            &:hover {
+                color: fade(@white, 80%);
+            }
+        }
+
+        &-inside:before,
+        &:before {
+            content: "\e039";
+            font-size: 60px;
+            .pos-absolute;
+            .flex-display;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.part-movie a.movielink-inside:before,
+.part-movie a.movielink:before {
+
+    @media screen and (min-width: @mq-size-700) {
+        font-size: 120px;
+    }
+}
+//YoutubePlaylist
+.part-youtube-playlist {
+    .flex-direction-nav {
+        .flex-prev {
+            &:before {
+                content: "\e207";
+            }
+        }
+
+        .flex-next {
+            &:before {
+                content: "\e208";
+            }
+        }
+    }
+}

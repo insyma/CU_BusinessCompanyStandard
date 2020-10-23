@@ -1,0 +1,2350 @@
+@import url("icons.css");
+@import url("reset.css");
+
+/************************************************
+global styles
+************************************************/
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+* {
+    font-family: "Segoe UI", Arial, Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #999;
+}
+
+body, input, textarea {
+    color: #555;
+    line-height: 1.5em;
+    font: .86em/150% "Segoe UI", Arial, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+body > div {
+    padding: 0 20px !important;
+}
+hr {
+    width: 100% !important;
+}
+
+a,
+a:after,
+a:before,
+.cu-command > span,
+.cu-command > span:before
+{
+    color: #82bb25;
+}
+.hand-pointer {
+    color: #82bb25;
+    cursor: pointer !important;
+}
+.cu-soften,
+.cu-soften:after,
+.cu-soften:before,
+.cu-soften:link
+{
+    color: #82bb25;
+}
+
+
+a:hover,
+a:hover:after,
+a:hover:before,
+.cu-command > span:hover,
+.cu-command > span:hover:before,
+.cu-soften:hover,
+.cu-soften:hover:after,
+.cu-soften:hover:before
+{
+    color: #5e871b; /* HSB > B = 20 less then color */
+}
+
+table thead th a,
+table thead th a:after,
+table thead th a:before
+{
+    color: #a4ed2f;
+}
+
+table thead th a:hover,
+table thead th a:hover:after,
+table thead th a:hover:before
+{
+    color: #82bb25; /* HSB > B = 20 less then color */
+}
+
+/************************************************
+css transitions
+************************************************/
+a,
+a:after,
+a:before,
+.icon:after,
+.icon:before,
+*:after,
+*:before,
+input,
+h2.cu-standardheader,
+.cu-soften,
+.cu-command > span,
+button,
+table tr.cu-cell,
+table tr.cu-cell *,
+.CUbutton,
+div.button
+{
+    -moz-transition:  all .2s ease-in-out; /* FireFox */
+    -webkit-transition:  all .2s ease-in-out; /* Safari / Chrome */
+    -o-transition:  all .2s ease-in-out; /* Opera */
+    -ms-transition: all .2s ease-in-out; /* IE */
+    transition: all .2s ease-in-out; 
+}
+
+
+/* no trans*/
+.foo
+{
+    -moz-transition: none; /* FireFox */
+    -webkit-transition: none; /* Safari / Chrome */
+    -o-transition:  none; /* Opera */
+    -ms-transition: none; /* IE */
+    transition: none; 
+}
+
+/************************************************
+all
+************************************************/
+input[type=password],
+input[type=text],
+input[type=file],
+input[type=number],
+select,
+textarea
+{
+    /* [ReplaceColor(themeColor:"Lines")] */ border: 1px solid #999;
+    /* [ReplaceColor(themeColor:"BackgroundOverlay",opacity:"1")] */ background-color: #fff;
+    /* [ReplaceColor(themeColor:"BodyText")] */ color: #555;
+}
+
+input[type=password],
+input[type=text],
+input[type=file],
+input[type=number],
+textarea {
+    padding: .25em .5em;
+}
+
+input[type=password]:focus,
+input[type=text]:focus,
+input[type=number]:focus,
+select:focus,
+textarea:focus,
+.sp-peoplepicker-topLevelFocus,
+.cu-inputBoxActive,
+.cu-inputBox.cu-inputBoxActive:hover {
+    /* [ReplaceColor(themeColor:"AccentLines")] */ border-color: #2a8dd4;
+}
+
+input[type=button]::-moz-inner-focus,
+input[type=reset]::-moz-inner-focus,
+input[type=submit]::-moz-inner-focus,
+input[type=number]::-moz-inner-focus,
+button::-moz-inner-focus {
+    /* [ReplaceColor(themeColor:"ButtonText")] */ border-color: #444;
+}
+
+input[type=password]:hover,
+input[type=text]:hover,
+input[type=file]:hover,
+input[type=number]:hover,
+textarea:hover,
+.sp-peoplepicker-topLevel:hover,
+.cu-inputBox:hover {
+    /* [ReplaceColor(themeColor:"StrongLines")] */ border-color: #92c0e0;
+}
+input[type=button]:hover,
+input[type=reset]:hover,
+input[type=submit]:hover,
+button:hover {
+    color: #5e871b;
+}
+
+/*input[type="button"], input[type="reset"], input[type="submit"], button {
+    background: none;
+    border: none;
+    color: #82bb25;
+    font-size: 115%;
+    margin-right: 2em;
+    min-width: 80px;
+    padding: 0;
+}*/
+input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, button:hover {
+    /*color: #5e871b;*/
+}
+
+input[type="button"], input[type="reset"], input[type="submit"], button, .button, .CUbutton{
+    background: none !important;
+    border:  none;
+    color: #82BB25;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 115%;
+    font-weight: 400;
+	margin: 0.5em;
+    text-decoration: none;
+}
+button.buttongreen, .button.buttongreen {
+/*    background: none repeat scroll 0 0 #4aa853; */
+}
+.cu-InlineSearch-Outline-Empty {
+    /* [ReplaceColor(themeColor:"Lines")] */
+}
+
+
+
+.cu-hover {
+    /* [ReplaceColor(themeColor:"Lines")] */
+    border-color: #92C0E0;
+    border-width: 1px;
+}
+
+.cu-searchFocus {
+    /* [ReplaceColor(themeColor:"Lines")] */
+    border-color: #2A8DD4;
+}
+
+
+
+.cu-textSmall, .cu-textXSmall, .cu-metadata{
+    font-size: 85%;
+}
+
+input.cu-SearchBox {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    /*width: 150px;
+    height: 22px;*/
+    border-width: 0;
+    vertical-align: middle;
+    outline: none;
+    color: #777;
+}
+
+
+
+
+.cu-search{
+    border-color: #ababab;
+    border-style: solid;
+    border-width: 1px;
+    white-space: nowrap;
+    float: left;
+}
+
+
+
+.cu-searchImgSpan {
+
+    border: 1px solid rgba(0, 0, 0, 0);
+    direction: ltr;
+    margin: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    
+    overflow: hidden;
+    
+    vertical-align: top;
+
+    position: relative;
+    cursor: pointer;
+    background:  url('../images/spcommon.png') -105px  -138px ;
+}
+
+.cu-searchImgSpan:hover {
+    background: #E6F2FA url('../images/spcommon.png') -105px -138px;
+}
+
+.cu-heroCommandLink .cu-list-addnew-imgSpan20 {
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.cu-heroCommandLink:hover .cu-list-addnew-imgSpan20 {
+     background:   url('../images/spcommon.png') -131px -134px   ;
+
+}
+
+
+
+.cu-list-addnew-imgSpan20 {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    background:   url('../images/spcommon.png') -67px -180px   ;
+}
+
+.cu-list-addnew-imgSpan20:hover {
+    background: #E6F2FA url('../images/spcommon.png') -67px -180px   ;
+}
+
+.cu-standardheader {
+    font-size: 115%;
+    margin: 0;
+    text-align: left;
+    font-weight: 400;
+}
+
+.cu-formlabel {
+    color: #999;
+    font-weight: 400;
+    padding: .1em 2em .1em 0;
+    vertical-align: top;
+    width: 10%;
+    white-space: nowrap;
+}
+td,
+.ng-binding
+{
+    color: #555;
+}
+.ng-binding {
+    width: auto !important;
+}
+.cu-command {
+/*    visibility: visible !important; */
+}
+.cu-command > span {
+    margin-right: 1em;
+}
+
+.cu-formlabel h3.cu-standardheader {
+    font-weight: 400;
+}
+
+.cu-formbody {
+    background: transparent;
+    padding: 4px 0;
+}
+
+.cu-metadata {
+    /* [ReplaceFont(themeFont:"body")] */
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    color: #777;
+}
+
+.cu-date-input {
+    vertical-align: middle;
+    padding: 0 4px 0 0;
+}
+
+input[type="checkbox"] {
+    vertical-align: initial;
+}
+
+
+.cu-inputDate {
+    max-width: 68px;
+}
+
+.cu-inputBox {
+    /* [ReplaceColor(themeColor:"Lines")] */
+    border-style: solid;
+    border-width: 1px;
+    /* [ReplaceColor(themeColor:"BackgroundOverlay",opacity:"1")] */
+    background-color: #fff;
+    /* [ReplaceColor(themeColor:"BackgroundOverlay")] */
+    background-color: rgba(255,255,255,0.85);
+    /* [ReplaceColor(themeColor:"BodyText")] */
+    color: #ababab;
+}
+
+.cu-inputBox {
+    padding: 2px 5px;
+}
+
+.cu-write {
+    cursor: text;
+    word-wrap: break-word;
+    min-height: 84px;
+    outline: none;
+}
+
+
+
+.cu-positionRelative {
+    position: relative;
+}
+
+table tr.cu-cell:hover {
+    background-color: rgba(205, 230, 247, 0.5);
+/*    border: 1px solid transparent; */
+}
+
+
+
+h2, h3, .cu-h2, .cu-h3, .cu-headerFont {
+    color: #262626;
+    font-weight: 300;
+}
+.modal-header h3 {
+    background: #F0F0F0;
+    font-size: 115%;
+    font-weight: 700;
+}
+
+.cu-cellstyle {
+    cursor: pointer;
+    padding: .25em .5em;
+    word-wrap:break-word;
+    max-width: 400px;
+}
+
+
+
+a.cu-listlink, a.cu-listlink:hover, a.cu-listlink:active {
+    /* [ReplaceColor(themeColor:"BodyText")] */
+    color: #444;
+}
+a.cu-listlink {
+    text-decoration: none;
+}
+
+a.cu-listlink:hover, a.cu-listlink:active {
+    text-decoration: underline;
+}
+
+
+
+
+.cu-draggable {
+    cursor: pointer;
+}
+.cu-cell-text {
+
+    vertical-align: top;
+    text-decoration: none;
+}
+
+
+
+.cu-header-table {
+    color: #777777;
+    cursor: pointer;
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    padding-left: 0;
+
+}
+
+
+
+.cu-element-header-table{
+    text-align: left;
+    padding-left: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-width: 1px;
+    border-right: 1px solid rgba(0, 0, 0, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    min-width: 45px;
+
+    white-space: nowrap;
+}
+.cu-center {
+    text-align: center;
+}
+
+    .cu-element-header-table:hover {
+        background-color: rgba(205, 230, 247, 0.5);
+    }
+
+.cu-element-subheader-table {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-width: 1px;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-top-color: rgb(42, 141, 212);
+    min-width: 80px;
+    text-align: left;
+}
+
+    .cu-element-subheader-table:hover {
+        background-color: rgba(205, 230, 247, 0.5);
+    }
+
+.cu-hoverBackground {
+    background-color: rgba(205, 230, 247, 0.5);
+}
+
+.cu-heroCommandLink,
+.cu-heroCommandLink:visited {
+    /* [ReplaceColor(themeColor:"CommandLinksHover")] */ color: #82bb25;
+    text-decoration: none;
+    font-size: 115%;
+    cursor: pointer;
+}
+
+    .cu-heroCommandLink:hover,
+    .cu-heroCommandLink:active {
+        /* [ReplaceColor(themeColor:"CommandLinksPressed")] */ color: #004d85;
+        text-decoration: none;
+    }
+
+
+.cu-toolbar {
+    /* [ReplaceColor(themeColor:"CommandLinks")] */ color: #666;
+}
+
+table.cu-toolbar {
+    height: 45px;
+    border: none;
+}
+
+.container .columns.cu-right,
+.cu-right {
+    float: right;
+}
+
+.cu-left {
+    float: left;
+    margin: 0 0 1em;
+}
+.cu-title {
+    float: none;
+}
+.cu-clear {
+    clear: both;
+}
+
+.cu-noWrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+input.cu-box{
+    width: 218px;
+}
+input.cu-box-long{
+    width: 400px;
+}
+input.cu-box50 {
+    width: 98px;
+}
+
+select.cu-box{
+    width: 228px;
+}
+.hr-style {
+    margin-left:0; 
+    text-align:left;
+    width: 80%;
+}
+
+/* start css part tab*/
+ul.cu-style-tab
+{
+    border-bottom: 1px solid #f0f0f0;
+    overflow: hidden;
+    padding: 1.5em 1em 1.5em 0;
+    width: 100%;
+}
+.cu-style-tab li  {
+    list-style: none;
+    float: left;
+    text-align: center;
+    font-size: 115%;
+}
+.cu-style-tab li a
+{
+   margin-right: 1em;
+}
+
+.cu-style-tab li a {
+    display: block;
+}
+
+.cu-style-tab li a, .cu-style-tab li a:hover {
+    text-decoration: none;
+}
+/*end css part of tab*/
+div.container {
+    margin: 0 0;
+    padding:10px 30px 10px 30px ;
+    position: relative;
+
+}
+tr.cu-color-background-table-header {
+    background-color: #D9D9D9;
+}
+input.disabled-color {
+    background-color: #F5F5F5;
+}
+
+.errorText {
+    color: red !important;
+}
+
+/* CSS Paging */
+.pagination {
+        float: right;
+    }
+     .pagination ul{
+         list-style: none;
+         padding: 0;margin: 0;
+     }
+
+    .pagination ul li {
+        float: left;
+        list-style: none;
+        padding: 0;margin: 0;
+        margin-right: 8px;
+        line-height: 22px;
+
+    }
+
+    .pagination ul li a{
+        font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        color: #538DD5;
+        text-decoration: none;
+        line-height: 22px;
+    }
+
+    .pagination ul li a:hover{
+        font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        color: #234C7E;
+        text-decoration: none;
+        line-height: 22px;
+    }
+
+    .pagination ul>.active>a,.pagination ul>.active>span{color:#999999;cursor:default;font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;padding-bottom: 5px;}
+
+    .pagination .disabled, .pagination .disabled:visited, .pagination a.active, .pagination a.active:visited {
+        text-decoration: none;
+        color: gray;
+        
+    }
+
+    .pagination .disabled {
+        display: none;
+    }
+
+    table.table.ConFilter {
+        border: none !important;
+        margin-bottom: 2em;
+    }
+    table.table.ConFilter * {
+        background: none !important;
+/*        border: none !important; */
+    }
+
+
+    .filter td {
+        align-content: center;
+    }
+
+    .filter input {
+        width: 100%;
+        padding: .25em .5em;
+        margin: 0;
+    }
+
+    .filter select {
+        width: 90%;
+        padding: .25em .5em;
+        margin: 1px;
+        
+        height: 17px;
+    }
+
+    .filterButtons {
+        float: left;
+    }
+    .filterButtons a {
+        margin-left: 5px;
+        margin-right: 10px;
+        font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        font-weight: 400;
+        color: #0072C6;
+        cursor: pointer;
+    }
+
+    .filterButtons a:hover {
+        margin-left: 5px;
+        margin-right: 10px;
+        font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+        font-weight: 400;
+        color: #000000;
+        cursor: pointer;
+    }
+	
+/* End CSS Paging*/
+
+.cu-elementHeaderTableStyle {
+    background: #999 ;
+    border-bottom-width: 1px;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    padding: .25em .5em;
+    white-space:nowrap;
+    min-width: 50px;
+}
+.cu-elementHeaderTableStyle:hover{
+/*	background-color: rgba(205, 230, 247, 0.5); */
+}
+
+
+.cu-headerTableLink
+{
+	cursor: pointer; 
+}
+
+/*sorting*/
+	span.tablesort {
+	    margin-left: 5px;
+        display: inline-block;
+		width: 7px; height: 7px;
+	    background-repeat: no-repeat;
+	}
+	
+	/*span.icon-arrow-asc {
+        background: url('../images/spcommon.png') -116px -248px;
+	}
+	
+	span.icon-arrow-desc {
+        background: url('../images/spcommon.png') -100px -248px;
+	}*/
+/* END  sorting*/
+
+input.textWidthByLeng {
+    width: 400px;
+}
+
+div.expList > div {
+/*
+    margin: 56px;
+    margin: 1em 0 1em -webkit-calc(36px + 1em);
+    margin: 1em 0 1em -moz-calc(36px + 1em);
+    margin: 1em 0 1em calc(36px + 1em);
+*/
+}
+div.expList {
+    width: 100% !important;
+}
+div.expList > div.cu-left {
+    float: none
+}
+
+.add-new-item {
+    margin: 4px 0px 8px 0px;
+}
+div.not-row-margin {
+    margin-bottom: 0;
+}
+.textarea-size {
+    width: 400px;
+    height: 80px;
+    margin-bottom: 6px;
+}
+.margin-column {
+    margin-left: 20px;
+}
+.wysiwyg-border {
+
+    border: 0px;
+
+}
+.text-align-right {
+    text-align: right;
+}
+.min-width-name {
+    min-width: 156px;
+}
+.max-width-name2 {
+     word-wrap:break-word;
+    max-width: 230px;
+}
+.min-width-file {
+    min-width: 133px;
+}
+.min-width-date {
+    min-width: 80px;
+}
+.min-width-date-ft {
+    min-width: 60px;
+}
+
+.min-width-price {
+    min-width: 60px;
+}
+.max-width-name{
+    max-width: 400px;
+ }
+.margin-bottom {
+    margin: 3px 5px 30px 0;
+}
+.margin-bottom-upload {
+   margin-bottom: 12px;
+}
+.nav-button {
+    display: block; 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+    height: 34px;
+}
+.not-margin-left {
+    margin-left: 0px;
+}
+.fix-table-popup-name {
+    width: 320px;
+    word-wrap: break-word;
+}
+.fix-table-popup-code {
+    width: 80px;
+    word-wrap: break-word;
+}
+.modal.fix-table-popup{
+    left: 40%;
+}
+.modal.fix-table-popup-more{
+    left: 30%;
+}
+
+.notificationPanel {
+    position:fixed;
+    left:0px;
+    top:-50px;
+    width:100%;
+    min-height:50px;
+    z-index:1055;
+}
+
+.pnlSuccess {
+    background-color:#4DB849;
+}
+
+.pnlError {
+    background-color:red;
+}
+
+.message-success {
+    color: black;
+    font-size: 130%;
+    text-align:center;
+    margin-bottom: 10px;
+}
+
+.message-error {
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 130%;
+    text-align:center;
+}
+div li .expanded2 {
+    background-image: url("../images/expanded.png");
+    background-position: 1px 3px;
+    background-repeat: no-repeat;
+    padding: 1px 7px;
+}
+
+div li .collapsed2 {
+    background-image: url("../images/collapsed.png");
+    background-position: 1px 3px;
+    background-repeat: no-repeat;
+    padding: 1px 7px;
+}
+
+div li .normal {
+  padding: 1px 7px;
+  background-image: none;
+  background-repeat: no-repeat;
+}
+div li i.expanded2,
+div li i.collapsed2 {
+  cursor: pointer;
+
+}
+div li span {
+  
+  padding-left: 4px;
+}
+
+div#myTreeview>ul>li>i,
+div#ProductCategoriesDiscountTreeview>ul>li>i,
+div#ProductCategoriesPriceTreeview>ul>li>i,
+div#myTreeview>ul>li>label,
+div#ProductCategoriesDiscountTreeview>ul>li>label,
+div#ProductCategoriesPriceTreeview>ul>li>label,
+div#myTreeview>ul>li>span ,
+div#ProductCategoriesDiscountTreeview>ul>li>span ,
+div#ProductCategoriesPriceTreeview>ul>li>span 
+ {
+    display: none;
+}
+
+
+label {
+	display: inline;
+}
+
+
+div>ul>li>input[type=checkbox]
+ {
+	display: none;
+}
+
+div>ul>li>input[type=checkbox] + label {
+	background-color: #fafafa;
+	border: 1px solid black;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 7px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+    margin-right: 3px;
+}
+
+div>ul>li>input[type=checkbox] + label:active, 
+div>ul>li>input[type=checkbox]:checked + label:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+div>ul>li>input[type=checkbox]:checked + label {
+	background-color: #e9ecee;
+	border: 1px solid black;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+
+div>ul>li>input[type=checkbox]:checked + label:after{
+	content: '\2714';
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: black;
+}
+div>ul>li>input[type=checkbox]:checked.gray + label:after{
+	content: '\2714';
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: #99a1a7;
+}
+
+.lt-ie9 div>ul>li>label {
+     background-color: green;
+}
+.lt-ie9 div>ul>li{
+    
+}
+
+.lt-ie9 div>ul>li>input[type=checkbox].checked + label:after {
+    	content: '\2714';
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: black;
+}
+
+.lt-ie9 div>ul>li>input[type=checkbox].checked.gray +label:after{
+    	content: '\2714';
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color:  #99a1a7;
+}
+.lt-ie9 div>ul>li>input[type=checkbox] + label {
+	background-color: #fafafa;
+	border: 1px solid black;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 7px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.lt-ie9 div>ul>li>input[type=checkbox] + label {
+    display: none;
+}
+.lt-ie9 div>ul>li>input[type=checkbox]
+ {
+	display: inline;
+}
+
+.cu-text12pt {
+    font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+
+}
+/***********************
+      sprinner
+***********************/
+.icon-spinner:before {
+    content: "\e608";
+}
+
+@-webkit-keyframes anim-rotate {
+    0% {
+        -webkit-transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes anim-rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: inline-block;
+    line-height: 1;
+    margin: .5em;
+    -webkit-animation: anim-rotate 2s infinite linear;
+    animation: anim-rotate 2s infinite linear;
+    text-shadow: 0 0 .25em rgba(255,255,255, .3);
+}
+
+.spinner-steps {
+    -webkit-animation: anim-rotate 1s infinite steps(8);
+    animation: anim-rotate 1s infinite steps(8);
+}
+
+.icon-spinner.spinner.spinner-steps:before {
+    color: #e60000;
+    font-size: 80px;
+    margin: 0;
+}
+.loader-bg {  
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10000;
+    background-color: gray;
+    opacity: .8;
+ }
+
+.loader-bg-temp {  
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10000;
+    background-color: gray;
+    opacity: .8;
+ }
+
+.loader-icon {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+.modal-loading p {
+    color: #e60000;
+    font-size: 24px;
+}
+
+.overlay-loading {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    opacity: 0.5;
+    right: 0;
+    top: 0;
+    z-index: 1040;
+}
+
+.modal-loading {
+    left: 49%;
+    position: fixed;
+    top: 49%;
+    z-index: 9999;
+}
+.modal-loading-temp p {
+    color: #e60000;
+    font-size: 24px;
+}
+
+.modal-loading-temp {
+    left: 49%;
+    position: fixed;
+    top: 49%;
+    z-index: 9999;
+}
+.style-text 
+{font-weight:bold;}
+.cu-lineheight60 {
+    line-height: 60px;
+    margin: 0 !important;
+}
+.modal.fade.in.lower {
+    top: 21%;
+}
+.margin-button {
+    margin: 10px 10px;
+}
+
+
+/************************************************
+survey.base.css
+************************************************/
+
+body .container{
+    float: left;
+}
+
+#sub-survey-results .sub-survey-results,#sub-survey .sub-survey
+{
+/*    background-color: #234c7e;  */
+}
+
+
+
+/************************************************
+SurveyReports.css
+************************************************/
+
+.cu-minWith-100 {
+    min-width: 100px;
+}
+.cu-minWith-20 {
+    min-width: 20px;
+}
+.cu-minWith-200 {
+    min-width: 200px;
+}
+.cu-minWith-300 {
+    min-width: 300px;
+}
+.cu-GrayText {
+   color: #777777;
+}
+.text_margin_right {
+    margin-right: 20px;
+}
+.text_margin_left {
+    margin-left: 15px;
+}
+.cu-width-20 {
+    width: 20px;
+}
+.cu-width-30 {
+    width: 30px;
+}
+.cu-width-40 {
+    width: 40px;
+}
+.cu-width-50 {
+    width: 50px;
+}
+.cu-width-65 {
+    width: 65px;
+}
+.cu-width-100 {
+    width: 100px;
+}
+.cu-width-200 {
+    width: 200px;
+}
+.cu-width-300 {
+    width: 300px;
+}
+.cu-width-500 {
+    width: 500px;
+}
+.cu-textright {
+    text-align: right;
+}
+.cu-block {
+    display: block;
+}
+.cu-marginbottom-4px {
+    margin-bottom: 4px;
+}
+.subTable tr:nth-child(odd)     { background-color:#eee; }
+.subTable tr:nth-child(even)        { background-color:#fff; }
+
+.cu-TR-Gray {
+    background-color:#eee;
+}
+
+.cu-TR2-Gray {
+    background-color:  #969696; 
+}
+
+.cu-TD-GreenLight {
+    background-color:  #AAD4FF; 
+}
+
+.cu-Answer-default {
+    background-color: #A5A5A5;
+}
+.cu-Answer-default-Alt {
+    background-color: #666666;
+}
+.subTable1 tr :hover {
+    /*background-color: #E6F2FB;*/
+}
+.subTable2 tr :hover {
+    /*background-color: #E6F2FB;*/
+}
+.cu-lineheight {
+    line-height: 22px;
+}
+.cu-line-color-struct {
+    color: #234C7E;
+}
+.cu-line-color-ques {
+    color: #F2EE72;
+}
+.cu-padding-2 {
+    padding: 2px 2px 2px 2px;
+}
+
+
+
+/************************************************
+SurveysManagement.css
+************************************************/
+body {
+}
+.treeNode {
+    padding: .5em 18px;
+}
+
+dl {
+    clear: both;
+    overflow: auto;
+/*    margin-left: 40px; */
+    margin-bottom: .5em;
+}
+.popover dl {
+    margin-left: 0;
+}
+
+.modal-body .ng-invalid p {
+    color: #FF3A00;
+    margin-left: 0;
+    padding-left: 30%;
+    padding-bottom: .5em;
+}
+.modal-body dd {
+    width: 70%;
+}
+.modal-body dd input[type="password"],
+.modal-body dd input[type="text"],
+.modal-body dd input[type="file"],
+.modal-body dd input[type="number"], 
+.modal-body dd textarea
+{
+    width: 100%;
+}
+
+dd, dt {
+    width: 30%;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.popover  dd,
+.popover  dt {
+    width: 33%;
+}
+dt.padding-top {
+    padding-top: 5px;
+}
+
+.collapsed {
+}
+
+.expanded {
+    border-bottom: none;
+}
+.width-name {
+    width: 380px;
+}
+.width-code {
+    width: 60px;
+}
+.width-icon {
+    width: 25px;
+}
+.border-survey > div.structureContainer {
+    border-bottom: 1px solid #F0F0F0;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+}
+.show-border > div > * > div.treeNode {
+/*    border: 1px solid #0072C6; */
+    color: #0072C6;
+}
+.show-border h2.collapsed {
+    color: #0072C6;
+}
+.page-title {
+    padding: .5em 18px;
+    position: relative;
+}
+.cu-title {
+    position: relative;
+}
+.hide-border-questions {
+    padding: .5em 18px;
+}
+.show-border-questions {
+/*
+    background: #F0F0F0;
+    border: 1px solid #F0F0F0;
+*/
+    margin-bottom: 1em;
+}
+.highlight {
+    background-color: #FFF2A8;
+}
+.survey-title {
+}
+
+.ng-scope > .border-survey > .margin-structure > div {
+    margin: 0;
+    padding: 0; 
+
+}
+.margin-structure > div {
+    margin: 56px;
+    margin: 1em 0 1em -webkit-calc(36px + 1em);
+    margin: 1em 0 1em -moz-calc(36px + 1em);
+    margin: 1em 0 1em calc(36px + 1em);
+    padding: 1em 2em; 
+}
+.margin-structure > div > div > .treeNode {
+
+    margin-left: 35px;
+}
+.margin-structure > div > div .treeNode > * > * > .ng-scope {
+    margin-left: .8em;
+    margin-top: 5px;
+}
+input[type="password"], input[type="text"], input[type="file"], input[type="number"], textarea {
+    width: 250px;
+}
+
+.popover input[type="password"],
+.popover input[type="text"],
+.popover input[type="file"],
+.popover input[type="number"],
+.popover textarea {
+    width: auto;
+}
+select {
+    width: 180px;
+    z-index: 20;
+}
+
+/*.moveup {
+    height:30px;
+    background-color:blue;
+}
+
+.movedown {
+    height:30px;
+    background-color:blue;
+}*/
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 20px solid #f00;
+}
+.moveup {
+    border-bottom: 25px solid #DDDDDD;
+    border-left: 60px solid rgba(0, 0, 0, 0);
+    border-right: 60px solid rgba(0, 0, 0, 0);
+    height: 0;
+    left: 100px;
+    position: relative;
+    top: 2px;
+    width: 0;
+    z-index: 99;
+
+}
+
+.movedown {
+    border-left: 60px solid rgba(0, 0, 0, 0);
+    border-right: 60px solid rgba(0, 0, 0, 0);
+    border-top: 25px solid #DDDDDD;
+    height: 0;
+    left: 100px;
+    position: relative;
+    top: -2px;
+    width: 0;
+    z-index: 99;
+}
+.border-bottom-background {
+    border-bottom: 25px solid #234C7E;
+}
+.border-top-background {
+    border-top: 25px solid #234C7E;
+}
+.border-shadow {
+    border: 1px solid #538DD5;
+    border-radius: 10px;
+    /*box-shadow: 0 0 5px #51CBEE;*/
+    box-shadow: 0 0 5px #538DD5;
+    
+}
+.border-select {
+    background: linear-gradient(to bottom, #FEFEFE 0%, #F2F2F2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    /*border: 1px solid #777777;*/
+    border-radius: 10px;
+    box-shadow: 0 0 5px #777777;
+}
+
+.cu-title * {
+    display:inline;
+}
+
+.cu-title  option {
+    display:block;
+}
+.container_error {
+    clear: both;
+    top: -2px;
+    position: relative;
+}
+.container_error > div{
+    position: relative;
+    float: left;
+}
+.container_error_one {
+    clear: both;
+    display: block;
+    top: -2px;
+    position: relative;
+}
+
+.container_error_one {
+    float: left;
+}
+.modal-body p.p_error {
+    display: block;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#dependenciesPopup-02B li.ng-scope, #dependenciesPopup-02B ul.ng-scope {
+    clear: both;
+    
+}
+
+.haveWysiwyg .popover {
+    width: 600px;
+}
+
+.haveWysiwyg .popover dd, .haveWysiwyg .popover dt {
+width: 15%;
+}
+.haveWysiwyg .popover .require-message {
+    padding: 0 43px;
+}
+
+.structure-image {
+    max-width:150px;
+}
+
+.modal {
+    overflow-y:auto;
+    overflow-x:visible;
+    max-height:700px;
+}
+
+
+
+/************************************************
+mod styles
+************************************************/
+.cu-command > span,
+.cu-command > span:before,
+.ng-binding 
+{
+    cursor: pointer;
+}
+
+.ng-scope .expList hr {
+    visibility: hidden;
+}
+h2.cu-standardheader.cu-textXLarge {
+    background: #777;
+    color: #FFF;
+    display: block !important;
+    max-height: 36px;
+    padding: 0.5em 1em;
+    position: relative;
+    text-indent: 36px;
+} 
+
+th {
+    position: relative;
+    z-index: 1;
+}
+
+table.table {
+/*    border: 1px solid #999; */
+    border: 1px solid #f0f0f0;
+    margin: 0.5em 0;
+    max-width: 800px;
+    width: 100%;
+}
+table.table tr td {
+    background: #FFF;
+}
+table.table tr:nth-child(even) td {
+    background: #f8f8f8;
+}
+table.table tr:hover td {
+    background: #f0f0f0;
+    cursor: pointer;
+}
+table.table > * > td,
+table.table > * > * > td
+{
+    border-left: 1px solid #F0F0F0;
+}
+
+table.table > * > td:first-child,
+table.table > * > * > td:first-child
+{
+    border-left: none;
+}
+
+table thead th {
+    text-align: left;    
+}
+
+
+/* filter */
+table .filter td {
+    padding: 0.5em 1em;
+
+}
+
+
+/* edit survey */
+.cu-command {
+    padding: 0.5em 5% 1em 15%;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    width: auto;
+}
+div.cu-title > .cu-command span, 
+div.cu-title > .cu-command span:before {
+}
+.cu-command > span:before {
+    font-size: 20px;
+}
+
+.edit-survey-ul {
+/*    margin-left: 40px; */
+}
+.edit-survey-ul label {
+    float: left;
+    width: 30%;
+}
+.edit-survey-ul input[type="password"],
+.edit-survey-ul input[type="text"], 
+.edit-survey-ul input[type="file"],
+.edit-survey-ul input[type="number"], 
+.edit-survey-ul textarea {
+    width: 70%;
+}
+.edit-survey-ul > li {
+    margin: 5px 0;
+    overflow: hidden;
+}
+.modal-body .ng-invalid .edit-survey-ul p {
+    color: #ff0000;
+    margin-top: 5px;
+    padding-left: 30%;
+}
+
+
+
+
+/*!
+ * Bootstrap v2.3.2
+ *
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: 0.5;
+  filter: alpha(opacity=80);
+}
+.modal {
+  background-color: #ffffff;
+  border: 10px solid #555;
+  border-radius: 5px;
+  left:50%;
+  margin-left: -280px;
+  min-width: 600px;
+  outline: none;
+  padding: 0 !important;
+  position: fixed;
+  top: 10%;
+  z-index: 1050;
+}
+.modal.fade {
+  -webkit-transition: opacity .3s linear, top .3s ease-out;
+  -moz-transition: opacity .3s linear, top .3s ease-out;
+  -o-transition: opacity .3s linear, top .3s ease-out;
+  transition: opacity .3s linear, top .3s ease-out;
+  top: -25%;
+}
+.modal.fade.in {
+  top: 10%;
+}
+.modal-header {
+  border-bottom: 1px solid #eee;
+}
+.modal-header .close {
+  margin-top: 2px;
+}
+.modal-header h3 {
+  margin: 0;
+  padding: 20px;
+}
+.modal-body {
+  overflow-y: auto;
+  /*max-height: 1500px;*/
+  padding: 20px;
+}
+.modal-form {
+  margin-bottom: 0;
+}
+.modal-footer {
+  padding: 20px;
+  margin-bottom: 0;
+  *zoom: 1;
+}
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.modal-footer:after {
+  clear: both;
+}
+.modal-footer .btn + .btn {
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+}
+.collapse.in {
+  height: auto;
+}
+.padding-content {
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+/*!
+ * Bootstrap v3.0.0
+ *
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+.progress {
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.progress-bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.progress-striped .progress-bar {
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+}
+.progress.active .progress-bar {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-bar-success {
+  background-color: #5cb85c;
+}
+.progress-striped .progress-bar-success {
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-info {
+  background-color: #5bc0de;
+}
+.progress-striped .progress-bar-info {
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-warning {
+  background-color: #f0ad4e;
+}
+.progress-striped .progress-bar-warning {
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-bar-danger {
+  background-color: #d9534f;
+}
+.progress-striped .progress-bar-danger {
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+
+
+
+/************************************************
+    UNIFORMS
+************************************************/
+/* General settings */
+div.selector, div.selector span, div.checker span, div.radio span, div.uploader, div.uploader span.action, div.button, div.button span {
+  -webkit-font-smoothing: antialiased; }
+div.selector, div.checker, div.button, div.radio, div.uploader {
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+  /* Keeping this as :focus to remove browser styles */ }
+  div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus {
+    outline: 0; }
+div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
+  margin: 0;
+  padding: 0; }
+
+.highContrastDetect {
+  width: 0px;
+  height: 0px; }
+
+/* Input & Textarea */
+input.uniform-input,
+select.uniform-multiselect,
+textarea.uniform {
+  padding: 3px;
+  outline: 0; }
+  input.uniform-input.active,
+  select.uniform-multiselect.active,
+  textarea.uniform.active {
+
+}
+
+/* Remove default webkit and possible mozilla .search styles.
+ * Keeping this as :active to remove browser styles */
+div.checker input,
+input[type="search"],
+input[type="search"]:active {
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+
+
+/* Select */
+div.selector
+{
+    border: 1px solid #999;
+    color: #555;
+    line-height: 30px;
+    height: 30px;
+    padding: 3px 0 3px 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100% !important
+}
+
+div.selector span
+{
+    color: #555;
+    cursor: pointer;
+    display: block;
+    height: 30px;
+    line-height: 22px;
+    overflow: hidden;
+    padding-right: 25px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+div.selector.fixedWidth { width: 190px; }
+
+div.selector.fixedWidth span { width: 155px; }
+
+div.selector select
+{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    position: absolute;
+    height: 30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+div.selector.active {
+}
+
+div.selector.active span {
+}
+
+div.selector.hover,
+div.selector.focus {
+}
+
+div.selector.hover span,
+div.selector.focus span {
+}
+
+div.selector.hover.active,
+div.selector.focus.active {
+}
+
+div.selector.hover.active span,
+div.selector.focus.active span {
+}
+
+div.selector.disabled,
+div.selector.disabled.active {
+}
+
+div.selector.disabled span,
+div.selector.disabled.active span {
+}
+
+/* Checkbox */
+div.checker {
+    border: 1px solid #999;
+    position: relative;
+}
+
+div.checker,
+div.checker span,
+div.checker input,
+div.checker span:before
+{
+    width: 30px;
+    height: 30px;
+}
+
+div.checker span
+{
+    display: -moz-inline-box;
+    display: inline-block;
+ *display: inline;
+    zoom: 1;
+    text-align: center;
+    
+/*
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+*/
+}
+
+
+div.checker span.checked {
+}
+
+div.checker input
+{
+    opacity: 0;
+    filter: alpha(opacity=0);
+
+    
+
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: -moz-inline-box;
+    display: inline-block;
+ *display: inline;
+    zoom: 1;
+}
+    .oldie div.checker input {
+        opacity:1;
+    filter: none;
+    }
+div.checker.active span {
+
+}
+
+div.checker.active span.checked {
+}
+
+div.checker.hover span,
+div.checker.focus span {
+}
+
+div.checker.hover span.checked,
+div.checker.focus span.checked {
+}
+
+div.checker.hover.active span,
+div.checker.focus.active span {
+}
+
+div.checker.hover.active span.checked,
+div.checker.focus.active span.checked {
+}
+div.checker.disabled,
+div.checker.disabled.active {
+}
+
+div.checker.disabled span.checked,
+div.checker.disabled.active span.checked {
+}
+
+/* Radio */
+div.radio { position: relative; }
+
+div.radio,
+div.radio span,
+div.radio input
+{
+    width: 18px;
+    height: 18px;
+}
+
+div.radio span
+{
+    display: -moz-inline-box;
+    display: inline-block;
+ *display: inline;
+    zoom: 1;
+    text-align: center;
+
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px #999;
+    border: 3px solid #FFF;
+    margin: -1px 1px 1px;
+}
+
+div.radio span.checked {
+    background: #0072c6;
+    box-shadow: 0 0 1px 1px #999;
+    border: 3px solid #FFF;
+}
+
+div.radio input
+{
+    opacity: 0;
+    filter: alpha(opacity=0);
+
+
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: -moz-inline-box;
+    display: inline-block;
+ *display: inline;
+    zoom: 1;
+    text-align: center;
+}
+    .oldie div.radio input {
+        opacity: 1;
+        filter: none;
+    }
+div.radio.active span {}
+
+div.radio.active span.checked {
+}
+
+div.radio.hover span,
+div.radio.focus span {
+}
+
+div.radio.hover span.checked,
+div.radio.focus span.checked {
+}
+
+div.radio.hover.active span,
+div.radio.focus.active span {
+}
+
+div.radio.hover.active span.checked,
+div.radio.focus.active span.checked {
+}
+
+div.radio.disabled span,
+div.radio.disabled.active span {
+}
+
+div.radio.disabled span.checked,
+div.radio.disabled.active span.checked {
+}
+
+/* Uploader */
+div.uploader
+{
+    height: 28px;
+    width: 190px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+div.uploader span.action
+{
+    height: 28px;
+    line-height: 28px;
+    width: 85px;
+    text-align: center;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+div.uploader span.filename
+{
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    float: left;
+    cursor: default;
+    height: 24px;
+    margin: 2px 0 2px 2px;
+    line-height: 24px;
+    width: 82px;
+    padding: 0 10px;
+}
+
+div.uploader input
+{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    cursor: default;
+    width: 100%;
+    height: 100%;
+}
+
+div.uploader.active span.action {
+}
+
+div.uploader.hover,
+div.uploader.focus {
+}
+
+div.uploader.hover span.action,
+div.uploader.focus span.action {
+}
+
+div.uploader.hover.active span.action,
+div.uploader.focus.active span.action {
+}
+
+div.uploader.disabled,
+div.uploader.disabled.active {
+}
+
+div.uploader.disabled span.action,
+div.uploader.disabled.active span.action {
+}
+
+/* Buttons */
+div.button
+{
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+/* Keep buttons barely visible so they can get focus */ }
+
+div.button a,
+div.button button,
+div.button input
+{
+    opacity: 0.01;
+    filter: alpha(opacity=1);
+    -moz-opacity: 0.01;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+div.button span
+{
+    display: -moz-inline-box;
+    display: inline-block;
+ *display: inline;
+    zoom: 1;
+    line-height: 30px;
+    text-align: center;
+    height: 30px;
+    margin-left: 13px;
+    padding: 0;
+}
+
+div.checker,
+div.radio {
+    margin-right: 1em !important;
+    margin-bottom: .5em;
+}
+div.selector {
+    margin-bottom: .5em;
+}
+
+
+
+
+/* TEMP */
+#surveyMain.ng-scope .icon-plus:before {
+    content: "create a new survey";
+    font-family: "Segoe UI", Arial, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+#surveyMain.ng-scope .icon-plus {
+    display: block;
+    padding-top: 1em;
+}
+#surveyMain.ng-scope > div > .CUbutton  {
+    margin-top:  2em;
+}
+
+td > .ng-scope > div {
+    margin-right: 1em;
+    width: auto !important;
+}
+
+
+/* Results  */
+
+#ReportResults > div > div {
+/* background: red;    */
+}
+
+
+#ReportResults > div > div > div > div > span {
+    display: block;
+    font-size: 115%;
+    padding: 0 0 0.5em 35px;
+}
+#ReportResults > div > div > div > div > span > div {
+    color: #999;
+}
+#ReportResults > div > div > div > div > div > div {
+    border-top: 2px solid #F0F0F0;
+    overflow: hidden;
+    padding: 1em 0 0;
+}
+#ReportResults > div > div > div > div > div > div > span {
+    clear: both;
+    display: block;
+    float: left;
+    font-size: 100%;
+    margin-left: 35px;
+    max-width: 15em;
+    padding-right: 20px;
+    width: 30%;
+}
+#ReportResults > div > div > div > div > div > div > div > div {
+    margin-left: 35px;
+    margin-top: 20px;
+}
+#ReportResults > div > div > div > div > div > div > div.cu-left span:first-child,
+#ReportResults > div > div > div > div > div > div > div > table  tr > td > div > div > div:first-child
+{
+    color: #82bb25;
+    font-weight: 700;
+}
+#ReportResults div.cu-left.cu-minWith-100.ng-binding {
+    text-align: left !important;
+}
+#ReportResults > div > div > div > div > div > div > div > table  tr > td:first-child {
+    background: none !important;
+    padding-right: 20px;
+    width: 300px;
+}
+#ReportResults > div > div > div > div > div > div > div > table  tr > td  div {
+    background: none !important;
+}
+#ReportResults > div > div > div > div > div > div > div > table  tr > td > div > div > div {
+    padding-right: 1em;
+}

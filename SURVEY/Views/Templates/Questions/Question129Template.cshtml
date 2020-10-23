@@ -1,0 +1,184 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;    
+}
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="2"><span>@Model.QuestionName</span> </div>
+    <div style="display: block;" class="answer horizontally-yes-no">
+        <p class="describe">@Model.Comment</p>
+        <ul class="vertical_list">
+            @{
+                List<udsp_SURVEY_AnswerOnline_Result> answers = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId);
+                foreach (udsp_SURVEY_AnswerOnline_Result answer in answers)
+                {
+                    if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Radio)
+                    {
+                        <li answerid="@answer.Id" id="AndereRadio">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                        {
+                                            <span class="checked"><input name="question_@Model.Id" type="radio" checked/></span>
+                                        }
+                                        else
+                                        {
+                                            <span><input name="question_@Model.Id" type="radio" /></span>
+                                        }
+                                    </div>
+                                </dt>
+                                <dd>
+                                    <label for="@answer.AnswerName">@answer.AnswerName</label>
+                                </dd>
+                            </dl>
+                        </li>
+
+
+                    }
+
+                    if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.RadioWithTextbox)
+                    {
+                        <li answerid="@answer.Id" class="AndereRadio">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        @if (SurveyResultRepository.IsOptionSelected(surveyResultSummaryId, Model.Id, answer.Id))
+                                        {
+                                            <span class="checked"><input class="otherRadio" name="question_@Model.Id" type="radio" checked /></span>
+                                        }
+                                        else
+                                        {
+                                            <span><input class="otherRadio" name="question_@Model.Id" type="radio" /></span>
+                                        }
+                                    </div>
+                                </dt>
+                                <dd>
+                                    <label for="@answer.AnswerName">@answer.AnswerName</label>
+                                </dd>
+                            </dl>
+                        </li>
+                    }
+
+                    if (answer.AnswerTypeId == (int)Insyma.SurveyManagement.DAL.udsp_SURVEY_Answer_Result.AnswerTypes.Text)
+                    {
+                        <li answerid="@answer.Id" class="AndereRadioText">
+                            <input type="text" class="otherRadioText" disabled="disabled" value="@SurveyResultRepository.GetAnswerText(surveyResultSummaryId,Model.Id,answer.Id)" />
+                        </li>
+                    }
+                }
+            }
+
+
+
+            @*<li answerid="41">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_2" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_2">mit dem/der Partner/in</label>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li answerid="42">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_3" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_3">mit der Familie</label>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li answerid="43">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_4" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_4">mit einer Gruppe</label>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li answerid="44">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_5" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_5">mit der Schule</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li answerid="45">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_6" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_6">mit der Firma</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li answerid="46">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="aL4_7" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="aL4_7">mit einem Verein</label>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li answerid="75" id="AndereRadio">
+                    <dl>
+                        <dt>
+                            <div class="radio">
+                                <span>
+                                    <input name="aL4" id="otherRadio" type="radio" />
+                                </span>
+                            </div>
+                        </dt>
+                        <dd>
+                            <label for="otherRadio">Andere</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li answerid="76" id="AndereRadioText">
+                    <input type="text" id="otherRadioText" disabled="disabled" />
+                </li>*@
+        </ul>
+    </div>
+</div>

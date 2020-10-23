@@ -1,0 +1,95 @@
+@using Insyma.ContentProperty.Domain.Code
+@using Insyma.ContentProperty.Domain.Setting
+@using Insyma.ContentProperty.Web.Models
+@model Insyma.ContentProperty.Web.Models.PropertyStructureModel
+@using Newtonsoft.Json;
+
+@{
+    var leftStructures = Model.Structures.Where(s => s.Column == 1).OrderBy(s => s.Position).ToList();
+    var rightStructures = Model.Structures.Where(s => s.Column == 2).OrderBy(s => s.Position).ToList();
+
+    var left = leftStructures.FirstOrDefault();
+    var right = rightStructures.FirstOrDefault(); 
+    var percentLeft = (left != null && left.ColumnWidthByPercent > 0) ? string.Format("width:{0}%", left.ColumnWidthByPercent) : "";
+    var percentRight = (right != null && right.ColumnWidthByPercent > 0) ? string.Format("width:{0}%", right.ColumnWidthByPercent) : "";
+
+    if (SettingHelper.IsIntranetEnvironmentRunning())
+    {
+        percentLeft = "";
+        percentRight = "";
+    }
+}
+
+<div class="part-content">    
+    <div class="left-column" style="@percentLeft">
+        @foreach (var structure in leftStructures)
+        {
+            @Html.Partial("~/Views/Home/Partial/Properties.cshtml", new PropertiesModel { Structure = structure, ContentObjValue = Model.ContentObjValue, ContentSettings = Model.ContentSettings })
+        }
+    </div>
+    <div class="right-column" style="@percentRight">
+        @foreach (var structure in rightStructures)
+        {
+            @Html.Partial("~/Views/Home/Partial/Properties.cshtml", new PropertiesModel { Structure = structure, ContentObjValue = Model.ContentObjValue, ContentSettings = Model.ContentSettings })
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    var labels = {
+        mandatory: "obligatorisch",
+        dataInvalidMessage: "Data mandatory.",
+        notification: "notification"
+    };
+
+    var ContentPropertySource = {
+        @foreach (var property in Model.PropertySources)
+        {
+            @Html.Raw(Environment.NewLine)
+            @Html.Raw(property.PropertyFieldKey)@Html.Raw(":")
+            @Html.Raw(JsonConvert.SerializeObject(property.BaseContentDataSources))
+            @Html.Raw(",")
+        }
+
+        //contacts
+        @Html.Raw("ContactList:") @Html.Raw(JsonConvert.SerializeObject(Model.ExtendDataSources.Contacts) + "," )
+
+        //contact login
+        @Html.Raw("ContactLoginList:") @Html.Raw(JsonConvert.SerializeObject(Model.ExtendDataSources.ContactLogins) + ",")
+
+        //contact login groups
+        @Html.Raw("ContactLoginGroupList:") @Html.Raw(JsonConvert.SerializeObject(Model.ExtendDataSources.ContactLoginGroups) + ",")
+
+        //contact login groups tree
+        @Html.Raw("ContactLoginGroupTree:") @Html.Raw(JsonConvert.SerializeObject(Model.ExtendDataSources.GroupTypeTree))
+    };
+
+    // set author & role
+    function setAuthorRole() {
+        @if (!string.IsNullOrWhiteSpace(ViewBag.ContactName) && !ViewBag.PropIsSaved)
+        {
+            @Html.Raw("if (typeof (tagsinputInitDefault) === 'function') {")
+            @:tagsinputInitDefault("0", "CoFi_Author", "@Html.Raw(ViewBag.ContactName)", "@ViewBag.ContactId-2");
+                    @:tagsinputInitDefault("1", "CoFi_RightsUserGroupRoleBased", "@Html.Raw(ViewBag.ContactName)", "@ViewBag.ContactId-2");
+            @Html.Raw("}")
+        }
+        else
+        {
+            @Html.Raw("console.log('setAuthorRole() empty func, depend on server-side');");
+        }
+    }
+    
+    @if (SettingHelper.IsIntranetEnvironmentRunning())
+    {
+    <text>
+    $(document).ready(function () {
+        var val = $("input[data-field-key=CoFi_ContentName]").val();
+        if (typeof val === "undefined" || val === null || val === "") {
+            $("input[data-field-key=CoFi_ContentName]").val($('#txtPageName', window.parent.document).val());
+        }
+    });
+    </text>
+    }    
+</script>
+
+<script src="@Url.Content("~/scripts/project/content.property.structure.js")"></script>

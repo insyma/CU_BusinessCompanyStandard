@@ -1,0 +1,193 @@
+﻿@using Insyma.ContentProperty.Domain.Label
+@model Insyma.ContentProperty.Web.Models.ImportContentModel
+
+<style>
+    ul.modal-criteria li {
+        padding: 3px 6px;
+    }
+     ul.modal-criteria label {
+         width: 130px;
+         display: inline-block;
+     }
+     ul.modal-criteria li.label-after label {
+         width: 90%;
+     }
+
+    ul.modal-criteria input[type=file] {
+        display: inline-block;
+    }
+</style>
+<div class="modal fade" id="divImportContent" tabindex="-1" role="dialog" aria-labelledby="commonPopup" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <span data-dismiss="modal" class="close-modal iconclose icon" type="button"></span>
+            <div class="modal-header">
+                <h3 id="popupLabel"><b>@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_Header")</b></h3>
+            </div>
+            <div class="modal-body">
+                <ul class="modal-criteria">
+                    <li><p id="spnImportDataMessage" style="color: red"></p></li>
+                    <li>
+                        <label>@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_PageType")</label>
+                        <select id="drpContentTypeLib">
+                            <option value="0">@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_SelectPageType")</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_MeetingPlace")</label>
+                        <select id="drpMeetingPlace"></select>
+                    </li>
+                    <li>
+                        <label for="txtImportFile">@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_SelectFile")</label>
+                        <input type="file" id="txtImportFile" name="files[]" accept=".csv"/>
+                    </li>
+                    @if (Model.IsAllowDelete)
+                    {
+                        <li class="label-after">
+                            <input type="checkbox" id="chkDeleteSameLocation" />
+                            <label for="chkDeleteSameLocation">@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_DeleteSameLocation")</label>
+                        </li>
+                    }
+                    <li class="label-after">
+                        <input type="checkbox" id="chkPublish"/>
+                        <label for="chkPublish">@LabelHelper.GetUndaLabel(Model.LanguageId, "ImportCalendar_PublishAfterImported")</label>
+                    </li>
+                   <li>&nbsp;</li>
+                    <li>
+                        <input id="btnImportContent" type="button" value="@LabelHelper.GetUndaLabel(Model.LanguageId, "Import")" data-content-id="@Model.ContentListId" data-language-id="@Model.LanguageId" data-client-id="@Model.ClientId" data-property-basic-id="@Model.PropertyBasicId" data-obj-web-id="@Model.ObjWebId" />
+                        <input id="btnClose" type="button" value="@LabelHelper.GetUndaLabel(Model.LanguageId, "Close")" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        var $drpContentTypeLib = $("#drpContentTypeLib");
+        var $drpMeetingPlace = $("#drpMeetingPlace");
+        var $chkPublish = $("#chkPublish");
+        
+        $("#txtImportFile").val("");
+        $("#spnImportDataMessage").html("");
+        
+        $('#btnClose').click(function () {
+            $('#divImportContent').modal('hide');
+        });
+
+        var url = app_url + "Content/Import";
+        var formData = [];
+
+        var $btn = $("#btnImportContent");
+        var contentId = $btn.data("contentId");
+        var languageId = $btn.data("languageId");
+        var clientId = $btn.data("clientId");
+        var propertyBasicId = $btn.data("propertyBasicId");
+        var objWebId = $btn.data("objWebId");
+        var isPublish = $chkPublish.is(":checked");
+        var isDeleteSameLocation = $('#chkDeleteSameLocation').is(':checked');
+
+        loadContentLibraries(contentId, languageId, objWebId);
+
+        addFormData("contentListId", contentId, formData);
+        addFormData("languageId", languageId, formData);
+        addFormData("clientId", clientId, formData);
+        addFormData("propertyBasicId", propertyBasicId, formData);
+        addFormData("objWebId", objWebId, formData);
+        addFormData("isPublish", isPublish, formData);
+        addFormData("isDeleteSameLocation", isDeleteSameLocation, formData);
+        addFormData("meetingPlaceId", $drpMeetingPlace.val(), formData);
+        
+        //Library changed event
+        $drpContentTypeLib.off("change").change(function() {
+            var libId = $(this).val();            
+            addFormData("librayId", libId, formData);
+        });
+
+        //Meeting place changed event
+        $drpMeetingPlace.off("change").change(function () {
+            var id = $(this).val();
+            addFormData("meetingPlaceId", id, formData);
+        });
+
+        //publish changed
+        $chkPublish.off("change").change(function () {
+            var isPublic = $chkPublish.is(":checked");
+            addFormData("isPublish", isPublic, formData);
+        });
+
+        $('#chkDeleteSameLocation').off("change").change(function () {
+            addFormData("isDeleteSameLocation", $(this).is(":checked"), formData);
+        });
+
+        //upload event
+        $('#txtImportFile').fileupload({
+            dataType: 'json',
+            url: url,
+            formData: formData,
+            fileInput: $("input:file"),
+            replaceFileInput: false,
+            displayLoading: true,
+            messageLoading: "",
+            autoUpload: false,
+            add: function (e, data) {
+                $("#btnImportContent").unbind("click");
+                data.context = $("#btnImportContent").click(function () {
+                    OverlayLoading.Show();
+                    $("#spnImportDataMessage").html("");                    
+                    data.submit();
+                });
+            },
+            done: function (result, data) {
+                $("#txtImportFile").val("");
+                $("#spnImportDataMessage").html(data.result.Message);
+                OverlayLoading.Hide();
+            }
+        });
+        
+
+        function loadContentLibraries(contentListId, langId, objWebId) {
+            if ($drpContentTypeLib == null || $drpContentTypeLib.length <= 0)
+                return;
+
+            var url = app_url + "Content/LoadContentLibraries?contentId=" + contentListId + "&languageId=" + langId + "&objWebId=" + objWebId;
+            
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: url,                
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data != null) {
+                        if (data.PageTypes.length > 0) {
+                            $.each(data.PageTypes, function (idx, item) {
+                                $drpContentTypeLib.append("<option value='" + item.Key + "'>" + item.Value + "</option>");
+                            });
+                        }
+                        
+                        if (data.MeetingPlaces.length > 0) {
+                            $.each(data.MeetingPlaces, function (idx, item) {
+                                $drpMeetingPlace.append("<option value='" + item.Key + "'>" + item.Value + "</option>");
+                            });
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Load contents libraries error");
+                }
+            });
+        }
+
+        function addFormData(formName, formValue, formData) {
+            $.each(formData, function (idx, item) {
+                if (item != null && item.name === formName) {
+                    formData.splice(idx, 1);
+                }
+            });
+
+            formData.push({ name: formName, value: formValue });
+        }
+    });
+</script>

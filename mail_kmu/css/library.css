@@ -1,0 +1,58 @@
+#Library {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color: #FFF;
+	border: 1px solid #999999;
+	margin: 5px;
+	padding: 5px;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline;
+	filter:alpha(opacity=80);
+}
+#Library *{
+	position: relative;
+}
+#Library img {
+	border: none;
+	display: block;
+	float: left;
+}
+div.LibraryTitel {
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 12px;
+	margin: 10px -5px;
+	padding: 5px 10px;
+	background: #EEE;
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+}
+div.LibraryEntry {
+	padding: 5px 0;
+	text-align: left;
+	clear: left;
+}
+
+#LibraryTrash {
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+.PlaceHolderCaption {
+	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	background-color: #6E99CA;
+	font-size: 12px;
+	padding: 5px 10px;
+}
+.ContainerCaption {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 0 10px;
+}

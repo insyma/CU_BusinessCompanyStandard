@@ -1,0 +1,172 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+<!-- Show the Results when report -->
+<!-- Load Structure -->
+
+<div class="expList level-1" ng-repeat="struct in reportSurveyResults">
+    <h2 class="survey-header collapsed" ng-show="struct.Name != '' && struct.Name != null ">{{struct.Name}} </h2>
+    <!-- Load root Question-->
+    <div class="expList level-2" ng-repeat="questionRoot in struct.Children">
+        <h2 class="survey-header collapsed">{{questionRoot.Name}} {{returnTotalPerson(questionRoot)}}  <span class="icon-bars" ng-click="showChart(questionRoot)" ng-hide="summaryId > 0"></span> </h2>
+        <div class="level-2-sub">
+            <!-- Comment of Root question -->
+            <span class="comment-text">{{questionRoot.Comment}}</span>
+
+            <!-- Answer Header Text for matrix -->
+            <ul class="table-header" ng-if="questionRoot.HeaderAnswer != ''" ng-class="{'header-matrix-2': questionRoot.Children[0].Children[0].Children[0] != null}" ng-hide="summaryId > 0">
+                <li>&nbsp;</li>
+                <li ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,0)">{{mySplit(questionRoot.HeaderAnswer,0)}}</li>
+                <li ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,1)">{{mySplit(questionRoot.HeaderAnswer,1)}}</li>
+                <li ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,2)">{{mySplit(questionRoot.HeaderAnswer,2)}}</li>
+                <li ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,3)">{{mySplit(questionRoot.HeaderAnswer,3)}}</li>
+                <li ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,4)">{{mySplit(questionRoot.HeaderAnswer,4)}}</li>
+                <li>{{mySplit(questionRoot.HeaderAnswer,5)}} </li>
+                <li ng-show="questionRoot.Children[0].HasAverage == true ">@Html.Raw(LabelHelper.GetProgramString("LblResults_Average")) </li>
+                @* <div ng-show="questionRoot.Children[0].Children[0].Children[0] != null " style="width: 1000px;">
+                        <div ng-hide="summaryId > 0">
+                            <div class="cu-left " style="width: 500px; margin: 0px;">&nbsp;</div>
+                            <div class="cu-left cu-width-100 matrix-Header" style="text-align: center;" ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,0)">{{mySplit(questionRoot.HeaderAnswer,0)}}</div>
+                            <div class="cu-left cu-width-100 matrix-Header" style="text-align: center;" ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,1)">{{mySplit(questionRoot.HeaderAnswer,1)}}</div>
+                            <div class="cu-left cu-width-100 matrix-Header" style="text-align: center;" ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,2)">{{mySplit(questionRoot.HeaderAnswer,2)}}</div>
+                            <div class="cu-left cu-width-100 matrix-Header" style="text-align: center;" ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,3)">{{mySplit(questionRoot.HeaderAnswer,3)}}</div>
+                            <div class="cu-left cu-width-100 matrix-Header" style="text-align: center;" ng-show="checkShowHeaderTable(questionRoot.HeaderAnswer,4)">{{mySplit(questionRoot.HeaderAnswer,4)}}</div>
+                            <div ng-show="questionRoot.Children[0].Children[0].HasAverage == true " class="cu-left cu-width-100 matrix-Header" style="text-align: center;">@Html.Raw(LabelHelper.GetProgramString("LblResults_Average"))</div>
+                        </div>
+                    </div>*@
+            </ul>
+
+
+            <!-- Load Sub 1 and children -->
+            <div ng-repeat="sub1 in questionRoot.Children" ng-show="questionRoot.IsContactInfo == false">
+
+                <!-- Answer of Sub1 -->
+                <ul ng-show="sub1.AnswerId > 0  && questionRoot.IsContactInfo == false && sub1.HasInputValue == false" class="table-row">
+                    <li class="">{{sub1.Name}}</li>
+                    <li class="amount" ng-hide="summaryId > 0">{{sub1.Persion}}</li>
+                    <li class="percent" ng-hide="summaryId > 0">&nbsp;{{sub1.Cal}} %</li>
+                </ul>
+                <!-- Load Text -->
+                <div class="writing" ng-if="sub1.HasInputValue == true " ng-hide="summaryId > 0">
+                    <h2 class="survey-header collapsed">{{sub1.Name}} </h2>
+                    <span class="amount">{{sub1.Persion}}</span>
+                    <span class="percent">&nbsp;{{sub1.Cal}} %</span>
+                    <div id="div{{sub1.MainSurveyId}}{{sub1.MainStructureId}}{{sub1.MainQuestionId}}{{sub1.MainAnswerId}}" value="{{sub1.MainSurveyId}}{{sub1.MainStructureId}}{{sub1.MainQuestionId}}{{sub1.MainAnswerId}}"></div>
+                    <input type="hidden" id="hf{{sub1.MainSurveyId}}{{sub1.MainStructureId}}{{sub1.MainQuestionId}}{{sub1.MainAnswerId}}" value="0" />
+                    <input id="btnShowText_{{sub1.MainSurveyId}}_{{sub1.MainStructureId}}_{{sub1.MainQuestionId}}_{{sub1.MainAnswerId}}" name="btnShowText" type="button" value="@Html.Raw(LabelHelper.GetProgramString("LblShowAnswerButton"))" ng-click="loadText(sub1)" ng-class="{'clsHasInputValue': sub1.HasInputValue == true}">
+                </div>
+                <!-- This section text use for Report with 1 contact (has SummaryId) -->
+                <div ng-if="sub1.HasInputValue == true && summaryId > 0 ">
+                    <h2 class="survey-header collapsed">{{sub1.Name}}</h2>
+                    <div ng-show="sub1.AnsweredDate != null">
+                        <p ng-show="sub1.SurveyValue != '' ">[{{sub1.AnsweredDate | date:'dd.MM.yyyy hh:ss:mm'}}]</p>
+                        <p ng-show="sub1.SurveyValue != '' ">"{{sub1.SurveyValue}}"</p>
+                        <div ng-show="sub1.SurveyValue != '' ">------------------------------------------</div>
+                    </div>
+                </div>
+
+                <!-- Load data with matrix Table level 1-->
+
+                <div ng-if="sub1.AnswerId <= 0 ">
+                    <!-- Template Level 1 without text value -->
+                    <div ng-show="checkAnswerIsHasText(sub1) == false">
+                        <ul class="sub-table-level-1">
+                            <!-- Question level 1 -->
+                            <li>{{ sub1.Name}}</li>
+                            <li ng-repeat="sub2 in sub1.Children">
+                                <!-- Answer of Question level 1 -->
+                                <ul ng-if="sub2.AnswerId > 0">
+                                    <li class="amount" ng-hide="summaryId > 0">{{sub2.Persion}}</li>
+                                    <li class="percent" ng-hide="summaryId > 0">{{sub2.Cal}} %</li>
+                                    <li ng-show="summaryId > 0   ">
+                                        <span ng-show="sub2.AnsweredDate != null">{{sub2.Name}} </span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li ng-if="sub1.Average != 0 && sub1.HasAverage == true">
+                                {{sub1.Average}}
+                            </li>
+                            <!-- Load data with matrix Table level 2-->
+                            <li ng-if="questionRoot.Children[0].Children[0].Children[0] != null" class="table-li">
+                                <ul class="sub-table-level-2" ng-repeat="sub2 in sub1.Children">
+                                    <li ng-hide="sub2.AnswerId > 0">{{ sub2.Name}} </li>
+                                    <li ng-repeat="sub3 in sub2.Children">
+                                        <!-- Answer of Question level 2 -->
+                                        <ul ng-show="sub3.AnswerId > 0">
+                                            <li class="amount" ng-hide="summaryId > 0">{{sub3.Persion}}</li>
+                                            <li class="percent" ng-hide="summaryId > 0">{{sub3.Cal}} %</li>
+                                            <li ng-show="summaryId > 0 ">
+                                                <span ng-show="sub3.AnsweredDate != null">{{sub3.Name}} </span>
+                                            </li>
+                                        </ul>
+                                        <!-- Continue load Sub4 if Sub3 has child -->
+                                    </li>
+                                    <li ng-show="sub2.Children[0].AnswerId > 0 && sub2.HasAverage == true ">
+                                        {{sub2.Average}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Template Level 1 has text value -->
+                    <div ng-show="checkAnswerIsHasText(sub1) == true" class="ConSubAnswer">
+                        <span>{{ sub1.Name}} </span>
+                        <!-- Answer for question matrix level 1-->
+                        <div ng-repeat="sub1Child in sub1.Children">
+                            <ul ng-if="sub1Child.AnswerId > 0  && sub1Child.IsContactInfo == false && sub1Child.HasInputValue == false" class="table-row">
+                                <li>{{sub1Child.Name}}</li>
+                                <li class="amount" ng-hide="summaryId > 0">{{sub1Child.Persion}}</li>
+                                <li class="percent" ng-hide="summaryId > 0">&nbsp;{{sub1Child.Cal}} %</li>
+                            </ul>
+
+                            <!-- Load Text for question matrix level 1-->
+                            <div class="writing" ng-if="sub1Child.HasInputValue == true " ng-hide="summaryId > 0">
+                                <h2 class="survey-header collapsed">{{sub1Child.Name}} </h2>
+                                <span class="amount">{{sub1Child.Persion}}</span>
+                                <span class="percent">&nbsp;{{sub1Child.Cal}} %</span>
+                                <div id="div{{sub1Child.MainSurveyId}}{{sub1Child.MainStructureId}}{{sub1Child.MainQuestionId}}{{sub1Child.MainAnswerId}}" value="{{sub1Child.MainSurveyId}}{{sub1Child.MainStructureId}}{{sub1Child.MainQuestionId}}{{sub1Child.MainAnswerId}}"></div>
+                                <input type="hidden" id="hf{{sub1Child.MainSurveyId}}{{sub1Child.MainStructureId}}{{sub1Child.MainQuestionId}}{{sub1Child.MainAnswerId}}" value="0" />
+                                <input id="btnShowText_{{sub1Child.MainSurveyId}}_{{sub1Child.MainStructureId}}_{{sub1Child.MainQuestionId}}_{{sub1Child.MainAnswerId}}" name="btnShowText" type="button" value="@Html.Raw(LabelHelper.GetProgramString("LblShowAnswerButton"))" ng-click="loadText(sub1Child)" ng-class="{'clsHasInputValue': sub1Child.HasInputValue == true}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Answer is Contact infomations -->
+            <div ng-if="questionRoot.IsContactInfo == true">
+                <h2 class="survey-header collapsed"> @Html.Raw(LabelHelper.GetProgramString("LblResults_ParticipantInformation"))</h2>
+                <div id="PersonInfo{{questionRoot.MainSurveyId}}{{questionRoot.MainStructureId}}{{questionRoot.MainQuestionId}}" value="{{questionRoot.MainSurveyId}}{{questionRoot.MainStructureId}}{{questionRoot.MainQuestionId}}"> </div>
+
+                <input type="hidden" id="PersonHf{{questionRoot.MainSurveyId}}{{questionRoot.MainStructureId}}{{questionRoot.MainQuestionId}}" value="0" />
+                <input id="btnShowPersonInfo_{{questionRoot.MainSurveyId}}_{{questionRoot.MainStructureId}}_{{questionRoot.MainQuestionId}}" name="btnShowText" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_LoadTextAnswers"))" ng-click="loadPersonInfo(questionRoot)" ng-class="{'isContactInfo': questionRoot.IsContactInfo == true}">
+            </div>
+
+            @*<div ng-hide="summaryId > 0" style="width: 100%;margin-top: 4px;">
+                    <input class="cu-left button buttongreen" id="showChart" name="ShowChart" value="Show Chart" type="button" ng-click="showChart(questionRoot)" />
+                </div>*@
+
+        </div>
+    </div>
+</div>
+
+
+<script id="partials/GenerateHeaderColumnSubLevel2.html" type="text/ng-template">
+    <div>
+        <div class="cu-left cu-width-300" style="margin-left: 4px;">&nbsp;</div>
+        <div class="cu-left cu-minWith-100" style="margin-left: 4px; text-align: center;">{{mySplit(type,0)}}</div>
+        <div class="cu-left cu-minWith-100" style="margin-left: 4px; text-align: center;">{{mySplit(type,1)}}</div>
+        <div class="cu-left cu-minWith-100" style="margin-left: 4px; text-align: center;">{{mySplit(type,2)}}</div>
+        <div class="cu-left cu-minWith-100" style="margin-left: 4px; text-align: center;">{{mySplit(type,3)}}</div>
+    </div>
+    <br>
+</script>
+
+<script id="partials/GenerateHeaderColumnSubLevel3.html" type="text/ng-template">
+    <div>
+        <div class="cu-left cu-width-500">&nbsp;</div>
+        <div class="cu-left cu-minWith-100" style="text-align: center;">{{mySplit(type,0)}}</div>
+        <div class="cu-left cu-minWith-100" style="text-align: center;">{{mySplit(type,1)}}</div>
+        <div class="cu-left cu-minWith-100" style="text-align: center;">{{mySplit(type,2)}}</div>
+        <div class="cu-left cu-minWith-100" style="text-align: center;">{{mySplit(type,3)}}</div>
+    </div>
+    <br>
+</script>

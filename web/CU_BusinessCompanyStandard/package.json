@@ -1,0 +1,12 @@
+{
+	"version": "1.0.0",
+	"name": "asp.net",
+	"private": true,
+	"preferGlobal": true,
+	"devDependencies": {
+		"gulp": "4.0.0",
+		"gulp-concat": "2.6.1",
+		"gulp-uglify": "3.0.2",
+		"del": "4.1.0"
+	}
+}

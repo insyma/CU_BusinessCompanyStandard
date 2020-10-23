@@ -1,0 +1,74 @@
+* { border: none !important; }
+
+body {
+	font-size: 10pt;
+	width : 100%;
+	font-family: Arial,Frutiger,"Frutiger Linotype",Univers,Calibri,"Gill Sans","Gill Sans MT","Myriad Pro",Myriad,"DejaVu Sans Condensed","Liberation Sans","Nimbus Sans L",Tahoma,Geneva,"Helvetica Neue",Helvetica,sans-serif !important;
+}
+
+
+body, #insymaWrap, #inhalt, #header, #seitenleiste, #standardheader {
+	color: #000;
+	background: #fff;
+}
+#accordion h3 a, li.nav, #breadcrumbs li, #pflanzennavi li.header, #pflanzenliste li.header, #inhalt dl dt, .headerbox h1, .part_basic h1, li.subnavi, li.subnav, .standardheader h1, h2 {
+	text-transform: uppercase;
+}
+h1 {
+	font-size: 12pt;
+	margin: 0;
+}
+
+h2 {
+	font-size: 12pt;
+}
+h3 {
+	font-size: 14pt;
+	margin: 0;
+}
+h4, .part_basic, .part_team, .part_menu, #includeErlebtes, #includeTestimonial, .part_bildtext, .part_tabelle, .part_bilderliste, #includeNews, .part_bildgross, div.box   {
+	clear: both;
+	padding: 15px 0;
+}
+h5 {
+	color: #F5A434;
+}
+cufon {
+	display: inline;
+}
+
+ul#pflanzennavi li.header, ul#pflanzenliste li.header, div#inhalt dl dt, div#inhalt div.bg h2 {
+	font-size: 12pt;
+}
+ul, li {
+	padding: 0;
+	margin: 0;
+	list-style-position: inside ;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+#div#accordion img {
+	display: none;
+}
+div.ui-accordion-content {
+	height: 4cm !important;
+}
+
+#inhalt {
+	padding: 30px 0;
+}
+ul#pflanzenliste, div#inhalt dl {
+	padding: 0 !important;
+}
+#inhalt p a:after {
+	content: " ("attr(href)") ";
+	font-size: 10pt;
+}
+#insymaWrap { background: none !important; float: left; margin: 3em 0;}
+div#footer { width: 800px; margin: 5em 0 1em 0; height: 40px; clear: both; }
+
+div#footer p { font-size: 7.5pt; letter-spacing: 0.1em; clear: both; display: block; }
+
+#header h3 em, #header h3 span, ul#navi, ul#hilfsnavi, div.servicenavi, div#footer ul.servicenavi, div#footer li#service, ul#header_sprachwechsel, div#insymaImage, ul#breadcrumbs, ul#subnavi, .part_movie, #seitenleiste, div#inhalt div.bg p.link { display: none; }

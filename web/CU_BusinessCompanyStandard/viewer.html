@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html>
+<head><meta http-equiv="X-UA-Compatible" content="IE=EDGE" /><title>
+
+</title><link rel="stylesheet" type="text/css" href="css/flexpaper.css" /></head>
+<body>
+    <script type="text/javascript" src="js/viewer_lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/viewer_lib/jquery.extensions.min.js"></script>
+
+    <div id="documentViewer" class="flexpaper_viewer" style="position:absolute;top:0; left:0; width:100%;height:100%;background-color:#222222">
+    </div>
+
+    <script type="text/javascript">
+        var util = {
+            queryString: function (ji) {
+                hu = window.location.search.substring(1);
+                gy = hu.split("&");
+                for (i = 0; i < gy.length; i++) {
+                    ft = gy[i].split("=");
+                    if (ft[0] == ji) {
+                        return ft[1];
+                    }
+                }
+                return ji;
+            }
+        }
+
+        var docId = "0";
+        var objFileId = util.queryString("id");
+        var pathTo = util.queryString("file").replace(".pdf", "");
+        var fileName = util.queryString("file").substring(util.queryString("file").lastIndexOf("/") + 1);
+
+        var totalPages = "1";
+
+        var pdfConfigURL = "PdfFileConfig.ashx";                    // only for publish mode, not for static page
+        var pdfDownloadURL = "GetPdf.ashx";                         // only for publish mode, not for static page
+    
+        var resourcePath = {
+            JSONFile: pathTo + '/js/' + fileName + '_{page}.js',
+            PDFFile: pathTo + '/pdf/' + fileName + '_[*,4].pdf',
+            ThumbIMGFiles: pathTo + '/png/' + fileName + '_{page}_thumb.png',
+            SWFFile: '{' + pathTo + '/swf/' + fileName + '_[*,4].swf, ' + totalPages + '}',
+            NoConficCheck: true
+        };
+
+        if (docId !== '0') {
+            pathTo = pathTo + "&docid=" + docId + "&";
+    
+            resourcePath = {
+                JSONFile: pathTo + "&type=js&page={page}",
+                PDFFile: pathTo + "type=pdf&page=[*,4]",
+                ThumbIMGFiles: pathTo + "type=png&page={page}_thumb",
+                SWFFile: '{' + pathTo + 'type=swf&page=[*,4],' + totalPages + '}',
+                NoConficCheck: true
+            };
+        }
+
+    </script>
+
+    <script type="text/javascript" src="js/viewer_lib/flexpaper.js"></script>
+    <script type="text/javascript" src="js/viewer_lib/flexpaper_handlers.js"></script>
+    <script type="text/javascript" src="js/viewer_lib/flexpaper_loader.js"></script>
+</body>
+</html>

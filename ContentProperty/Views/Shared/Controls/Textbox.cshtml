@@ -1,0 +1,15 @@
+﻿@model Insyma.ContentProperty.Web.Models.DetailModel
+
+@{
+    var cssDisabled = Model.PropertyDetail.IsModify ? "" : "disabled-field";
+}
+
+<div class="input-text">
+    <label>@Model.PropertyDetail.FieldLabel</label>
+    <input class="@cssDisabled" id="@Model.PropertyDetail.Id" type="text" value="@Model.StringValue" data-field-key="@Model.PropertyDetail.PropertyFieldKey" data-field-type="@Model.PropertyDetail.FieldTypeKey" data-add-new="@Model.PropertyDetail.IsAddNew" />
+
+    @if (Model.PropertyDetail.Mandatory)
+    {
+        <span style="display: none" class="mandatory mandatory-textbox">Required</span>
+    }
+</div>

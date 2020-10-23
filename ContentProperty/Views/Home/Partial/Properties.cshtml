@@ -1,0 +1,54 @@
+﻿@using System.Web.UI.WebControls.WebParts
+@using Insyma.ContentProperty.Domain.Code
+@using Insyma.ContentProperty.Web.Models
+@model Insyma.ContentProperty.Web.Models.PropertiesModel
+
+@{        
+    var wholeLine = Model.Structure.PropertyDetails.GroupBy(d => d.RowNumber).Where(grp => grp.Count() > 1).Select(grp => grp.Key).ToList<int>();    
+}
+
+<div class="segment placeholder-inside  column" data-structure-id="@Model.Structure.Id">
+    <label class="segment-header placeholder-header">@Model.Structure.StructureLabel</label>
+    <div class="placeholder-content">
+    <ul class="column segment-ul part-content">
+        @if (Model.Structure.PropertyDetails != null)
+        {
+            foreach (var detail in Model.Structure.PropertyDetails)
+            {
+                var percentWidth = (detail.PercentWidth > 0) ? string.Format("width:{0}%", detail.PercentWidth) : "";
+
+                var wholeLineCss = wholeLine.Contains(detail.RowNumber) ? "" : "whole-line";
+                var detailModel = new DetailModel()
+                {
+                    PropertyDetail = detail,
+                    ContentObjValue = Model.ContentObjValue,
+                    ContentSettings = Model.ContentSettings
+                };
+
+                <li class="element-li @wholeLineCss" style="@percentWidth">
+                    @switch (detail.FieldTypeKey)
+                    {
+                        case FieldType.Textbox:
+                            @Html.Partial("~/Views/Shared/Controls/Textbox.cshtml", detailModel)
+                            break;
+                        case FieldType.DateTime:
+                            @Html.Partial("~/Views/Shared/Controls/DateTime.cshtml", detailModel)
+                            break;
+                        case FieldType.Checkbox:
+                            @Html.Partial("~/Views/Shared/Controls/Checkbox.cshtml", detailModel)
+                            break;
+                        case FieldType.Dropdown:
+                            @Html.Partial("~/Views/Shared/Controls/Dropdown.cshtml", detailModel)
+                            break;
+                        case FieldType.MenuTextbox:
+                            @Html.Partial("~/Views/Shared/Controls/MenuTextbox.cshtml", detailModel)
+                            break;
+                    }
+                </li>
+            }
+        }        
+    </ul>
+    </div>
+
+
+</div>

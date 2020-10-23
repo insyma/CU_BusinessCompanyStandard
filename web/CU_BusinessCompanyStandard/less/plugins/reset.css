@@ -1,0 +1,92 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
+}  
+
+article, aside, figure, footer, header, hgroup, main, nav, section {display: block;}
+
+img,
+object,
+embed {max-width: 100%;}
+.gsmsc-mapDiv img,
+.map_wrap img,
+.gm-style img,
+#map_canvas img,
+.mapcontainer img
+{max-width: none !important;}
+
+
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {cursor: help;}
+
+table {border-collapse: collapse; border-spacing: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre; 
+    white-space: pre-wrap; 
+    white-space: pre-line;
+    word-wrap: break-word; 
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+
+a:hover, a:active {outline: none;}
+
+small {font-size: 85%;}
+
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+button, input, select, textarea {margin: 0;}
+
+button {width: auto; overflow: visible;}
+ 
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+}
+script {
+    display: none !important;
+}

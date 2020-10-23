@@ -1,0 +1,36 @@
+﻿@import (reference) '../base/_mixins.less';
+////////////////////////////////////////////////////////////////////////
+// transition
+////////////////////////////////////////////////////////////////////////
+@dur1: 280ms;
+
+a,
+a:after,
+a:before,
+.href,
+.href:after,
+.href:before,
+.icon:after,
+.icon:before,
+.menu,
+.menu:after,
+input[type="button"], 
+input[type="submit"], 
+button,
+.button,
+div.button *,
+div.radio *,
+.transform,
+.transform:after,
+.transform:before,
+div.selector span
+{
+    .transitions(@dur1);
+}
+// form trans 
+input[type],
+textarea, 
+select
+{
+    .seperate-transitions(background, border, @dur1 ease-in-out);
+}

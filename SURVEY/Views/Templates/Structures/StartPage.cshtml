@@ -1,0 +1,101 @@
+﻿@model Insyma.SurveyManagement.DAL.udsp_SURVEY_StructureOnline_Result
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.Helper;
+@using Insyma.SurveyManagement.DAL;
+
+@{
+    Insyma.SurveyManagement.DAL.SurveyStructureImages images = SurveyOnlineRepository.LoadStructureImageOnline(Model.Id, (int)ViewBag.languageId);
+
+    SurveyStructureTexts texts = SurveyOnlineRepository.LoadStructureTextOnline(Model.Id, (int)ViewBag.languageId);
+
+    // @Html.Raw(texts["introduction"].Value)
+    // <img src="@UtilityHelper.GetImageRelativePath(ViewBag.imageFolder,Model.OriginalStructureId,ViewBag.languageId,images[0].FileName,ViewBag.fileFolder)"/>
+    //string relativePath = "../" + UtilityHelper.GetImageRelativePath(ViewBag.imageFolder, Model.OriginalStructureId, ViewBag.languageId, images[0].FileName, ViewBag.fileFolder);
+}
+<noscript>
+    <style>
+        .page {display:none;}
+        #pagenoscipt {
+            background: none repeat scroll 0 0 #fff;
+            margin: 0 auto !important;
+            padding: 20px;
+        }
+        h2 {
+            padding: 0;    
+        }
+        a.button {
+            background: linear-gradient(to bottom, rgba(0, 74, 153, 1) 0%, rgba(0, 57, 114, 1) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            border: 1px solid transparent;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 130%;
+            padding: 6px 24px;
+            text-decoration: none;
+        }
+
+            a.button:hover {
+                    background: linear-gradient(to bottom, rgba(0, 57, 114, 1) 0%, rgba(0, 74, 153, 1) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            }
+
+    </style>
+    <div id="pagenoscipt">
+
+        <h2>Gefällt Ihnen unsere Webseite? Was sollen wir besser machen?</h2>
+        <h3><a>Ihre Teilnahme ist uns wichtig!</a></h3>
+        <p>
+            Beim Aufruf der Umfrage wurde festgestellt, dass Ihr Web-Browser (z.B. Internet-Explorer) erhöhte Sicherheitseinstellungen aufweist, welche Teile der Anwendung blockieren.
+        </p>
+        <p>Wir haben für Sie eine einfache Anleitung erstellt, wie Sie die benötigte Funktion in Ihrem Web-Browser aktivieren können: <a href="2014-10-20_Anleitung_JavaScript_aktivieren.pdf" target="_blank">Anleitung </a></p>
+        <p>
+            Herzlichen Dank, dass Sie sich die Zeit nehmen. Ihre Teilnahme hilft uns, die Qualität der Webseite zu überprüfen und damit auf die Bedürfnisse der Besucher einzugehen.
+        </p>
+        <a type="button" href="http://www.bvk.ch" class="button">Zurück zur Website</a>
+    </div>
+</noscript>
+<div class="page" id="pageIntro">
+    <noscript>
+
+    </noscript>
+
+    <div class="startseite_info">
+        <h2>@Model.StructureName</h2>
+    </div>
+
+    <div class="white_div textcon">
+        <h3 class="green">
+            <a>
+                @if (texts.Count > 0)
+                {
+                    @Html.Raw(texts[0].Name);
+                }
+            </a>
+        </h3>
+        <div class="nopadding">
+            <span class="imagewrap right">
+                @*<img src="../css/images/gutscheinethw350x263.jpg" alt="" width="350" />*@
+                @if (images.Count > 0)
+                {
+                    <img src="@UtilityHelper.GetImageRelativePath(ViewBag.imageFolder,Model.OriginalStructureId,ViewBag.languageId,images[0].FileName,ViewBag.fileFolder)" />
+                }
+            </span>
+            @if (texts.Count > 0)
+            {
+                @Html.Raw(texts[0].Value)
+            }
+            @*<p>
+                    Bewerten Sie unser Tropenhaus und teilen Sie uns Ihre pers&ouml;nliche Meinung mit. Mit etwas Gl&uuml;ck gewinnen Sie 4 					    Mittagspackages im Wert von CHF 164.—  für weitere genussvolle Momente in unserer Tropenoase!
+                </p>
+                <p>
+                    Wir freuen uns auf Ihre wertvollen Inputs!
+                </p>
+                <p>
+                    Ihr Tropenhaus-Team
+                </p>*@
+            <div style="margin-top: 60px;" class="wkButton buttonNext">
+                <input class="active" value="An Umfrage teilnehmen" type="button" id="btnStartSurvey" />
+            </div>
+        </div>
+    </div>
+</div>

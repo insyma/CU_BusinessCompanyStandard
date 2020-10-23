@@ -1,0 +1,209 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+
+<!doctype html>
+
+<!--	 lt IE 8]> <html class="lt-ie8" ng-app="app"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" ng-app="app"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html ng-app="app">
+<!--<![endif]-->
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+
+    <link href="~/content/css/survey.base.css" rel="stylesheet" />
+    <link href="~/content/css/core.css" rel="stylesheet" />
+    <link href="~/content/css/icons.css" rel="stylesheet" />
+    <link href="~/content/css/jquery-ui.css" rel="stylesheet" />
+    
+    <link href="~/content/css/sk/skeleton.css" rel="stylesheet" />
+    <link href="~/content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/content/css/SurveyReports.css" rel="stylesheet" />
+    <script src="~/js/Lib/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="~/js/Lib/jquery-ui.js"></script>
+    <script src="~/js/Lib/jquery.ui.datepicker.lang.js"></script>
+    <script src="~/js/core.js"></script>
+    <script type="text/javascript">
+        if (!Function.prototype.bind) { //a polyfill for browsers not supporting .bind
+
+            Function.prototype.bind = function () {
+                var fn = this, args = Array.prototype.slice.call(arguments),
+                    object = args.shift();
+                return function () {
+                    return fn.apply(object,
+                        args.concat(Array.prototype.slice.call(arguments)));
+                };
+            };
+        };
+
+        if(!Array.prototype.last) {
+            Array.prototype.last = function() {
+                return this[this.length - 1];
+            }
+        }
+
+        if (!Array.prototype.indexOf) { //a polyfill for browsers not supporting .indexOf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+            Array.prototype.indexOf = function (searchElement, fromIndex) {
+                if ( this === undefined || this === null ) {
+                    throw new TypeError( '"this" is null or not defined' );
+                }
+
+                var length = this.length >>> 0; // Hack to convert object.length to a UInt32
+
+                fromIndex = +fromIndex || 0;
+
+                if (Math.abs(fromIndex) === Infinity) {
+                    fromIndex = 0;
+                }
+
+                if (fromIndex < 0) {
+                    fromIndex += length;
+                    if (fromIndex < 0) {
+                        fromIndex = 0;
+                    }
+                }
+
+                for (;fromIndex < length; fromIndex++) {
+                    if (this[fromIndex] === searchElement) {
+                        return fromIndex;
+                    }
+                }
+
+                return -1;
+            };
+        }
+        //Button text
+        var ButtonText = {
+            "Process": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_InProgress"))"
+            , "Save": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_SaveInProgress"))"
+            , "Delete": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_DeleteInProgress"))"
+        };
+        
+        function DisplayLoadPanel(text) {
+            $("#pnlLoad").find(".progress").addClass("active");
+            $("#pnlLoad").find(".message-success").text(text + " " + ButtonText.Process);
+            $("#pnlLoad").find(".progress-bar").removeClass("progress-bar-danger progress-bar-success");
+            $("#pnlLoad").find("#btmessage").css("display", "none");
+            $('#pnlLoad').modal('show');
+            setTimeout(function () {
+                $("#btmessage").uniform();
+                    
+            }, 10);
+        }
+
+        function DisplaySuccessPanel(text) {
+            setTimeout(function () {
+                $("#pnlLoad").find(".message-success").text(text);
+                $("#pnlLoad").find(".progress-bar").removeClass("progress-bar-danger progress-bar-info").addClass("progress-bar-success");
+                $("#pnlLoad").find(".progress").removeClass("active");
+                setTimeout(function () {
+                    $('#pnlLoad').modal('hide');
+                }, 1000);
+            }, 2000);
+
+        }
+
+        function DisplayErrorPanel(text) {
+            $("#pnlLoad").find(".message-success").text(text);
+            $("#pnlLoad").find(".progress-bar").removeClass("progress-bar-success progress-bar-info").addClass("progress-bar-danger");
+            $("#pnlLoad").find(".progress").removeClass("active");
+            $("#pnlLoad").find("#btmessage").css("display", "block");
+            setTimeout(function () {
+                   
+                $("#btmessage").uniform();
+                    
+            }, 10);
+        }
+    </script>
+</head>
+<body>
+    <div class="" style="padding: 10px 30px;">
+        @{Html.RenderPartial("TopNavigation");}@* Render directly => faster, @Html.Partial slower *@
+
+        @RenderBody()
+        <!-- Spinner region -->
+@*        <div class="loader-bg" style="display: none;">
+            <img src="~/content/images/loadingcircle.gif" class="loader-icon" />
+        </div>*@
+        <div class="overlay-loading" style="display: none;"></div>
+        <div class="modal-loading" style="display: none;">
+            <span class="icon-spinner spinner spinner-steps green"></span>
+            <p>Loading...</p>
+        </div>
+    </div>
+    <!-- Notification region -->
+    <div id="pnlLoad" class="modal fade pnlSuccess" role="dialog" aria-hidden="true" style="width: 500px;z-index:5000">
+        <div class="progress progress-striped active">
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            </div>
+        </div>
+        <div class="message-success"></div>
+        <div>
+            <input id="btmessage" class="cu-right button buttongreen margin-button" data-dismiss="modal" name="GoBack" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnGeneral_Close"))">
+        </div>
+    </div>
+    @*</div>*@
+
+    @*<script src="~/js/Lib/jquery-2.0.3.min.js"></script>*@
+
+    @*<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>*@
+
+    <script src="~/js/Lib/jquery.form.min.js"></script>
+    @*<script src="~/js/Lib/angular-route.min.js"></script>*@
+    <script src="~/js/Lib/angular-resource.min.js"></script>
+    <script src="~/js/Validator.js"></script>
+    <script src="../../tool/js/maskCU3.js" type="text/javascript"></script>
+
+    <script>
+        var APP_ROOT = "@Url.Content("~")";
+    </script>
+
+    <script>
+        $(function () {
+            var currentLangId = "@ViewBag.LanguageId";
+            var arrLangKey = ["de", "fr", "it", "", "es"];
+            $.datepicker.setDefaults($.datepicker.regional[arrLangKey[currentLangId]]);
+        });
+    </script>
+
+    <script src="~/js/App/Directives/datepickerDirective.js"></script>
+    <script src="~/js/Lib/angular.treeview.min.js"></script>
+    <script src="~/js/App/Directives/wysiwygDirective.js"></script>
+    <script src="~/js/App/Directives/Animation/ngExpandDirective.js"></script>
+    <script src="~/js/App/Directives/fileUploadDirective.js"></script>
+
+    <script src="~/js/Lib/angular-strap.min.js"></script>
+    <script src="~/js/Lib/popover.js"></script>
+    <script src="~/js/App/Modules/SurveyResources.js"></script>
+    <script src="~/js/App/app.js"></script>
+    <script src="~/js/App/Services/notification-factory.js"></script>
+    <script src="~/js/App/Directives/Services/crud-grid-data-factory.js"></script>
+
+    <script src="~/js/Lib/bootstrap-modal.js"></script>
+    <script src="@Url.Content("~/js/App/Services/LoadingConfig.js")"></script>
+
+    <script>
+        (function () {
+            var app = angular.module("app");
+            app.value("languageId",@ViewBag.LanguageId);
+        })();
+    </script>
+
+    <!-- This line for fix bug 'too much recursive' -->
+    <script>        $.fn.modal.Constructor.prototype.enforceFocus = function () { }; </script>
+
+    @RenderSection("DirectivesScript", false)
+    @RenderSection("IndividualScript", false)
+
+    @*<script language="javascript">
+        // Style everything
+        //$("select, input, a.button, button").uniform();
+        
+        $("input[type=text],select, a.button").uniform();
+        
+        // Calls the selectBoxIt method on your HTML select box and uses the default theme
+    </script>*@
+</body>
+</html>

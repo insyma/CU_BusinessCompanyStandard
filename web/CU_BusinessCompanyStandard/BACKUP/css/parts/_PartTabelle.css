@@ -1,0 +1,19 @@
+/* Tabelle  */
+.PartTabelle .con-table {
+  overflow: auto;
+}
+.PartTabelle caption {
+  text-align: left;
+}
+.PartTabelle thead,
+.PartTabelle tbody,
+.PartTabelle tfoot {
+  width: 100%;
+}
+.PartTabelle td,
+.PartTabelle th {
+  border-width: 1px 0;
+  padding: .5rem 2rem;
+  text-align: left;
+  vertical-align: top;
+}

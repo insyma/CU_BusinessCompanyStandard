@@ -1,0 +1,11 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id">
+    <div style="display: block;" class="question" questiontype="7"><span>@Model.QuestionName</span></div>
+    <div style="display: block;" class="answer" answerid="47">
+        <input type="text" id="datepicker1" title="title" />
+    </div>
+</div>

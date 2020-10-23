@@ -1,0 +1,365 @@
+﻿@model Insyma.ContentProperty.Web.ViewModel.PageContentListItem
+@using Insyma.ContentProperty.Domain.Setting
+@using Insyma.ContentProperty.Domain.Label
+@{
+    Layout = null;
+    var rootScript = @Url.Content("~/Scripts");
+    var languageId = 0;
+    int.TryParse(Request.QueryString["langId"], out languageId);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Content list for object</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/ContentProperty.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/app-table.min.css")">
+    <style>
+        <!-- Temp css-- >
+        table {
+            border-collapse: collapse;
+            border-style: hidden;
+        }
+
+        table td, table th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    @if (Model != null)
+    {
+        @*<div class="cu-left">
+            <div class="content-list">
+                <ul class="header">
+                    <li><h2 class="">@Model.Header</h2></li>
+                </ul>*@
+
+        <div class="app app-table placeholder-content overview-list-container" id="my-ui-list">
+            <div class="table-list-part">
+                <div class="table-content-header" style="display: none">
+                    <label>@Model.Header</label>
+                    <div class="m-l pull-right app-table-options m-b">
+
+                        <!--header buttons list - OverviewListHeaderButtons.cshtml 1111-->
+                        <a class="overviewFilter btn btn-white" data-tip="overview-tip-filter" data-placement="top" data-original-title="" title="">
+                            <i class="zmdi zmdi-filter-list" data-placement="top"></i>
+                        </a>
+                        <!-- Tooltip content overview filter content -->
+                        <div id="overview-tip-filter" class="tip-content hidden">
+                            <div class="app-tooltip">Filter anzeigen</div>
+                        </div>
+                        <div class="pos-relative m-l-sm pull-right" data-tip="overview-tip-more-action" data-placement="top" data-original-title="" title="">
+                            <a class="btn btn-white" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <i class="zmdi zmdi-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user overview-status-list" data-status-source-key="CompanyStatus" data-status-source-value-default="30">
+
+
+                                <li data-tool-function="status" style="">
+                                    <label>Status</label><br>
+                                    <label style="width:100%"><div class="checker"><span><input value="10" type="checkbox"></span></div>Neu</label><label style="width:100%"><div class="checker"><span><input value="20" type="checkbox"></span></div>Pendent</label><label style="width:100%"><div class="checker"><span class="checked"><input value="30" type="checkbox" checked=""></span></div>Aktiv</label><label style="width:100%"><div class="checker"><span><input value="80" type="checkbox"></span></div>Inaktiv</label><label style="width:100%"><div class="checker"><span><input value="90" type="checkbox"></span></div>Gelöscht</label>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Tooltip content more action -->
+                        <div id="overview-tip-more-action" class="tip-content hidden">
+                            <div class="app-tooltip">weitere Funktionen</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-content" style="min-height: 250px">
+                    <div class="table-fixed-header-column" style=""></div>
+                    <!-- Header table with filter -->
+                    <div class="table-fixed-header viewOverviewHeader" style="overflow: hidden">
+                        <table class="table table-striped table-bordered table-hover" style="table-layout: fixed">
+                            <colgroup>
+                                <col class="table-col-20px">
+                                <col class="table-col-100px">
+                                <col class="table-col-100px">
+                                <col class="table-col-100px">
+                                <col class="table-col-150px">
+                                @*<col class="table-col-150px">*@
+                                <col class="table-col-100px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                            </colgroup>
+                            <thead>
+                                <tr class="filter-table" style="display: none;">
+                                    <th>&nbsp;</th>
+                                    <th><input data-filter="PageStatus" data-fieldtype="1" placeholder="ID" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th>
+                                        <div class="pos-relative">
+
+                                            <input class="form-control multi-select-textbox uniform-input text" placeholder="Status" data-label="Status">
+                                            <div role="menu" class="menu-content select-menu dropdown open" style="display: none;">
+                                                <ul class="menu-controls dropdown-menu" data-filter="FilterStatusIds" data-fieldtype="10" data-field-key="CompanyStatus"></ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="pos-relative">
+
+                                            <input class="form-control multi-select-textbox uniform-input text" placeholder="Fenaco Nr" data-label="Fenaco Nr">
+                                            <div role="menu" class="menu-content select-menu dropdown open" style="display: none;">
+                                                <ul class="menu-controls dropdown-menu" data-filter="FenacoNumber" data-fieldtype="10" data-field-key="FenacoNumberDatasource"></ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th><input data-filter="Organization" data-fieldtype="1" placeholder="Unternehmensname" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th>
+                                        <div class="pos-relative">
+
+                                            <input class="form-control multi-select-textbox uniform-input text" placeholder="Region" data-label="Region">
+                                            <div role="menu" class="menu-content select-menu dropdown open" style="display: none;">
+                                                <ul class="menu-controls dropdown-menu" data-filter="RegionIds" data-fieldtype="10" data-field-key="RegionDatasource"></ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="pos-relative">
+
+                                            <input class="form-control multi-select-textbox uniform-input text" placeholder="Sprache" data-label="Sprache">
+                                            <div role="menu" class="menu-content select-menu dropdown open" style="display: none;">
+                                                <ul class="menu-controls dropdown-menu" data-filter="LanguageIds" data-fieldtype="10" data-field-key="LanguageISODatasource"></ul>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th><input data-filter="Phone" data-fieldtype="1" placeholder="Telefon" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th><input data-filter="Fax" data-fieldtype="1" placeholder="Fax" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th><input data-filter="Email" data-fieldtype="1" placeholder="E-Mail" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th><input data-filter="NumberOfLocation" data-fieldtype="1" placeholder="Standorte" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th><input data-filter="GF" data-fieldtype="1" placeholder="Geschäftsführer" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                    <th><input data-filter="SibeHaupt" data-fieldtype="1" placeholder="Haupt-SiBe" data-use-filter="0" data-alphabet-menu="0" class="form-control uniform-input text"></th>
+                                </tr>
+                                <tr class="header-th" style="display:none">
+                                    <th data-sort-column="0"></th>
+                                    <th data-sort-column="1" class="icon table-col-50px icon-sort-up active-sorting" data-header-field-id="2001" data-header-binding-key="CompanyId" data-header-filter-key="CompanyId" data-header-field-type-id="1">ID </th>
+                                    <th data-sort-column="2" class="icon icon-sort-both table-col-100px" data-header-field-id="2002" data-header-binding-key="CompanyStatus" data-header-filter-key="FilterStatusIds" data-header-field-type-id="10">Status </th>
+                                    <th data-sort-column="3" class="icon icon-sort-both table-col-100px" data-header-field-id="2003" data-header-binding-key="FenacoNumber" data-header-filter-key="FenacoNumber" data-header-field-type-id="10">Fenaco Nr </th>
+                                    <th data-sort-column="4" class="icon icon-sort-both table-col-200px" data-header-field-id="2004" data-header-binding-key="Organization" data-header-filter-key="Organization" data-header-field-type-id="1">Unternehmensname </th>
+                                    <th data-sort-column="5" class="icon icon-sort-both table-col-100px" data-header-field-id="2005" data-header-binding-key="Region" data-header-filter-key="RegionIds" data-header-field-type-id="10">Region </th>
+                                    <th data-sort-column="14" class="icon icon-sort-both table-col-100px" data-header-field-id="2011" data-header-binding-key="Language" data-header-filter-key="LanguageIds" data-header-field-type-id="10">Sprache </th>
+                                    <th data-sort-column="10" class="icon icon-sort-both table-col-150px" data-header-field-id="2008" data-header-binding-key="Phone" data-header-filter-key="Phone" data-header-field-type-id="1">Telefon </th>
+                                    <th data-sort-column="11" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="Fax" data-header-filter-key="Fax" data-header-field-type-id="1">Fax </th>
+                                    <th data-sort-column="12" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="Email" data-header-filter-key="Email" data-header-field-type-id="1">E-Mail </th>
+                                    <th data-sort-column="15" class="icon icon-sort-both table-col-100px" data-header-field-id="2012" data-header-binding-key="NumberOfLocation" data-header-filter-key="NumberOfLocation" data-header-field-type-id="1">Standorte </th>
+                                    <th data-sort-column="16" class="icon icon-sort-both table-col-200px" data-header-field-id="2013" data-header-binding-key="GF" data-header-filter-key="GF" data-header-field-type-id="1">Geschäftsführer </th>
+                                    <th data-sort-column="17" class="icon icon-sort-both table-col-200px" data-header-field-id="2014" data-header-binding-key="SibeHaupt" data-header-filter-key="SibeHaupt" data-header-field-type-id="1">Haupt-SiBe </th>
+                                </tr>
+
+                                <tr class="table-file-upload" style="display:none">
+                                    <th colspan="13">
+                                        <div class="item add-new dz-action-upload dz-action-upload-view-table dz-add-new">
+                                            <a class="dz-link dz-message dz-message-inline" aria-btn-action="" data-edit-url="/CmsAdmin/Wosqum/start-process?processKey=ADMIN-ADD-ORGANIZATION&amp;langId=[langid]&amp;key=[key]">
+                                                <span style="left: 50%; position: absolute; top: 50%; text-align: center; transform: translate(-50%, -50%);">
+                                                    <i class="zmdi fa-15x zmdi-plus-circle"></i>&nbsp;
+                                                    <strong>Neue hinzufügen</strong>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!-- hidden -->
+                    <div class="table-fixed-columns-header" style="display: none">
+                        <table class="table">
+                            <thead>
+                                <tr class="filter-table"></tr>
+                                <tr class="header-th">
+                                    <th data-sort-column="0"></th>
+                                    <th data-sort-column="1" class="icon icon-sort-both table-col-100px" data-header-field-id="2001" data-header-binding-key="PageStatus" data-header-filter-key="PageStatus" data-header-field-type-id="10">Status </th>
+                                    <th data-sort-column="2" class="icon icon-sort-both table-col-100px" data-header-field-id="2002" data-header-binding-key="CoFi_DateContent" data-header-filter-key="CoFi_DateContent" data-header-field-type-id="6">Datum </th>
+                                    <th data-sort-column="3" class="icon icon-sort-both table-col-100px" data-header-field-id="2003" data-header-binding-key="CoFi_Author" data-header-filter-key="CoFi_Author" data-header-field-type-id="10">Autor </th>
+                                    <th data-sort-column="4" class="icon icon-sort-both table-col-150px" data-header-field-id="2004" data-header-binding-key="CoFi_ContentName" data-header-filter-key="CoFi_ContentName" data-header-field-type-id="1">Titel </th>
+                                    @*<th data-sort-column="5" class="icon icon-sort-both table-col-150px" data-header-field-id="2005" data-header-binding-key="PageName" data-header-filter-key="PageName" data-header-field-type-id="1">Seitenname </th>*@
+                                    <th data-sort-column="6" class="icon icon-sort-both table-col-100px" data-header-field-id="2011" data-header-binding-key="DateValid" data-header-filter-key="DateValid" data-header-field-type-id="1">@(Model.FieldList.ContainsKey("CoFi_DateValidFrom") ? Model.FieldList["CoFi_DateValidFrom"] : "Gültig von")/bis </th>
+                                    @if (Model.FieldList.ContainsKey("CoFi_Date_AppointmentFrom") || Model.FieldList.ContainsKey("CoFi_Date_AppointmentTo"))
+                                    {
+                                        <th data-sort-column="7" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="DateAppointment" data-header-filter-key="DateAppointment" data-header-field-type-id="1">@(Model.FieldList.ContainsKey("CoFi_Date_AppointmentFrom") ? Model.FieldList["CoFi_Date_AppointmentFrom"] : "Termin von")/bis </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentMeetingPlace"))
+                                    {
+                                        <th data-sort-column="8" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="CoFi_ContentMeetingPlace" data-header-filter-key="CoFi_ContentMeetingPlace" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentMeetingPlace"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentType"))
+                                    {
+                                        <th data-sort-column="9" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="CoFi_ContentType" data-header-filter-key="CoFi_ContentType" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentType"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentOrigin"))
+                                    {
+                                        <th data-sort-column="10" class="icon icon-sort-both table-col-150px" data-header-field-id="2010" data-header-binding-key="CoFi_ContentOrigin" data-header-filter-key="CoFi_ContentOrigin" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentOrigin"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentProject"))
+                                    {
+                                        <th data-sort-column="11" class="icon icon-sort-both table-col-150px" data-header-field-id="2011" data-header-binding-key="CoFi_ContentProject" data-header-filter-key="CoFi_ContentProject" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentProject"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentDossier"))
+                                    {
+                                        <th data-sort-column="12" class="icon icon-sort-both table-col-150px" data-header-field-id="2012" data-header-binding-key="CoFi_ContentDossier" data-header-filter-key="CoFi_ContentDossier" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentDossier"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentTheme"))
+                                    {
+                                        <th data-sort-column="13" class="icon icon-sort-both table-col-150px" data-header-field-id="2013" data-header-binding-key="CoFi_ContentTheme" data-header-filter-key="CoFi_ContentTheme" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentTheme"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentTag"))
+                                    {
+                                        <th data-sort-column="14" class="icon icon-sort-both table-col-150px" data-header-field-id="2014" data-header-binding-key="CoFi_ContentTag" data-header-filter-key="CoFi_ContentTag" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentTag"] </th>
+                                    }
+                                </tr>
+                                <tr class="table-file-upload"><th colspan="@(Model.TotalColumn)" class="add-new-cols"></th></tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table-fixed-columns"></div>
+                    <!-- Content table -->
+                    <div class="table-scroller" style="">
+                        <table id="tbl_Company-overview" data-open-url="" class="table table-striped table-bordered table-hover viewOverview" border="1" cellpadding="3" cellspacing="0">
+                            <colgroup>
+                                <col class="table-col-20px">
+                                <col class="table-col-100px">
+                                <col class="table-col-100px">
+                                <col class="table-col-100px">
+                                <col class="table-col-250px">
+                                @*<col class="table-col-150px">*@
+                                <col class="table-col-100px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                                <col class="table-col-150px">
+                            </colgroup>
+                            <tbody>
+                                <!--Temp header until the css is available-->
+                                <tr class="header-th">
+                                    <th data-sort-column="0"></th>
+                                    <th data-sort-column="1" class="icon icon-sort-both table-col-100px" data-header-field-id="2001" data-header-binding-key="PageStatus" data-header-filter-key="PageStatus" data-header-field-type-id="10">@LabelHelper.GetUndaLabel(languageId, "StatusLabel") </th>
+                                    <th data-sort-column="2" class="icon icon-sort-both table-col-100px" data-header-field-id="2002" data-header-binding-key="CoFi_DateContent" data-header-filter-key="CoFi_DateContent" data-header-field-type-id="6">@(Model.FieldList.ContainsKey("CoFi_DateContent") ? Model.FieldList["CoFi_DateContent"] : @LabelHelper.GetUndaLabel(languageId, "DateLabel"))</th>
+                                    <th data-sort-column="3" class="icon icon-sort-both table-col-100px" data-header-field-id="2003" data-header-binding-key="CoFi_Author" data-header-filter-key="CoFi_Author" data-header-field-type-id="10">@(Model.FieldList.ContainsKey("CoFi_Author") ? Model.FieldList["CoFi_Author"] : @LabelHelper.GetUndaLabel(languageId, "AuthorLabel"))</th>
+                                    <th data-sort-column="4" class="icon icon-sort-both table-col-250px" data-header-field-id="2004" data-header-binding-key="CoFi_ContentName" data-header-filter-key="CoFi_ContentName" data-header-field-type-id="1">@(Model.FieldList.ContainsKey("CoFi_ContentName") ? Model.FieldList["CoFi_ContentName"] : @LabelHelper.GetUndaLabel(languageId, "TitleLabel")) </th>
+                                    @*<th data-sort-column="5" class="icon icon-sort-both table-col-150px" data-header-field-id="2005" data-header-binding-key="PageName" data-header-filter-key="PageName" data-header-field-type-id="1">Seitenname </th>*@
+                                <th data-sort-column="6" class="icon icon-sort-both table-col-100px" data-header-field-id="2011" data-header-binding-key="DateValid" data-header-filter-key="DateValid" data-header-field-type-id="1">@(Model.FieldList.ContainsKey("CoFi_DateValidFrom") ? Model.FieldList["CoFi_DateValidFrom"] : @LabelHelper.GetUndaLabel(languageId, "DateValidFromLabel"))/@LabelHelper.GetUndaLabel(languageId, "ToLabel") </th>
+                                    @if (Model.FieldList.ContainsKey("CoFi_Date_AppointmentFrom") || Model.FieldList.ContainsKey("CoFi_Date_AppointmentTo"))
+                                    {
+                                <th data-sort-column="7" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="DateAppointment" data-header-filter-key="DateAppointment" data-header-field-type-id="1">@(Model.FieldList.ContainsKey("CoFi_Date_AppointmentFrom") ? Model.FieldList["CoFi_Date_AppointmentFrom"] : @LabelHelper.GetUndaLabel(languageId, "AppointmentFromLabel"))/@LabelHelper.GetUndaLabel(languageId, "ToLabel") </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentMeetingPlace"))
+                                    {
+                                        <th data-sort-column="8" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="CoFi_ContentMeetingPlace" data-header-filter-key="CoFi_ContentMeetingPlace" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentMeetingPlace"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentType"))
+                                    {
+                                        <th data-sort-column="9" class="icon icon-sort-both table-col-150px" data-header-field-id="2009" data-header-binding-key="CoFi_ContentType" data-header-filter-key="CoFi_ContentType" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentType"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentOrigin"))
+                                    {
+                                        <th data-sort-column="10" class="icon icon-sort-both table-col-150px" data-header-field-id="2010" data-header-binding-key="CoFi_ContentOrigin" data-header-filter-key="CoFi_ContentOrigin" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentOrigin"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentProject"))
+                                    {
+                                        <th data-sort-column="11" class="icon icon-sort-both table-col-150px" data-header-field-id="2011" data-header-binding-key="CoFi_ContentProject" data-header-filter-key="CoFi_ContentProject" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentProject"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentDossier"))
+                                    {
+                                        <th data-sort-column="12" class="icon icon-sort-both table-col-150px" data-header-field-id="2012" data-header-binding-key="CoFi_ContentDossier" data-header-filter-key="CoFi_ContentDossier" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentDossier"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentTheme"))
+                                    {
+                                        <th data-sort-column="13" class="icon icon-sort-both table-col-150px" data-header-field-id="2013" data-header-binding-key="CoFi_ContentTheme" data-header-filter-key="CoFi_ContentTheme" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentTheme"] </th>
+                                    }
+                                    @if (Model.FieldList.ContainsKey("CoFi_ContentTag"))
+                                    {
+                                        <th data-sort-column="14" class="icon icon-sort-both table-col-150px" data-header-field-id="2014" data-header-binding-key="CoFi_ContentTag" data-header-filter-key="CoFi_ContentTag" data-header-field-type-id="1">@Model.FieldList["CoFi_ContentTag"] </th>
+                                    }
+                                </tr>
+                                @Html.Partial("Items", Model)
+
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                    <div class="paging" style="display:none">
+                        <div class="paging-label"><span class="range-loaded">1 - 10</span> von <span class="total-items">245</span> Einträgen</div>
+                        <div class="paging-size">
+                            <label class="size-label">Anzahl Einträge</label>
+                            <div class="paging-size-number">
+                                <div class="selector" style="width: 90px;">
+                                    <span style="width: 90px; -moz-user-select: none;">10</span><select class="size-number">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="40">40</option>
+                                        <option value="60">60</option>
+                                        <option value="0">alle</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paging-paging-indexes">
+                            <ul class="paging-indexes">
+                                <li><a class="active" data-index="1" href="javascript:void(0)">1</a></li>
+                                <li><a class="" data-index="2" href="javascript:void(0)">2</a></li>
+                                <li><a class="" data-index="3" href="javascript:void(0)">3</a></li>
+                                <li><a class="" data-index="4" href="javascript:void(0)">4</a></li>
+                                <li><a data-index="2" class="icon iconforward" href="javascript:void(0)"></a></li>
+                                <li><a data-index="25" class="icon iconfastforward" href="javascript:void(0)"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*</div>
+            </div>*@
+    }
+    @*<script type="text/javascript" src="@(rootScript + "/lib/jquery-1.10.2.js")"></script>
+        <script type="text/javascript" src="@(rootScript + "/lib/jquery.browser.js")"></script>
+        <script type="text/javascript" src="@(rootScript + "/lib/jquery.ba-postmessage.js")"></script>
+        <script type="text/javascript" src="@(rootScript + "/lib/json2.js")"></script>
+        <script type="text/javascript" src="@(rootScript + "/lib/jstorage.js")"></script>*@
+    <script type="text/javascript" src="@(rootScript + "/lib/lite.packed.js")"></script>
+    <script type="text/javascript">
+        // update iframe height
+        function setHeightCon(e, r) { function t() { $.postMessage({ if_height: $("body").outerHeight(!0) + e, parent: $.urlParam("data-objid") }, parent_url, parent) } var n; if ($.browser.msie && 7 == parseInt($.browser.version, 10)) { var o = document.location.href; o.search("&prurl=") } else n = decodeURIComponent(document.location.hash.replace(/^#/, "")); parent_url = n ? n : $.jStorage.get("parentURLck"), $.urlParam = function (e) { var r = new RegExp("[?&]" + e + "=([^&#]*)").exec(parent_url); return null == r ? null : r[1] || 0 }, e = e > 0 && $("body").outerHeight(!0) < r + e ? r + e - $("body").outerHeight(!0) + 100 : 20, t(), $.jStorage.set("parentURLck", parent_url) } var parent_url; $(window).load(function () { setHeightCon() });
+
+        $(document).ready(function() {
+            $('.edit-content-page').click(function () {
+                // http://localhost/BVKAdmin/tool/page.aspx?parent_id=205795&page_id=205849&WebID=201867&Lang=0&Mode=0&fromList=true&backUrl1=
+                var tpl = "../tool/page.aspx?page_id=[0]&WebID=[1]&lang=[2]&Mode=0&fromList=true&backUrl=[3]";
+
+                var parentWin = window.dialogArguments || opener || parent || top;
+
+                var backUrl = parentWin.location.href;
+                var data = $(this).data();
+
+                var url = tpl.replace('[0]', data.objId)
+                            .replace('[1]', @Model.WebId)
+                            .replace('[2]', @Model.LangId)
+                            .replace('[3]', encodeURIComponent(backUrl));
+
+                parentWin.location = url;
+                //console.log(url);
+            });
+
+            $('.load-more').click(function() {
+                console.log("load more");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+<div class="modal fade fix-table-popup-more" id="Survey-Chart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="padding-content ">
+                <div style="width: 100%">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td><span class="cu-standardheader " style="font-weight: bold">@Html.Raw(LabelHelper.GetProgramString("LblCharts_SelectChartType"))</span>
+                                <select id="ddlCharts" class="cu-box ng-pristine ng-valid" ng-model="chartType">
+                                    <option value="1">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionBarChart"))</option>
+                                    <option value="2">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionPieChart"))</option>
+                                    <option value="3">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionBarAndLineChart"))</option>
+                                    <option value="4">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionStackedBarChart"))</option>
+                                </select>
+
+                            </td>
+                            <td id="colWithChartType"><span class="cu-standardheader " style="font-weight: bold">&nbsp; &nbsp; @Html.Raw(LabelHelper.GetProgramString("LblCharts_SelectDisplay"))</span>
+                                <select id="ddlWithCharts" class="cu-box ng-pristine ng-valid" ng-model="isPercent">
+                                    <option value="1">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionDisplayPercent"))</option>
+                                    <option value="2">@Html.Raw(LabelHelper.GetProgramString("LblCharts_OptionDisplayPerson"))</option>
+                                </select>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br/>
+                <div id="barChart" class="insChart" style="min-width: 1000px; height: 500px; margin: 0 auto; display: none;"></div>
+                <div id="pieChart" class="insChart" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none;"></div>
+                <div id="barAndLineChart" class="insChart" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none;"></div>
+                <div id="stackChart" class="insChart" style="min-width: 1000px; height: 500px; margin: 0 auto; display: none;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

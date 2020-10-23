@@ -1,0 +1,203 @@
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// @author MGUM
+// @editor SCHM
+// @copyright insyma
+// @projectDescription CSS Datei fuer insyma JavaScript Library Image Module
+
+div#insymaOverlay {
+	background: @black;
+	filter: alpha(opacity=0);
+	left: 0;
+	-moz-opacity: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	z-index: 901;
+	// NEU
+	position: fixed !important;
+	height: 100vh !important;
+	width: 100vw !important;
+}
+
+#insymaOverlayHolder {
+	position: fixed;
+	top: 50%;
+	width: 100%;
+	z-index: 902;
+	&.content {
+		position: absolute;
+		top: 100px !important;
+		width: 100%;
+		z-index: 900;
+		margin-top: 0 !important;
+	}
+}
+#insymaOverlayContent{
+    background: @white;
+    text-align: center;
+    &.content {
+        overflow: auto;
+        padding: 20px;
+        text-align: left;
+    }
+    .ie8 & {
+        width: 100%;
+    }
+    > img {
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+#insymaOverlayInner {
+    cursor: default;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1000;
+}
+#insymaOverlayInner:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+#insymaOverlayLoading {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 6px;
+    bottom: 0;
+    height: 41px;
+    left: 0;
+    margin: auto;
+    padding: 5px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 44px;
+}
+.descspan,
+.textcont {
+    clear: both;
+    padding: 10px;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    left: 0;
+}
+.iob-show {
+    display: block;
+}
+.iob-hide {
+    display: none;
+}
+// Icons und Counter
+.itemLB {
+    color: @white;
+    &:before {
+        color: inherit;
+    }
+
+}
+#insymaOverlayHolder span.itemLB.icon
+{
+    cursor: pointer;
+    font-size: 30px;
+    height: 20px;
+    margin: 0;
+    text-align: center;
+    width: 30px;
+}
+#insymaOverlayHolder span.itemLB.icon,
+#insymaOverlayHolder .countspan
+{
+    line-height: 20px;
+    position: fixed;
+}
+
+#insymaOverlayHolder span.itemLB.close {
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+#insymaOverlayHolder span.itemLB.size,
+#insymaOverlayHolder span.itemLB.resize {
+    right: 40px;
+}
+
+#insymaOverlayHolder span.itemLB.play,
+#insymaOverlayHolder span.itemLB.stop {
+    right: 30px;
+    top: 0;
+    z-index:2;
+}
+#insymaOverlayHolder span.itemLB.prev {
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+
+    &:before {
+        content: "\e207";
+        align-self: flex-start;
+    }
+}
+#insymaOverlayHolder span.itemLB.next {
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+
+    &:before {
+        content: "\e208";
+        align-self: flex-end;
+    }
+}
+#insymaOverlayHolder .itemLB.countspan {
+    left: 50%;
+    top: 0;
+    width: 150px;
+    margin-left: -75px;
+    text-align: center;
+    z-index: 2;
+}
+
+
+
+// Mobile Overlay if needed
+#insymaOverlayHolder.mobile {
+    height: 92%;
+    margin: 2%;
+    position: fixed;
+    top: 0;
+    width: 96%;
+    z-index: 900;
+}
+#insymaOverlayHolder.mobile #insymaOverlayInner {
+    max-width: 100%;
+    height: 100%;
+}
+
+#insymaOverlayHolder.mobile #insymaOverlayContent {
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+#insymaOverlayHolder.mobile #insymaOverlayContent img {
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}

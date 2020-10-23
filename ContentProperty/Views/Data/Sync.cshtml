@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Sync";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-properties-con">
+    <div class="part column content-properties">
+        <div class="part-header">
+            <a class="icon page-icon">Sync base/code and contact data</a>
+        </div>
+        <div class="part-action">
+            <span class="icon-save" id="btnSyncData">Sync base/code</span>
+            <br />
+            <span class="icon-save" id="btnSyncContactData">Sync contact data</span>
+            <br />
+            <span class="icon-save" id="btnSyncADData">Get AD data</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    var url = "@Url.Content("~/Data/Sync")";
+    $(document).ready(function() {
+        $('#btnSyncData').click(function() {
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: { syncDate: new Date().toUTCString(), dataType: "both" }
+            });
+        });
+
+        $('#btnSyncContactData').click(function () {
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: { syncDate: new Date().toUTCString(), dataType: "contact" }
+            });
+        });
+
+        $('#btnSyncADData').click(function () {
+            $.ajax({
+                url: "@Url.Content("~/Data/SyncAD")",
+                type: "POST",
+                data: { syncDate: new Date().toUTCString(), dataType: "contact" }
+            });
+        });
+    });
+</script>

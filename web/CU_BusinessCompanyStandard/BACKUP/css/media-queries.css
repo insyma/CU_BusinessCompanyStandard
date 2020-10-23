@@ -1,0 +1,335 @@
+/************************************************************************************
+iPhone input zoom fix
+*************************************************************************************/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select,
+    textarea,
+    input {
+        font-size: 16px !important;
+    }
+}
+/************************************************************************************
+smaller than 1140 < Holder width + 30px padding
+*************************************************************************************/
+@media screen and (max-width: 1170px) {
+    .PartYoutubePlaylist .flexslider:hover .flex-next { right: -15px !important;  }
+    .PartYoutubePlaylist .flexslider:hover .flex-prev { left: -15px !important; }
+}
+/************************************************************************************
+smaller than 980
+*************************************************************************************/
+@media screen and (max-width: 980px) {
+
+    /* embedded videos */
+    .video embed,
+    .video object,
+    .video iframe {
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+}
+
+/************************************************************************************
+smaller than 800
+*************************************************************************************/
+@media screen and (max-width: 800px) {
+}
+
+/************************************************************************************
+smaller than 700
+*************************************************************************************/
+@media screen and (max-width: 700px) {
+    .hideMobile{
+        display: none !important;
+    }
+    .showMobile {
+        display: block !important;
+    }
+    
+    h4#h1Tag {
+        float: none;
+        padding: 1em;
+    }
+    
+    /************************************************************************************
+        Mobile - Navigation
+    ***********************************************************************************/
+    .Nav,.ConNav {
+        clear: both;
+        display: block;
+        position: relative;
+    }
+    ul.UlNavMain,
+    ul.UlNavService  
+    {
+        display: none;
+        float: none !important;
+    }
+    ul.UlNavMain li,
+    ul.UlNavService li
+    {
+        clear: both;
+        display: block !important;
+        float: none !important;
+        padding: 0 !important;
+        position: relative;
+        width: 100% !important;
+    }
+    ul.UlNavMain a,
+    ul.UlNavService a
+    {
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        display: block;
+        font-size: 1em;
+        height: auto;
+        line-height: inherit;
+        margin: 0;
+        padding: 12px 0 11px 20px;
+        text-align: left;
+        width: auto;
+    }
+    ul.NavLevel-2 a { padding-left: 40px; }
+    ul.NavLevel-3 a { padding-left: 60px; }
+    ul.NavLevel-4 a { padding-left: 80px; }
+    ul.NavLevel-5 a { padding-left: 100px; }
+    ul.UlNavMain a.has-child,
+    ul.UlNavService a.has-child { padding-right: 45px; }
+    
+    .menu {
+        cursor: pointer;
+        height: 45px;
+        line-height: 45px;
+        padding-left: 20px;
+    }
+    .handler-child {
+        cursor: pointer;
+        display: inline-block; 
+        height: 45px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        width: 45px;
+    }
+    
+    
+    /* Service Navig */
+    #NavServicecon .menu {
+        position: absolute;
+        top:0;
+        right: 0;
+        overflow: hidden;
+        width: 45px;
+    }
+    
+    /* COLORS */
+    .menu {
+        background-color: rgb(85,85,85);
+        color: rgb(255,255,255);
+    }
+    .menu:after {
+/*
+        background-color: rgba(0,0,0,.25);
+        border-left: 1px solid rgba(255,255,255,.25);
+*/
+        color: rgb(255,255,255);
+    }
+
+    ul.UlNavMain a,
+    ul.UlNavService a
+    {
+        color: rgb(255,255,255);
+    }
+    ul.UlNavMain a:hover,
+    ul.UlNavService a:hover
+    {
+        color: rgb(204,204,204);
+    }
+
+    /* Active Menu-Bar*/
+    .menu.NavService-close,
+    .menu.NavMain-close {
+        background-color: rgb(0,150,136);
+        border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+    
+    .menu.NavService-close:after,
+    .menu.NavMain-close:after {
+        color:#fff;
+/*
+        background-color: rgb(0,150,136);
+        border-left: 1px solid rgba(0,150,136,.7);
+*/
+    }
+    .open-child:before,
+    .close-child:before {
+        color: rgb(255,255,255);
+    }
+    
+    /*
+    .open-child:before {
+        background-color: rgba(0,0,0,.25);
+        border-left: 1px solid rgba(255,255,255,.25);
+        border-bottom: 1px solid rgba(255,255,255,.25);
+        color: rgb(255,255,255);
+    }
+    .close-child:before {
+        background-color: rgb(0,150,136);
+        border-left: 1px solid rgba(0,150,136,.7);
+        color: rgb(255,255,255);
+    }
+    */
+    ul.NavLevel-1 { background-color: rgb(51,51,51); }
+    ul.NavLevel-2 { background-color: rgb(68,68,68); }
+    ul.NavLevel-3 { background-color: rgb(85,85,85); }
+    ul.NavLevel-4 { background-color: rgb(102,102,102); }
+    
+    
+    /* ICONS */
+    .menu:after,
+    .open-child:before,
+    .close-child:before 
+    {
+        font-size: 18px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        width: 45px;
+    }
+    .menu:after {
+        content: "\e20e";
+        position: absolute;
+        right: 0;
+    }
+    .menu.NavClose:after {
+        content: "\e209";
+    }
+    .open-child:before {
+        content: "\e069";
+    }
+    .close-child:before {
+        content: "\e07f";
+    }
+    /************************************************************************************
+            END Mobile - Navigation 
+    ***********************************************************************************/  
+    dt {
+        width: 100%;
+    }
+    dd {
+        clear: both;
+    }
+    address dd {
+        clear: none;
+    }
+
+    /* inhalt */
+    #inhalt {
+        width: auto;
+        float: none;
+    }
+
+    #inhalt > *,
+    section,
+    aside,
+    nav.hauptnavi
+    {
+        display: block;
+        width: 100%;
+    }
+    section,
+    aside,
+    nav.hauptnavi
+    {
+        float: none;
+        margin: 0;
+        left: 0;
+    }
+
+    /* form */
+    .con-form input[type="email"],
+    .con-form input[type="text"],
+    .con-form input[type="password"],
+    .con-form select,
+    .con-form textarea,
+    .con-form p,
+    div.selector
+    {
+        width: 100% !important;
+    }
+    .con-form ul, .con-form ol, .con-form ol li, .con-form .divCaptcha
+    {
+        overflow: visible !important;
+    }
+    .con-form ol.CheckBox.vertical,
+    .con-form ol.RadioButton.vertical
+    {
+        clear: both;
+    }
+
+    .InLineValidate {
+        padding-left: 0;
+    }
+    #cse-search-box input[type="submit"] {
+        width: auto !important;
+    }
+    
+    /* embedded videos */
+    .video embed,
+    .video object,
+    .video iframe {
+        min-height: 250px;
+    }
+
+    /* flexslider */
+    .flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+    .flex-direction-nav .flex-next {opacity: 1; right: 0;}
+
+    /* PartTeam */
+    .rowentries > li {
+        margin: 0 0 30px 15px !important;
+        width: calc(50% - 15px / 2);
+    }
+    .rowentries > li:nth-child(2n+1) {
+        margin: 0 0 30px !important;
+    }
+
+}
+
+/************************************************************************************
+smaller than 480
+*************************************************************************************/
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    #insymaOverlayHolder .countspan
+    {
+        display: none;
+    }
+
+    aside > div {
+        width: 100%;
+    }
+
+    /* disable webkit text size adjust (for iPhone) */
+    html {
+        -webkit-text-size-adjust: none;
+    }
+    /* PartBilderliste */
+    .PartBilderliste li a {
+        max-height: 60px;
+        width: 80px;       
+    }
+    .PartBilderliste li a img {
+        min-width: 130px; /* grösser als Imagewrap */
+    }
+    /* PartTeam */
+    .rowentries > li {
+        margin: 0 0 30px !important;
+        width: 100%;
+    }
+
+}
+

@@ -1,0 +1,9 @@
+.PartTeam dt {
+  margin: 0 0 1em;
+  width: 100%;
+}
+.PartTeam dt,
+.PartTeam dd {
+  clear: both;
+  width: 100%;
+}

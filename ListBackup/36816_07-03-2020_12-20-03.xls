@@ -1,0 +1,63 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties>
+  <LastAuthor>ContentUpdate</LastAuthor>
+  <Created>[REPORT-DATETIME]</Created>
+  <Version>11.9999</Version>
+ </DocumentProperties>
+ <ExcelWorkbook>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>90</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ <Style ss:ID="s21">
+ <Font x:Family="Swiss"/>
+ </Style>
+ </Styles>
+ <Worksheet ss:Name="worksheet1">
+  <Table>
+   <Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String">Kontakt-ID</Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String">Sprache</Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String">Vorname</Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String">Name</Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String">e-Mail</Data></Cell></Row>
+
+   <Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[126]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[DE                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Dani]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Hribal]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[dani_hribal@hotmail.com]]></Data></Cell></Row>
+<Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[123]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[DE                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[julia]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[pfister]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[julia.pfister@zkb.ch]]></Data></Cell></Row>
+<Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[113]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[EN                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Stef]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Hürlimann]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[sh296.mail@gmail.com]]></Data></Cell></Row>
+<Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[109]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[FR                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Stefanie]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Hürlimann]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[sthuerlimann@gmail.com]]></Data></Cell></Row>
+<Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[96]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[DE                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Stefan]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Hürlimann]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[stefan.huerlimann@insyma.com]]></Data></Cell></Row>
+<Row>
+<Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[86]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[FR                            ]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Steff]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[Hürlimann]]></Data></Cell><Cell ss:StyleID="s21"><Data ss:Type="String"><![CDATA[stehuerlimann@gmail.com]]></Data></Cell></Row>
+
+  </Table>
+  <WorksheetOptions>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

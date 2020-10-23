@@ -1,0 +1,34 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+
+
+// Hauptnavigation 
+nav.NavMain {
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.con-wrapper nav.Nav li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+nav {
+	li {
+		display: inline-block;
+//		font-size: 0;
+		margin: 0 20px 0 0;
+	}
+
+	a {
+		display: inline-block;
+		margin: 0;
+		padding: 6px 0; // min 35px Höhe
+		&.activeParentPage,
+		&.activePage {
+			color: @primary;
+		}
+	}
+}

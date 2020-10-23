@@ -1,0 +1,1322 @@
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="de"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="de"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 ie89" lang="de"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 ie89" lang="de"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="de">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta http-equiv="refresh" content="1500">
+
+    <title>BVK Umfrage</title>
+
+    <meta content="Home,BVK, Personalvorsorge des Kantons Zürich, Zürich," name="keywords">
+    <meta content="Home. Die BVK ist die Vorsorgeeinrichtung der Angestellten des Kantons Zürich sowie von über 500 angeschlossenen Unternehmen. Mit über 100´000 Versicherten und Rentnern ist die BVK eine der grössten Pensionskassen der Schweiz." name="description">
+
+    <meta name="geo.placename" content="Zürich, Schweiz" />
+    <meta name="geo.position" content="47.3686500;8.5391830" />
+    <meta name="geo.region" content="CH-Zürich" />
+    <meta name="ICBM" content="47.3686500, 8.5391830" />
+
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/screen.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="../css/survey.css" type="text/css" media="all" />
+    <link rel="shortcut icon" href="http://www.bvk.ch/favicon.ico" />
+    <link rel="stylesheet" href="../css/uniform-insyma.css" media="screen" />
+    <link rel="stylesheet" href="../css/progressbar.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/modal.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/jquery-ui.css" />
+    <script src="../js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../js/jquery.ui.datepicker.lang.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script type="text/javascript" src="../js/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="../js/noty/layouts/topCenter.js"></script>
+    <script type="text/javascript" src="../js/noty/themes/default.js"></script>
+
+    <!--[if lt IE 9]>
+         <script src="../js/css3-mediaqueries.js" type="text/javascript"></script>
+        <![endif]-->
+    <script type="text/javascript">
+        var serviceURL = "../SurveyProxy.ashx";
+        var SurveyOnlineId = 179;
+        var LanguageId = 0;
+    </script>
+
+    <script src="../js/survey.js" type="text/javascript"></script>
+    <script src="../js/project_scripts.js" type="text/javascript"></script>
+    <!--<![endif]-->
+</head>
+<body>
+    <form>
+        <div id="header">
+            <div class="holder">
+                <h3 class="logo">
+                    <a title="">
+                        <img src="https://www.bvk.ch/img/bvk-logo0x0.png" alt="" />
+                    </a>
+                </h3>
+
+                <div class="wkButton backToStart" id="btn_GoToStart">
+                    <input class="active" value="Umfrage neu beginnen" type="button" />
+                </div>
+                <div id="progressBarPlaceholder">
+                    <div id="progressBarContainer">
+                        <div id="progressBarContent">
+                            <div id="label_bar">
+                                <label>Fortschritt</label>
+                            </div>
+                            <div class="progress progress-striped active" id="bar_questions">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="47">
+                                </div>
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="progressBarPlaceholderScroll">
+            </div>
+        </div>
+        <div id="insymaWrap" class="styleThese">
+
+
+
+<noscript>
+    <style>
+        .page {display:none;}
+        #pagenoscipt {
+            background: none repeat scroll 0 0 #fff;
+            margin: 0 auto !important;
+            padding: 20px;
+        }
+        h2 {
+            padding: 0;    
+        }
+        a.button {
+            background: linear-gradient(to bottom, rgba(0, 74, 153, 1) 0%, rgba(0, 57, 114, 1) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            border: 1px solid transparent;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 130%;
+            padding: 6px 24px;
+            text-decoration: none;
+        }
+
+            a.button:hover {
+                    background: linear-gradient(to bottom, rgba(0, 57, 114, 1) 0%, rgba(0, 74, 153, 1) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            }
+
+    </style>
+    <div id="pagenoscipt">
+
+        <h2>Gefällt Ihnen unsere Webseite? Was sollen wir besser machen?</h2>
+        <h3><a>Ihre Teilnahme ist uns wichtig!</a></h3>
+        <p>
+            Beim Aufruf der Umfrage wurde festgestellt, dass Ihr Web-Browser (z.B. Internet-Explorer) erhöhte Sicherheitseinstellungen aufweist, welche Teile der Anwendung blockieren.
+        </p>
+        <p>Wir haben für Sie eine einfache Anleitung erstellt, wie Sie die benötigte Funktion in Ihrem Web-Browser aktivieren können: <a href="2014-10-20_Anleitung_JavaScript_aktivieren.pdf" target="_blank">Anleitung </a></p>
+        <p>
+            Herzlichen Dank, dass Sie sich die Zeit nehmen. Ihre Teilnahme hilft uns, die Qualität der Webseite zu überprüfen und damit auf die Bedürfnisse der Besucher einzugehen.
+        </p>
+        <a type="button" href="http://www.bvk.ch" class="button">Zurück zur Website</a>
+    </div>
+</noscript>
+<div class="page" id="pageIntro">
+    <noscript>
+
+    </noscript>
+
+    <div class="startseite_info">
+        <h2>Umfrage zur Vorsorge-Infoveranstaltung</h2>
+    </div>
+
+    <div class="white_div textcon">
+        <h3 class="green">
+            <a>
+Ihre Meinung ist uns wichtig!            </a>
+        </h3>
+        <div class="nopadding">
+            <span class="imagewrap right">
+                
+            </span>
+Ihre Meinung ist uns wichtig und hilft uns zudem, die Veranstaltungen laufend zu verbessern.            <div style="margin-top: 60px;" class="wkButton buttonNext">
+                <input class="active" value="An Umfrage teilnehmen" type="button" id="btnStartSurvey" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1888" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Veranstaltungs Bewertung</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="55" data-questionid="3781" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="2">
+        <span>
+            Wie w&#252;rden Sie die Veranstaltung insgesamt bewerten?
+        </span>
+    </div>
+    <div style="display: block;" class="answer horizontally">
+        <p class="describe"></p>
+        <ul class="tablerow">
+            
+                    <li class="tablecell" answerid="6863">
+                        <dl>
+                            <dt>Ungen&#252;gend</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3781" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6864">
+                        <dl>
+                            <dt>Befriedigend</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3781" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6865">
+                        <dl>
+                            <dt>Gut</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3781" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6866">
+                        <dl>
+                            <dt>Sehr gut</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3781" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6867">
+                        <dl>
+                            <dt>Ausgezeichnet</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3781" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+
+
+        </ul>
+    </div>
+</div>
+
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1889" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Informationsquelle</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="56" data-questionid="3782" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="2">
+        <span>Wie haben Sie von der Veranstaltung erfahren?</span>
+    </div>
+    <div style="display: block;" class="answer">
+        <p class="describe">Bitte w&#228;hlen Sie aus einer der folgenden Optionen:</p>
+        <ul class="vertical_list">
+                        <li answerid="6868">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>BVK Webseite</dd>
+                            </dl>
+                        </li>
+                        <li answerid="6869">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>Newsletter &#171;Kontext&#187;</dd>
+                            </dl>
+                        </li>
+                        <li answerid="6870">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>Elektronischer Newsletter</dd>
+                            </dl>
+                        </li>
+                        <li answerid="6871">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>Durch den Arbeitgeber</dd>
+                            </dl>
+                        </li>
+                        <li answerid="6872">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>Durch Bekannte</dd>
+                            </dl>
+                        </li>
+                        <li answerid="6873">
+                            <dl>
+                                <dt>
+                                    <div class="radio">
+                                        <span>
+                                            <input name="question_3782" type="radio" />
+                                        </span>
+                                    </div>
+                                </dt>
+                                <dd>Sonstige</dd>
+                            </dl>
+                        </li>
+
+        </ul>
+    </div>
+</div>
+
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1890" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Organisation</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="57" data-questionid="3783" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="4">
+        <span>Bitte beurteilen Sie folgende Aussagen zur Organisation:</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">1 = Trifft komplett zu, 2 = Trifft eher zu, 3 = Teils, teils, 4 = Trifft eher nicht zu, 5 = Trifft &#252;berhaupt nicht zu, 6 = k.A.</p>
+
+        <div class="table">
+
+            <ul class="tablerow tablehead">
+                <li class="tablecell category">&nbsp;</li>
+                            <li class="tablecell">1 </li>
+                            <li class="tablecell">2 </li>
+                            <li class="tablecell">3 </li>
+                            <li class="tablecell">4 </li>
+                            <li class="tablecell">5 </li>
+                            <li class="tablecell">6 </li>
+
+            </ul>
+
+                    <ul class="tablerow table_item" data-questionid="3784" questionid="58" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die Lokalit&#228;t war dem Anlass angemessen.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="a7007157-6473-4588-a933-4c4d0b54a64a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3785" questionid="59" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die Veranstaltungszeit war geeignet gew&#228;hlt.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="69ae601f-192d-4280-8598-7dba65a8c326" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3786" questionid="60" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die Dauer der Veranstaltung schien mir angemessen.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="60c118ed-2408-4e32-a1b5-cafa1994b6f6" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+
+        </div>
+    </div>
+</div>
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1891" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Inhalt</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="61" data-questionid="3787" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="4">
+        <span>Bitte beurteilen Sie folgende Aussagen zum Inhalt:</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">1 = Trifft komplett zu, 2 = Trifft eher zu, 3 = Teils, teils, 4 = Trifft eher nicht zu, 5 = Trifft &#252;berhaupt nicht zu, 6 = k.A.</p>
+
+        <div class="table">
+
+            <ul class="tablerow tablehead">
+                <li class="tablecell category">&nbsp;</li>
+                            <li class="tablecell">1 </li>
+                            <li class="tablecell">2 </li>
+                            <li class="tablecell">3 </li>
+                            <li class="tablecell">4 </li>
+                            <li class="tablecell">5 </li>
+                            <li class="tablecell">6 </li>
+
+            </ul>
+
+                    <ul class="tablerow table_item" data-questionid="3788" questionid="62" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die Inhalte der Veranstaltung entsprachen der Einladung.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="221f38eb-5b1a-4774-b52c-53d3f58c7d56" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3789" questionid="63" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Ich habe neue Erkenntnisse erworben.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="3efc50c9-b1d4-4364-bc7c-c5abd2214849" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3790" questionid="64" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die vermittelten Inhalte waren verst&#228;ndlich und die Komplexit&#228;t angemessen.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="aba7b853-90e6-43e9-a4e2-82242495f15a" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3791" questionid="65" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Meine Fragen wurden alle beantwortet.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="c2552154-a53e-4360-abdd-4a3ae882b66e" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3792" questionid="66" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Die Folien der Pr&#228;sentation waren verst&#228;ndlich und hilfreich.</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="7ecee5f9-e0a8-495b-bd81-645ba3cf4977" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+
+        </div>
+    </div>
+</div>
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1892" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Themen</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="67" data-questionid="3793" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="4">
+        <span>Die Inhalte des folgenden Themas waren interessant und hilfreich:</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">1 = Trifft komplett zu, 2 = Trifft eher zu, 3 = Teils, teils, 4 = Trifft eher nicht zu, 5 = Trifft &#252;berhaupt nicht zu, 6 = k.A.</p>
+
+        <div class="table">
+
+            <ul class="tablerow tablehead">
+                <li class="tablecell category">&nbsp;</li>
+                            <li class="tablecell">1 </li>
+                            <li class="tablecell">2 </li>
+                            <li class="tablecell">3 </li>
+                            <li class="tablecell">4 </li>
+                            <li class="tablecell">5 </li>
+                            <li class="tablecell">6 </li>
+
+            </ul>
+
+                    <ul class="tablerow table_item" data-questionid="3794" questionid="68" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Aktuelle Situation</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="dbd8a6bf-c8d6-481e-a4ef-d046c266cf2d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3795" questionid="69" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Vorsorgeleistungen</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="4d72e44e-8208-4ab7-929f-64e57a3170ad" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3796" questionid="70" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Immobilienanlagen</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="43f9b7d1-4e0f-4908-abd7-82501f21760d" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+                    <ul class="tablerow table_item" data-questionid="3797" questionid="71" data-dependencies='null'>
+
+                        <li questiontype="8" class="tablecell category">Kapitalanlagen</li>
+
+                            <li class="tablecell" answerid="6874">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6875">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6876">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6877">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6878">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="tablecell" answerid="6879">
+                                <div class="radio">
+                                    <span>
+                                        <input name="b775eb7d-c330-401f-aa13-a806c072b3ac" type="radio" />
+                                    </span>
+                                </div>
+                            </li>
+
+                    </ul>
+
+        </div>
+    </div>
+</div>
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1893" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Besondere Interessen</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+
+<div class="questioncon" questionid="72" data-questionid="3798" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="1">
+        <span>
+            Folgende Themen sollten an k&#252;nftigen Veranstaltungen behandelt werden:
+        </span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        <p class="describe">
+            Mehrfachnennungen m&#246;glich
+        </p>
+        <ul class="vertical_list">
+                    <li answerid="6880">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>Leistungen im Alter</dd>
+                        </dl>
+                    </li>
+                    <li answerid="6881">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>Leistungen bei Tod oder Invalidit&#228;t</dd>
+                        </dl>
+                    </li>
+                    <li answerid="6882">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>Flexible Sparbeitragsvarianten</dd>
+                        </dl>
+                    </li>
+                    <li answerid="6883">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>BVK-Hypotheken</dd>
+                        </dl>
+                    </li>
+                    <li answerid="6884">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>BVK-Mietangebot</dd>
+                        </dl>
+                    </li>
+                    <li answerid="6885">
+                        <dl>
+                            <dt>
+                                <div class="checker">
+                                    <span>
+                                        <input type="checkbox" /></span>
+                                </div>
+                            </dt>
+                            <dd>Keine Angaben</dd>
+                        </dl>
+                    </li>
+
+        </ul>
+    </div>
+</div>
+
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1894" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Weiterempfehlung</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="73" data-questionid="3799" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="2">
+        <span>
+            Ich werde die Info-Veranstaltung weiterempfehlen:
+        </span>
+    </div>
+    <div style="display: block;" class="answer horizontally">
+        <p class="describe"></p>
+        <ul class="tablerow">
+            
+                    <li class="tablecell" answerid="6886">
+                        <dl>
+                            <dt>Ja</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3799" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6887">
+                        <dl>
+                            <dt>Nein</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3799" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="tablecell" answerid="6888">
+                        <dl>
+                            <dt>Vielleicht</dt>
+                            <dd>
+                                <div class="radio">
+                                    <span>
+                                        <input name="question_3799" type="radio" /></span>
+                                </div>
+                            </dd>
+                        </dl>
+                    </li>
+
+
+        </ul>
+    </div>
+</div>
+
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page default" data-pageid="1895" data-dependencies='null'>
+    <div class="startseite_info">
+        <h2>Kommentar</h2>
+    </div>
+    <div class="white_div surveycon">
+
+
+
+<div class="questioncon" questionid="74" data-questionid="3800" data-dependencies='null'>
+    <div style="display: block;" class="question" questiontype="3">
+        <span>Mein pers&#246;nlicher Kommentar (Bitte Kontaktangaben bei Fragen hinterlassen)</span>
+    </div>
+    <div style="display: block;" class="answer">
+        <p class="describe"></p>
+
+            <div class="noinformation" answerid="6885">
+                <div class="checker">
+                    <span>
+                        <input value="1" type="checkbox" />
+                    </span>
+                </div>
+                <span>Keine Angaben</span>
+            </div>
+                    <div answerid="6889">
+                <textarea name="textarea" cols="50" rows="3" maxlength="500"></textarea>
+            </div>
+            <div class="counter">
+                <p><span>500</span> Zeichen verbleibend</p>
+            </div>
+        
+
+
+    </div>
+</div>
+
+
+        <div style="display: block;" class="wkButton buttonNext">
+            <input value="Weiter" type="button" />
+        </div>
+    </div>
+</div>
+
+
+
+
+<div style="display: none;" class="page" id="pageThankyou" data-dependencies="null">
+    <div class="startseite_info">
+        <h2>
+Herzlichen Dank für Ihre wertvolle Teilnahme!        </h2>
+    </div>
+    <div class="white_div textcon">
+        <h3 class="green"><a></a></h3>
+        <div>
+Ihre Antworten werden anonymisiert in unsere Auswertung einfliessen.            <div style="display: block;" class="wkButton backToStart" id="btnRestart">
+                <input value="Zum Start" type="button" class="active" />
+            </div>
+            <div style="display: block;" class="wkButton" id="btnClose">
+                <input value="Umfrage schliessen" type="button" class="active" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+        <div id="footer"></div>
+    </form>
+
+    <div id="notificationDialog" class="modal fade" role="dialog" style="display: none">
+        <div class="modal-content" novalidate>
+            <h2 class="modal-header">Fragen nicht vollst&auml;ndig beantwortet</h2>
+            <hr style="width: 280px; float: left; color: #EEE;" />
+            <div class="modal-body">
+                <div>
+                    Bitte beantworten Sie alle Fragen bevor Sie weiter fahren. Folgende Frage ist aktuell zu beantworten:
+                </div>
+                <ul></ul>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="cu-ButtonHeightWidth active close" data-dismiss="modal" value="Schliessen" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

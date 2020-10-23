@@ -1,0 +1,597 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../parts/_-parts.less';
+@import (reference) '../layout/_screen.less';
+@import (reference) '_icons.less';
+@import (reference) '_transitions.less';
+
+//Lokale variabeln
+@FormLiGap: 30px;
+@FormTextAlignMeasure: 5px;
+
+@FormTextAlignMeasureVertical: 7px;
+@FormTextAlignMeasureHorizontal: 5px;
+
+@FormValueBorderWidth: 1px;
+
+@inputHeightSetting: 36px;
+@radiocheckHeightSetting: 26px;
+
+@FormInputWidth: 75%;
+
+////////////////////////////////////////////////////////////////////////
+// DEFAULTS
+////////////////////////////////////////////////////////////////////////
+
+input[type],
+textarea,
+select,
+.imgCaptcha,
+div.checker input,
+input[type="search"],
+input[type="search"]:active {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	//    width: 100%;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-appearance: textfield; // 1 
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+////////////////////////////////////////////////////////////////////////
+// FORMULAR AUFBAU
+////////////////////////////////////////////////////////////////////////
+.con-form {
+	ul {
+		margin-bottom: @margin-part;
+		width: 100%;
+
+		> li {
+			align-items: flex-start;
+			.flex-display;
+			.flex-flow(row wrap);
+			margin-top: @FormLiGap;
+			position: relative;
+
+			> * {
+				.flex(0 0 @FormInputWidth);
+				max-width: @FormInputWidth;
+				width: 100%;
+			}
+
+			> textarea {
+				width: 100% !important;
+			}
+
+			> label {
+				display: inline-block;
+				.flex(0 0 100% - @FormInputWidth);
+				max-width: 100% - @FormInputWidth;
+				top: @FormTextAlignMeasure;
+				padding-right: 20px;
+				position: relative;
+			}
+
+			label {
+				color: @subtext;
+
+				&:hover {
+					color: @text;
+				}
+			}
+
+			.formfield-text-only {
+				max-width: none;
+				padding-top: 20px;
+			}
+
+			h3 {
+				.font24;
+				margin-bottom: 0;
+			}
+		}
+
+		.InLineValidate {
+			left: 0;
+			margin-left: 100 - @FormInputWidth;
+			margin-right: 0;
+			margin-top: 0;
+			position: absolute;
+		}
+	}
+
+	p {
+		padding-left: 100 - @FormInputWidth;
+	}
+
+	@media screen and (max-width: @mq-size-800) {
+		ul {
+			> li {
+				> * {
+					.flex(0 0 100%);
+					max-width: 100%;
+				}
+
+				> label {
+					.flex(0 0 100%);
+					max-width: 100%;
+					padding-bottom: 10px;
+				}
+			}
+
+			.InLineValidate {
+				margin-left: 0;
+			}
+		}
+
+		p {
+			padding-left: 0;
+		}
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// captcha
+////////////////////////////////////////////////////////////////////////
+
+
+.con-form {
+    .divCaptcha {
+        .flex-display;
+
+        input[type="text"] {
+            order: 1;
+            width: 100% !important;
+            max-width: ~"calc(100% - 120px)" !important;
+        }
+
+        .imgCaptcha {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjM2REY3RTEzQkY1QzExRTFBQjExRUY4MjI0MjIyOEU3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjM2REY3RTE0QkY1QzExRTFBQjExRUY4MjI0MjIyOEU3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzZERjdFMTFCRjVDMTFFMUFCMTFFRjgyMjQyMjI4RTciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzZERjdFMTJCRjVDMTFFMUFCMTFFRjgyMjQyMjI4RTciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz40ICMUAAABrVBMVEX+/v74+Pj8/Pz9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);
+            height: 40px;
+            min-width: 120px;
+            order: 2;
+            padding: 5px 0 0 15px;
+            width: 120px;
+            z-index: 1;
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////
+// Radio und Checkboxen & Listen Aufbau
+////////////////////////////////////////////////////////////////////////
+
+.con-form {
+	ol {
+		&.CheckBox,
+		&.RadioButton {
+			// alle
+			&.vertical,
+			&.horizontal {
+				position: relative;
+				top: @FormTextAlignMeasureVertical;
+			}
+			// alle LIs
+			> li,
+			li {
+				border-spacing: 0;
+				display: table;
+				margin: 0 0 @FormTextAlignMeasureVertical 0 !important;
+				table-layout: fixed;
+				width: 100%;
+				// alle Kinder
+				> * {
+					display: table-cell;
+					margin: 0;
+					text-align: left;
+					vertical-align: top;
+				}
+			}
+			// horizontal
+			&.horizontal {
+				li {
+					float: left;
+					margin: 0 10px @FormTextAlignMeasureVertical 0 !important;
+					width: auto !important;
+					// alle Kinder
+					> * {
+						padding-right: 10px;
+					}
+				}
+			}
+			// vertical
+			&.vertical {
+				> li {
+					> label {
+						float: none !important;
+						padding: 1px 0 0 10px;
+						width: 100% !important;
+					}
+				}
+			}
+		}
+	}
+}
+input[type="checkbox"] {
+	background: transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+input[type="radio"] {
+	background:transparent;
+    margin: 0 .5em 0 0;
+    vertical-align: inherit;
+}
+
+
+////////////////////////////////////////////////////////////////////////
+// CUSTOMS UNIFORM UND SO
+////////////////////////////////////////////////////////////////////////
+
+.wrapInput:after,
+.iconsend:after {
+	height: @inputHeightSetting;
+	line-height: @inputHeightSetting;
+	right: 1px;
+	top: 1px;
+	width: @inputHeightSetting;
+}
+
+// DATE
+
+.hasDatepicker {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAABA0lEQVR4Ae3bP07DMBxH8bc1d0EoXBW1JRGHgZ6BoVWOwZbwx2bugrBdNb+i9757lI8UZbKxwszy+cI9T4AAAQIEXLYHBiYW8pW3MDHQ01THM4m84hIjXf3rv5ID7FBLeCIH2UBFd6QwgERPcY/kQNtT3FsowIni3kMBZoqbyaFW3CKgZQIECBDwIeBsAgRcudsHCPgUIECAgJYEfP0LgAABAgTkv+3ygG8BLQABAgQISAJaAAIECBCQBQgQIKA8AQIECBAQBbDc+sHXKRTgSHFDKMCW4vpQx+/vqWgMA9hRVceBHGAvbKCWMK5+CWjHhqZ69pyYV/hxHtn+9u2bmZmZ2Q9DHmwzRdYSuwAAAABJRU5ErkJggg==);
+    background-position: ~"calc(100% - 8px)" center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+.con-form img.ui-datepicker-trigger {
+	opacity: 0.01;
+	height: @inputHeightSetting - 1px;
+	max-width: @inputHeightSetting - 1px;
+	position: absolute;
+	right: 0;
+	left: auto;
+	margin-top: @FormTextAlignMeasureVertical + 5;
+	margin-right: 0;
+	top: auto;
+	z-index: @z2;
+}
+
+// SELECT (UNIFORM)
+
+div.selector {
+	height: @inputHeightSetting;
+	line-height: @inputHeightSetting;
+	width: 100% !important;
+
+	span:after {
+		background: none;
+		right: 0;
+		top: 0;
+		height: (@FormTextAlignMeasure * 2 + 24px);
+		line-height: (@FormTextAlignMeasure * 2 + 24px);
+		width: (@FormTextAlignMeasure * 2 + 24px);
+	}
+
+	span {
+		height: @inputHeightSetting;
+		line-height: @inputHeightSetting;
+		padding: 0 40px 0 @FormTextAlignMeasureHorizontal;
+		width: 100% !important;
+	}
+
+	select {
+//		background: #FFF;
+		height: @inputHeightSetting;
+	}
+}
+
+// RADIO (UNIFORM)
+div.radio, div.radio span, div.radio input {
+    height: @radiocheckHeightSetting;
+    width: @radiocheckHeightSetting;
+}
+div.radio {
+	&.hover {
+		span {
+			&:before {
+				background: @trenner;
+			}
+		}
+	}
+
+	span {
+		position: relative;
+
+		&.checked {
+			border-color: @primary;
+
+			&:before {
+				background: @primary;
+			}
+		}
+
+		&:before {
+			background: none;
+			.transform;
+			border-radius: 50px;
+			content: "";
+			display: block;
+			height: 50%;
+			left: 25%;
+			position: absolute;
+			top: 25%;
+			width: 50%;
+			.pos-center;
+		}
+	}
+}
+
+
+// CHECKBOX (UNIFORM)
+div.checker, div.checker span, div.checker input {
+	cursor: pointer;
+    height: @radiocheckHeightSetting;
+    line-height: @radiocheckHeightSetting;
+    width: @radiocheckHeightSetting;
+}
+div.checker span {
+	position: relative;
+
+	input {
+		position: absolute !important;
+		left: 0;
+		top: 0;
+	}
+}
+div.checker span:before {
+	opacity: 0;
+	.transform;
+}
+div.checker span:hover:before {
+	opacity: .25;
+}
+div.checker span.checked:before {
+    color: @primary;
+	opacity: 1;
+}
+
+// UPLOAD (UNIFORM)
+
+div.uploader {
+    height: @inputHeightSetting;
+}
+//div.uploader span.action {
+	//height: 28px;
+	//line-height: 28px;
+//}
+div.uploader span.filename {
+//    height: 24px;
+    line-height: @inputHeightSetting;
+}
+
+////////////////////////////////////////////////////////////////////////
+// VALIDATION / VALIDIERUNG
+////////////////////////////////////////////////////////////////////////
+
+.validation {
+	&-info {
+		color: @validation;
+	}
+}
+form {
+	em {
+		font-style: normal;
+	}
+}
+.InLineValidate {
+    @arrowSize: 6px;
+    background: @validation;
+    color: @white;
+//    clear: both;
+//    float: left;
+//    padding: 5px 0 0 @FormLabelWidth;
+    line-height: 1;
+    padding: 5px 10px;
+    position: absolute;
+    left: auto;
+    top: -25px;
+    * {
+        font-size: .875rem;
+        line-height: inherit;
+    }
+    &:before {
+        border-left: @arrowSize solid transparent;
+        border-right: @arrowSize solid transparent;
+        border-top: @arrowSize solid @validation;
+        bottom: -@arrowSize;
+        content: "";
+        height: 0; 
+        left: @arrowSize * 2;
+        position: absolute;
+        width: 0; 
+
+    }
+}
+
+.ValidationSummary {
+	background:  @validation;
+    color: @white;
+    margin-bottom: @margin-part;
+    padding: @margin-part;
+    p {
+        font-weight: bold;
+        float: none;
+    }
+}
+
+// Validierungsfarbe 
+.con-form em,
+p.validationinfo
+{	
+    color: @validation;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// STYLINGS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+input[type],
+input[type="text"], 
+input[type="password"],
+textarea, 
+select,
+.imgCaptcha,
+//Uniform
+div.checker span,
+div.radio span,
+input.uniform-input,
+select.uniform-multiselect,
+textarea.uniform,
+div.selector span
+{
+	background-color: @white;
+    border: @FormValueBorderWidth solid @trenner;
+	-webkit-appearance: none;
+}
+input[type]:focus,
+input[type="email"]:focus,
+input[type="text"]:focus, 
+input[type="password"]:focus,
+textarea:focus, 
+select:focus,
+//Uniform
+div.checker span.checked,
+.wrapInput:after,
+.iconsend:after
+{
+    border: @FormValueBorderWidth solid @primary;
+}
+// BORDERS
+input[type],
+div.selector span,
+textarea,
+select {
+	.border-radius(3px);
+	&:focus + label {
+		color: @primary !important;
+	}
+}
+// PADDINGS
+input[type],
+textarea,
+select {
+	font-family: inherit;
+	font-size: 100%;
+	//	padding: @FormTextAlignMeasure !important;
+	padding: @FormTextAlignMeasureVertical @FormTextAlignMeasureHorizontal;
+}
+
+.con-form option {
+	padding: 0 @FormTextAlignMeasureHorizontal;
+}
+
+// Material Design
+
+@FormLiMaterialGap: 40px;
+.part-formular-material p {
+	padding-left: 0;
+}
+
+.material.con-form-data {
+    li {
+        .clearfix;
+
+        & * {
+            .transitions(@dur1);
+        }
+
+        & textarea {
+            .seperate-transitions (background-color @dur1 ease-in-out, border-color @dur1 ease-in-out);
+
+        }
+
+        &.transform-label {
+            margin-top: @FormLiMaterialGap;
+
+            &-gap-xl {
+                margin-top: @FormLiMaterialGap + 10px;
+            }
+
+            > label {
+                color: @disabled;
+                cursor: text;
+                display: inline-block;
+                left: @FormTextAlignMeasureHorizontal + @FormValueBorderWidth;
+                position: absolute;
+                top: @FormTextAlignMeasureVertical + @FormValueBorderWidth;
+                z-index: @z1;
+            }
+
+            > * {
+                .flex(0 0 100%);
+                max-width: 100%;
+            }
+
+            > *.horizontal {
+                .flex-display;
+            }
+        }
+
+        &.focused {
+            > label {
+                //				color: @text;
+                .font14;
+                left: 0;
+                top: -@FormValueBorderWidth - @FormLiMaterialGap / 1.75;
+            }
+
+            &.Validate {
+                > label {
+                    color: @validation;
+                }
+            }
+        }
+    }
+
+    input {
+        float: none;
+        position: relative;
+    }
+
+
+    .Validate {
+
+        label {
+            color: @validation;
+        }
+
+        input {
+            border: @FormValueBorderWidth solid @validation;
+        }
+    }
+
+    .InLineValidate {
+        display: none !important;
+    }
+}

@@ -1,0 +1,220 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+/*----------------------------------------------------------------------
+CSS
+Created:    2015
+Creator:    MGUM, SCHM
+Editor:     MGUM, SCHM
+----------------------------------------------------------------------*/
+/*TODO: finish LESS refactoring*/
+
+/************************************************************************************
+Shop
+************************************************************************************/
+.products {
+    width: 100%;
+
+    & > ul > li {
+        width: 100%;
+    }
+
+    & ul li dl {
+        display: block;
+        border-bottom: 2px solid black;
+    }
+
+    & ul li dt {
+        width: 30%;
+        margin-right: 5%;
+    }
+
+    .shop-produkt-detail {
+        border-spacing: 0;
+        display: table;
+        width: 100%;
+
+        li {
+            display: table-cell;
+
+            span.title {
+                background-color: #ccc;
+                color: #fff;
+                display: block;
+                font-size: 10px;
+                padding: 2px 4px;
+            }
+
+            &.menge {
+                width: 20%;
+            }
+
+            &.anzahl {
+                width: 15%;
+            }
+
+            &.preis {
+                width: 30%;
+            }
+
+            &.anzahl input {
+                width: 50px;
+            }
+
+//            &.action {
+//            }
+
+        }
+    }
+    .shop-titlel { &:extend(.products .shop-produkt-detail, .products .shop-produkt-detail li); }
+}
+
+/* Warenkorb */
+#warenkorb {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    margin: 2em 0;
+    /*    overflow: hidden;*/
+}
+
+#wk_header {
+    padding: 10px;
+}
+
+//#wk_body {
+//}
+
+#wk_footer {
+    padding: 10px;
+}
+
+#wk_emptybasket {
+    color: #666;
+    padding: 10px;
+}
+
+.wk_line {
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #ffffff;
+    display: block;
+    padding: 10px;
+    position: relative;
+
+    &:hover {
+        background: #fff;
+    }
+
+    &.first {
+        border-top: none;
+        margin-top: 0;
+    }
+
+    &.last {
+        border-bottom: none;
+    }
+}
+
+.wk_name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.wk_menge {
+    font-size: 12px;
+}
+
+.wk_bild {
+    display: none;
+    max-width: 60px;
+    position: absolute;
+    left: 0;
+}
+
+.wk_input {
+    margin-right: 10px;
+    width: 40px;
+}
+
+.wk_preis {
+    float: right;
+}
+
+.wk_delete {
+    background: red;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 16px;
+    height: 16px;
+}
+
+.wrap_total {
+    border-top: 2px solid #000;
+    padding: 5px 0;
+}
+
+.wk_sub_total_label,
+.wk_kleinmengenzuschlag_label,
+.wk_versandkosten_label,
+.wk_total_label {
+    font-weight: bold;
+}
+
+.wk_sub_total,
+.wk_versandkosten,
+.wk_kleinmengenzuschlag,
+.wk_total {
+    float: right;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Bestellprozess */
+.warenkorb_checkout .wk_bild {
+    display: none;
+}
+
+.steps li {
+    background: black;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+}
+
+    .steps li.active {
+        background: white;
+        color: black;
+        font-weight: bold;
+    }
+
+.error_login, .error_login_data {
+    display: none;
+}
+
+#summary h4 {
+    border-bottom: 1px solid #000;
+}
+
+#summary label {
+    display: inline-block;
+    width: 150px;
+}
+
+.bubble_error {
+    background: none repeat scroll 0 0 #FF0000;
+    border-radius: 16px 16px 16px 16px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    left: 0;
+    padding: 2px 9px;
+    position: absolute;
+    top: 0;
+    display: none;
+}

@@ -1,0 +1,40 @@
+﻿@model List<Insyma.ContentProperty.Services.Dto.ViewConfirmContact>
+
+@{
+    var formatDate = (ViewBag.LanguageId == 0 ? "dd.MM.yyyy" : "dd/MM/yyyy");
+}
+
+@if (Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <ul data-contact-id="@item.ContactId" data-total="@ViewBag.Total">
+            <li>@item.ContactName</li>
+            <li>
+                @if (item.IsView)
+                {
+                    <span class="icon span-check"></span>
+                }
+            </li>
+            <li>
+                @if (item.DateView.HasValue)
+                {
+                    @item.DateView.Value.ToString(formatDate)
+                }
+            </li>
+            <li>
+                @if (item.IsConfirm)
+                {
+                    <span class=" icon span-check"></span>
+                }
+            </li>
+            <li>
+                @if (item.DateConfirm.HasValue)
+                {
+                    @item.DateConfirm.Value.ToString(formatDate)
+                }
+            </li>
+        </ul>
+    }
+
+}

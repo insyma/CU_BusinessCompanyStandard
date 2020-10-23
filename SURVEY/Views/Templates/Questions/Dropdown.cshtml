@@ -1,0 +1,38 @@
+﻿@using Insyma.SurveyManagement.DAL;
+@using Insyma.SurveyManagement.DAL.Repositories;
+@using Insyma.SurveyManagement.UI.DTO;
+@using Newtonsoft.Json;
+
+@model Insyma.SurveyManagement.DAL.udsp_SURVEY_QuestionOnline_Result
+
+@{
+    int surveyResultSummaryId = ViewBag.SurveyResultSummaryId ?? 0;
+
+    List<udsp_SURVEY_DependencyAndGroup_Result> dependencies = SurveyOnlineRepository.LoadQuestionDependencies(Model.Id);
+
+    DependencyItem rootGroup = DependencyItem.ConvertDependencies(dependencies, null, false).SingleOrDefault();
+}
+
+<div class="questioncon" questionid="@Model.OriginalQuestionId" data-questionid="@Model.Id" data-dependencies='@Html.Raw(JsonConvert.SerializeObject(rootGroup))'>
+    <div style="display: block;" class="question" questiontype="@Model.QuestionTypeId">
+        <span>@Model.QuestionName</span>
+    </div>
+    <div style="display: block;" class="answer">
+
+        @{
+            udsp_SURVEY_AnswerOnline_Result answer = SurveyOnlineRepository.GetAnswersOnlineByQuestionOnline(Model.Id, (int)ViewBag.languageId).FirstOrDefault();//assume that there is only one answer
+            List<udsp_SURVEY_AnswerValueOnline_Result> answerValues = SurveyOnlineRepository.GetAnswerValueOnlineByAnswerOnline(answer.Id, (int)ViewBag.languageId);
+        }
+
+        <select answerid="@answer.Id">
+
+            @{
+                foreach (udsp_SURVEY_AnswerValueOnline_Result answerValue in answerValues)
+                {
+                     <option value="@answerValue.AnswerValue" @(SurveyResultRepository.IsOptionSelected(surveyResultSummaryId,Model.Id,answer.Id) ? "selected='selected'" : string.Empty) >@answerValue.AnswerText</option>
+                }
+            }
+
+        </select>
+    </div>
+</div>

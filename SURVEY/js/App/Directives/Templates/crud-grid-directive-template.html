@@ -1,0 +1,59 @@
+﻿<table class="crud-grid table table-striped table-bordered table-condensed table-hover">
+    <tr>
+        <th style="width: 100px;">
+            <div class="btn-toolbar"><i class="btn icon-plus" ng-click="toggleAddMode()">Add new</i></div>
+        </th>
+        <th style="width: 50px;">Position</th>
+        <th style="width: 200px;">Product type</th>
+        <th>Active</th>
+    </tr>
+    <tr ng-show="addMode">
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <i class="btn icon-save" ng-click="addObject()">Save</i>
+                    <i class="btn icon-remove" ng-click="toggleAddMode()">Cancel</i>
+                </div>
+            </div>
+        </td>
+        <td><input ng-model="object.Position" /></td>
+        <td><input ng-model="object.CodeName" /></td>
+        <td>
+            <select ng-model="object.Status">
+                <option value="true" checked="checked">Active</option>
+                <option value="false">Inactive</option>
+            </select>
+        </td>
+    </tr>
+    <tr ng-repeat="object in objects">
+        <td>
+            <div class="btn-toolbar" ng-show="object.editMode == null || object.editMode == false">
+                <div class="btn-group">
+                    <i class="btn icon-edit" ng-click="toggleEditMode(object)">Edit</i>
+                    <i class="btn icon-trash" ng-click="deleteObject(object)">Delete</i>
+                </div>
+            </div>
+            <div class="btn-toolbar" ng-show="object.editMode == true">
+                <div class="btn-group">
+                    <i class="btn icon-save" ng-click="updateObject(object)">Save</i>
+                    <i class="btn icon-remove" ng-click="toggleEditMode(object)">Cancel</i>
+                </div>
+            </div>
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Position}}</span>
+            <input ng-model="object.Position" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.CodeName}}</span>
+            <input ng-model="object.CodeName" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Status}}</span>
+            <select ng-model="object.Status" ng-show="object.editMode == true">
+                <option value="true" ng-selected="object.Status == true" >Active</option>
+                <option value="false" ng-selected="object.Status != true" >Inactive</option>
+            </select>
+        </td>
+    </tr>
+</table>

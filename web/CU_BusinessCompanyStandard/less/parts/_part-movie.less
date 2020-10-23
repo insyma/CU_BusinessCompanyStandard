@@ -1,0 +1,54 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../base/_mixins.less';
+@import (reference) '../base/_variables.less';
+.part-movie {
+    position: relative;
+	.bg-img {
+		.ratio;
+		.ratio-16-9;
+	}
+}
+
+.movie-holder {
+    max-width: 100%;
+    position: relative;
+
+    &:before,
+    &:after {
+        border-spacing: 0;
+        content: "";
+        display: table;
+    }
+
+    &:before {
+        clear: both;
+    }
+
+    .playButton,
+    video,
+    object,
+    iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+}
+
+.splashscreen {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.playButton {
+    background-size: 64px 64px;
+    cursor: pointer;
+}

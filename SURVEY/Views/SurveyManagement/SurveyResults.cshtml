@@ -1,0 +1,338 @@
+﻿@using Insyma.SurveyManagement.UI.UIHelper
+
+<script src="~/js/Lib/angular.min-1.2.6.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-sanitize.js"></script>
+
+<div id="appCommonCode" crud-survey-results table-name='@ViewBag.TableName' langid="@ViewBag.LanguageId" contactid="@ViewBag.ContactId" summaryid="@ViewBag.SummaryId" defaultlangid="@ViewBag.DefaultLanguage">
+    @{ Html.RenderPartial("SurveyChart"); }
+    @{ Html.RenderPartial("SurveyLineChart"); }
+
+    <!-- List Page region -->
+    <div class=" expList eight columns" ng-show="flagedit == 1">
+        <br>
+        <h2 class="cu-standardheader overview-title cu-textXLarge reportPage-level cu-soften">@Html.Raw(LabelHelper.GetProgramString("LblResults_OverviewTitle"))</h2>
+        <div>
+            <a class="cu-heroCommandLink">
+                <a id="button-filter" class="cu-standardheader cu-draggable cu-text13pt" ng-click="toggleFilter('listSurveyResults')">@*{{sign['listSurveyResults']}}*@ @Html.Raw(LabelHelper.GetProgramString("LblGeneral_Filter"))</a>
+            </a>
+            <table class="table ConFilter" cellpadding="0" cellspacing="0" ng-show="isFilter['listSurveyResults'] == true">
+                <thead>
+                    <tr class="filter" ng-show="isFilter['listSurveyResults'] == true">
+                        <td>
+                            <label for="filterSurveyName">@Html.Raw(LabelHelper.GetProgramString("LblResults_Survey"))</label>
+                            <input type="text" ng-model="query.listSurveyResults.SurveyName" placeholder="@Html.Raw(LabelHelper.GetProgramString("LblResults_Survey"))" id="filterSurveyName" />
+                        </td>
+                        <td class="icon iconafter icondatefrom">
+                            <label for="filterDateCreatedFrom">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_From"))</label>
+                            <input type="text" ng-model="query.listSurveyResults.DateCreated_From" datepicker placeholder="@Html.Raw(LabelHelper.GetProgramString("LblGeneral_From"))" id="filterDateCreatedFrom" />
+                        </td>
+                    </tr>
+                    <tr class="filter" ng-show="isFilter['listSurveyResults'] == true">
+                        <td></td>
+                        <td class="icon iconafter icondateto">
+                            <label for="filterDateCreatedTo">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_To"))</label>
+                            <input type="text" ng-model="query.listSurveyResults.DateCreated_To" datepicker placeholder="@Html.Raw(LabelHelper.GetProgramString("LblGeneral_To"))" id="filterDateCreatedTo" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div ng-show="isFilter['listSurveyResults']" class="filterButtons">
+                                <input id="btnApplyFilter" class="use-filter button buttongreen btnFiter" ng-click="searchBaseSurvey()" type="button" value="@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ApplyFilter"))" />
+                                <input id="btnResetFilter" class="reset-filter button buttongreen btnFiter" ng-click="query.listSurveyResults=undefined; searchBaseSurvey();" type="button" value="@Html.Raw(LabelHelper.GetProgramString("LblGeneral_ResetFilter"))" />
+                            </div>
+                            <paginator pagesize="pageSize" totalrecord="totalSurveyResults" currentpage="surveyResultsCurrentPage" identifier="pagingSurveyResults" />
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="cu-color-background-table-header">
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle SurveyName">
+                            <a ng-click="sort_by('SurveyName','listSurveyResults')" class="cu-headerTableLink">
+                                @Html.Raw(LabelHelper.GetProgramString("LblResults_Survey"))
+                                <span class="icon tablesort"></span>
+                            </a>
+                        </th>
+                        <th class="cu-elementHeaderTableStyle cu-elementStyle DateCreated">
+                            <a ng-click="sort_by('DateCreated','listSurveyResults')" class="cu-headerTableLink">
+                                @Html.Raw(LabelHelper.GetProgramString("LblGeneral_DateCreated"))
+                                <span class="icon tablesort"></span>
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tr class="cu-cell" ng-repeat="c in listSurveyResults" ng-click="editSurvey(c)">
+                    <td class="cu-cellstyle cu-cell-text min-width-name"><span>{{c.SurveyName}}</span></td>
+                    <td class="cu-cellstyle cu-cell-text min-width-date"><span>{{c.DateCreated  | date:'dd.MM.yyyy'}}</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <paginator pagesize="pageSize" totalrecord="totalSurveyResults" currentpage="surveyResultsCurrentPage" identifier="pagingSurveyResults" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Detail Page-->
+    <div class=" expList eight columns" ng-show="flagedit == 2" style="width: 1000px;">
+        <div class="cu-left">
+            <br>
+            <h2 class="cu-standardheader results-title cu-textXLarge reportPage-level cu-soften">@Html.Raw(LabelHelper.GetProgramString("LblResults_ResultsTitle"))</h2>
+        </div>
+        <div class="cu-left cu-lineheight60" style="margin-left: 150px;"><span class="cu-standardheader back-to Lcu-textXLarge cu-soften hand-pointer" ng-click="backtoList()" ng-hide="summaryId > 0">@*@Html.Raw(LabelHelper.GetProgramString("LblGeneral_BackTo"))*@ @Html.Raw(LabelHelper.GetProgramString("LblResults_OverviewTitle"))</span></div>
+
+        <div class="expList eight columns cu-clear" style="width: 1000px; float: left; display: block;" id="surveyDetailPage">
+            <div class="expList eight columns cu-clear">
+                <br>
+                <h2 class="cu-standardheader search-survey-online-title cu-textXLarge reportContainer-level cu-soften">@Html.Raw(LabelHelper.GetProgramString("LblResults_SearchSurveyOnlineTitle"))</h2>
+
+                <div>
+                    <table cellpadding="0" cellspacing="4" border="0" style="width: 100%;" class="ConSearchFilter">
+                        <tr ng-hide="summaryId > 0">
+                            <td class="cu-standardheader date-search cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblResults_DateSearch"))</td>
+                            <td id="td-date-filter">
+                                <div class="cu-left icon iconafter icondatefrom">
+                                    <input type="text" class="cu-box50 text-align-right" style="margin-right: 8px;" datepicker ng-model="searchParams.DateFrom">
+                                </div>
+
+                                <div class="cu-left">
+                                    <div class="cu-left icon iconafter icondateto">
+                                        <input type="text" class="cu-box50 text-align-right" datepicker ng-model="searchParams.DateTo" />
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-hide="summaryId > 0">
+                            <td class="cu-standardheader cu-formlabel"></td>
+                            <td id="td-search-one">
+                                <input type="checkbox" ng-model="flagSearchOne" value="{{flagSearchOne}}" id="chkSearchOne" ng-change="chkSearch1Change()" />
+                                <label id="label-chk-searh-one" for="chkSearchOne">@Html.Raw(LabelHelper.GetProgramString("LblResults_OneSurveyOnline"))</label>
+                            </td>
+                        </tr>
+                        <tr ng-show="flagSearchOne == true">
+                            <td class="cu-standardheader cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblResults_SurveyOnlineSelect"))</td>
+                            <td id="td-survey-online">
+                                <select class="cu-box" id="ddlSurveyOnline" ng-model="searchParams.SurveyOnlineId">
+                                    <option ng-repeat="s in dllSurveyOnline" value="{{s.Id}}" ng-selected="searchParams.SurveyOnlineId == s.Id">{{s.PublicationDate | date:'dd.MM.yyyy HH:mm:ss'}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr ng-hide="summaryId > 0">
+                            <td class="cu-standardheader cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblGeneral_State"))</td>
+                            <td id="td-survey-state">
+                                <div ng-repeat="state in progressList">
+                                    <div style="float: left; width: 125px; display: block;">
+                                        <input type="checkbox" class="chkProgressState" id="ckhProgressState_{{state.Id}}" value="{{state.Id}}" name="{{state.ProgressStateName}}" />
+                                        <label for="ckhProgressState_{{state.Id}}">{{state.ProgressStateName}}</label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-show="summaryId > 0">
+                            <td class="cu-standardheader cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblResults_ContactId"))</td>
+                            <td>
+                                <div>
+                                    {{listSummary[0].ContactId}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-show="summaryId > 0">
+                            <td class="cu-standardheader cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblResults_ContactName"))</td>
+                            <td>
+                                <div>
+                                    {{listSummary[0].Salutation}} {{listSummary[0].FirstName}} {{listSummary[0].LastName}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr ng-show="summaryId > 0">
+                            <td class="cu-standardheader cu-formlabel">@Html.Raw(LabelHelper.GetProgramString("LblResults_ParticipationDate"))</td>
+                            <td>
+                                <div>
+                                    {{listSummary[0].StartDate | date:'dd.MM.yyyy'}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="hideforPDF">
+                        <br>
+                        <input class="cu-left button buttongreen " id="reportServeyResults" name="reportServeyResults" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_GenerateReport"))" ng-click="reportResults()" ng-hide="summaryId > 0" />
+                        <input class="cu-left button buttongreen " id="exportPDF" name="exportPDF" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_ExportPDF"))" ng-click="exportPDF()" ng-show="showBtnOnListSurvey('exportPDF')" />
+                        <input class="cu-left button buttongreen " id="exportExcel" name="exportExcel" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_ExportExcel"))" ng-click="exportToExcel()" ng-show="showBtnOnListSurvey('exportExcel')" />
+                        <input class="cu-left button buttongreen " id="exportExcelMatrix" name="exportExcelMatrix" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_ExportExcelMatrix"))" ng-click="exportExcelMatrix()" ng-show="showBtnOnSearchOne(flagSearchOne, '')" />
+                        <input class="cu-left button buttongreen " id="reportSurveyResultSummary" name="reportSurveyResultSummary" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_GenerateReportResultSummary"))" ng-click="reportResultSummary()" ng-hide="summaryId > 0" />
+                        <input class="cu-left button buttongreen " id="dateChartSurvey" name="dateChartSurvey" type="button" value="@Html.Raw(LabelHelper.GetProgramString("BtnResults_DateLineChart"))" ng-click="dateLineChart()" ng-hide=" summaryId > 0 " />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Result -->
+            <div ng-show="reportSurveyResults != ''" class="hideforPDF">
+                <br>
+                <div style="width: 100%; float: left;">
+                    <input type="checkbox" ng-model="flagLoadAllResults" ng-change="ColAndExpReports()" id="chkAllResults" />
+                    @Html.Raw(LabelHelper.GetProgramString("LblResults_ExpandAllResults"))
+                </div>
+                <div style="width: 100%; float: left;" ng-hide="summaryId > 0">
+                    <div id="divCheckLoadAllText" class="cu-left">
+                        <input type="checkbox" ng-model="flagLoadAllText" value="{{flagLoadAllText}}" ng-change="loadAllText()" id="chkAllText" />
+                    </div>
+                    <div id="divReloadOfLoadAllText" class="cu-left">
+                        <span class="icon-reload" ng-click="reportResults()"></span>
+                    </div>
+                    <div class="cu-left">
+                        @Html.Raw(LabelHelper.GetProgramString("LblResults_LoadAllTexts"))
+                    </div>
+                </div>
+            </div>
+            <div class="expList eight columns cu-clear" ng-show="reportSurveyResults != ''">
+                <h2 class="cu-standardheader cu-textXLarge reportContainer-level cu-soften">@Html.Raw(LabelHelper.GetProgramString("LblResults_ResultsTitle"))</h2>
+                <div id="divParticipations" ng-show="participations != ''" ng-repeat="party in participations">
+                    <ul class="table-party">
+                        <li class="">
+                            <b>
+                                <span ng-show="party.ProgressState == 0">@Html.Raw(LabelHelper.GetProgramString("ParticipationsTotal")) </span>
+                                <span ng-show="party.ProgressState == 1">@Html.Raw(LabelHelper.GetProgramString("ParticipationsInProgress")) </span>
+                                <span ng-show="party.ProgressState == 2">@Html.Raw(LabelHelper.GetProgramString("ParticipationsInCancelled")) </span>
+                                <span ng-show="party.ProgressState == 3">@Html.Raw(LabelHelper.GetProgramString("ParticipationsTimeout")) </span>
+                                <span ng-show="party.ProgressState == 4">@Html.Raw(LabelHelper.GetProgramString("ParticipationsFinish")) </span>
+                            </b>
+                        </li>
+                        <li class="amount" ng-hide="summaryId > 0">{{party.CalcParticipation}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <br>
+                    <div id="ReportResults">
+                        @{ Html.RenderPartial("SurveyResultsDetail"); }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Result Summary -->
+            <div ng-show="reportSurveyResultSummary != ''" class="hideforPDF">
+                <br> <!-- just for layout -->
+            </div>
+            <div class="expList eight columns cu-clear" ng-show="reportSurveyResultSummary != ''">
+                <h2 class="cu-standardheader cu-textXLarge reportContainer-level cu-soften">@Html.Raw(LabelHelper.GetProgramString("LblResults_ResultsTitle"))</h2>
+                <div id="divParticipations" ng-show="participations != ''" ng-repeat="party in participations">
+                    <ul class="table-party">
+                        <li class="">
+                            <b>
+                                <span ng-show="party.ProgressState == 0">@Html.Raw(LabelHelper.GetProgramString("ParticipationsTotal")) </span>
+                                <span ng-show="party.ProgressState == 1">@Html.Raw(LabelHelper.GetProgramString("ParticipationsInProgress")) </span>
+                                <span ng-show="party.ProgressState == 2">@Html.Raw(LabelHelper.GetProgramString("ParticipationsInCancelled")) </span>
+                                <span ng-show="party.ProgressState == 3">@Html.Raw(LabelHelper.GetProgramString("ParticipationsTimeout")) </span>
+                                <span ng-show="party.ProgressState == 4">@Html.Raw(LabelHelper.GetProgramString("ParticipationsFinish")) </span>
+                            </b>
+                        </li>
+                        <li class="amount" ng-hide="summaryId > 0">{{party.CalcParticipation}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <br>
+                    <div id="ReportResultSummary">
+                        @{ Html.RenderPartial("SurveyResultSummary"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Spinner region -->
+    @*    <div class="loader-bg-temp" style="display: none;">
+            <img src="~/content/images/loadingcircle.gif" class="loader-icon" />
+        </div>*@
+    @* <div class="overlay-loading"></div>*@
+    <div class="overlay-loading" style="display: none;"></div>
+    <div class="modal-loading-temp" style="display: none;">
+        <span class="icon-spinner spinner spinner-steps green"></span>
+        <p>Loading...</p>
+    </div>
+</div>
+
+@section DirectivesScript
+{
+    <script src="@Url.Content("~/js/App/Directives/paginatorDirective.js")"></script>
+    <script src="@Url.Content("~/js/App/Directives/survey-results-directive.js")"></script>
+
+    <script src="@Url.Content("~/js/Lib/hightcharts.js")"></script>
+    <script src="@Url.Content("~/js/Lib/exporting.js")"></script>
+
+    <script>
+        //Generate Validation Text
+        var ValidText = {
+            "SaveSuccess": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_Saved"))"
+            , "DeleteSuccess": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_Deleted"))"
+            , "SaveFail": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_SaveError"))"
+            , "DeleteFail": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_DeleteError"))"
+            , "Error": "@Html.Raw(LabelHelper.GetProgramString("MsgGeneral_GenericError"))"
+            , "ChooseSurveyConfirm": "@Html.Raw(LabelHelper.GetProgramString("MsgResults_ChooseSurvey"))"
+            , "BarChartPercentRank": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_BarChartPercentRank"))"
+            , "BarChartPersonRank": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_BarChartPersonRank"))"
+            , "TooltipChartPerson": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_TooltipChartPerson"))"
+            , "ChartQuestionText": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ChartQuestionText"))"
+            , "ChartAnswerText": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ChartAnswerText"))"
+            , "ContextMenuPrintChart": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ContextMenuPrintChart"))"
+            , "ContextMenuPNG": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ContextMenuPNG"))"
+            , "ContextMenuJPEG": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ContextMenuJPEG"))"
+            , "ContextMenuPDF": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ContextMenuPDF"))"
+            , "ContextMenuSVG": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_ContextMenuSVG"))"
+            , "SubTextNoteBL": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_SubTextNoteBL"))"
+            , "GerneralTextDate": "@Html.Raw(LabelHelper.GetProgramString("LblCharts_GerneralTextDate"))"
+            , "AnswerText": "@Html.Raw(LabelHelper.GetProgramString("LblAnswerText"))"
+            , "ShowAnswerButton": "@Html.Raw(LabelHelper.GetProgramString("LblShowAnswerButton"))"
+            , "ShowMoreAnswerButton": "@Html.Raw(LabelHelper.GetProgramString("LblShowMoreAnswerButton"))"
+            , "HasNoSurveyOnline": "@Html.Raw(LabelHelper.GetProgramString("LblHasNoSurveyOnline"))"
+        };
+
+    </script>
+    <script type="text/javascript">
+
+
+        $(document).on("keydown", ".numericControl", function (event) {
+            if ($(this).attr("AllowDecimal")) {
+                if (event.keyCode == 190 && $(this).val().indexOf('.') < 0) {
+                    return;
+                }
+            }
+
+            // Allow: backspace, delete, tab, escape, and enter
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+                // Allow: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                //allow F5
+                (event.keyCode == 116) ||
+                // Allow: home, end, left, right
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            else {
+                // Ensure that it is a number and stop the keypress
+                if (
+                    //event.shiftKey || ->avoid disallowing the shiftkey, since french keyborads need it to input numbers
+                    (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+                    event.preventDefault();
+                }
+            }
+        });
+
+
+    </script>
+
+    <script src="~/js/Lib/jquery.uniform.min.js"></script>
+    <script language="javascript">
+        // Style everything
+        //$("select, input, a.button, button").uniform();
+
+        $("input[type=text],select, a.button, .btnFiter").uniform();
+
+        // Calls the selectBoxIt method on your HTML select box and uses the default theme
+    </script>
+}

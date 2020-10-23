@@ -1,0 +1,24 @@
+﻿@import (reference) "../layout/_media-queries.less";
+@import (reference) '../components/_forms.less';
+@import (reference) '../base/_variables.less';
+@import (reference) '../base/_mixins.less';
+
+.part-log-in {
+    table {
+        width: 100%;
+        td {
+            display: block;
+            text-align: left !important;
+            width: 100%;
+        }
+    }
+    .logintable {
+        table {
+            td {
+                &:first-child {
+                    padding: 0 0 10px;
+                }
+            }
+        }
+    }
+}

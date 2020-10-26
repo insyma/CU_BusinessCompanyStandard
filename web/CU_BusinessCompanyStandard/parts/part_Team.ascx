@@ -98,7 +98,7 @@
             	<CU:CUField name="partteamBereichUeberschrift" runat="server" tag="h4" tagclass="h4" />
                 <CU:CUField name="partteamBereichLead" runat="server" tag="div" tagclass="lead" />
 				<div class="cards">
-                <input type="hidden" name="ihf_row" value='<CU:CUField name="partteamBereichSelectEntries" runat="server" property="value" />' />
+               		<input type="hidden" name="ihf_row" value='<CU:CUField name="partteamBereichSelectEntries" runat="server" property="value" />' />
 					<CU:CUObjectSet name="partteamListEmployee" runat="server"  OnItemDataBound="EBindItem">
 						<HeaderTemplate><div class="openInOverlay cards-con"></HeaderTemplate>
 						<ItemTemplate>

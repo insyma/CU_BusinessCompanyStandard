@@ -1,4 +1,4 @@
-﻿@import (reference) "../layout/_media-queries.less";
+﻿@import (reference) "../pages/_media-queries.less";
 @import (reference) "../base/_variables.less";
 @import (reference) "../components/_containers.less";
 
@@ -19,4 +19,61 @@
     & > *:last-child {
         margin-bottom: 0;
     }
+    .holder {
+        padding: 0;
+    }
+}
+
+/////////////////////////////////////////////////////
+// Der Switch für die Breiten true/false
+/////////////////////////////////////////////////////
+.partfunctions(false);
+/////////////////////////////////////////////////////
+
+.partfunctions(@partfunctions) when (@partfunctions = true) {
+    // Part Breite
+    .holder {
+        &.part {
+            &-width {
+                &-s {
+                    max-width: @col8px;
+                }
+                &-m {
+                    max-width: @col12px;
+                }
+                &-l {
+                    max-width: @col18px;
+                }
+                &-xl {
+                    max-width: @col24px;
+                }
+            }
+        }
+    }
+    .part {
+        // Part Ausrichtung
+        &-align-center {
+            margin-left: auto;
+        }
+        &-align-left {
+            margin-left: 0;
+        }
+        // Part Abstand nach unten
+        &-marginbottom {
+            &-0 {
+                margin-bottom: 0;
+            }
+            &-s {
+                margin-bottom: @margin-part / 2;
+            }
+            &-m {
+                margin-bottom: @margin-part;
+            }
+            &-l {
+                margin-bottom: @margin-part * 1.5;
+            }
+
+        }
+    }
+    
 }

@@ -1,7 +1,7 @@
 ﻿@import (reference) '../base/_mixins.less';
 @import (reference) '../base/_variables.less';
 @import (reference) '../iconfont/style.less';
-@import (reference) "../layout/_media-queries.less";
+@import (reference) "../pages/_media-queries.less";
 /************************************************************************************
 Settings
 ************************************************************************************/
@@ -38,6 +38,7 @@ Listen
 				content: "\f07f";
 				left: 1px;
 				position: absolute;
+				top: 0;
 			}
 		}
 	}
@@ -154,7 +155,7 @@ Icons
 	li.link.download {
 		a {
 			&:before {
-				content: @icon-get_app;
+				content: @icon-download;
 			}
 		}
 	}

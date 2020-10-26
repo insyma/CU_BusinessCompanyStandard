@@ -1,0 +1,45 @@
+﻿@import (reference) '../base/_variables.less';
+@import (reference) '_shadows.less';
+@import (reference) '_icons.less';
+
+
+.ui-accordion {
+    height: auto;
+}
+.accordion {
+    @accordiongap: 35px;
+    border-bottom: 1px solid @trenner;
+    &-item {
+        &-title {
+            background: none; // Jquery UI reset
+            border: none; // Jquery UI reset
+            border-top: 1px solid @trenner;
+            color: @primary;
+            display: flex;
+            .font-size(20);
+            padding: 12px 0;
+            &:hover {
+                color: @primary-dark;
+            }
+            .ui-icon {
+                flex: 0 1 @accordiongap;
+                &:before {
+                    .is-icon;
+                    content: @icon-chevron_right;
+                }
+            }
+            &.ui-state-active  {
+                color: @primary;
+                .ui-icon {
+                    &:before {
+                        content: @icon-chevron_down;
+                    }
+                }
+            }
+        }
+        &-content {
+            border: none;
+            padding-left: @accordiongap;
+        }
+    }
+}

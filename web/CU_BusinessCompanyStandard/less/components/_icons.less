@@ -1,4 +1,4 @@
-﻿@import (reference) "../layout/_media-queries.less";
+﻿@import (reference) "../pages/_media-queries.less";
 @import (reference) '../base/_mixins.less';
 @import (reference) '../iconfont/style.less';
 
@@ -69,6 +69,7 @@ p.link a {
 
 // BASIC ICONS
 .hasicon,
+.is-icon,
 .linklist a:before,
 .liststyle li:before,
 a.movielink:before,
@@ -111,7 +112,7 @@ p.link a,
 p.link a,
 a.link {
     &:before {
-        content: @icon-link-external;
+        content: @icon-link;
         font-family: 'icons';
         text-decoration: none;
     }
@@ -126,17 +127,15 @@ a.link {
             content: @icon-chevron_right !important;
         }
     }
-}
-
-.icon {
     &-less {
         .iconbefore;
-
+    
         &:before {
-            content: @icon-expand_less !important;
+            content: @icon-chevron_up !important;
         }
     }
 }
+
 .icon-back,
 .iconReturnTo {
     &:before {
@@ -167,12 +166,12 @@ a.link {
     padding-left: @icon-abstand;
 
     &:before {
-        content: @icon-room;
+        content: @icon-pin;
     }
 }
 
 div.SwitchLanguage > .pls-selected-locale:after {
-    content: @icon-expand_more;
+    content: @icon-chevron_down;
     float: right;
     padding-left: 20px;
 }
@@ -180,7 +179,7 @@ div.SwitchLanguage > .pls-selected-locale:after {
 // googleMap basic Icon
 .icongmapmarker:before {
     color: #4096ee;
-    content: @icon-room;
+    content: @icon-pin;
     font-size: 2rem;
     opacity: 1;
     position: relative;
@@ -207,7 +206,7 @@ div.SwitchLanguage > .pls-selected-locale:after {
     position: relative;
 
     &:before {
-        content: @icon-phone_iphone !important;
+        content: @icon-phone !important;
         left: 0;
         position: absolute;
     }
@@ -232,7 +231,7 @@ div.SwitchLanguage > .pls-selected-locale:after {
     position: relative;
 
     &:before {
-        content: @icon-markunread !important;
+        content: @icon-envelope !important;
         left: 0;
         position: absolute;
     }
@@ -281,17 +280,17 @@ div.SwitchLanguage > .pls-selected-locale:after {
 }
 
 // Basic Icons - more icons >> fonts/original/demo.html
-@iconfacebook: @icon-uniE614;
-@icongoogleplus: @icon-google-plus;
+@iconfacebook: @icon-facebook;
+@icongoogleplus: @icon-google;
 @iconinstagram: @icon-instagram;
-@iconlinkedin: @icon-uniE613;
-@icontwitter: @icon-uniE017;
-@iconxing: @icon-uniE62B;
-@iconvimeo: @icon-uniE014;
-@iconyoutube: @icon-uniE60D;
-@iconskype: @icon-uniE023;
-@iconsnapchat: @icon-snapchat-ghost;
-@icontumbler: @icon-uniE62D;
+@iconlinkedin: @icon-linkedin;
+@icontwitter: @icon-twitter;
+@iconxing: @icon-xing;
+@iconvimeo: @icon-play_circle_outline;
+@iconyoutube: @icon-youtube;
+@iconskype: @icon-skype;
+@iconsnapchat: @icon-snapchat;
+@icontumbler: @icon-tumblr;
 
 
 .icon.facebook:before {
@@ -329,40 +328,40 @@ div.SwitchLanguage > .pls-selected-locale:after {
 // Overlay
 #insymaDataprivacyHolder span.close:before,
 #insymaOverlayHolder span.close:before {
-    content: "\e209";
+    content: @icon-close;
 }
 
 #insymaOverlayHolder span.resize:before {
-    content: "\e211";
+    content: @icon-photo_size_select_large;
 }
 
 #insymaOverlayHolder span.size:before {
-    content: "\e1c3";
+    content: @icon-photo_size_select_large;
 }
 
 #insymaOverlayHolder span.play:before {
-    content: "\e027";
+    content: @icon-play_arrow;
 }
 
 #insymaOverlayHolder span.stop:before {
-    content: "\e02a";
+    content: @icon-stop;
 }
 
 #insymaOverlayHolder span.next:before {
-    content: "\e028";
+    content: @icon-fast_forward;
 }
 
 #insymaOverlayHolder span.prev:before {
-    content: "\e029";
+    content: @icon-fast_rewind;
 }
 
 // Uniform
 .selector span:after {
-    content: "\e20b";
+    content: @icon-chevron_down;
 }
 
 .checker span:before {
-    content: "\e5cb";
+    content: @icon-check;
     font-size: 18px;
 }
 
@@ -385,7 +384,7 @@ a {
 
         &-inside:before,
         &:before {
-            content: "\e039";
+            content: @icon-play_circle_outline;
             font-size: 60px;
             .pos-absolute;
             .flex-display;
@@ -407,13 +406,13 @@ a {
     .flex-direction-nav {
         .flex-prev {
             &:before {
-                content: "\e207";
+                content: @icon-chevron_left;
             }
         }
 
         .flex-next {
             &:before {
-                content: "\e208";
+                content: @icon-chevron_right;
             }
         }
     }

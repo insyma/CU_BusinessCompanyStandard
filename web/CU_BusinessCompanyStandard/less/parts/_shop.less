@@ -1,17 +1,10 @@
-﻿@import (reference) "../pages/_media-queries.less";
-@import (reference) '../base/_mixins.less';
+﻿@import (reference) '../base/_mixins.less';
 @import (reference) '../base/_variables.less';
-/*----------------------------------------------------------------------
-CSS
-Created:    2015
-Creator:    MGUM, SCHM
-Editor:     MGUM, SCHM
-----------------------------------------------------------------------*/
-/*TODO: finish LESS refactoring*/
+@import (reference) "../components/_media-queries.less";
+@import (reference) "../components/_icons.less";
+@import (reference) '../components/_shadows.less';
+@import (reference) '../components/_transitions.less';
 
-/************************************************************************************
-Shop
-************************************************************************************/
 .products {
     width: 100%;
 
@@ -69,7 +62,7 @@ Shop
     .shop-titlel { &:extend(.products .shop-produkt-detail, .products .shop-produkt-detail li); }
 }
 
-/* Warenkorb */
+///* Warenkorb */
 #warenkorb {
     background: none repeat scroll 0 0 #F5F5F5;
     border: 1px solid #CCCCCC;

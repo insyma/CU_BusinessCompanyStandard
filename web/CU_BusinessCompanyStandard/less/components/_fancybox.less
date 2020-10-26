@@ -1,8 +1,6 @@
 ﻿@import (reference) '../base/_mixins.less';
 @import (reference) '../base/_variables.less';
-@import (reference) '../base/_variables-theme.less';
-@import (reference) '../base/_mixins.less';
-@import (reference) "../pages/_media-queries.less";
+@import (reference) "_media-queries.less";
 @import (reference) '_buttons.less';
 @import (reference) '_forms.less';
 @import (reference) '_shadows.less';
@@ -980,9 +978,9 @@
 .fancybox-share__input {
     background: transparent;
     border: 0;
-    border-bottom: 1px solid #d7d7d7;
+    border-bottom: 1px solid @trenner;
     border-radius: 0;
-    color: #5d5b5b;
+    color: @black;
     font-size: 14px;
     margin: 10px 0 0 0;
     outline: none;

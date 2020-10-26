@@ -2,9 +2,8 @@
 @import (reference) '../base/_variables.less';
 @import (reference) '../iconfont/style.less';
 @import (reference) '_media-queries.less';
-/************************************************************************************
-Settings
-************************************************************************************/
+
+// Settings
 ul, ol {
 //    list-style: none;
     padding: 0;
@@ -14,9 +13,7 @@ ul, ol {
     padding: 0 0 0 @icon-abstand;
 }
 
-/************************************************************************************
-Listen
-************************************************************************************/
+// Listen
 .list,
 .liststyle,
 .linklist,
@@ -109,10 +106,8 @@ Listen
     }
 }
 
+//Definitionlists
 
-/************************************************************************************
-Definitionlists
-************************************************************************************/
 dl {
     .flex-display;
     .flex-flow(row wrap);
@@ -148,9 +143,7 @@ dl {
     }
 }
 
-/************************************************************************************
-Icons
-************************************************************************************/
+// Icons
 .linklist {
 	li.link.download {
 		a {
@@ -160,13 +153,13 @@ Icons
 		}
 	}
 }
-/* PDF */
+// PDF 
 a.pdf {
 	&:before {
 		content: @icon-file-pdf-o !important;
 	}
 }
-/* Excel */
+// Excel 
 a.xls,
 a.xlsx {
 	&:before {
@@ -174,7 +167,7 @@ a.xlsx {
 	}
 }
 
-/* Archives*/
+// Archives
 a.zip,
 a.rar,
 a.sit {
@@ -183,7 +176,7 @@ a.sit {
 	}
 }
 
-/* MS Word */
+// MS Word 
 a.doc,
 a.docx {
 	&:before {
@@ -191,7 +184,7 @@ a.docx {
 	}
 }
 
-/* MS Powerpoint */
+// MS Powerpoint 
 a.ppt,
 a.pptx,
 a.pps {
@@ -200,7 +193,7 @@ a.pps {
 	}
 }
 
-/* Images */
+// Images 
 a.jpg,
 a.jpeg,
 a.gif,
@@ -212,7 +205,7 @@ a.psd {
 		content: @icon-file-photo-o !important;
 	}
 }
-/* MS Word */
+// MS Word 
 a.mov,
 a.avi,
 a.m4v,

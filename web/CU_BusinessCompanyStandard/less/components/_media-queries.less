@@ -237,9 +237,7 @@
         }
     }
 }
-/************************************************************************************
-iPhone input zoom fix
-*************************************************************************************/
+// iPhone input zoom fix
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	select,
 	textarea,
@@ -247,9 +245,7 @@ iPhone input zoom fix
 		font-size: 16px !important;
 	}
 }
-/************************************************************************************
-smaller than @mq-max-1170 < Holder width + 30px padding
-*************************************************************************************/
+//smaller than @mq-max-1170 < Holder width + 30px padding
 @media screen and (max-width: @mq-size-1170) {
 	.part-youtube-playlist .flexslider:hover .flex-next {
 		right: -15px !important;
@@ -259,11 +255,9 @@ smaller than @mq-max-1170 < Holder width + 30px padding
 		left: -15px !important;
 	}
 }
-/************************************************************************************
-smaller than @mq-max-980
-*************************************************************************************/
+// smaller than @mq-max-980
+
 @media screen and (max-width: @mq-size-980) {
-	/* embedded videos */
 	.video embed,
 	.video object,
 	.video iframe {
@@ -271,9 +265,9 @@ smaller than @mq-max-980
 		height: auto;
 		min-height: 300px;
 	}
-	/************************************************************************************
-        Mobile - Indicator
-    ***********************************************************************************/
+	///////////////////////////////////////////////////////////////////////
+    //    Mobile - Indicator
+    ///////////////////////////////////////////////////////////////////////
 	#size-indikator-tablet {
 		display: block !important;
 	}
@@ -285,10 +279,9 @@ smaller than @mq-max-980
 	.showMobile {
 		display: block !important;
 	}
-	/************************************************************************************
-        Mobile - Navigation
-    ***********************************************************************************/
-	/* ICONS */
+	///////////////////////////////////////////////////////////////////////
+    //    Mobile - Navigation
+    ///////////////////////////////////////////////////////////////////////
 	.menu:after,
 	.open-child:before,
 	.close-child:before {
@@ -316,18 +309,6 @@ smaller than @mq-max-980
 
 	#root {
 		.transitions(.3s);
-
-/* 		.mobileNavigOpen & {
-			//            -moz-transform: translate(~"calc(60% - 60px)", 0px);
-			//           -ms-transform: translate(~"calc(60% - 60px)", 0px);
-			//            -o-transform: translate(~"calc(60% - 60px)", 0px);
-			//           -webkit-transform: translate(~"calc(60% - 60px)", 0px);
-			//            transform: translate(~"calc(60% - 60px)", 0px);
-//			-moz-filter: blur(2px);
-//			-o-filter: blur(2px);
-//			-ms-filter: blur(2px);
-//			filter: blur(2px);
-		} */
 	}
 
 	.NavMain {
@@ -379,7 +360,6 @@ smaller than @mq-max-980
 			padding: 10px 20px;
 			text-align: left;
 			width: auto;
-			/* Active Menu-Bar*/
 			&:after {
 				color: @text;
 			}
@@ -518,18 +498,7 @@ smaller than @mq-max-980
 		&:hover {
 			color: @primary;
 		}
-
-	/* 	&.open-child:before {
-		}
-
-		&.close-child:before {
-		} */
 	}
-
-/* 	.open-child:before,
-	.close-child:before {
-		//		color: @white;
-	} */
 
 	.open-child:before {
 		content: "\e069";
@@ -538,9 +507,9 @@ smaller than @mq-max-980
 	.close-child:before {
 		content: "\e07f";
 	}
-	/************************************************************************************
-            END Mobile - Navigation 
-    ***********************************************************************************/
+	///////////////////////////////////////////////////////////////////////
+    // END Mobile - Navigation 
+    ///////////////////////////////////////////////////////////////////////
 	dt {
 		width: 100%;
 	}
@@ -561,7 +530,6 @@ smaller than @mq-max-980
 			//            hyphens: auto;
 //		}
 //	}
-	/* inhalt */
 	#inhalt {
 		width: auto;
 		float: none;
@@ -584,7 +552,6 @@ smaller than @mq-max-980
 		margin: 0;
 		left: 0;
 	}
-	/* form */
 	.con-form ul > li > label,
 	.con-form input[type="email"],
 	.con-form input[type="text"],
@@ -618,13 +585,11 @@ smaller than @mq-max-980
 	#cse-search-box input[type="submit"] {
 		width: auto !important;
 	}
-	/* embedded videos */
 	.video embed,
 	.video object,
 	.video iframe {
 		min-height: 250px;
 	}
-	/* flexslider */
 	.flex-direction-nav .flex-prev {
 		opacity: 1;
 		left: 0;
@@ -635,9 +600,9 @@ smaller than @mq-max-980
 		right: 0;
 	}
 }
-/************************************************************************************
-smaller than 600
-*************************************************************************************/
+///////////////////////////////////////////////////////////////////////
+// smaller than 600
+///////////////////////////////////////////////////////////////////////
 @media screen and (max-width: @mq-size-600) {
 	#size-indikator-mobile {
 		display: block !important;
@@ -651,9 +616,9 @@ smaller than 600
 		width: 100%;
 	}
 }
-/************************************************************************************
-smaller than @mq-max-480
-*************************************************************************************/
+///////////////////////////////////////////////////////////////////////
+// smaller than @mq-max-480
+///////////////////////////////////////////////////////////////////////
 @media screen and (max-width: @mq-size-480) {
 
 	#insymaOverlayHolder .countspan {
@@ -663,7 +628,6 @@ smaller than @mq-max-480
 	aside > div {
 		width: 100%;
 	}
-	/* disable webkit text size adjust (for iPhone) */
 	html {
 		-webkit-text-size-adjust: none;
 	}

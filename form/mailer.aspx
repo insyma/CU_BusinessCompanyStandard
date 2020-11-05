@@ -416,8 +416,8 @@
         SendMail.ConnString = ContentUpdate.Utility.ConnString
         SendMail.Sender = mSender
         SendMail.Recipient = mRecipient
-        SendMail.BCCRecipient = "uwe.hinze@gmx.ch"
-        SendMail.CCRecipient = "uwe.hinze@insyma.com"
+        'SendMail.BCCRecipient = "uwe.hinze@gmx.ch"
+        'SendMail.CCRecipient = "uwe.hinze@insyma.com"
 
         SendMail.Subject = mSubject
         Dim html as string = "<html><head><style> body, div, p, td { font-family: Arial; } td{ line-height: 20px; vertical-align: top; }</style></head><body>"
